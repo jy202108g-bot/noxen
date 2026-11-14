@@ -5290,7 +5290,7 @@
 },
 {
 "id": "box_scout_v4_scout_v4_probe_roller",
-"name": "Scout: the coil's pressure roller (drawn: parts/scout_v4_probe_roller/make.py): a printed O8 x 19 tube turning on a O3 carbon rod (bore 3.3, no bearings), two Keystone-209-type leaf contacts (ZCZQC B0C5D3XLBK) on screw-set carriers, saddles on the rod",
+"name": "Scout: the coil's pressure roller (drawn: parts/scout_v4_probe_roller/make.py): two printed O8 x 4.50 tubes turning on a O3 carbon rod 23.6 long (bore 3.3, no bearings), between them a printed saddle on the rod carrying a Keystone-209-type leaf contact (ZCZQC B0C5D3XLBK) against the pocket's fixed end wall",
 "role": "bought",
 "group": "landing: Scout",
 "color": "#7a8590",
@@ -5327,7 +5327,7 @@
 "source": "systems/scout_v4.assembly.json, seated",
 "mesh": "parts/scout_v4_probe_roller/part.stl",
 "part": "box_scout_v4_scout_v4_probe_roller",
-"max_faces": 1200
+"max_faces": 8000
 },
 {
 "id": "box_scout_v4_scout_v4_probe_mast_a",
