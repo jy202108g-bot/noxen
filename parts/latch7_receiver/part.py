@@ -7,8 +7,11 @@ read 0.43). Two causes: the key's seat block had 3.5 of ligament behind its notc
 too little to join that root to the leg. 46 cm3 (67 % of the room), about 86 g.
 14 Nov, run on 6789f02a: PASS 0.47 / 87.3 g, but its print mesh stood on 163 mm2 (the tail bosses' ends) with 1,330 mm2 of generated deck 0.4-0.5 above the bed:
 a drawn 4 x 2.5 flat round the mount plane's two room regions now (latch7_recv_lib.bed_rim, 1,310 mm2 on the bed, bed_min_mm2 1100, Scout only), 3.3 cm3 more drawn
-(28 % of the part), 46 cm3 generated (70 % of the room), about 91 g."""
+(28 % of the part), 46 cm3 generated (70 % of the room), about 91 g.
+14 Nov, run on ca860675: 92.5 g, solid check PASS, bed 1,310 mm2 drawn, but 0.502 as built (0.52 in the field) across the layers at the lead foot's hold-down
+notch root in the every-swap hold-down, the spot that read 0.524 on 48814dfb and 0.47 on 6789f02a: the root joined to the leg on the budget's margin (room filled
+solid 0.39, thinned 0.56). 50 cm3 (76 % of the room), about 97 g."""
 from parts.latch7_recv_lib import setup_for, POSE_OF
-SPEC = dict(h=1.2, gen_cm3=46.0, max_worst=0.5, settings=dict(near_sym=True, gate_member=False))
+SPEC = dict(h=1.2, gen_cm3=50.0, max_worst=0.5, settings=dict(near_sym=True, gate_member=False))
 setup = setup_for("scout", "latch7_receiver")
 POSE = POSE_OF("scout")       # part (print pose, mount plane on the bed) -> cartridge coords

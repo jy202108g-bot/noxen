@@ -1356,7 +1356,7 @@ def kit():
                 render(t, png, title=f"{fn}.stl on its bed ({pr['down']} face down)", info=f"{mat} | {t.extents[0]:.1f} x {t.extents[1]:.1f} x {t.extents[2]:.1f} mm | solid check {'PASS' if ok else 'FAIL'}")
                 ext = [round(float(v), 1) for v in t.extents]
                 done[fn] = dict(file=f"print/{fn}.stl", release=f"https://github.com/sparkiscool/noxen/releases/download/meshes/print-{fn}.stl", picture=os.path.relpath(png, ROOT), solid_check="PASS" if ok else "FAIL",
-                                thin_walls=len(info.get("thin_walls", [])), pose=f"the part's {pr['down']} face on the bed", size_on_bed_mm=ext, fits_bed=bool(max(ext[:2]) <= BED and ext[2] <= BED),
+                                thin_walls=len(info.get("thin_walls", [])), pose=f"the part's {pr['down']} face on the bed", size_on_bed_mm=ext, fits_bed=bool((max(ext[:2]) <= BED or diag) and ext[2] <= BED),
                                 supports=("none" if pr["support_mm2"] < 5.0 else "yes: %d mm2 overhangs past 45 deg (tree supports, touching the bed only where they can)" % pr["support_mm2"]),
                                 material=mat, grams_each=round(abs(t.volume) / 1000 * (1.21 if mat.startswith("TPU") else 1.23), 2), note=note, used_by={})
             done[fn]["used_by"][pack] = n
@@ -1372,11 +1372,55 @@ def kit():
             checked="parts/%s/result.json build.install: every step swept, 0 mm3" % OUT[pack][0])
     out["files"] = list(done.values())
     json.dump(out, open(os.path.join(HERE, "kit.json"), "w"), indent=1)
+    kit_receivers()
     for f_ in out["files"]: print(f_["file"], f_["solid_check"], f_["pose"], f_["size_on_bed_mm"], f_["supports"][:14], f_["material"], f_["used_by"], f_["grams_each"], "thin", f_["thin_walls"])
     return out
 
 
+def kit_receivers():
+    """the engine receivers in kit.json (python parts/latch7/make.py --kit-receivers, after their runs): each one's release print mesh (result.json print_stl,
+    exported in the print pose: mount plane on the bed), measured as fetched: its flat on the bed, overhangs, the solid check; a picture on its bed in kit/.
+    A receiver whose run has not passed (or whose print stands on less than BED_MIN of recv_lib) goes to "waiting"."""
+    sys.path.insert(0, os.path.join(ROOT, "tools")); import solid_check as sc, print_mesh as pm, trimesh
+    from topo.build import render
+    from parts.latch7_recv_lib import BED_MIN
+    kd = os.path.join(HERE, "kit"); kj = os.path.join(HERE, "kit.json"); out = json.load(open(kj))
+    for pack in ("scout", "overseer"):
+        rid = OUT[pack][1] + "receiver"; rj = os.path.join(ROOT, "parts", rid, "result.json")
+        out["files"] = [f_ for f_ in out["files"] if f_.get("part") != rid]; out["waiting"] = [w for w in out["waiting"] if w != rid]
+        res = json.load(open(rj)) if os.path.exists(rj) else {}
+        ps = res.get("print_stl") or {}
+        if not (res.get("solid_ok") and res.get("strength_ok") and ps.get("url")):
+            out["waiting"].append(rid); continue
+        t = trimesh.load(pm.local(rid), force="mesh"); z0 = t.bounds[0][2]; n = t.face_normals; c = t.triangles_center; a = t.area_faces
+        on = (n[:, 2] < -0.999) & (c[:, 2] < z0 + 0.05); over = (n[:, 2] < -math.cos(math.radians(45.0))) & ~on
+        ok, info = sc.solid_check(t); ext = [round(float(v), 1) for v in t.extents]; bed = round(float(a[on].sum()))
+        png = os.path.join(kd, rid + ".png")
+        render(t, png, title=f"{rid}.stl on its bed (mount plane down)", info=f"PCTG | {ext[0]} x {ext[1]} x {ext[2]} mm | {bed} mm2 on the bed | solid check {'PASS' if ok else 'FAIL'}")
+        flat = bed >= BED_MIN.get(pack, 0.0)
+        a_, b_ = sorted(ext[:2], reverse=True); diag = a_ > BED and (a_ + b_) / math.sqrt(2) <= BED          # the Overseer's: 183.6 long, 177.9 square turned 45 deg
+        pose = "as exported: the mount plane (the drone's face) on the bed, the cartridge's mouth up"
+        if diag:
+            pose += "; %.1f long, over the %d bed: turned 45 deg about z on the bed (%.1f x %.1f), no brim, glue stick on the plate" % (a_, BED, (a_ + b_) / math.sqrt(2), (a_ + b_) / math.sqrt(2))
+        out["files"].append(dict(part=rid, file=os.path.basename(ps["url"]), release=ps["url"], sha256=ps.get("sha256"), picture=os.path.relpath(png, ROOT),
+                                 solid_check="PASS" if ok else "FAIL", thin_walls=len(info.get("thin_walls", [])),
+                                 pose=pose, on_the_diagonal=bool(diag), bed_mm2=bed,
+                                 underside_off_bed_mm2=round(float(a[(n[:, 2] < -0.9) & (c[:, 2] >= z0 + 0.05) & (c[:, 2] < z0 + 1.0)].sum())), size_on_bed_mm=ext,
+                                 fits_bed=bool((max(ext[:2]) <= BED or diag) and ext[2] <= BED),
+                                 supports="yes: %d mm2 overhangs past 45 deg (tree supports, touching the bed only where they can)" % round(float(a[over].sum())),
+                                 material="PCTG", grams_each=res.get("mass_g"), note="the engine's part (setup %s, worst %s); one per drone" % (res.get("setup_sha", "")[:8], res.get("field", {}).get("worst") if isinstance(res.get("field"), dict) else ""),
+                                 used_by={pack: 1}))
+        if not (ok and flat): out["waiting"].append(rid)
+    json.dump(out, open(kj, "w"), indent=1)
+    for f_ in out["files"]:
+        if f_.get("part"): print(f_["file"], f_["solid_check"], f_["bed_mm2"], "mm2 on the bed", f_["size_on_bed_mm"], f_["supports"][:30], f_["grams_each"], f_["used_by"])
+    print("waiting:", out["waiting"])
+    return out
+
+
 if __name__ == "__main__":
+    if "--kit-receivers" in sys.argv:
+        kit_receivers(); sys.exit(0)
     pk = "overseer" if "--overseer" in sys.argv else "scout"
     if "--kit" in sys.argv:
         kit(); sys.exit(0)
