@@ -8010,6 +8010,15 @@
    "minutes": 3.4,
    "peak_gb": 0.737604,
    "at": "c3bb8cfe0b9c:204"
+  },
+  {
+   "part": "scout_v4_node_p2",
+   "engine": "no-cavity",
+   "design": 9419,
+   "cases": 3,
+   "minutes": 3.8,
+   "peak_gb": 0.741752,
+   "at": "a6707d5a7c14:226"
   }
  ]
 }
