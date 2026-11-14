@@ -8163,6 +8163,15 @@
    "minutes": 3.4,
    "peak_gb": 0.643248,
    "at": "de851e0aea30:205"
+  },
+  {
+   "part": "scout_v4_node_rf",
+   "engine": "no-cavity",
+   "design": 6306,
+   "cases": 4,
+   "minutes": 3.6,
+   "peak_gb": 0.602164,
+   "at": "26f6d0a0b3ef:218"
   }
  ]
 }
