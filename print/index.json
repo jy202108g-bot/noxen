@@ -233,6 +233,18 @@
   "bytes": 16384,
   "at": "2026-11-14 00:51"
  },
+ "latch7_ov_standin_bolt.stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-latch7_ov_standin_bolt.stl",
+  "sha256": "60d2aadd04767720b87e44f85aecbd231741de364ac945f8ceaff72ae0d30562",
+  "bytes": 21584,
+  "at": "2026-11-14 23:26"
+ },
+ "latch7_ov_standin_cartridge.stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-latch7_ov_standin_cartridge.stl",
+  "sha256": "ca851b0684f3f010723a760b5f9f1831a7373a4794ea9c288cd01924875bdaf6",
+  "bytes": 95884,
+  "at": "2026-11-14 23:26"
+ },
  "latch7_plug_carrier.stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-latch7_plug_carrier.stl",
   "sha256": "7404ca5c10ecd8b3b5af956be02f05dd1777b0c4702d61fcd1b978ff92acf576",
@@ -262,6 +274,18 @@
   "sha256": "87463cc6c7f1781292fd6a202afd1dae41b60f15211724446a575fc74c78173d",
   "bytes": 4684,
   "at": "2026-11-14 00:52"
+ },
+ "latch7_standin_bolt.stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-latch7_standin_bolt.stl",
+  "sha256": "ecda4108306494b4a300ab4cc0f2ec34c9f028c4fd156c66b69153317290d11a",
+  "bytes": 21584,
+  "at": "2026-11-14 23:26"
+ },
+ "latch7_standin_cartridge.stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-latch7_standin_cartridge.stl",
+  "sha256": "fac57b35fff570838549ed06bf17c549829afce07bac2078947d536d7dd5e23a",
+  "bytes": 90184,
+  "at": "2026-11-14 23:26"
  },
  "latch7_stop_bar.stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-latch7_stop_bar.stl",
