@@ -92,7 +92,9 @@ L.DEPTH = DEPTH_MIN                                       # a socket with no fra
 # of the fork, worst at their floors). The room round every collar stays the 3.0-wall strut + STRUT_M, so the engine grows the root
 # wherever bending needs it. v4-only: the v3 Scout and Overseer nodes keep WALL.
 FORK_S0 = 20.0                                           # a bore pushed out past this by a near-parallel neighbour is one of a Y's two fork sockets
-HUB_WALL = 2.55
+HUB_WALL = 3.0                                           # 14 Nov: 2.55 -> 3.0 (= WALL). With the rods' end moments in the cases the
+# worst of every failing node (P1 / P2 / P5 / P6 / R0 / R7 / RS0 / RS1, 0.29-0.53, weak in volume: P2 0.67 -> 0.53 at 2.4x) sat on a
+# moment-loaded collar's drawn skin, 4.1-4.7 off its axis, where it meets its side-by-side neighbour: the drawn 2.55 the engine cannot thicken
 L.DRAWN_WALL = lambda m: L.WALL if m["s0"] > FORK_S0 else HUB_WALL
 
 # The collar's outside is round with only the wall over the bore's crown (the crown's apex r sqrt 2 + HUB_WALL), not the bore's
