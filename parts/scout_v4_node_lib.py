@@ -174,7 +174,9 @@ L.SOCKET_START = _socket_starts()
 # refused P2 / P5 at 0.6 (room thinned 1.92) and RS0 / RS1 at 0.3 (2.16), RB read 1.66 at 0.3: P2 / P5 1.0, RS0 / RS1 0.6, RB 0.5 (~0.9-1.0 by V^-1.25).
 # Run of 14 Nov (dispatch 13:18 UTC) on those: worst in every case the end-moment case: P2 / P5 0.67, P3 / P4 0.50, RS0 / RS1 0.44, RB 0.39,
 # S1 0.37, P6 0.36, R0 / R7 0.33, S0 0.31; P1 0.29 with a 1.1 web (solid fail); NB 0.10, TB 0.18, RF 0.22 pass. Each toward ~0.22 by V^-1.25.
-BUDGET_CM3 = {"P3": 1.4, "P4": 1.4, "P1": 0.9, "P2": 2.4, "P5": 2.4, "P6": 0.9, "R0": 0.85, "R7": 0.85,
+# 3.0 collars (push 7db172f3): 14 pass, P2 / P5 0.39 across layers in RS0-P2 / RS1-P5's moment case, now just outside the collar
+# (4.9 off the axis, the generated root): 2.4 -> 3.6 (~0.24 by V^-1.25).
+BUDGET_CM3 = {"P3": 1.4, "P4": 1.4, "P1": 0.9, "P2": 3.6, "P5": 3.6, "P6": 0.9, "R0": 0.85, "R7": 0.85,
               "RF": 0.3, "RB": 0.8, "RS0": 1.1, "RS1": 1.1, "S0": 1.6, "S1": 1.8, "NB": 1.8, "TB": 2.4}   # 14 Nov, the bolt forks: their runs read NB / TB 0.051 / 0.052 at 4.0, S0 / S1 0.032 at 3.1; on the fold's loads (core_of) TB-P3 154 N (was 99), S0-P2 109 (was 78): toward ~0.15 by index ~ V^-1.25.   # 13 Nov: NB 5.7 -> 6.9, 0.314 at 5.7 (index ~ V^-1.25 toward 0.25). 12 Nov: NB 4.3 -> 5.7, 0.354 at 4.3 once BS moved to the nose block (NB-R7 pull-out 126 N; index ~ V^-1.25 toward 0.25)   # 12 Nov: TB 4.8 -> 5.6, 0.301 at 4.8 under the heavier frame's TB-P3 108 N (index ~ V^-1.25 toward 0.25)
 
 
