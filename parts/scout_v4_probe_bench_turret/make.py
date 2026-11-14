@@ -23,7 +23,7 @@ yp, ym = S.GEAR["y"][1] + 0.8, S.DRUM["y0"] - 0.8
 lh = T.lens_half(); pz = cz - S.GEAR['c']
 env = B["env"]
 plates = [box(cx - 36, cx + 36, yp, yp + 3.0, DZ1, 67.0),                           # +y wall (the axle's and the shaft tip's bosses)
-          box(cx - 36, cx + 36, -26.0, ym, DZ1, 67.0),                              # -y wall (the axle's boss, the drum's end), out to the floor bosses' faces: the flat side it prints on
+          box(cx - 36, cx + 36, -(S.ROLLER["w"] / 2 + 0.5 + S.LEAF["wall"] + S.LEAF["pocket_y"] + S.LEAF["wall_out"]), ym, DZ1, 67.0),   # -y wall (the axle's boss, the drum's end), out to the roller guides' faces (14 Nov; was to the floor bosses' at -26): the flat side it prints on
           box(cx - 36, cx + 36, ym - 3.0, yp + 3.0, DZ1, DZ1 + 3.0),                # floor on the deck's top
           box(mx + 3.0, mx + lh + 5.0, -S.BLADE_W / 2 - 2.5, S.BLADE_W / 2 + 2.5, DZ1, t["z1"]),   # the throat's +x side filled to the back wall (the slot cut from it)
           box(mx + lh + 2.0, mx + lh + 5.0, ym - 3.0, yp + 3.0, DZ1, t["z1"]),      # back wall behind the throat, to its seat

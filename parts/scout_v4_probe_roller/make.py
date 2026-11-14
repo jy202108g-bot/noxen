@@ -1,8 +1,8 @@
 """Scout v4 probe pressure roller tube and its leaf seats (10 Nov bench; tools/scout_v4_shape.ROLLER / LEAF, tools/probe_mast_sim.py blossom).
 Drawn: python parts/scout_v4_probe_roller/make.py writes part.stl (drone frame, on the full coil: the tube, both saddles and carriers) and
 print/scout_v4_probe_roller.stl, _saddle.stl, _carrier.stl.
-  14 Nov (Spark: no bearings, the coupon's B dropped): an O8 x 19 tube (the blades' width) turning straight on its M3 x 60 axle in a
-  plain bore sized like the spool's (the coupon's A1, 3.3: slides on free), 2.35 of wall; PCTG on steel, mu ~0.25 (E). A drop of light oil on the axle.
+  14 Nov (Spark: no bearings, the coupon's B dropped): an O8 x 19 tube (the blades' width) turning straight on its axle, an O3 carbon rod 53.2 long (14 Nov: Spark has no M3 x 60), in a
+  plain bore sized like the spool's (the coupon's A1, 3.3: slides on free), 2.35 of wall; PCTG on carbon, mu ~0.25 (E). The rod sits in blind slots in the turret's outer walls: it drops in from the spool's side and cannot walk out.
   14 Nov (Spark: no bought springs): each axle end, in the turret's pocket, carries a saddle (8.6 x 13 x 3.7, a half-round 3.4 groove on the
   axle, its flat face smooth for the leaf); behind it a Keystone-209-type leaf contact (ZCZQC B0C5D3XLBK) clipped on the 1.65 tab of a carrier
   (8.6 x 13 x 5.05: tab 1.65, a 0.9 slit 10 deep for the clip's back leg, a 2.5 back the M3 x 16 pushes).

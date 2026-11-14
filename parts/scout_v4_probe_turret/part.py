@@ -94,12 +94,12 @@ def bodies():
     for sy in (1, -1):
         Y = lambda y0, y1: tuple(sorted((sy * y0, sy * y1)))
         yc = sy * (yi + yo) / 2
-        g = U([radial(L["r_in"], L["r_end"], L["hv"] + L["wall"], *Y(rw + 0.5, yo + L["wall"])),            # the pocket's walls (the low side's from r_in: the floor bolts' drivers)
+        g = U([radial(L["r_in"], L["r_end"], L["hv"] + L["wall"], *Y(rw + 0.5, yo + L["wall_out"])),            # the pocket's walls (the low side's from r_in: the floor bolts' drivers)
                radial(L["r_slot"], L["r_end"], L["hv"] + L["wall"], *Y(rw + 0.5, yi)),                         # the y walls holding the axle's slot down to the empty coil
-               radial(L["r_slot"], L["r_end"], L["hv"] + L["wall"], *Y(yo, yo + L["wall"])),
+               radial(L["r_slot"], L["r_end"], L["hv"] + L["wall"], *Y(yo, yo + L["wall_out"])),
                radial(L["r_end"] - 0.1, L["r_end"] + L["ins"][1] + 0.5, L["ins"][0] + 2.5, yc - L["ins"][0] - 2.5, yc + L["ins"][0] + 2.5)])   # the end wall's insert boss
         guides.append(g ^ box(-200, 200, -200, 200, DZ1, 400))
-        cuts.append(radial(17.0, r_full + 0.6, 1.65, *Y(rw, yo + L["wall"] + 1.0)))                          # the axle's slot (M3 x 60), through both y walls
+        cuts.append(radial(17.0, r_full + 0.6, 1.65, *Y(rw, yo + L["wall_out"] - 2.0)))                     # the axle's slot: through the inner wall, blind in the outer (2.0 skin): the O3 carbon rod axle drops in from the spool's side and can't walk out
         cuts.append(radial(15.0, L["r_end"], L["hv"], *Y(yi, yo)))                                           # the pocket: saddle, leaf, carrier; open to the spool (they go in from there), into the floor bolts' driver channels (no 1.5 wall between)
         re_ = L["r_end"] + L["ins"][1] + 0.5
         cuts.append(ucyl(re_ - L["ins"][1], re_ + 0.1, L["ins"][0], yc))                                     # the insert (M3 x 5.7, O4 x 6) from outside
@@ -107,7 +107,7 @@ def bodies():
         cuts.append(ucyl(re_, re_ + 22.0, 3.3, yc))                                                          # the screw's head, the jam nut and the hex key
         seats.append(radial(L["r_end"] + 0.2, L["r_end"] + 2.0, 4.0, yc - 4.0, yc + 4.0))                       # the end wall round the insert: the screw's reaction
     drawn += guides
-    env.append(radial(17.0, L["r_end"] + 7.0, L["hv"] + L["wall"] + 1.0, -yo - L["wall"] - 0.5, yo + L["wall"] + 0.5) ^ box(-200, 200, -200, 200, DZ1, 400))   # room round the guides (they reach r 39.5, past the drum-shaped room)
+    env.append(radial(17.0, L["r_end"] + 7.0, L["hv"] + L["wall"] + 1.0, -yo - L["wall_out"] - 0.5, yo + L["wall_out"] + 0.5) ^ box(-200, 200, -200, 200, DZ1, 400))   # room round the guides (they reach r 39.5, past the drum-shaped room)
     cuts.append(radial(r_empty - S.ROLLER["r"] - 0.8, r_full + S.ROLLER["r"] + 0.8, S.ROLLER["r"] + 0.8, -rw - 0.3, rw + 0.3))   # the roller's tube and its travel (14 Nov: out to its outer side, was to its axle + 0.8)
     cuts.append(box(cx - 13.0, cx + 13.0, S.SPOOL["y0"] - 0.6, g0 - 0.3, DZ1, cz - 10.0))   # 10 Nov run 4: under the spool, between its sweep (down to z 24.1) and the N20's gearbox (up to 25.5), room left only skins 1.1-1.5 thick (the solid check): void
     # the spool, its gear and the pinion swept
