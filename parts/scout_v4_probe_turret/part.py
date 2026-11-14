@@ -2,15 +2,15 @@
 spool, the N20, the coil's pressure roller and the cable drum, forms the two tape blades into the mast through the throat, and is the roof's middle node RM (its
 four rod sockets: the roof's cross to RF, RB, RS0, RS1), so the roof's centre is held to the deck (tools/scout_v4_shape.py TIED).
 Drawn (attachments only): four O10 floor bosses (M3 down into the deck's inserts, the driver from above beside the gear and the drum);
-the spool's two axle bosses (an M3 screw is the axle); the pressure roller's two guides (its M3 axle's ends in radial slots, a 4 x 0.5 x 15
-spring behind each: tools/probe_mast_sim.py, a pushed coil blossoms unless locked); the N20's face plate (its 2 x M1.6 on 7.7) and its shaft's tip bearing; the throat's
+the spool's two axle bosses (an M3 screw is the axle); the pressure roller's rod guides (its O3 rod's ends in radial slots at |y| 9.8..12) and its leaf pocket
+on the rod's middle (a saddle and a Keystone-209-type leaf on a fixed end wall: tools/probe_mast_sim.py, a pushed coil blossoms unless locked); the N20's face plate (its 2 x M1.6 on 7.7) and its shaft's tip bearing; the throat's
 walls (a flat slot at the spool's height opening to the blades' lens at its top, where the parked head's clip seats); the drum's wall
 round the cable's coil; RM's four rod collars, their mouths at r 26..34 (tools/scout_v4_shape.RM_MOUTH).
-Cuts: the spool, its 40 T gear and the 12 T pinion swept; the roller's travel, its axle's slots, the springs; the N20; the axle; the blades' path and the mast above; the drum's cavity;
+Cuts: the spool, its 40 T gear and the 12 T pinion swept; the tubes' travel, the rod's slots, the leaf's pocket; the N20; the axle; the blades' path and the mast above; the drum's cavity;
 the bolts and their drivers; the props' discs + 12; the deck (z < 24.5) but the motor's pocket. (The DRV8833 is in the nose bay.)
 Support: the four floor bosses. Loads: the head-first crash (systems/scout_v4.head_load.json, ~250 N down the throat); the parked head (60 g) on the throat's seat in 35 g
 crashes; the mast's fold-limited bending at the throat (0.6 N m in x, 1.2 in y: the FE's fold moments); the spool's tape tension at the N20's stall
-(44 N each way on the axle: the 100 rpm N20's 2.2 kg cm, 612 N mm at the spool, E); the roller's springs (12 N against the axle); the turret's own spool, blades and cable (15 g) on the axle bosses in crashes; RM's rods."""
+(44 N each way on the axle: the 100 rpm N20's 2.2 kg cm, 612 N mm at the spool, E); the roller's leaf (40 N on the full coil, E); the turret's own spool, blades and cable (15 g) on the axle bosses in crashes; RM's rods."""
 import numpy as np
 from topo import Part
 from parts.scout_v4_units_lib import (S, ASM, box, cyl, along, hull, U, socks_of, socket_cases, socket_bodies, payload_cases, point_case,
@@ -77,38 +77,39 @@ def bodies():
     # the drum round the cable's coil
     drawn.append(yz_ring(cx, cz, dr + 0.3, dr + 2.8, dy0 - 2.6, dy1))                               # 2.5 wall and a 2.6 end (10 Nov run 6: 4.0 on r 11 still peaked in it; the drum is r 9 now, the room round it generated)
     cuts.append(ycyl(cx, cz, dr + 0.3, dy0, dy1 + 0.5)); cuts.append(box(cx - 2, cx + 2, ym - 8, dy0 + 1, cz - 2, cz + 2))   # its cavity; the cable's way out to the Radxa
-    # the coil's pressure roller (14 Nov, Spark: no bought springs): its axle's ends in radial slots 15 deg before the exit; behind each end, in a
-    # pocket open to the spool, a printed saddle on the axle, a Keystone-209-type leaf contact (ZCZQC B0C5D3XLBK, 7.9 x 12.1, 0.3 steel) clipped on a
-    # 1.65 tab of a printed carrier, and an M3 x 16 through a heat-set insert in the pocket's end wall pushing the carrier toward the spool (a jam nut locks it)
+    # the coil's pressure roller (14 Nov, probe stream): two O8 tubes on a O3 carbon rod 15 deg before the exit, the rod's ends guided in radial
+    # slots of two walls at |y| 9.8..12 (open to the spool: the rod drops in from there); on the rod's middle, between the tubes, a printed saddle
+    # carrying a Keystone-209-type leaf contact (ZCZQC B0C5D3XLBK) that presses the pocket's fixed end wall (no screw: the saddle's set sets the force).
+    # The old pockets at the rod's ends (|y| 12..29, out to r 39.5) stood in the props' keep-out; at |y| < 6.5 the keep-out leaves x to ~31.
     a = np.radians(S.ROLLER["ang"]); u = np.array([np.cos(a), np.sin(a)]); v = np.array([-u[1], u[0]]); rw = S.ROLLER["w"] / 2
     r_full = S.SPOOL["hub"] + S.COIL + S.ROLLER["r"]; r_empty = S.SPOOL["hub"] + 0.15 + S.ROLLER["r"]
-    L = S.LEAF
-    def radial(s0, s1, hv, y0, y1):                                                 # a box along the slot's line: radial s0..s1, tangential +-hv
-        pts = [[cx + q * u[0] + w * v[0], yy, cz + q * u[1] + w * v[1]] for q in (s0, s1) for w in (-hv, hv) for yy in (y0, y1)]
+    L = S.LEAF; sw = L["s_wall"]; wl = L["wall"]; ht, hy = L["ht"], L["hy"]
+    def radial(s0, s1, t0, t1, y0, y1):                                             # a box along the roller's line: radial s0..s1 from the spool's axis, tangential t0..t1
+        pts = [[cx + q * u[0] + w * v[0], yy, cz + q * u[1] + w * v[1]] for q in (s0, s1) for w in (t0, t1) for yy in (y0, y1)]
         return hull(np.array(pts))
-    def ucyl(s0, s1, rr, yc):                                                       # a cylinder along the slot's line
-        th = np.linspace(0, 2 * np.pi, 24, endpoint=False)
-        return hull(np.array([[cx + q * u[0] + rr * np.cos(t_) * v[0], yc + rr * np.sin(t_), cz + q * u[1] + rr * np.cos(t_) * v[1]] for q in (s0, s1) for t_ in th]))
-    guides, seats = [], []
-    yi, yo = rw + 0.5 + L["wall"], rw + 0.5 + L["wall"] + L["pocket_y"]             # the pocket's y span (the roller's end, 0.5, the inner wall)
+    def ucirc(sc, rr, y0, y1, s_in=None):                                            # a circle r rr round the line's point sc (along y), hulled in to s_in
+        th = np.linspace(0, 2 * np.pi, 32, endpoint=False)
+        pts = [[cx + (sc + rr * np.cos(t_)) * u[0] + rr * np.sin(t_) * v[0], yy, cz + (sc + rr * np.cos(t_)) * u[1] + rr * np.sin(t_) * v[1]] for t_ in th for yy in (y0, y1)]
+        if s_in is not None:
+            pts += [[cx + s_in * u[0] + w * v[0], yy, cz + s_in * u[1] + w * v[1]] for w in (-rr, rr) for yy in (y0, y1)]
+        return hull(np.array(pts))
+    s_end = r_full + 0.15                                                            # the rod's centre at its outermost (the full coil) + 0.15 (at + 0.3 the wall's far side met the keep-out)
+    y0s, y1s = L["slot_y"]
+    guides = []
     for sy in (1, -1):
-        Y = lambda y0, y1: tuple(sorted((sy * y0, sy * y1)))
-        yc = sy * (yi + yo) / 2
-        g = U([radial(L["r_in"], L["r_end"], L["hv"] + L["wall"], *Y(rw + 0.5, yo + L["wall_out"])),            # the pocket's walls (the low side's from r_in: the floor bolts' drivers)
-               radial(L["r_slot"], L["r_end"], L["hv"] + L["wall"], *Y(rw + 0.5, yi)),                         # the y walls holding the axle's slot down to the empty coil
-               radial(L["r_slot"], L["r_end"], L["hv"] + L["wall"], *Y(yo, yo + L["wall_out"])),
-               radial(L["r_end"] - 0.1, L["r_end"] + L["ins"][1] + 0.5, L["ins"][0] + 2.5, yc - L["ins"][0] - 2.5, yc + L["ins"][0] + 2.5)])   # the end wall's insert boss
-        guides.append(g ^ box(-200, 200, -200, 200, DZ1, 400))
-        cuts.append(radial(17.0, r_full + 0.6, 1.65, *Y(rw, yo + L["wall_out"] - 2.0)))                     # the axle's slot: through the inner wall, blind in the outer (2.0 skin): the O3 carbon rod axle drops in from the spool's side and can't walk out
-        cuts.append(radial(15.0, L["r_end"], L["hv"], *Y(yi, yo)))                                           # the pocket: saddle, leaf, carrier; open to the spool (they go in from there), into the floor bolts' driver channels (no 1.5 wall between)
-        re_ = L["r_end"] + L["ins"][1] + 0.5
-        cuts.append(ucyl(re_ - L["ins"][1], re_ + 0.1, L["ins"][0], yc))                                     # the insert (M3 x 5.7, O4 x 6) from outside
-        cuts.append(ucyl(L["r_end"] - 0.5, re_, 1.7, yc))                                                    # the screw's clearance on through the wall
-        cuts.append(ucyl(re_, re_ + 22.0, 3.3, yc))                                                          # the screw's head, the jam nut and the hex key
-        seats.append(radial(L["r_end"] + 0.2, L["r_end"] + 2.0, 4.0, yc - 4.0, yc + 4.0))                       # the end wall round the insert: the screw's reaction
-    drawn += guides
-    env.append(radial(17.0, L["r_end"] + 7.0, L["hv"] + L["wall"] + 1.0, -yo - L["wall_out"] - 0.5, yo + L["wall_out"] + 0.5) ^ box(-200, 200, -200, 200, DZ1, 400))   # room round the guides (they reach r 39.5, past the drum-shaped room)
-    cuts.append(radial(r_empty - S.ROLLER["r"] - 0.8, r_full + S.ROLLER["r"] + 0.8, S.ROLLER["r"] + 0.8, -rw - 0.3, rw + 0.3))   # the roller's tube and its travel (14 Nov: out to its outer side, was to its axle + 0.8)
+        Y = lambda p, q: tuple(sorted((sy * p, sy * q)))
+        guides.append(ucirc(s_end, 1.65 + wl, *Y(y0s, y1s), s_in=17.8))              # the rod's guide wall (2.55 thick: the audit's 2.5): 2.0 round the slot, from r 17.8 (the spool's flanges, r 15.9, sweep 16.9)
+        cuts.append(ucirc(s_end, 1.65, *Y(y0s - 0.5, y1s + 1.0), s_in=15.0))          # the slot (O3.3 wide), open to the spool, through
+    pk = [radial(20.0, sw + wl, ht, ht + wl, -hy - wl, hy + wl),                     # the pocket's two tangential walls (they guide the saddle; clear of the tubes' |t| < 4.8)
+          radial(17.5, sw + wl, -ht - wl, -ht, -hy - wl, hy + wl),
+          radial(sw, sw + wl, -ht - wl, ht + wl, -hy - wl, hy + wl)]                 # its end wall: the leaf presses it
+    for sy in (1, -1):
+        pk.append(radial(L["y_walls"], sw, -ht - wl, ht + wl, *sorted((sy * hy, sy * (hy + wl)))))   # its y walls, beyond the tubes' sweep (s 24.5)
+    drawn += [g ^ box(-200, 200, -200, 200, DZ1, 400) for g in guides] + [U(pk) ^ box(-200, 200, -200, 200, DZ1, 400)]
+    cuts.append(radial(15.0, sw, -ht, ht, -hy, hy))                                   # the pocket: the saddle and the leaf, open to the spool (they go in from there with the rod)
+    seats = [radial(sw + 0.2, sw + 1.8, -4.0, 4.0, -3.5, 3.5)]                        # the end wall where the leaf presses
+    env.append(radial(17.0, sw + wl + 1.0, -ht - wl - 1.0, ht + wl + 1.0, -y1s - 0.5, y1s + 0.5) ^ box(-200, 200, -200, 200, DZ1, 400))   # room round the guides and the pocket
+    cuts.append(radial(r_empty - S.ROLLER["r"] - 0.8, r_full + S.ROLLER["r"] + 0.8, -S.ROLLER["r"] - 0.8, S.ROLLER["r"] + 0.8, -rw - 0.2, rw + 0.2))   # the tubes and their travel
     cuts.append(box(cx - 13.0, cx + 13.0, S.SPOOL["y0"] - 0.6, g0 - 0.3, DZ1, cz - 10.0))   # 10 Nov run 4: under the spool, between its sweep (down to z 24.1) and the N20's gearbox (up to 25.5), room left only skins 1.1-1.5 thick (the solid check): void
     # the spool, its gear and the pinion swept
     cuts.append(ycyl(cx, cz, r + 1.0, S.SPOOL["y0"] - 0.6, S.SPOOL["y1"] + 0.6))
@@ -139,9 +140,9 @@ def setup(h):
     Ft = round(S.SPOOL_STALL / S.SPOOL["hub"], 1)                                  # 12 Nov: the N20's stall 2.2 kg cm (E, the listings' top) through 40 / 12 on the hub: 44 N (was 28)
     for sgn, lab in ((1, "paying out"), (-1, "pulling in")):
         p.load_multi(f"tape tension at the N20's stall, {lab} ({Ft:.0f} N)", [(B["axle"][0], (0, 0, -Ft / 2 * sgn)), (B["axle"][1], (0, 0, -Ft / 2 * sgn))], cls="flight")
-    u = B["roller_u"]; Fl = S.LEAF["F_case"] / 2; fu = (Fl * u[0], 0.0, Fl * u[1])   # the leaves push their carriers' screws out and the coil (the axle) in
-    p.load_multi(f"the roller's leaf contacts on the full coil ({S.LEAF['F_case']:.0f} N)", [(B["roller_seats"][0], fu), (B["roller_seats"][1], fu),
-                 (B["axle"][0], (-fu[0], 0, -fu[2])), (B["axle"][1], (-fu[0], 0, -fu[2]))], cls="flight")
+    u = B["roller_u"]; Fl = S.LEAF["F_case"]; fu = (Fl * u[0], 0.0, Fl * u[1])   # the leaf pushes the end wall out and the coil (the spool's axle) in
+    p.load_multi(f"the roller's leaf on the full coil ({S.LEAF['F_case']:.0f} N)", [(B["roller_seats"][0], fu),
+                 (B["axle"][0], (-fu[0] / 2, 0, -fu[2] / 2)), (B["axle"][1], (-fu[0] / 2, 0, -fu[2] / 2))], cls="flight")
     own = sum(ASM["scout_v4_" + k]["mass_g"] for k in ("probe_spool", "probe_drum", "probe_feed"))
     payload_cases(p, "spool, blades and cable", [(B["cx"], S.GEAR["y"][1] + 0.8, B["cz"]), (B["cx"], S.DRUM["y0"] - 0.8, B["cz"])], B["axle"], own, (B["cx"], 0, B["cz"]), flight=False)
     socket_cases(p, B["socks"])

@@ -129,11 +129,17 @@ HEAD = dict(clip=14.0, plate=3.0, dx=-7.5, ay=-3.8, az=45.0, range=(-20.0, 90.0)
 # the probe's turret (9 Nov, Spark: "do the double blade ... make the design for the mast itself fully"): under the roof, where the FC sat
 BLADE_W = 19.0                                                    # tape blade width (9 Nov, Spark: "as safe as possible", 3/4 in; was 10): ~3.5x the fold moment (E)
 SPOOL = dict(c=(PROBE_DX, 41.0), r=pick("M") + 1.9, hub=pick("M"), y0=-11.7, y1=11.7)  # 9 Nov, the mast sims (tools/probe_mast_sim.py): hub O28 (was O20: von Mises 1574 MPa at r 10 opposite sense, 1283 at r 14), 1.6 turns of the stack (A, the 0.6 ribbon, B) to O30.8, O31.8 flanges, 23.4 wide; axis y at x 0, z 41 (its flanges 0.6 over the deck)
-ROLLER = dict(ang=-15.0, r=4.0, gap=0.0, w=19.0, F=(12.0, 7.8), bore=pick("A"), mu=0.25)   # the coil's pressure roller 30 deg before the exit (the sims: with the mast pushed, nothing but a friction lock holds the outer turn;
-                                                  # 8 N locks a 2.4 N push at mu 0.3). 14 Nov (coupon, no bearings): an O8 printed tube turning on its M3 axle in an A1 3.3 bore (2.35 wall), PCTG on steel mu 0.25 E (roller_drag()); the axle in radial slots; 14 Nov: a O3 carbon rod pressed by two leaf contacts (LEAF)
-LEAF = dict(r_in=18.9, r_slot=17.8, r_end=33.0, hv=4.5, wall=2.2, wall_out=3.2, pocket_y=13.4, ins=(2.0, 6.0), F_case=40.0)   # 14 Nov (Spark: no bought springs; roller 15 deg before the exit, was 30: at 30 the pocket and its screw ran into the deck): the roller's
-                                                  # leaf contacts, Keystone 209 type (ZCZQC B0C5D3XLBK: 7.9 wide, 12.1 long, 0.30 spring steel, leaf 6.5 REF off the clip's back, clips on a 1.52-1.78 wall; Keystone catalog p20), each on a printed carrier's 1.65 tab
-                                                  # in a 9 x 13.4 pocket behind the axle's end (radial 17..33 from the spool's axis), an M3 x 16 through an insert in the end wall pushing the carrier; F_case: the turret's load case (E: set by hand, up to ~40 N on the full coil)
+ROLLER = dict(ang=-15.0, r=4.0, gap=0.0, w=18.5, mid=4.75, F=(15.4, 9.2), bore=pick("A"), mu=0.25)   # the coil's pressure roller 15 deg before the exit (tools/probe_mast_sim.py blossom: with the mast pushed, nothing but a friction lock holds
+                                                  # the outer turn; 8 N locks a 2.4 N push at mu 0.3; an anchor 150 deg or more before the exit lifts the turn to its housing, 90 or less holds). 14 Nov (coupon, no bearings):
+                                                  # O8 printed tubes turning on a O3 carbon rod in A1 3.3 bores (2.35 wall), PCTG on carbon mu 0.25 E (roller_drag()). 14 Nov (probe stream): split in two, |y| mid..w/2 (4.75..9.25),
+                                                  # the leaf's pocket between them on the rod's middle (LEAF); F: the worst force on the full and the empty coil (S3 at a stiff copy, leaf_force()), for the drag
+LEAF = dict(ht=6.7, hy=4.5, wall=2.0, s_wall=27.3, y_walls=24.5, slot_y=(9.55, 12.1), free=4.6, flat=4.0, k=(1.5, 4.0), F_case=40.0,
+            saddle=dict(t=13.0, y=8.6, slit=0.9, tab=1.65, sets={"S1": (2.0, 1), "S2": (2.5, 1), "S3": (2.8, 1)}))
+                                                  # 14 Nov (probe stream; the props' 12 mm keep-out allows x <= 22.8 at |y| 12.2 and 31.4 at |y| 6.3, so the old end pockets at |y| 12..29 could not stand):
+                                                  # one Keystone-209-type leaf contact (ZCZQC B0C5D3XLBK, Spark has 50: 7.9 x 12.1, 0.30 spring steel, free ~4.6 E, flat ~4 past touch, 1.5..4 N/mm E) clipped
+                                                  # on a printed saddle's tab (the saddle's groove on the rod's middle, |y| < 4.3; the leaf's length tangential), pressing the pocket's fixed end wall
+                                                  # (s_wall from the spool's axis, along the roller's line); no screw: the saddle's body over the rod (sets: its body over the rod, mm; one leaf: two nested need a 1.05 tab, which the solid check refuses) sets the force;
+                                                  # the rod's ends only guided in radial slots of two walls at |y| slot_y; F_case: the turret's load case (40 N on the full coil, S3 at a stiff copy 15)
 GEAR = dict(spool_t=40, pinion_t=12, m=0.8, y=(11.7, 14.7), c=pick("G"))      # printed spur pair, module 0.8, 40 / 12 on 20.8 centres: the N20 sits under the spool (9 Nov: outboard along +y it ran through the DS0 lug socket); ~1.5 s for the 150 mm, 3.3x its torque
 N20_FACE = GEAR["y"][0] - 2.9                                    # the N20's gearbox face (y): 2.9 short of the pinion, the turret's 2.6 face plate between (9 Nov audit: 1.6 was too thin)
 DRUM = dict(r=9.0, y0=-17.7, y1=-11.7)   # 10 Nov turret run 6: r 11 put the drum's ring in the head-first path (0.34); the 0.6 ribbon's 3.5 turns of room need r ~8.2                        # the drum on the spool's -y side: the camera cable's loose coil, 3.5 turns of room for the spool's ~2.2
@@ -387,8 +393,8 @@ def head_parts(split=False):
 
 
 def roller_drag(mu=None):
-    """14 Nov (no bearings): the roller's journal friction on its M3 axle, seen at the spool. The tube turns on the steel axle in its
-    A1 bore: torque mu F r_bore on the tube, a drag of that over the tube's r where it rolls on the coil, times the coil's r on the spool.
+    """14 Nov (no bearings): the roller's journal friction on its O3 rod, seen at the spool. The tubes turn on the carbon rod in their
+    A1 bores: torque mu F r_bore on the tubes, a drag of that over the tube's r where they roll on the coil, times the coil's r on the spool.
     Against the stroke's 100..292 N mm (tools/probe_mast_sim.py stroke_case) and the N20 100 rpm through 40 / 12 at 85 %: 417..612 (E)"""
     mu = ROLLER["mu"] if mu is None else mu
     out = {}
@@ -396,6 +402,21 @@ def roller_drag(mu=None):
         out[nm] = mu * F * ROLLER["bore"] / 2 / ROLLER["r"] * rc
     need = 292.0 + max(out.values()); lo = N20_STALL * 1.5 / 2.2 * 40 / 12 * 0.85
     return dict(drag=out, need=need, margin=(lo / need, SPOOL_STALL / need))
+
+
+def leaf_force():
+    """14 Nov: the one leaf's (or two nested leaves') force on the empty and the full coil for each saddle set, over the leaf's 1.5..4 N/mm (E):
+    the leaf's height is s_wall less the rod's centre (coil r + the tube's r), the rod's r, the saddle's body, slit and tab; its travel the free height less that"""
+    L = LEAF; sd = L["saddle"]; out = {}
+    for nm, (body, n) in sd["sets"].items():
+        tab = sd["tab"] - 0.6 * (n - 1); slit = sd["slit"] + 0.3 * (n - 1)   # nested: a thinner tab (the clip grips 1.52..1.78 over both), the second back leg in the slit
+        row = {}
+        for st, rc in (("empty", SPOOL["hub"] + 0.15), ("full", SPOOL["hub"] + COIL)):
+            h = L["s_wall"] - (rc + ROLLER["r"]) - 1.5 - body - slit - tab
+            d = L["free"] + 0.3 * (n - 1) - h
+            row[st] = dict(travel=round(d, 2), N=(round(n * L["k"][0] * d, 1), round(n * L["k"][1] * d, 1)))
+        out[nm] = row
+    return out
 
 
 def tilt_sweep():
@@ -448,13 +469,14 @@ def probe():
                cyl_y(DRUM["r"] + 1.0, cx, cz, ym, DRUM["y0"], 48),                      # the drum's cover
                box(t["x0"], t["x1"], -t["y"], t["y"], t["z0"], t["z1"]),                 # the throat
                trimesh.creation.annulus(r_min=t["x1"] - cx + 1.0, r_max=22.0, height=8.0).apply_translation([cx, 0, ZR])]   # its top collar out to RM's ring: one print with the node
-    rr = SPOOL["hub"] + COIL + ROLLER["r"]; a = math.radians(ROLLER["ang"])                         # the pressure roller on the full coil
-    roller = [cyl_y(ROLLER["r"], cx + rr * math.cos(a), cz + rr * math.sin(a), -ROLLER["w"] / 2, ROLLER["w"] / 2, 24),
-              cyl_y(1.5, cx + rr * math.cos(a), cz + rr * math.sin(a), -ROLLER["w"] / 2 - 3.0, ROLLER["w"] / 2 + 3.0, 12)]
-    for sy in (-1, 1):                                                                # its two springs, radial, beyond the tube's ends
-        e = np.array([cx + (rr + 2.0) * math.cos(a), 0, cz + (rr + 2.0) * math.sin(a)]); f = np.array([cx + (rr + 13.0) * math.cos(a), 0, cz + (rr + 13.0) * math.sin(a)])
-        e[1] = f[1] = sy * (ROLLER["w"] / 2 + 1.6)
-        roller.append(trimesh.creation.cylinder(radius=2.0, segment=[e, f], sections=12))
+    rr = SPOOL["hub"] + COIL + ROLLER["r"]; a = math.radians(ROLLER["ang"])                         # the pressure roller on the full coil: two tubes, the rod, the saddle and leaf between them
+    ca, sa = math.cos(a), math.sin(a); rx, rz = cx + rr * ca, cz + rr * sa
+    roller = [cyl_y(ROLLER["r"], rx, rz, sy * ROLLER["mid"], sy * ROLLER["w"] / 2, 24) if sy > 0 else cyl_y(ROLLER["r"], rx, rz, -ROLLER["w"] / 2, -ROLLER["mid"], 24) for sy in (1, -1)]
+    roller.append(cyl_y(1.5, rx, rz, -LEAF["slot_y"][1] + 0.2, LEAF["slot_y"][1] - 0.2, 12))
+    sh = LEAF["s_wall"] - rr                                                          # the saddle and the leaf from the rod's centre to the end wall
+    blk = trimesh.creation.box(extents=[sh, LEAF["saddle"]["y"], LEAF["saddle"]["t"]])
+    M = np.eye(4); M[:3, 0] = [ca, 0, sa]; M[:3, 1] = [0, 1, 0]; M[:3, 2] = [-sa, 0, ca]; M[:3, 3] = [rx + ca * sh / 2, 0, rz + sa * sh / 2]
+    blk.apply_transform(M); roller.append(blk)
     return dict(probe_turret=trimesh.util.concatenate(housing), probe_spool=trimesh.util.concatenate(spool), probe_pinion=pinion, probe_roller=trimesh.util.concatenate(roller),
                 probe_motor=trimesh.util.concatenate(motor), probe_drum=trimesh.util.concatenate(drum), probe_feed=trimesh.util.concatenate(feed),
                 **head_parts(split=True))
@@ -698,7 +720,7 @@ def entries(meshes):
     add("head_frame", "probe head frame: the clip on the blades' tip, the SG90's pads, the idler's boss (generated, parts/scout_v4_head_frame)", "structure", "camera", "#56606a", 2.5, "E",
         "a 14 mm sleeve round the lens: blade A held by an M2 at its top, blade B's M2 in a 12 mm slot (10 of travel: on one spool B pays out 9.5 mm less than A over the 150, the 0.81 ribbon between them, tools/probe_mast_sim.py), the ribbon's loop; the SG90's M2s in oval pilots (holes 27.7 +-0.4); an M3 screw is the idler; PCTG", "PCTG")
     add("probe_turret", "probe turret: housing, throat, drum and the roof's middle node RM (PCTG, generated: parts/scout_v4_probe_turret)", "structure", "camera", "#f2b705", 41.2, "C",
-        "side plates round the spool and the drum, the N20's cheeks, the roller's guides and leaf pockets, the throat up to the head's seat, RM's rod sockets; TPU lip 1, wires 1 (E); PCTG", "PCTG")
+        "side plates round the spool and the drum, the N20's cheeks, the roller's rod guides and its leaf pocket, the throat up to the head's seat, RM's rod sockets; TPU lip 1, wires 1 (E); PCTG", "PCTG")
     add("probe_spool", "probe spool with its 40 T gear (drawn: parts/scout_v4_probe_spool/make.py)", "structure", "camera", "#d08a1e", 21.0, "C",
         f"hub O28 between O31.8 flanges 19.6 apart, the 40 T gear (module 0.8, x -0.35, generated involute) outside the +y one, the drum's hub O8 outside the -y one; the stack (blade A outside, the 0.81 ribbon, blade B on the hub) wound 1.6 turns to O31.4 for the {REACH:.0f} mm; its three ends epoxied in one 1.4 slot at 45 deg into the hub, the ribbon on through the hub to the drum; turns on an M3 x 40; PCTG, gear face down", "PCTG")
     add("probe_pinion", "probe pinion, 12 T, on the N20's 3 mm D shaft (drawn: parts/scout_v4_probe_pinion/make.py)", "structure", "camera", "#a85f10", 0.3, "C", f"x +0.35 (no undercut), centres {GEAR['c']} from the spool's (14 Nov: the coupon's G2, untried: check the mesh on the bench); D bore {pick('D')[0]} / {pick('D')[1]} (one past the coupon's D3) pressed on with CA; PCTG", "PCTG")
@@ -708,8 +730,8 @@ def entries(meshes):
         "a flat ribbon of 6 x 30 AWG PTFE wire (Remington 30KITSTRPTFE, B0722LL645; 0.81 thick, 4.9 wide (12 Nov: type E 30 AWG, OD 0.032 in, E), kapton-bound; the 26 AWG pair made it 1.2 and the blades' fight 17 mm): 5 V, GND, USB D+ / D- (side by side), the servo's signal, the LED bars' minus; the 470 uF at the servo covers its start; a JST ZH 1.5 mm 4-pin lead into the camera; up inside the lens on A, wound between the blades, its spool end through the hub into the drum's loose coil (3.5 turns of room for 1.6); the USB pair to the USB-C breakout on the Radxa")
     add("probe_feed", "the two blades from the spool up into the throat", "bought", "camera", "#b8902a", 8.8, "E",
         "two 19 mm (3/4 in) steel tape strips, 0.2 m each with 0.15 m used, cut from the Topzone 16 ft tape (B00ZMHXV4I; its case and spring not used), curves facing (~22 g/m, E); spool ends set in printed clamp slots with epoxy, tip ends with an O2.2 hole each for the head's M2s (a carbide bit or a punch: hardened steel); their mass is all here")
-    add("probe_roller", f"the coil's pressure roller (drawn: parts/scout_v4_probe_roller/make.py): a printed O{2 * ROLLER['r']:.0f} x 19 tube turning on a O3 carbon rod (bore {ROLLER['bore']}, no bearings), two Keystone-209-type leaf contacts (ZCZQC B0C5D3XLBK) on screw-set carriers, saddles on the rod", "bought", "camera", "#7a8590", 2.5, "E",
-        f"15 deg before the exit, its rod's ends in radial slots of the turret's walls, a leaf contact behind each through a printed saddle, preloaded by an M3 screw pushing the leaf's carrier (set by hand: mast out, in until the coil can't lift, half a turn more; E ~6-16 N on the empty coil, the full coil 1.6 mm further in); the sims: a coil whose mast is pushed out lifts its outer turn (blossoms) unless something locks it; the roller's friction locks a push of up to 2.4 N (mu 0.3); its axle's drag (PCTG on steel, mu 0.25 E) is ~{roller_drag()['drag']['full']:.0f} N mm at the spool, {roller_drag()['margin'][0]:.2f}x left on the N20 at the worst stroke")
+    add("probe_roller", f"the coil's pressure roller (drawn: parts/scout_v4_probe_roller/make.py): two printed O{2 * ROLLER['r']:.0f} x {ROLLER['w'] / 2 - ROLLER['mid']:.2f} tubes turning on a O3 carbon rod 23.6 long (bore {ROLLER['bore']}, no bearings), between them a printed saddle on the rod carrying a Keystone-209-type leaf contact (ZCZQC B0C5D3XLBK) against the pocket's fixed end wall", "bought", "camera", "#7a8590", 2.0, "E",
+        f"15 deg before the exit, the rod's ends guided in radial slots of two walls at |y| 9.8..12 (14 Nov: the old end pockets stood in the props' keep-out), the leaf's pocket on the rod's middle; no screw: the saddle set (S1 / S2 / S3: body 2.0 / 2.5 / 2.8 over the rod) sets the force, E {leaf_force()['S2']['empty']['N'][0]}-{leaf_force()['S2']['empty']['N'][1]} N on the empty coil with S2, {leaf_force()['S3']['empty']['N'][0]}-{leaf_force()['S3']['empty']['N'][1]} with S3; the sims: a coil whose mast is pushed lifts its outer turn (blossoms) unless something locks it within ~90 deg of the exit; ~6 N locks a 2.4 N push (mu 0.3); the tubes' drag on the rod (mu 0.25 E) is ~{roller_drag()['drag']['full']:.0f} N mm at the spool at the worst force, {roller_drag()['margin'][0]:.2f}x left on the N20 at the worst stroke")
     for k, col in (("a", "#e8c547"), ("b", "#b8902a")):
         add(f"probe_mast_{k}", f"probe mast, blade {k.upper()} (10 mm steel tape, curves facing)", "placeholder", "camera", col, 0.0, "E",
             f"drawn 1 mm long above the throat; the page's timeline rolls it out to {REACH:.0f} mm and back (tools/scout_v4_timeline.py). Its mass is in the feed's")
