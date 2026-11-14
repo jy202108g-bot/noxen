@@ -1,11 +1,11 @@
 {
  "print_stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/scout_v4_probe_bench_turret.stl",
-  "sha256": "915a136b5c13b1edf36660e9254ab001d527b49ecca9d4a35346324b256f1041",
-  "bytes": 290284,
-  "faces": 5804,
-  "view_faces": 5804,
-  "view_sha256": "915a136b5c13b1edf36660e9254ab001d527b49ecca9d4a35346324b256f1041",
-  "at": "2026-11-14 21:17"
+  "sha256": "307d54ee0296c5fec7f96b198a3db76dca3bdf0d37b9723f5e7c1777c3bc4c4d",
+  "bytes": 247684,
+  "faces": 4952,
+  "view_faces": 4952,
+  "view_sha256": "307d54ee0296c5fec7f96b198a3db76dca3bdf0d37b9723f5e7c1777c3bc4c4d",
+  "at": "2026-11-14 22:04"
  }
 }

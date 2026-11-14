@@ -1,11 +1,11 @@
 {
  "print_stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/scout_v4_probe_roller.stl",
-  "sha256": "a1e47de896739da8419f75548bb1080f151bc23beb397ceaf951d2f9e448b92c",
-  "bytes": 158084,
-  "faces": 3160,
-  "view_faces": 3160,
-  "view_sha256": "0b197eab17f70993327832991ee0105f38058edd26bab3ec84b8d788c8f905a4",
-  "at": "2026-11-14 21:08"
+  "sha256": "b22446ffb0c9de261929b11f1eb848e700130eaf79d798f38d6c07985556674d",
+  "bytes": 270284,
+  "faces": 5404,
+  "view_faces": 5404,
+  "view_sha256": "344e8b110d2b49fb8ddefd0ef2e888ae212e7c3885de066edf2650d0f28ba0fb",
+  "at": "2026-11-14 22:04"
  }
 }
