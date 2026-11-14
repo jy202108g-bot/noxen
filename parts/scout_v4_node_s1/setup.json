@@ -1,13 +1,12 @@
 {
  "part_sha": "f4125a1ce163",
- "lib_sha": "e20158797b67",
- "data_sha": "0d15217b0dd3",
- "setup_sha": "df0c56495f76dafb",
+ "lib_sha": "b87038d75f0b",
+ "data_sha": "40589e49ecca",
+ "setup_sha": "f68a82cc674a017e",
  "reads": [
   "parts/cage_node_lib.py",
   "parts/scout_node_lib.py",
   "parts/scout_v4_node_lib.py",
-  "parts/scout_v4_node_s1/part.py",
   "parts/socket_inject.py",
   "systems/overseer.cage.json",
   "systems/scout.cage_loads.json",
