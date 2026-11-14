@@ -1,0 +1,315 @@
+{
+ "note": "Latch v7 fit-test coupons (14 Nov, Spark: one plate to test every fit before printing the real cartridges and receivers).\nEach coupon is cut out of the real geometry (make.py's build(), standin.py's stand-in), keeps the real part's print orientation (each\nparent's own pose from make.printability, the receiver's mount plane down as the engine part prints), is cropped to the fit, and stands on a\n3 mm tab with its number engraved. One A1 mini plate (PCTG), plus the TPU seat strip as its own file. Nothing here changes make.py or a setup.",
+ "plate": "print/latch7_coupons.stl",
+ "plate_mm": [
+  173.4,
+  150.9,
+  59.2
+ ],
+ "fits_bed": true,
+ "tpu": "print/latch7_coupon_strip_tpu.stl (TPU 95A, the real seat strip, +y face down), solid check PASS",
+ "grams": 80.9,
+ "coupons": [
+  {
+   "number": 1,
+   "name": "Scout plug carrier: the XT60W-M pocket",
+   "solid_check": "PASS",
+   "why": null,
+   "size_mm": [
+    43.5,
+    23.0,
+    19.8
+   ],
+   "goes_in": "the XT60W-M (male) in its collar (coupon collar), seated as on the drone",
+   "good": "the collar drops in by hand with no play you can feel, the plug's face flush with the pocket's mouth; carrier: the cap lies flat over it with no rocking",
+   "tight_or_loose": "latch5 battery_latch_v4.P_CLR (0.15 a side on the plug's pockets) and the XM_* plug numbers (Spark's measurement first)",
+   "pose": "as its part: the +y face of the part toward the bed"
+  },
+  {
+   "number": 2,
+   "name": "Scout plug cap: the XT60W-M pocket",
+   "solid_check": "PASS",
+   "why": null,
+   "size_mm": [
+    43.5,
+    23.0,
+    9.8
+   ],
+   "goes_in": "the XT60W-M (male) in its collar (coupon collar), seated as on the drone",
+   "good": "the collar drops in by hand with no play you can feel, the plug's face flush with the pocket's mouth; cap: the cap lies flat over it with no rocking",
+   "tight_or_loose": "latch5 battery_latch_v4.P_CLR (0.15 a side on the plug's pockets) and the XM_* plug numbers (Spark's measurement first)",
+   "pose": "as its part: the +y face of the part toward the bed"
+  },
+  {
+   "number": 3,
+   "name": "Scout cartridge lead end: the XT60W-F pocket and its two set screws",
+   "solid_check": "PASS",
+   "why": null,
+   "size_mm": [
+    31.9,
+    21.9,
+    16.7
+   ],
+   "goes_in": "the pack's XT60W-F (female), its D-key to the chamfered corners; two M3 x 8 set screws from the end",
+   "good": "the plug slides in with finger force and the key only goes one way; the set screws cut their own thread in the o 2.5 holes and pinch the plug's back without cracking the boss",
+   "tight_or_loose": "latch5 battery_latch_v4.P_CLR and XF_W / XF_D / XF_KEY (the XT60W-F body); the set screw holes' o 2.5 (cyl r 1.25 in cartridge())",
+   "pose": "as its part: the -y face of the part toward the bed"
+  },
+  {
+   "number": 4,
+   "name": "Scout cartridge latch half: the bolt's wall hole, channel, rib and stop bar notch",
+   "solid_check": "PASS",
+   "why": null,
+   "size_mm": [
+    31.4,
+    60.0,
+    14.0
+   ],
+   "goes_in": "the Scout bolt (coupon 4) from outside through the wall hole; the stop bar (coupon stop bar) dropped across the rib into the bolt's top",
+   "good": "the bolt slides its full 4.9 to the rib under its own weight when tilted, no catch; with the stop bar in, it stops at rest with 3.0 standing out of the wall",
+   "tight_or_loose": "make.py bl.CH_CLR (0.35, the wall hole round the bolt) and ST (the stop bar's 0.25 clearances in slider() and centre_rib())",
+   "pose": "as its part: the -y face of the part toward the bed"
+  },
+  {
+   "number": 5,
+   "name": "Scout bolt (the real one): its spring slots and its magnet pocket",
+   "solid_check": "PASS",
+   "why": null,
+   "size_mm": [
+    50.4,
+    10.3,
+    16.4
+   ],
+   "goes_in": "two PATIKIL 0.3 x 3.0 x 30 springs, each on a printed o 2.0 x 7 guide pin (coupon 'pin'), in the two slots; a o 2 x 2 N52 magnet in the underside pocket",
+   "good": "a spring with its pin drops into its slot and lies below the bolt's top face; the magnet presses in with a thumb and stays when the bolt is shaken",
+   "tight_or_loose": "slots: make.py bl.SPR_R (1.6) and SPR_Y; magnet: bl.MAG_D (2.0) and bl.MAG_DEPTH (2.2)",
+   "pose": "as its part: the +x face of the part toward the bed"
+  },
+  {
+   "number": 6,
+   "name": "Scout receiver hold-down notch",
+   "solid_check": "PASS",
+   "why": null,
+   "size_mm": [
+    16.2,
+    10.0,
+    10.0
+   ],
+   "goes_in": "the 3 x 3 steel square key (the funnel's end-wall tongue), flats up and down, slid into the notch from its open end",
+   "good": "the key slides in by hand along the notch with no up-and-down play you can feel, and does not need pushing",
+   "tight_or_loose": "make.py HOLD (y 6.0..10.0 is the notch's 4.0 height round the 3.0 key; depth 2.5)",
+   "pose": "as its part: the +y face of the part toward the bed"
+  },
+  {
+   "number": 7,
+   "name": "Overseer plug carrier: the XT60W-M pocket",
+   "solid_check": "PASS",
+   "why": null,
+   "size_mm": [
+    43.5,
+    23.0,
+    19.0
+   ],
+   "goes_in": "the XT60W-M (male) in its collar (coupon collar), seated as on the drone",
+   "good": "the collar drops in by hand with no play you can feel, the plug's face flush with the pocket's mouth; carrier: the cap lies flat over it with no rocking",
+   "tight_or_loose": "latch5 battery_latch_v4.P_CLR (0.15 a side on the plug's pockets) and the XM_* plug numbers (Spark's measurement first)",
+   "pose": "as its part: the +y face of the part toward the bed"
+  },
+  {
+   "number": 8,
+   "name": "Overseer plug cap: the XT60W-M pocket",
+   "solid_check": "PASS",
+   "why": null,
+   "size_mm": [
+    43.5,
+    23.0,
+    10.7
+   ],
+   "goes_in": "the XT60W-M (male) in its collar (coupon collar), seated as on the drone",
+   "good": "the collar drops in by hand with no play you can feel, the plug's face flush with the pocket's mouth; cap: the cap lies flat over it with no rocking",
+   "tight_or_loose": "latch5 battery_latch_v4.P_CLR (0.15 a side on the plug's pockets) and the XM_* plug numbers (Spark's measurement first)",
+   "pose": "as its part: the +y face of the part toward the bed"
+  },
+  {
+   "number": 9,
+   "name": "Overseer cartridge lead end: the XT60W-F pocket and its two set screws",
+   "solid_check": "PASS",
+   "why": null,
+   "size_mm": [
+    31.9,
+    25.2,
+    17.4
+   ],
+   "goes_in": "the pack's XT60W-F (female), its D-key to the chamfered corners; two M3 x 8 set screws from the end",
+   "good": "the plug slides in with finger force and the key only goes one way; the set screws cut their own thread in the o 2.5 holes and pinch the plug's back without cracking the boss",
+   "tight_or_loose": "latch5 battery_latch_v4.P_CLR and XF_W / XF_D / XF_KEY (the XT60W-F body); the set screw holes' o 2.5 (cyl r 1.25 in cartridge())",
+   "pose": "as its part: the -z face of the part toward the bed"
+  },
+  {
+   "number": 10,
+   "name": "Overseer cartridge latch half: the bolt's wall hole, channel, rib and stop bar notch",
+   "solid_check": "PASS",
+   "why": null,
+   "size_mm": [
+    44.7,
+    16.5,
+    59.2
+   ],
+   "goes_in": "the Overseer bolt (coupon 10) from outside through the wall hole; the stop bar (coupon stop bar) dropped across the rib into the bolt's top",
+   "good": "the bolt slides its full 4.9 to the rib under its own weight when tilted, no catch; with the stop bar in, it stops at rest with 3.0 standing out of the wall",
+   "tight_or_loose": "make.py bl.CH_CLR (0.35, the wall hole round the bolt) and ST (the stop bar's 0.25 clearances in slider() and centre_rib())",
+   "pose": "as its part: the -z face of the part toward the bed"
+  },
+  {
+   "number": 11,
+   "name": "Overseer bolt (the real one): its spring slots and its magnet pocket",
+   "solid_check": "PASS",
+   "why": null,
+   "size_mm": [
+    56.2,
+    10.3,
+    23.9
+   ],
+   "goes_in": "two PATIKIL 0.3 x 3.0 x 30 springs, each on a printed o 2.0 x 7 guide pin (coupon 'pin'), in the two slots; a o 2 x 2 N52 magnet in the underside pocket",
+   "good": "a spring with its pin drops into its slot and lies below the bolt's top face; the magnet presses in with a thumb and stays when the bolt is shaken",
+   "tight_or_loose": "slots: make.py bl.SPR_R (1.6) and SPR_Y; magnet: bl.MAG_D (2.0) and bl.MAG_DEPTH (2.2)",
+   "pose": "as its part: the +x face of the part toward the bed"
+  },
+  {
+   "number": 12,
+   "name": "Overseer receiver hold-down notch",
+   "solid_check": "PASS",
+   "why": null,
+   "size_mm": [
+    20.7,
+    9.0,
+    10.0
+   ],
+   "goes_in": "the 3 x 3 steel square key (the funnel's end-wall tongue), flats up and down, slid into the notch from its open end",
+   "good": "the key slides in by hand along the notch with no up-and-down play you can feel, and does not need pushing",
+   "tight_or_loose": "make.py HOLD (y 6.0..10.0 is the notch's 4.0 height round the 3.0 key; depth 2.5)",
+   "pose": "as its part: the +y face of the part toward the bed"
+  },
+  {
+   "number": 13,
+   "name": "Overseer receiver deck boss: M3 x 10 from below into the base's insert",
+   "solid_check": "PASS",
+   "why": null,
+   "size_mm": [
+    27.0,
+    16.0,
+    12.7
+   ],
+   "goes_in": "an M3 x 10 socket head cap screw from below: through the o 3.4 hole, its head in the counterbore",
+   "good": "the screw drops through the hole free; the head sits flat on its bearing face below the deck, not proud",
+   "tight_or_loose": "make.py DRONE_HEAD (r 3.2 counterbore, h 2.8) and bl.BOLT_D (3.4)",
+   "pose": "as its part: the +y face of the part toward the bed"
+  },
+  {
+   "number": 14,
+   "name": "Overseer plug cap: an M3 x 5.7 heat-set insert hole",
+   "solid_check": "PASS",
+   "why": null,
+   "size_mm": [
+    26.2,
+    18.5,
+    5.7
+   ],
+   "goes_in": "an M3 x 5.7 brass heat-set insert, pressed in with the iron at PCTG temperature; then an M3 screw from below",
+   "good": "the insert goes in square and flush, the plastic rolls a small collar, the screw turns in without the insert spinning",
+   "tight_or_loose": "make.py build(): the cap's o 4.0 hole (cyl r 2.0) over the lead-end bolts",
+   "pose": "as its part: the +y face of the part toward the bed"
+  },
+  {
+   "number": 15,
+   "name": "Scout receiver seat strip groove and its keys",
+   "solid_check": "PASS",
+   "why": null,
+   "size_mm": [
+    25.0,
+    34.0,
+    8.0
+   ],
+   "goes_in": "the TPU 95A seat strip (latch7_coupon_strip_tpu.stl, the real strip), pressed into the recess between its two keys",
+   "good": "the strip presses in and stays when the coupon is turned over; it stands 1.5 proud of the deck",
+   "tight_or_loose": "latch5 battery_latch_v4.STRIP_T (2.4), STRIP_REC (0.9) and make.py SEAT_HZ / SEAT_KEY (0.2 clear of the strip's ends)",
+   "pose": "as its part: the +y face of the part toward the bed"
+  },
+  {
+   "number": 16,
+   "name": "Scout stand-in cartridge latch half: the spring's post, rod and slot (Spark's 5.0 x 0.5 x 25)",
+   "solid_check": "PASS",
+   "why": null,
+   "size_mm": [
+    46.4,
+    60.0,
+    14.0
+   ],
+   "goes_in": "one of Spark's springs over the rod to the post, then the stand-in bolt (coupon 17) from outside, its block's channel over the spring's free end",
+   "good": "the spring slides on the rod free; pushed in by hand the bolt comes back out to the wall smartly and does not rub",
+   "tight_or_loose": "standin.py ROD_R (1.75 for the spring's 4.0 ID), POCKET_R (2.7 for its 5.0 OD), TOP (6.4)",
+   "pose": "as its part: the -y face of the part toward the bed"
+  },
+  {
+   "number": 17,
+   "name": "Scout stand-in bolt: the spring block",
+   "solid_check": "PASS",
+   "why": null,
+   "size_mm": [
+    30.6,
+    43.5,
+    10.3
+   ],
+   "goes_in": "the spring's end into the block's channel",
+   "good": "the spring's end sits square on the seat inside the channel",
+   "tight_or_loose": "standin.py POCKET_R, DEPTH (3.3)",
+   "pose": "as its part: the +y face of the part toward the bed"
+  },
+  {
+   "number": 18,
+   "name": "stop bar (the real one, both packs)",
+   "solid_check": "PASS",
+   "why": null,
+   "size_mm": [
+    36.2,
+    9.5,
+    3.0
+   ],
+   "goes_in": "across the rib's notch into both bolts' tops (coupons 'latch half')",
+   "good": "drops in under its own weight; the bolts stop on its T ends",
+   "tight_or_loose": "make.py ST",
+   "pose": "as its part: the +y face of the part toward the bed"
+  },
+  {
+   "number": 19,
+   "name": "guide pin o 2.0 x 7 (the real one) for the PATIKIL spring",
+   "solid_check": "PASS",
+   "why": null,
+   "size_mm": [
+    16.2,
+    9.0,
+    7.0
+   ],
+   "goes_in": "inside a PATIKIL 0.3 x 3.0 x 30 spring (ID 2.4)",
+   "good": "the spring slides over it free",
+   "tight_or_loose": "make.py GUIDE_PIN",
+   "pose": "as its part: the +y face of the part toward the bed"
+  },
+  {
+   "number": 20,
+   "name": "XT60W-M plug collar (the real one, both packs)",
+   "solid_check": "PASS",
+   "why": null,
+   "size_mm": [
+    41.3,
+    17.0,
+    3.0
+   ],
+   "goes_in": "the XT60W-M, glued after the fit is right",
+   "good": "the plug pushes in with no side play; WAITING on Spark's measurement of the plug body",
+   "tight_or_loose": "make.py plug_collar()",
+   "pose": "as its part: the +y face of the part toward the bed"
+  }
+ ],
+ "ok": true
+}
