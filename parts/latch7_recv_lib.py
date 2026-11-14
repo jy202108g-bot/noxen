@@ -54,6 +54,8 @@ WALL_OUT = {"overseer": 34.0}      # the Overseer's side walls' room: 4.9 thick 
 EAR_SEAT = 6.0                     # 13 Nov, run 265: the Overseer read 0.526 (limit 0.5) across the layers in the lead end wall beside the plug slot, landing on the lead wall's two keys.
 #                                    The lead-end support was only what the carrier's notch leaves of each boss (16 cells against 37 at the other bosses), so the landing load went
 #                                    round through the 3 mm end wall. The carrier's ears really sit on 10 x 20 of wall top each side under the same bolts: that seat is the support
+BED_RIM = {"scout": (4.0, 2.5)}    # the drawn flat on the bed (see bed_rim): band width, thickness; the setup asks BED_MIN of it (topo/audit.py bed)
+BED_MIN = {"scout": 1100.0}
 CORNER = 12.0                      # corner side pads run this far in from each end wall
 ALLUP_G = {"scout": 222.0 + 510.0, "overseer": 2200.0}      # the drone with its pack (make.main's 510 g Scout without the pack, E; the Overseer's budget, L, E)
 G = 9.81e-3                        # N per gram per g
@@ -135,7 +137,24 @@ def bodies(pack):
     for i, (hb, w) in enumerate(zip(B["hold_blocks"], B["hold_where"])):       # foot + hold-down, one drawn body each: the Scout's pad with the block on it, the Overseer's wall-thick block
         D[f"foot {i}"] = (hb + B["foot_pads"][i] + B["foot_gussets"][i] if "foot_pads" in B else hb) ^ recv      # Scout: with the gusset up into the corner boss (make.scout_feet, 14 Nov)
     cuts = cuts + (B["hold_notch"] ^ big); room = room - B["hold_notch"]
+    if pack in BED_RIM:
+        D["bed rim"] = bed_rim(pack, room, cuts, D)
     return B, D, cuts, room
+
+
+def bed_rim(pack, room, cuts, D):
+    """14 Nov (the design chat measured the Scout's print mesh): the print pose stands the mount plane on the bed, and only the
+    tail bosses' ends (138 mm2 drawn) lay on it; the generated deck's underside ended 0.4-0.5 above the bed (the 1.2 grid), 1,330 mm2
+    of it, so a 68 x 111 x 54 part stood on 163 mm2 and its first layers started in air. A drawn flat on the mount plane, BED_RIM
+    (width, thick), round each room region the plane holds (the slab under the deck, either side of the FC relief), cut by the bolts: what the
+    print stands on, which the drone's frame bears on. Each region's band is the room's own outline, so the generated walls and deck stand on it."""
+    w, t = BED_RIM[pack]; T, _ = frame(pack)
+    rm = T(room - cuts)
+    sec = mf.CrossSection([q for q in rm.slice(0.1).to_polygons() if abs(mf.CrossSection([q]).area()) > 500.0])     # the slab's regions, not the lead wall's 2 mm strip
+    band = sec - sec.offset(-w, mf.JoinType.Miter)
+    rim = mf.Manifold.extrude(band, t) ^ rm
+    ym = mk.build(pack)["r"]["Y_M"]
+    return rim.translate([0, 0, -ym]).rotate([90, 0, 0])      # back to cartridge coords
 
 
 def setup_for(pack, name):
@@ -144,6 +163,7 @@ def setup_for(pack, name):
         rf, zt, ym = r["RF"], r["Z_T"], r["Y_M"]
         drawn = U(*D.values())
         p = Part(name, h, T(drawn), T(cuts), T(room), build="+z", material="PCTG")
+        if pack in BED_MIN: p.bed_min_mm2 = BED_MIN[pack]
         R = lambda m: T(m)
         sup = [cyl("y", bx, bz, bl.BOSS_R + 0.5, (r["Y_DK0"] if abs(bz - g["Z_X"]) < 1e-6 else ym) - 1.5, ym + 0.5) for bx, bz in r["MOUNT"]]
         sup += [box(*sorted((bx - bl.BOSS_R, bx + bl.BOSS_R)), r["Y_DK0"] - 1.5, r["Y_DK0"] + 0.5, bz - bl.CARRIER_HZ, bz + bl.CARRIER_HZ) for bx, bz in r["MOUNT"] if abs(bz - g["Z_X"]) < 1e-6]
