@@ -7,7 +7,7 @@
   "specks_plain": 0,
   "bodies_eroded": 1,
   "eroded_volumes_mm3": [
-   4860.2
+   4904.7
   ],
   "sealed_voids": [],
   "inner_shells": [],
@@ -20,8 +20,8 @@
  },
  "function_check": {
   "skin_mm3": 2225.5,
-  "skin_missing_mm3": 0.02,
-  "in_cuts_mm3": 0.02,
+  "skin_missing_mm3": 0.09,
+  "in_cuts_mm3": 0.19,
   "outside_env_mm3": 0.0,
   "ok": true
  },
@@ -30,7 +30,7 @@
    {
     "case": "camera and LED bars crash 0 (35 g [1.0, 0.0, 0.0])",
     "cls": "crash",
-    "inlayer": 0.025,
+    "inlayer": 0.026,
     "across": 0.025,
     "at": [
      18.6,
@@ -41,41 +41,41 @@
    {
     "case": "camera and LED bars crash 1 (35 g [-1.0, 0.0, 0.0])",
     "cls": "crash",
-    "inlayer": 0.025,
+    "inlayer": 0.026,
     "across": 0.031,
     "at": [
-     17.8,
-     16.2,
-     110.1
+     12.2,
+     15.3,
+     130.1
     ]
    },
    {
     "case": "camera and LED bars crash 2 (35 g [0.0, 1.0, 0.0])",
     "cls": "crash",
-    "inlayer": 0.043,
+    "inlayer": 0.042,
     "across": 0.035,
     "at": [
-     14.6,
+     13.8,
      -26.2,
-     115.7
+     114.9
     ]
    },
    {
     "case": "camera and LED bars crash 3 (35 g [0.0, -1.0, 0.0])",
     "cls": "crash",
-    "inlayer": 0.043,
+    "inlayer": 0.042,
     "across": 0.043,
     "at": [
-     14.6,
-     -26.2,
-     115.7
+     25.8,
+     16.2,
+     122.1
     ]
    },
    {
     "case": "camera and LED bars crash 4 (35 g [0.0, 0.0, 1.0])",
     "cls": "crash",
     "inlayer": 0.031,
-    "across": 0.037,
+    "across": 0.038,
     "at": [
      21.0,
      15.3,
@@ -86,7 +86,7 @@
     "case": "camera and LED bars crash 5 (35 g [0.0, 0.0, -1.0])",
     "cls": "crash",
     "inlayer": 0.031,
-    "across": 0.035,
+    "across": 0.036,
     "at": [
      20.2,
      16.2,
@@ -96,7 +96,7 @@
    {
     "case": "camera and LED bars crash 6 (35 g [0.58, 0.58, 0.58])",
     "cls": "crash",
-    "inlayer": 0.039,
+    "inlayer": 0.04,
     "across": 0.023,
     "at": [
      17.0,
@@ -108,7 +108,7 @@
     "case": "camera and LED bars crash 7 (35 g [0.58, 0.58, -0.58])",
     "cls": "crash",
     "inlayer": 0.031,
-    "across": 0.031,
+    "across": 0.03,
     "at": [
      21.8,
      -0.7,
@@ -118,7 +118,7 @@
    {
     "case": "camera and LED bars crash 8 (35 g [0.58, -0.58, 0.58])",
     "cls": "crash",
-    "inlayer": 0.035,
+    "inlayer": 0.032,
     "across": 0.039,
     "at": [
      13.8,
@@ -129,8 +129,8 @@
    {
     "case": "camera and LED bars crash 9 (35 g [0.58, -0.58, -0.58])",
     "cls": "crash",
-    "inlayer": 0.032,
-    "across": 0.049,
+    "inlayer": 0.033,
+    "across": 0.05,
     "at": [
      20.2,
      16.2,
@@ -140,7 +140,7 @@
    {
     "case": "camera and LED bars crash 10 (35 g [-0.58, 0.58, 0.58])",
     "cls": "crash",
-    "inlayer": 0.032,
+    "inlayer": 0.033,
     "across": 0.04,
     "at": [
      17.8,
@@ -151,8 +151,8 @@
    {
     "case": "camera and LED bars crash 11 (35 g [-0.58, 0.58, -0.58])",
     "cls": "crash",
-    "inlayer": 0.035,
-    "across": 0.04,
+    "inlayer": 0.032,
+    "across": 0.041,
     "at": [
      12.2,
      15.3,
@@ -163,7 +163,7 @@
     "case": "camera and LED bars crash 12 (35 g [-0.58, -0.58, 0.58])",
     "cls": "crash",
     "inlayer": 0.031,
-    "across": 0.035,
+    "across": 0.034,
     "at": [
      13.8,
      -26.2,
@@ -173,7 +173,7 @@
    {
     "case": "camera and LED bars crash 13 (35 g [-0.58, -0.58, -0.58])",
     "cls": "crash",
-    "inlayer": 0.039,
+    "inlayer": 0.04,
     "across": 0.03,
     "at": [
      17.0,
@@ -217,8 +217,8 @@
    {
     "case": "camera and LED bars landing 6 g",
     "cls": "flight",
-    "inlayer": 0.019,
-    "across": 0.023,
+    "inlayer": 0.02,
+    "across": 0.024,
     "at": [
      21.0,
      15.3,
@@ -239,7 +239,7 @@
    {
     "case": "head-first crash: the pivots until the SG90 slips (18 N)",
     "cls": "crash",
-    "inlayer": 0.039,
+    "inlayer": 0.04,
     "across": 0.046,
     "at": [
      21.0,
@@ -257,10 +257,10 @@
   ],
   "ok": true
  },
- "mass_g": 12.72,
+ "mass_g": 12.77,
  "watertight": true,
  "export": {
-  "faces_in": 101214,
+  "faces_in": 100562,
   "degenerate": 0,
   "folded": 0,
   "caps_split": 0,
@@ -270,28 +270,27 @@
   "n_dropped_shells": 0,
   "bodies": 1,
   "open_kept": [],
-  "faces": 101214,
+  "faces": 100562,
   "boundary_edges": 0,
   "nonmanifold_edges": 0,
   "watertight": true,
   "simplified": true,
   "first_pass": {
-   "degenerate": 4,
-   "folded": 0,
-   "caps_split": 2,
+   "degenerate": 6,
+   "folded": 4,
+   "caps_split": 5,
    "caps_left": 0,
    "watertight": true,
-   "faces": 174608,
+   "faces": 174954,
    "n_dropped_shells": 0,
    "dropped_shells": []
   },
-  "volume_mm3": 10342.6,
-  "exact_mm3": 10342.3
+  "volume_mm3": 10383.9,
+  "exact_mm3": 10383.5
  },
  "bodies": {
   "bodies_raw": 9,
   "dropped_specks_mm3": [
-   0.0,
    0.0,
    0.0
   ],
@@ -300,18 +299,19 @@
    0.0,
    0.0,
    0.0,
+   0.0,
    0.0
   ],
   "bodies": 1
  },
- "volume_mm3": 10342.3,
+ "volume_mm3": 10383.5,
  "drawn_g": 6.21,
  "export_cleanup": {
   "pitch": 0.25,
   "erode_mm": 0.9,
   "core_limit_mm3": 10.0,
   "specks_mm3": [
-   0.859,
+   0.172,
    0.172
   ],
   "slivers": [],
@@ -321,33 +321,33 @@
  },
  "memory_build": [
   {
-   "estimate_gb": 2.55,
+   "estimate_gb": 2.54,
    "parts": {
     "held": 0.76,
     "gate": 0.19,
     "mesh": 1.59
    },
    "limit_gb": 14.0,
-   "gate_cells": 4627866,
+   "gate_cells": 4635120,
    "bounds_mm": [
-    33.6,
+    33.9,
     45.5,
     43.5
    ],
-   "faces": 284592,
+   "faces": 284832,
    "when": "before the export cleanup"
   },
   {
-   "estimate_gb": 1.0,
+   "estimate_gb": 0.99,
    "parts": {
-    "held": 0.81,
+    "held": 0.8,
     "gate": 0.19,
     "mesh": 0.0
    },
    "limit_gb": 14.0,
-   "gate_cells": 4627866,
+   "gate_cells": 4635120,
    "bounds_mm": [
-    33.6,
+    33.9,
     45.5,
     43.5
    ],
@@ -357,7 +357,7 @@
  ],
  "stl": "scout_v4_cradle.stl",
  "view_stl": "scout_v4_cradle_view.stl",
- "view_faces": 101214,
+ "view_faces": 100562,
  "preview": "preview.png",
  "layout": {
   "settings": {
@@ -468,7 +468,7 @@
    "index": 0.133
   },
   "cavity": {
-   "last": 5.0004158568050645,
+   "last": 5.000008419150364,
    "ratio": 5.0,
    "T0": 4.385103224940589,
    "row": true
@@ -517,9 +517,9 @@
    "landed"
   ]
  },
- "build_s": 53.5,
- "layout_s": 3188,
- "peak_gb": 2.950752,
+ "build_s": 44.6,
+ "layout_s": 2752,
+ "peak_gb": 2.934308,
  "memory": {
   "estimate_gb": 3.81,
   "parts": {
@@ -558,19 +558,19 @@
    {
     "case": "camera and LED bars crash 0 (35 g [1.0, 0.0, 0.0])",
     "cls": "crash",
-    "inlayer": 0.025,
-    "across": 0.026,
+    "inlayer": 0.03,
+    "across": 0.032,
     "at": [
-     20.2,
-     16.2,
-     102.9
+     29.8,
+     -23.8,
+     107.7
     ]
    },
    {
     "case": "camera and LED bars crash 1 (35 g [-1.0, 0.0, 0.0])",
     "cls": "crash",
-    "inlayer": 0.025,
-    "across": 0.035,
+    "inlayer": 0.03,
+    "across": 0.037,
     "at": [
      17.8,
      16.2,
@@ -580,30 +580,30 @@
    {
     "case": "camera and LED bars crash 2 (35 g [0.0, 1.0, 0.0])",
     "cls": "crash",
-    "inlayer": 0.043,
+    "inlayer": 0.044,
     "across": 0.029,
     "at": [
-     13.8,
-     -27.0,
-     114.1
+     19.4,
+     -23.8,
+     102.1
     ]
    },
    {
     "case": "camera and LED bars crash 3 (35 g [0.0, -1.0, 0.0])",
     "cls": "crash",
-    "inlayer": 0.043,
-    "across": 0.039,
+    "inlayer": 0.044,
+    "across": 0.041,
     "at": [
-     13.8,
-     -27.0,
-     114.1
+     19.4,
+     -23.8,
+     102.1
     ]
    },
    {
     "case": "camera and LED bars crash 4 (35 g [0.0, 0.0, 1.0])",
     "cls": "crash",
-    "inlayer": 0.032,
-    "across": 0.038,
+    "inlayer": 0.033,
+    "across": 0.04,
     "at": [
      21.0,
      15.3,
@@ -613,19 +613,19 @@
    {
     "case": "camera and LED bars crash 5 (35 g [0.0, 0.0, -1.0])",
     "cls": "crash",
-    "inlayer": 0.032,
-    "across": 0.037,
+    "inlayer": 0.033,
+    "across": 0.043,
     "at": [
      20.2,
-     16.2,
-     102.9
+     -23.8,
+     101.3
     ]
    },
    {
     "case": "camera and LED bars crash 6 (35 g [0.58, 0.58, 0.58])",
     "cls": "crash",
-    "inlayer": 0.038,
-    "across": 0.021,
+    "inlayer": 0.041,
+    "across": 0.029,
     "at": [
      17.0,
      15.3,
@@ -635,18 +635,18 @@
    {
     "case": "camera and LED bars crash 7 (35 g [0.58, 0.58, -0.58])",
     "cls": "crash",
-    "inlayer": 0.032,
-    "across": 0.029,
+    "inlayer": 0.034,
+    "across": 0.035,
     "at": [
-     21.8,
-     -0.7,
-     100.5
+     20.2,
+     -23.8,
+     101.3
     ]
    },
    {
     "case": "camera and LED bars crash 8 (35 g [0.58, -0.58, 0.58])",
     "cls": "crash",
-    "inlayer": 0.033,
+    "inlayer": 0.028,
     "across": 0.035,
     "at": [
      25.8,
@@ -657,8 +657,8 @@
    {
     "case": "camera and LED bars crash 9 (35 g [0.58, -0.58, -0.58])",
     "cls": "crash",
-    "inlayer": 0.033,
-    "across": 0.05,
+    "inlayer": 0.036,
+    "across": 0.055,
     "at": [
      20.2,
      16.2,
@@ -668,8 +668,8 @@
    {
     "case": "camera and LED bars crash 10 (35 g [-0.58, 0.58, 0.58])",
     "cls": "crash",
-    "inlayer": 0.033,
-    "across": 0.045,
+    "inlayer": 0.036,
+    "across": 0.048,
     "at": [
      17.8,
      16.2,
@@ -679,8 +679,8 @@
    {
     "case": "camera and LED bars crash 11 (35 g [-0.58, 0.58, -0.58])",
     "cls": "crash",
-    "inlayer": 0.033,
-    "across": 0.033,
+    "inlayer": 0.028,
+    "across": 0.034,
     "at": [
      12.2,
      16.2,
@@ -690,19 +690,19 @@
    {
     "case": "camera and LED bars crash 12 (35 g [-0.58, -0.58, 0.58])",
     "cls": "crash",
-    "inlayer": 0.032,
-    "across": 0.028,
+    "inlayer": 0.034,
+    "across": 0.029,
     "at": [
-     21.8,
-     -0.7,
-     100.5
+     19.4,
+     -23.8,
+     102.1
     ]
    },
    {
     "case": "camera and LED bars crash 13 (35 g [-0.58, -0.58, -0.58])",
     "cls": "crash",
-    "inlayer": 0.038,
-    "across": 0.03,
+    "inlayer": 0.041,
+    "across": 0.033,
     "at": [
      17.0,
      15.3,
@@ -712,8 +712,8 @@
    {
     "case": "camera and LED bars flight 4 g",
     "cls": "flight",
-    "inlayer": 0.013,
-    "across": 0.016,
+    "inlayer": 0.014,
+    "across": 0.017,
     "at": [
      21.0,
      15.3,
@@ -734,19 +734,19 @@
    {
     "case": "camera and LED bars flight 2 g y",
     "cls": "flight",
-    "inlayer": 0.009,
-    "across": 0.007,
+    "inlayer": 0.01,
+    "across": 0.008,
     "at": [
-     13.8,
-     -27.0,
-     114.1
+     19.4,
+     -23.8,
+     102.1
     ]
    },
    {
     "case": "camera and LED bars landing 6 g",
     "cls": "flight",
-    "inlayer": 0.02,
-    "across": 0.024,
+    "inlayer": 0.021,
+    "across": 0.025,
     "at": [
      21.0,
      15.3,
@@ -760,15 +760,15 @@
     "across": 0.133,
     "at": [
      29.0,
-     9.8,
+     -17.5,
      102.9
     ]
    },
    {
     "case": "head-first crash: the pivots until the SG90 slips (18 N)",
     "cls": "crash",
-    "inlayer": 0.04,
-    "across": 0.047,
+    "inlayer": 0.042,
+    "across": 0.05,
     "at": [
      21.0,
      15.3,
@@ -780,7 +780,7 @@
   "worst_case": "head-first crash: 250 N, the case landed on the crash stop through the sleeve's bottom",
   "worst_at": [
    29.0,
-   9.8,
+   -17.5,
    102.9
   ],
   "ok": true,
@@ -861,19 +861,19 @@
   }
  },
  "baseline": null,
- "total_s": 3242,
+ "total_s": 2797,
  "part_sha": "bbf753738fb9",
  "lib_sha": "265dd11f384f",
- "setup_sha": "4b8a1ec242518d60",
+ "setup_sha": "1dc705227749ccb8",
  "max_worst": 0.3,
  "strength_ok": true,
  "print_stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/scout_v4_cradle.stl",
-  "sha256": "8a4236bddf67324335e66a5e9795360c30cd042afe02954281a2d46e13ff2249",
-  "bytes": 5060784,
-  "faces": 101214,
+  "sha256": "5b88f9d5253dc40cf5043ce5eb6c0d5bb5b07f135b5ed33ad3e155fbdf206ab0",
+  "bytes": 5028184,
+  "faces": 100562,
   "view_faces": 60000,
-  "view_sha256": "6dbe1b46b35b99be3518ae5674d0a4747f0429de3729a6bed956ff7cc1ff21a0",
-  "at": "2026-11-14 11:18"
+  "view_sha256": "ea94dc0674e555ba2fa624958b72fee0d5deabbfae50d450539f990d48946113",
+  "at": "2026-11-14 22:03"
  }
 }
