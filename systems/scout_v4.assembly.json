@@ -309,7 +309,7 @@
 "owner": "scout v4",
 "version": "shape 8 Nov",
 "source": "tools/scout_v4_shape.py",
-"note": "side plates round the spool and the drum, the N20's cheeks, the roller's guides and spring pockets, the throat up to the head's seat, RM's rod sockets; TPU lip 1, wires 1 (E); PCTG",
+"note": "side plates round the spool and the drum, the N20's cheeks, the roller's guides and leaf pockets, the throat up to the head's seat, RM's rod sockets; TPU lip 1, wires 1 (E); PCTG",
 "material": "PCTG"
 },
 {
@@ -386,7 +386,7 @@
 },
 {
 "id": "scout_v4_probe_roller",
-"name": "the coil's pressure roller (drawn: parts/scout_v4_probe_roller/make.py): a printed O8 x 19 tube turning on its M3 axle (bore 3.3, no bearings), two 4 x 0.5 x 15 springs (uxcell B076LQCBR1)",
+"name": "the coil's pressure roller (drawn: parts/scout_v4_probe_roller/make.py): a printed O8 x 19 tube turning on a O3 carbon rod (bore 3.3, no bearings), two Keystone-209-type leaf contacts (ZCZQC B0C5D3XLBK) on screw-set carriers, saddles on the rod",
 "role": "bought",
 "group": "camera",
 "color": "#7a8590",
@@ -396,7 +396,7 @@
 "owner": "scout v4",
 "version": "shape 8 Nov",
 "source": "tools/scout_v4_shape.py",
-"note": "30 deg before the exit, its axle's ends in radial slots of the turret's walls, the two springs pushing it on the coil: 12 N full, 7.8 N empty (E: the springs' rate ~1.5 N/mm); the sims: a coil whose mast is pushed out lifts its outer turn (blossoms) unless something locks it; the roller's friction locks a push of up to 2.4 N (mu 0.3); its axle's drag (PCTG on steel, mu 0.25 E) is ~19 N mm at the spool, 1.34x left on the N20 at the worst stroke"
+"note": "15 deg before the exit, its rod's ends in radial slots of the turret's walls, a leaf contact behind each through a printed saddle, preloaded by an M3 screw pushing the leaf's carrier (set by hand: mast out, in until the coil can't lift, half a turn more; E ~6-16 N on the empty coil); the sims: a coil whose mast is pushed out lifts its outer turn unless something locks it; the roller's friction locks a push of up to 2.4 N (mu 0.3)"
 },
 {
 "id": "scout_v4_probe_mast_a",
