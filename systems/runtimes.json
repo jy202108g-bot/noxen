@@ -8307,6 +8307,15 @@
    "minutes": 6.1,
    "peak_gb": 0.75856,
    "at": "837834ccfca8:365"
+  },
+  {
+   "part": "box_stand2_mast",
+   "engine": "no-cavity",
+   "design": 107309,
+   "cases": 8,
+   "minutes": 283.6,
+   "peak_gb": 7.292848,
+   "at": "cca15897ecc3:17015"
   }
  ]
 }
