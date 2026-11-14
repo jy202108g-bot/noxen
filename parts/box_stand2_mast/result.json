@@ -1,0 +1,551 @@
+{
+ "name": "box_stand2_mast",
+ "engine": "nox/topo",
+ "status": "early_fail",
+ "solid_ok": false,
+ "strength": {
+  "rows": [
+   {
+    "case": "standing: arm v8, 11 bays with packs, the ring at its worst unbalance",
+    "cls": "sustained",
+    "inlayer": 2.263,
+    "across": 1.317,
+    "at": [
+     33.0,
+     -1.0,
+     -8.5
+    ]
+   },
+   {
+    "case": "insert at the drone, 106.6 N every swap",
+    "cls": "flight",
+    "inlayer": 2.39,
+    "across": 1.408,
+    "at": [
+     33.0,
+     -1.0,
+     -10.5
+    ]
+   },
+   {
+    "case": "carrying an Overseer at full reach",
+    "cls": "flight",
+    "inlayer": 1.027,
+    "across": 0.598,
+    "at": [
+     33.0,
+     -1.0,
+     -10.5
+    ]
+   },
+   {
+    "case": "insert at the float limit, 118 N",
+    "cls": "misuse",
+    "inlayer": 1.593,
+    "across": 0.939,
+    "at": [
+     33.0,
+     -1.0,
+     -10.5
+    ]
+   },
+   {
+    "case": "dropped Overseer onto the head at the drone, 150 N",
+    "cls": "misuse",
+    "inlayer": 1.715,
+    "across": 1.0,
+    "at": [
+     33.0,
+     -1.0,
+     -10.5
+    ]
+   },
+   {
+    "case": "axle stall 5.53 N m about Y, head held at the drone",
+    "cls": "misuse",
+    "inlayer": 0.663,
+    "across": 0.336,
+    "at": [
+     33.0,
+     -1.0,
+     5.5
+    ]
+   },
+   {
+    "case": "box handling 3 g down + 2 g side (+X)",
+    "cls": "misuse",
+    "inlayer": 1.829,
+    "across": 1.239,
+    "at": [
+     33.0,
+     -1.0,
+     -8.5
+    ]
+   },
+   {
+    "case": "box handling 3 g down + 2 g side (-X)",
+    "cls": "misuse",
+    "inlayer": 1.794,
+    "across": 1.113,
+    "at": [
+     33.0,
+     -1.0,
+     -10.5
+    ]
+   }
+  ],
+  "worst": 2.39,
+  "worst_case": "insert at the drone, 106.6 N every swap",
+  "worst_at": [
+   33.0,
+   -1.0,
+   -10.5
+  ],
+  "ok": true,
+  "beta": 4.0,
+  "iteration": 17,
+  "max_worst": 0.5,
+  "k": 3.0
+ },
+ "early": {
+  "rows": [
+   {
+    "case": "standing: arm v8, 11 bays with packs, the ring at its worst unbalance",
+    "cls": "sustained",
+    "inlayer": 2.263,
+    "across": 1.317,
+    "at": [
+     33.0,
+     -1.0,
+     -8.5
+    ]
+   },
+   {
+    "case": "insert at the drone, 106.6 N every swap",
+    "cls": "flight",
+    "inlayer": 2.39,
+    "across": 1.408,
+    "at": [
+     33.0,
+     -1.0,
+     -10.5
+    ]
+   },
+   {
+    "case": "carrying an Overseer at full reach",
+    "cls": "flight",
+    "inlayer": 1.027,
+    "across": 0.598,
+    "at": [
+     33.0,
+     -1.0,
+     -10.5
+    ]
+   },
+   {
+    "case": "insert at the float limit, 118 N",
+    "cls": "misuse",
+    "inlayer": 1.593,
+    "across": 0.939,
+    "at": [
+     33.0,
+     -1.0,
+     -10.5
+    ]
+   },
+   {
+    "case": "dropped Overseer onto the head at the drone, 150 N",
+    "cls": "misuse",
+    "inlayer": 1.715,
+    "across": 1.0,
+    "at": [
+     33.0,
+     -1.0,
+     -10.5
+    ]
+   },
+   {
+    "case": "axle stall 5.53 N m about Y, head held at the drone",
+    "cls": "misuse",
+    "inlayer": 0.663,
+    "across": 0.336,
+    "at": [
+     33.0,
+     -1.0,
+     5.5
+    ]
+   },
+   {
+    "case": "box handling 3 g down + 2 g side (+X)",
+    "cls": "misuse",
+    "inlayer": 1.829,
+    "across": 1.239,
+    "at": [
+     33.0,
+     -1.0,
+     -8.5
+    ]
+   },
+   {
+    "case": "box handling 3 g down + 2 g side (-X)",
+    "cls": "misuse",
+    "inlayer": 1.794,
+    "across": 1.113,
+    "at": [
+     33.0,
+     -1.0,
+     -10.5
+    ]
+   }
+  ],
+  "worst": 2.39,
+  "worst_case": "insert at the drone, 106.6 N every swap",
+  "worst_at": [
+   33.0,
+   -1.0,
+   -10.5
+  ],
+  "ok": true,
+  "beta": 4.0,
+  "iteration": 17,
+  "max_worst": 0.5,
+  "k": 3.0
+ },
+ "mass_g": null,
+ "layout": {
+  "settings": {
+   "min_member_mm": 6.25,
+   "eta": [
+    0.75,
+    0.5,
+    0.25
+   ],
+   "betas": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32
+   ],
+   "penal": 3.0,
+   "emin": 1e-06,
+   "pmean": 6.0,
+   "tie_weight": 0.5,
+   "tie_moments": true,
+   "tie_min_cells": 4,
+   "move": 0.1,
+   "min_stage": 10,
+   "max_stage": 35,
+   "grey_stop": 0.02,
+   "vol_gain": 0.3,
+   "geometric": false,
+   "geo_margin": 0.05,
+   "geo_beta": 16.0,
+   "geo_eps": 0.0,
+   "erosion": "masked",
+   "gate_ties": true,
+   "gate_thin_mm": 2.0,
+   "case_norm": "solid",
+   "held_ties": true,
+   "gate_member": true,
+   "collar_mm": 0.0,
+   "finish": "organic",
+   "skin_mm": 2.5,
+   "fillet_mm": 2.5,
+   "skin_round_mm": 1.0,
+   "reach_check": "raise",
+   "audit": "raise",
+   "auto_sym": true,
+   "near_sym": false,
+   "backend": "auto",
+   "early_beta": 4,
+   "early_k": 3.0,
+   "nominal_hold": true,
+   "hold_beta": 4.0,
+   "hold_proj_beta": 32.0,
+   "hold_tol": 0.05,
+   "hold_eroded": true,
+   "hold_stage": 50,
+   "no_cavity": true,
+   "cavity_ratio": 5.0,
+   "cavity_ks": 0.0001,
+   "cavity_p": 8.0,
+   "cavity_on": 0.5,
+   "mg_tol": 1e-05,
+   "time_limit_s": 16200.0,
+   "mem_limit_gb": 14.0,
+   "checkpoint_every": 10
+  },
+  "R_mm": 6.44256687412536,
+  "R_cells": 3.22128343706268,
+  "calibration": {
+   "rod": 0.9701102250255644,
+   "plate": 0.8809289894691206,
+   "erode": 0.26588526507976606,
+   "dilate": 0.2668852650798993,
+   "rod_input": 1.2608727148268373,
+   "plate_input": 0.8849130530977847
+  },
+  "volfrac": 0.2236184028076618,
+  "nd": 104571,
+  "sym_axes": [],
+  "n_real": 8,
+  "n_ties": 54,
+  "backend": "direct",
+  "iterations": 17,
+  "stopped": "maxit",
+  "checks": [
+   {
+    "it": 17,
+    "beta": 4.0,
+    "worst": 2.39,
+    "worst_case": "insert at the drone, 106.6 N every swap"
+   }
+  ],
+  "hold": {
+   "started_it": 17,
+   "beta": 4.0,
+   "index": 2.39
+  },
+  "cavity": {
+   "last": 2.475727792352901,
+   "ratio": 5.0,
+   "T0": 224.9600030892656,
+   "row": true
+  }
+ },
+ "grid": {
+  "name": "box_stand2_mast",
+  "h": 2.0,
+  "shape": [
+   48,
+   40,
+   96
+  ],
+  "origin": [
+   -48.0,
+   -72.0,
+   -141.5
+  ],
+  "cells": 184320,
+  "design": 103687,
+  "drawn": 3163,
+  "cases": [
+   "standing: arm v8, 11 bays with packs, the ring at its worst unbalance",
+   "insert at the drone, 106.6 N every swap",
+   "carrying an Overseer at full reach",
+   "insert at the float limit, 118 N",
+   "dropped Overseer onto the head at the drone, 150 N",
+   "axle stall 5.53 N m about Y, head held at the drone",
+   "box handling 3 g down + 2 g side (+X)",
+   "box handling 3 g down + 2 g side (-X)"
+  ],
+  "supports": [
+   "default"
+  ]
+ },
+ "gen_cm3": 180.0,
+ "h": 2.0,
+ "audit": {
+  "solid_ok": [],
+  "drawn_share": 0.03,
+  "load_room": [],
+  "bodies": [
+   {
+    "id": 1,
+    "cells": 2011,
+    "inscribed_mm": 6.9,
+    "touches_cut": true,
+    "touches_support": false,
+    "loaded": true,
+    "room": 0.87,
+    "room_depth_mm": 176.0,
+    "at": [
+     4.1,
+     -3.4,
+     -3.4
+    ],
+    "core_mm": 4.9,
+    "free_cells": 2011,
+    "share_of_drawn": 0.64
+   },
+   {
+    "id": 2,
+    "cells": 144,
+    "inscribed_mm": 3.7,
+    "touches_cut": true,
+    "touches_support": true,
+    "loaded": false,
+    "room": 0.96,
+    "room_depth_mm": 150.0,
+    "at": [
+     -34.0,
+     -54.0,
+     -128.8
+    ],
+    "core_mm": 2.0,
+    "free_cells": 144
+   },
+   {
+    "id": 3,
+    "cells": 144,
+    "inscribed_mm": 3.7,
+    "touches_cut": true,
+    "touches_support": true,
+    "loaded": false,
+    "room": 0.96,
+    "room_depth_mm": 150.0,
+    "at": [
+     -34.0,
+     -12.0,
+     -128.8
+    ],
+    "core_mm": 2.0,
+    "free_cells": 144
+   },
+   {
+    "id": 4,
+    "cells": 144,
+    "inscribed_mm": 3.7,
+    "touches_cut": true,
+    "touches_support": true,
+    "loaded": false,
+    "room": 0.94,
+    "room_depth_mm": 178.0,
+    "at": [
+     -10.0,
+     -54.0,
+     -128.8
+    ],
+    "core_mm": 2.0,
+    "free_cells": 144
+   },
+   {
+    "id": 5,
+    "cells": 144,
+    "inscribed_mm": 3.7,
+    "touches_cut": true,
+    "touches_support": true,
+    "loaded": false,
+    "room": 0.94,
+    "room_depth_mm": 178.0,
+    "at": [
+     -10.0,
+     -12.0,
+     -128.8
+    ],
+    "core_mm": 2.0,
+    "free_cells": 144
+   },
+   {
+    "id": 6,
+    "cells": 144,
+    "inscribed_mm": 3.7,
+    "touches_cut": true,
+    "touches_support": true,
+    "loaded": false,
+    "room": 0.94,
+    "room_depth_mm": 178.0,
+    "at": [
+     10.0,
+     -54.0,
+     -128.8
+    ],
+    "core_mm": 2.0,
+    "free_cells": 144
+   },
+   {
+    "id": 7,
+    "cells": 144,
+    "inscribed_mm": 3.7,
+    "touches_cut": true,
+    "touches_support": true,
+    "loaded": false,
+    "room": 0.94,
+    "room_depth_mm": 178.0,
+    "at": [
+     10.0,
+     -12.0,
+     -128.8
+    ],
+    "core_mm": 2.0,
+    "free_cells": 144
+   },
+   {
+    "id": 8,
+    "cells": 144,
+    "inscribed_mm": 3.7,
+    "touches_cut": true,
+    "touches_support": true,
+    "loaded": false,
+    "room": 0.96,
+    "room_depth_mm": 178.0,
+    "at": [
+     34.0,
+     -54.0,
+     -128.8
+    ],
+    "core_mm": 2.0,
+    "free_cells": 144
+   },
+   {
+    "id": 9,
+    "cells": 144,
+    "inscribed_mm": 3.7,
+    "touches_cut": true,
+    "touches_support": true,
+    "loaded": false,
+    "room": 0.96,
+    "room_depth_mm": 178.0,
+    "at": [
+     34.0,
+     -12.0,
+     -128.8
+    ],
+    "core_mm": 2.0,
+    "free_cells": 144
+   }
+  ],
+  "envelope_waste": 0.093,
+  "plate": {
+   "L_mm": 88.0,
+   "W_mm": 64.0,
+   "H_mm": 180.0,
+   "fits": true
+  },
+  "drawn_thin": [],
+  "drawn_walls": [],
+  "bed": {
+   "build": "-y",
+   "drawn_mm2": 2914.2,
+   "room_mm2": 13891.5,
+   "min_mm2": 1500.0
+  },
+  "parity": [],
+  "cases": 8,
+  "supports": 1,
+  "fails": [],
+  "room_full": {
+   "worst": 0.422,
+   "worst_case": "insert at the drone, 106.6 N every swap",
+   "worst_at": [
+    33.0,
+    -13.0,
+    21.5
+   ],
+   "budget_share": 0.224,
+   "thinned": 1.89,
+   "max_worst": 0.5,
+   "fin_cells": 96,
+   "worst_in_fin": false
+  }
+ },
+ "total_s": 1953,
+ "baseline": null,
+ "part_sha": "ec732b713346",
+ "lib_sha": "deabdc067fe0",
+ "setup_sha": "62a0f5c5cdb7fed7",
+ "max_worst": 0.5,
+ "strength_ok": false
+}
