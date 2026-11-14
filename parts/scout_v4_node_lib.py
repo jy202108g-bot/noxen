@@ -73,6 +73,7 @@ def socket_depth(axial, side, moment=0.0):
     return float(np.ceil(d * 2.0) / 2.0)
 
 
+PUSHED_MOMENT, PUSHED_DEPTH, PUSHED_S0 = 1000.0, 13.0, 12.0   # a collar starting past 12 (the hub pairs at 12.4; S0 / S1 / TB's start at 5.6-12.0 and pass)
 _raw0 = L._raw_members
 
 
@@ -81,6 +82,12 @@ def _raw_members(k, bridges=False):
     for m in out:
         f = L.LOADS.get(k, {}).get(m["name"]) or {}
         m["depth"] = socket_depth(f.get("axial", 0.0), f.get("side", 0.0), f.get("moment", 0.0)) if f else L.DEPTH
+        # 14 Nov: a collar pushed out past the hub by its side-by-side neighbour cantilevers its rod's whole end moment back to the hub;
+        # over 1.0 N m it gets a 13.0 bore, the couple across it M / (2/3 of the lining) 24 % less than at 9.0 (P2 / P5's RS0-P2 /
+        # RS1-P5, 1.19 N m at s0 12.4: 0.67 at 1.0 cm3, 0.53 at 2.4, 0.39 with 3.0 collars, 0.34 at 3.6, the room filled)
+        st = getattr(L, "SOCKET_START", {}).get((k, m["name"]))
+        if st is not None and st > PUSHED_S0 and f.get("moment", 0.0) > PUSHED_MOMENT:
+            m["depth"] = max(m["depth"], PUSHED_DEPTH)
     return out
 
 
@@ -176,7 +183,8 @@ L.SOCKET_START = _socket_starts()
 # S1 0.37, P6 0.36, R0 / R7 0.33, S0 0.31; P1 0.29 with a 1.1 web (solid fail); NB 0.10, TB 0.18, RF 0.22 pass. Each toward ~0.22 by V^-1.25.
 # 3.0 collars (push 7db172f3): 14 pass, P2 / P5 0.39 across layers in RS0-P2 / RS1-P5's moment case, now just outside the collar
 # (4.9 off the axis, the generated root): 2.4 -> 3.6 (~0.24 by V^-1.25).
-BUDGET_CM3 = {"P3": 1.4, "P4": 1.4, "P1": 0.9, "P2": 3.6, "P5": 3.6, "P6": 0.9, "R0": 0.85, "R7": 0.85,
+# Then 0.34 at 3.6 (6.5 g, the room filled): the pushed-out collar rule (PUSHED_DEPTH) instead, P2 / P5 back to 3.0.
+BUDGET_CM3 = {"P3": 1.4, "P4": 1.4, "P1": 0.9, "P2": 3.0, "P5": 3.0, "P6": 0.9, "R0": 0.85, "R7": 0.85,
               "RF": 0.3, "RB": 0.8, "RS0": 1.1, "RS1": 1.1, "S0": 1.6, "S1": 1.8, "NB": 1.8, "TB": 2.4}   # 14 Nov, the bolt forks: their runs read NB / TB 0.051 / 0.052 at 4.0, S0 / S1 0.032 at 3.1; on the fold's loads (core_of) TB-P3 154 N (was 99), S0-P2 109 (was 78): toward ~0.15 by index ~ V^-1.25.   # 13 Nov: NB 5.7 -> 6.9, 0.314 at 5.7 (index ~ V^-1.25 toward 0.25). 12 Nov: NB 4.3 -> 5.7, 0.354 at 4.3 once BS moved to the nose block (NB-R7 pull-out 126 N; index ~ V^-1.25 toward 0.25)   # 12 Nov: TB 4.8 -> 5.6, 0.301 at 4.8 under the heavier frame's TB-P3 108 N (index ~ V^-1.25 toward 0.25)
 
 
