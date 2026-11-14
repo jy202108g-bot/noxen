@@ -8370,6 +8370,15 @@
    "minutes": 35.0,
    "peak_gb": 2.945484,
    "at": "bbf753738fb9:2102"
+  },
+  {
+   "part": "scout_v4_probe_turret",
+   "engine": "no-cavity",
+   "design": 48363,
+   "cases": 44,
+   "minutes": 95.4,
+   "peak_gb": 4.36046,
+   "at": "37f01e317a27:5726"
   }
  ]
 }
