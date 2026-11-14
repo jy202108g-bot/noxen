@@ -2037,11 +2037,9 @@
 "tag": "C",
 "owner": "box stand v2",
 "source": "parts/box_stand2_lib.py",
-"id": "box_stand2_mast_drawn",
-"name": "stand v2: mast (the stub's face down to the foot): drawn faces (what the stub, a bolt or the floor touches)",
-"color": "#7f8a96",
-"opacity": null,
-"mesh": "parts/box_stand2_mast_drawn/part.stl",
+"id": "box_stand2_mast",
+"name": "stand v2: mast (the stub's face down to the foot)",
+"color": "#b7bfc9",
 "pose": [
 [
 1.0,
@@ -2068,51 +2066,9 @@
 1.0
 ]
 ],
-"part": "box_stand2_mast_drawn",
-"version": "v2 14 Nov",
-"note": "shown until the run's mesh is in"
-},
-{
-"role": "structure",
-"group": "stand",
-"material": "PCTG",
-"tag": "C",
-"owner": "box stand v2",
-"source": "parts/box_stand2_lib.py",
-"id": "box_stand2_mast_room",
-"name": "stand v2: mast (the stub's face down to the foot): room the engine may fill (what every clearance check uses)",
-"color": "#d5dbe2",
-"opacity": 0.25,
-"mesh": "parts/box_stand2_mast_room/part.stl",
-"pose": [
-[
-1.0,
-0.0,
-0.0,
-0.0
-],
-[
-0.0,
-1.0,
-0.0,
-0.0
-],
-[
-0.0,
-0.0,
-1.0,
-0.0
-],
-[
-0.0,
-0.0,
-0.0,
-1.0
-]
-],
-"part": "box_stand2_mast_room",
-"version": "v2 14 Nov",
-"note": "shown until the run's mesh is in"
+"version": "v2 setup 14 Nov",
+"note": "engine part (parts/box_stand2_mast/part.py)",
+"mesh": "parts/box_stand2_mast/part.stl"
 },
 {
 "role": "structure",
@@ -5334,7 +5290,7 @@
 },
 {
 "id": "box_scout_v4_scout_v4_probe_roller",
-"name": "Scout: the coil's pressure roller (drawn: parts/scout_v4_probe_roller/make.py): a printed O8 x 19 tube turning on its M3 axle (bore 3.3, no bearings), two 4 x 0.5 x 15 springs (uxcell B076LQCBR1)",
+"name": "Scout: the coil's pressure roller (drawn: parts/scout_v4_probe_roller/make.py): a printed O8 x 19 tube turning on a O3 carbon rod (bore 3.3, no bearings), two Keystone-209-type leaf contacts (ZCZQC B0C5D3XLBK) on screw-set carriers, saddles on the rod",
 "role": "bought",
 "group": "landing: Scout",
 "color": "#7a8590",

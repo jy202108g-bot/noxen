@@ -159,7 +159,7 @@
  "no_mesh_in_the_tree": [],
  "quick": false,
  "counts": {
-  "box": 47,
+  "box": 46,
   "arm": 92,
   "turning": 51,
   "drone_parts": {
@@ -167,5 +167,5 @@
    "overseer": 59
   }
  },
- "seconds": 152
+ "seconds": 119
 }
