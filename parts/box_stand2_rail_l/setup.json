@@ -1,0 +1,9 @@
+{
+ "part_sha": "52698691b5ff",
+ "lib_sha": "deabdc067fe0",
+ "data_sha": "01c4541bd312",
+ "setup_sha": "839cfe7918d62929",
+ "reads": [
+  "parts/box_stand2_lib.py"
+ ]
+}
