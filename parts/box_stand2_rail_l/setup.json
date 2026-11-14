@@ -4,6 +4,7 @@
  "data_sha": "01c4541bd312",
  "setup_sha": "839cfe7918d62929",
  "reads": [
-  "parts/box_stand2_lib.py"
+  "parts/box_stand2_lib.py",
+  "parts/box_stand2_rail_l/part.py"
  ]
 }

@@ -1,8 +1,8 @@
 {
- "part_sha": "ec732b713346",
+ "part_sha": "cca15897ecc3",
  "lib_sha": "deabdc067fe0",
  "data_sha": "01c4541bd312",
- "setup_sha": "62a0f5c5cdb7fed7",
+ "setup_sha": "0454a6452c5cb538",
  "reads": [
   "parts/box_stand2_lib.py"
  ]
