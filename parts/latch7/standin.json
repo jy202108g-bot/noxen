@@ -1,0 +1,148 @@
+{
+ "note": "Latch v7 stand-in springs (14 Nov, Spark: print and test the latch now with the springs he has, unlatching by hand, no arm).\nThe design stays on the PATIKIL 0.3 x 3.0 x 30 springs (make.py, two per bolt in slots along the bolt). This is a separate print set for\nboth packs; nothing here changes make.py, the receivers or their setups.",
+ "spring": {
+  "od": 5.0,
+  "d": 0.5,
+  "free": 25.0,
+  "id": 4.0,
+  "k_range": [
+   0.5,
+   0.8
+  ],
+  "k_mid": 0.65,
+  "listing": "uxcell 304 stainless compression springs, 5.0 OD x 0.5 wire x 25 free (Spark's, on hand)"
+ },
+ "lengths_mm": {
+  "rest": 20.4,
+  "fully_in": 15.5
+ },
+ "forces_N_per_bolt": {
+  "0.50 N/mm": {
+   "latched (20.4 long)": 2.3,
+   "fully in (15.5 long)": 4.75
+  },
+  "0.80 N/mm": {
+   "latched (20.4 long)": 3.68,
+   "fully in (15.5 long)": 7.6
+  },
+  "0.65 N/mm": {
+   "latched (20.4 long)": 2.99,
+   "fully in (15.5 long)": 6.17
+  }
+ },
+ "design_per_bolt_N": {
+  "latched": 3.9,
+  "fully_in": 5.15
+ },
+ "scale_check": "Stand one spring on a kitchen scale and press it down to 20 mm long (5 mm in): 255..410 g is 0.5..0.8 N/mm, the range these numbers cover (latched 2.3..3.7 N, fully in 4.8..7.6 N a bolt; the design is 3.9 and 5.2). Under 255 g the bolts may not snap out cleanly: say so before printing.",
+ "assembly": [
+  "1 a magnet into each bolt's underside (as the design)",
+  "2 one bolt in through its wall hole from outside",
+  "3 one spring onto each guide rod from underneath (the recess is open): over the rod's free end, through the rib's slot, to its post",
+  "4 each bolt in from outside (the same file, the second turned half round), its block's channel over the spring's free end; hold both in",
+  "5 the stop bar down across the rib into both bolts; let go: they spring out to the stop; the pack in (as the design)"
+ ],
+ "packs": {
+  "scout": {
+   "checks": {
+    "bolt in through its wall hole from outside (30 mm swept)": 0.0,
+    "bolts through their travel against the cartridge, the stop bar and each other": 0.0,
+    "springs seat to post, every travel, against the cartridge, the stop bar and the other bolt": 0.0,
+    "springs inside their own bolt's channel": 0.0,
+    "latched in the receiver (bolts at rest, seated)": 0.0,
+    "cartridge into the receiver, bolts held in (40 mm swept)": 0.0,
+    "ok": true
+   }
+  },
+  "overseer": {
+   "checks": {
+    "bolt in through its wall hole from outside (30 mm swept)": 0.0,
+    "bolts through their travel against the cartridge, the stop bar and each other": 0.0,
+    "springs seat to post, every travel, against the cartridge, the stop bar and the other bolt": 0.0,
+    "springs inside their own bolt's channel": 0.0,
+    "latched in the receiver (bolts at rest, seated)": 0.0,
+    "cartridge into the receiver, bolts held in (40 mm swept)": 0.0,
+    "ok": true
+   }
+  }
+ },
+ "files": [
+  {
+   "file": "print/latch7_standin_cartridge.stl",
+   "release": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-latch7_standin_cartridge.stl",
+   "picture": "parts/latch7/kit/latch7_standin_cartridge.png",
+   "solid_check": "PASS",
+   "thin_walls": 0,
+   "pose": "the part's -y face on the bed",
+   "size_on_bed_mm": [
+    40.0,
+    96.0,
+    45.6
+   ],
+   "supports": "yes: 2081 mm2 overhangs past 45 deg (tree supports)",
+   "material": "PCTG",
+   "grams_each": 39.39,
+   "used_by": {
+    "scout": 1
+   }
+  },
+  {
+   "file": "print/latch7_standin_bolt.stl",
+   "release": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-latch7_standin_bolt.stl",
+   "picture": "parts/latch7/kit/latch7_standin_bolt.png",
+   "solid_check": "PASS",
+   "thin_walls": 0,
+   "pose": "the part's +y face on the bed",
+   "size_on_bed_mm": [
+    16.4,
+    42.0,
+    10.3
+   ],
+   "supports": "yes: 56 mm2 overhangs past 45 deg (tree supports)",
+   "material": "PCTG",
+   "grams_each": 4.17,
+   "used_by": {
+    "scout": 2
+   }
+  },
+  {
+   "file": "print/latch7_ov_standin_cartridge.stl",
+   "release": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-latch7_ov_standin_cartridge.stl",
+   "picture": "parts/latch7/kit/latch7_ov_standin_cartridge.png",
+   "solid_check": "PASS",
+   "thin_walls": 0,
+   "pose": "the part's -z face on the bed",
+   "size_on_bed_mm": [
+    55.0,
+    58.6,
+    174.0
+   ],
+   "supports": "yes: 5323 mm2 overhangs past 45 deg (tree supports)",
+   "material": "PCTG",
+   "grams_each": 100.5,
+   "used_by": {
+    "overseer": 1
+   }
+  },
+  {
+   "file": "print/latch7_ov_standin_bolt.stl",
+   "release": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-latch7_ov_standin_bolt.stl",
+   "picture": "parts/latch7/kit/latch7_ov_standin_bolt.png",
+   "solid_check": "PASS",
+   "thin_walls": 0,
+   "pose": "the part's +y face on the bed",
+   "size_on_bed_mm": [
+    23.9,
+    42.0,
+    10.3
+   ],
+   "supports": "yes: 56 mm2 overhangs past 45 deg (tree supports)",
+   "material": "PCTG",
+   "grams_each": 5.99,
+   "used_by": {
+    "overseer": 2
+   }
+  }
+ ],
+ "ok": true
+}
