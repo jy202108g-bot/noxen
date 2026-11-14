@@ -8343,6 +8343,15 @@
    "minutes": 46.6,
    "peak_gb": 2.934308,
    "at": "bbf753738fb9:2797"
+  },
+  {
+   "part": "scout_v4_cradle",
+   "engine": "no-cavity",
+   "design": 40884,
+   "cases": 20,
+   "minutes": 53.8,
+   "peak_gb": 2.940604,
+   "at": "bbf753738fb9:3227"
   }
  ]
 }
