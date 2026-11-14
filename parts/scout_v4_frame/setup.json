@@ -12,6 +12,7 @@
   "parts/latch7/view/keepout/receiver_room.stl",
   "parts/latch7/view/keepout/seat_strips.stl",
   "parts/scout_units_lib.py",
+  "parts/scout_v4_frame/part.py",
   "parts/scout_v4_probe_turret/part.py",
   "parts/scout_v4_units_lib.py",
   "parts/socket_inject.py",
