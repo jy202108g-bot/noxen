@@ -2121,11 +2121,11 @@
 "tag": "C",
 "owner": "box stand v2",
 "source": "parts/box_stand2_lib.py",
-"id": "box_stand2_base_r_drawn",
-"name": "stand v2: base half, right (+X, under the PSU): drawn faces (what the stub, a bolt or the floor touches)",
+"id": "box_stand2_yoke_r_drawn",
+"name": "stand v2: yoke, right (+X, under the PSU): drawn faces (what the stub, a bolt or the floor touches)",
 "color": "#7f8a96",
 "opacity": null,
-"mesh": "parts/box_stand2_base_r_drawn/part.stl",
+"mesh": "parts/box_stand2_yoke_r_drawn/part.stl",
 "pose": [
 [
 1.0,
@@ -2152,7 +2152,7 @@
 1.0
 ]
 ],
-"part": "box_stand2_base_r_drawn",
+"part": "box_stand2_yoke_r_drawn",
 "version": "v2 14 Nov",
 "note": "shown until the run's mesh is in"
 },
@@ -2163,11 +2163,11 @@
 "tag": "C",
 "owner": "box stand v2",
 "source": "parts/box_stand2_lib.py",
-"id": "box_stand2_base_r_room",
-"name": "stand v2: base half, right (+X, under the PSU): room the engine may fill (what every clearance check uses)",
+"id": "box_stand2_yoke_r_room",
+"name": "stand v2: yoke, right (+X, under the PSU): room the engine may fill (what every clearance check uses)",
 "color": "#d5dbe2",
 "opacity": 0.25,
-"mesh": "parts/box_stand2_base_r_room/part.stl",
+"mesh": "parts/box_stand2_yoke_r_room/part.stl",
 "pose": [
 [
 1.0,
@@ -2194,7 +2194,7 @@
 1.0
 ]
 ],
-"part": "box_stand2_base_r_room",
+"part": "box_stand2_yoke_r_room",
 "version": "v2 14 Nov",
 "note": "shown until the run's mesh is in"
 },
@@ -2205,11 +2205,11 @@
 "tag": "C",
 "owner": "box stand v2",
 "source": "parts/box_stand2_lib.py",
-"id": "box_stand2_base_l_drawn",
-"name": "stand v2: base half, left: drawn faces (what the stub, a bolt or the floor touches)",
+"id": "box_stand2_yoke_l_drawn",
+"name": "stand v2: yoke, left: drawn faces (what the stub, a bolt or the floor touches)",
 "color": "#7f8a96",
 "opacity": null,
-"mesh": "parts/box_stand2_base_l_drawn/part.stl",
+"mesh": "parts/box_stand2_yoke_l_drawn/part.stl",
 "pose": [
 [
 1.0,
@@ -2236,7 +2236,7 @@
 1.0
 ]
 ],
-"part": "box_stand2_base_l_drawn",
+"part": "box_stand2_yoke_l_drawn",
 "version": "v2 14 Nov",
 "note": "shown until the run's mesh is in"
 },
@@ -2247,11 +2247,11 @@
 "tag": "C",
 "owner": "box stand v2",
 "source": "parts/box_stand2_lib.py",
-"id": "box_stand2_base_l_room",
-"name": "stand v2: base half, left: room the engine may fill (what every clearance check uses)",
+"id": "box_stand2_yoke_l_room",
+"name": "stand v2: yoke, left: room the engine may fill (what every clearance check uses)",
 "color": "#d5dbe2",
 "opacity": 0.25,
-"mesh": "parts/box_stand2_base_l_room/part.stl",
+"mesh": "parts/box_stand2_yoke_l_room/part.stl",
 "pose": [
 [
 1.0,
@@ -2278,7 +2278,7 @@
 1.0
 ]
 ],
-"part": "box_stand2_base_l_room",
+"part": "box_stand2_yoke_l_room",
 "version": "v2 14 Nov",
 "note": "shown until the run's mesh is in"
 },
@@ -2289,11 +2289,11 @@
 "tag": "C",
 "owner": "box stand v2",
 "source": "parts/box_stand2_lib.py",
-"id": "box_stand2_rail_r_drawn",
-"name": "stand v2: rail, right: drawn faces (what the stub, a bolt or the floor touches)",
+"id": "box_stand2_rear_r_drawn",
+"name": "stand v2: rear rail, right: drawn faces (what the stub, a bolt or the floor touches)",
 "color": "#7f8a96",
 "opacity": null,
-"mesh": "parts/box_stand2_rail_r_drawn/part.stl",
+"mesh": "parts/box_stand2_rear_r_drawn/part.stl",
 "pose": [
 [
 1.0,
@@ -2320,7 +2320,7 @@
 1.0
 ]
 ],
-"part": "box_stand2_rail_r_drawn",
+"part": "box_stand2_rear_r_drawn",
 "version": "v2 14 Nov",
 "note": "shown until the run's mesh is in"
 },
@@ -2331,11 +2331,11 @@
 "tag": "C",
 "owner": "box stand v2",
 "source": "parts/box_stand2_lib.py",
-"id": "box_stand2_rail_r_room",
-"name": "stand v2: rail, right: room the engine may fill (what every clearance check uses)",
+"id": "box_stand2_rear_r_room",
+"name": "stand v2: rear rail, right: room the engine may fill (what every clearance check uses)",
 "color": "#d5dbe2",
 "opacity": 0.25,
-"mesh": "parts/box_stand2_rail_r_room/part.stl",
+"mesh": "parts/box_stand2_rear_r_room/part.stl",
 "pose": [
 [
 1.0,
@@ -2362,7 +2362,7 @@
 1.0
 ]
 ],
-"part": "box_stand2_rail_r_room",
+"part": "box_stand2_rear_r_room",
 "version": "v2 14 Nov",
 "note": "shown until the run's mesh is in"
 },
@@ -2373,11 +2373,11 @@
 "tag": "C",
 "owner": "box stand v2",
 "source": "parts/box_stand2_lib.py",
-"id": "box_stand2_rail_l_drawn",
-"name": "stand v2: rail, left: drawn faces (what the stub, a bolt or the floor touches)",
+"id": "box_stand2_rear_l_drawn",
+"name": "stand v2: rear rail, left: drawn faces (what the stub, a bolt or the floor touches)",
 "color": "#7f8a96",
 "opacity": null,
-"mesh": "parts/box_stand2_rail_l_drawn/part.stl",
+"mesh": "parts/box_stand2_rear_l_drawn/part.stl",
 "pose": [
 [
 1.0,
@@ -2404,7 +2404,7 @@
 1.0
 ]
 ],
-"part": "box_stand2_rail_l_drawn",
+"part": "box_stand2_rear_l_drawn",
 "version": "v2 14 Nov",
 "note": "shown until the run's mesh is in"
 },
@@ -2415,11 +2415,11 @@
 "tag": "C",
 "owner": "box stand v2",
 "source": "parts/box_stand2_lib.py",
-"id": "box_stand2_rail_l_room",
-"name": "stand v2: rail, left: room the engine may fill (what every clearance check uses)",
+"id": "box_stand2_rear_l_room",
+"name": "stand v2: rear rail, left: room the engine may fill (what every clearance check uses)",
 "color": "#d5dbe2",
 "opacity": 0.25,
-"mesh": "parts/box_stand2_rail_l_room/part.stl",
+"mesh": "parts/box_stand2_rear_l_room/part.stl",
 "pose": [
 [
 1.0,
@@ -2446,9 +2446,89 @@
 1.0
 ]
 ],
-"part": "box_stand2_rail_l_room",
+"part": "box_stand2_rear_l_room",
 "version": "v2 14 Nov",
 "note": "shown until the run's mesh is in"
+},
+{
+"role": "structure",
+"group": "stand",
+"material": "PCTG",
+"tag": "C",
+"owner": "box stand v2",
+"source": "parts/box_stand2_lib.py",
+"id": "box_stand2_rail_r",
+"name": "stand v2: front rail, right",
+"color": "#b7bfc9",
+"pose": [
+[
+1.0,
+0.0,
+0.0,
+0.0
+],
+[
+0.0,
+1.0,
+0.0,
+0.0
+],
+[
+0.0,
+0.0,
+1.0,
+0.0
+],
+[
+0.0,
+0.0,
+0.0,
+1.0
+]
+],
+"version": "v2 setup 14 Nov",
+"note": "engine part (parts/box_stand2_rail_r/part.py)",
+"mesh": "parts/box_stand2_rail_r/part.stl"
+},
+{
+"role": "structure",
+"group": "stand",
+"material": "PCTG",
+"tag": "C",
+"owner": "box stand v2",
+"source": "parts/box_stand2_lib.py",
+"id": "box_stand2_rail_l",
+"name": "stand v2: front rail, left",
+"color": "#b7bfc9",
+"pose": [
+[
+1.0,
+0.0,
+0.0,
+0.0
+],
+[
+0.0,
+1.0,
+0.0,
+0.0
+],
+[
+0.0,
+0.0,
+1.0,
+0.0
+],
+[
+0.0,
+0.0,
+0.0,
+1.0
+]
+],
+"version": "v2 setup 14 Nov",
+"note": "engine part (parts/box_stand2_rail_l/part.py)",
+"mesh": "parts/box_stand2_rail_l/part.stl"
 },
 {
 "role": "structure",
