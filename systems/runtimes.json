@@ -8352,6 +8352,15 @@
    "minutes": 53.8,
    "peak_gb": 2.940604,
    "at": "bbf753738fb9:3227"
+  },
+  {
+   "part": "latch7_receiver",
+   "engine": "no-cavity",
+   "design": 38124,
+   "cases": 36,
+   "minutes": 92.3,
+   "peak_gb": 3.783048,
+   "at": "7aa8599a94a8:5536"
   }
  ]
 }
