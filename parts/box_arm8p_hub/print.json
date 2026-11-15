@@ -1,21 +1,21 @@
 {
  "make": {
   "sha": {
-   "parts/box_arm8_lib.py": "1b88e29d7dcb",
-   "parts/box_arm8p_hub/make.py": "390d8624b862",
-   "parts/box_arm8p_lib.py": "e0aa3a687a0e",
+   "parts/box_arm8_lib.py": "d6cf377137c6",
+   "parts/box_arm8p_hub/make.py": "d29353f09c21",
+   "parts/box_arm8p_lib.py": "13f2d0df1458",
    "parts/latch5/battery_latch_v4.py": "f55aaf78bdf7",
    "systems/fit_table.json": "8d560ff6f55b"
   },
   "rc": 0,
-  "s": 95.3,
-  "at": "2026-11-15 07:46",
-  "commit": "8258bcd8",
+  "s": 85.7,
+  "at": "2026-11-15 08:59",
+  "commit": "49682faa",
   "solid": {
    "ok": true,
    "file": "print/box_arm8p_hub.stl",
-   "sha256": "7af79ae76fda6c72d4e13cf1ac67379f48247e617453d404c03317252f8f838b",
-   "cm3": 272.728,
+   "sha256": "cbeddb9ef885a1055ff17a169c262fbe8939b58bf2e7d2522d6e94bcaf556853",
+   "cm3": 269.53,
    "bodies_plain": 1,
    "specks_plain": 0,
    "bodies_eroded": 1,
@@ -24,11 +24,11 @@
  },
  "print_stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/box_arm8p_hub.stl",
-  "sha256": "0faebb230a9aaffba062753c90aebc59195f68e35c3e47b3633da2218f0770ba",
-  "bytes": 991784,
-  "faces": 19834,
-  "view_faces": 19834,
-  "view_sha256": "0faebb230a9aaffba062753c90aebc59195f68e35c3e47b3633da2218f0770ba",
-  "at": "2026-11-15 07:50"
+  "sha256": "35dd95187f48b6eba2ec314aec96aca3150aad877f552b5e19d5c95fd6867d98",
+  "bytes": 1056384,
+  "faces": 21126,
+  "view_faces": 21126,
+  "view_sha256": "35dd95187f48b6eba2ec314aec96aca3150aad877f552b5e19d5c95fd6867d98",
+  "at": "2026-11-15 09:01"
  }
 }

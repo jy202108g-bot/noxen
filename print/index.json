@@ -13,9 +13,9 @@
  },
  "box_arm8_detent_arm.stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_arm8_detent_arm.stl",
-  "sha256": "67205e6fbf1ab072ebd7044cb9e106d6d89284edbaa47c9040537bfd19ef4f50",
-  "bytes": 31884,
-  "at": "2026-11-15 07:50"
+  "sha256": "b3659447efa871337630ca42defc280b1cae35dba9a5f36048d6fd10f63cad2f",
+  "bytes": 61684,
+  "at": "2026-11-15 09:01"
  },
  "box_arm8_hub.stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_arm8_hub.stl",
@@ -115,9 +115,9 @@
  },
  "box_arm8_rail.stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_arm8_rail.stl",
-  "sha256": "cc962ff87f1ddd7862790916764d4205adae68c21a02960ae42e2fb8f027d2cb",
-  "bytes": 38184,
-  "at": "2026-11-15 07:50"
+  "sha256": "86bf6503a3de608f0154b47c12b556701387f17395ca1f82d86407e08a542953",
+  "bytes": 71984,
+  "at": "2026-11-15 09:01"
  },
  "box_arm8_saddle_overseer.stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_arm8_saddle_overseer.stl",
@@ -133,9 +133,9 @@
  },
  "box_arm8_stub.stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_arm8_stub.stl",
-  "sha256": "cb58d653db00867320e74599e6b919c51a632056a596eb3abc617a95bb9bcd3a",
-  "bytes": 196184,
-  "at": "2026-11-15 07:50"
+  "sha256": "89f3573c5ab9e43ebd21d080580d58fe63fc1cb7e9aa5818e598fb8931113062",
+  "bytes": 312484,
+  "at": "2026-11-15 09:01"
  },
  "box_arm8_tie.stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_arm8_tie.stl",
@@ -157,9 +157,9 @@
  },
  "box_arm8p_carriage.stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_arm8p_carriage.stl",
-  "sha256": "3ffef1858a0b060bd87f2c84c474af752d76271bcd0c394138bd980ca4fb647a",
-  "bytes": 113584,
-  "at": "2026-11-15 07:50"
+  "sha256": "7a6aad9e7f5c7708d7c56765386c5bc00ceb2b9be6d5b0f9956359ff18608044",
+  "bytes": 179384,
+  "at": "2026-11-15 09:01"
  },
  "box_arm8p_coupon.stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_arm8p_coupon.stl",
@@ -169,9 +169,9 @@
  },
  "box_arm8p_hub.stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_arm8p_hub.stl",
-  "sha256": "7af79ae76fda6c72d4e13cf1ac67379f48247e617453d404c03317252f8f838b",
-  "bytes": 991784,
-  "at": "2026-11-15 07:50"
+  "sha256": "cbeddb9ef885a1055ff17a169c262fbe8939b58bf2e7d2522d6e94bcaf556853",
+  "bytes": 1056384,
+  "at": "2026-11-15 09:01"
  },
  "box_arm8p_lift.stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_arm8p_lift.stl",
