@@ -5,162 +5,162 @@
   {
    "file": "print/box_dome_hub_l.stl",
    "count": 1,
-   "g": 93.2,
+   "g": 142.9,
    "bed_mm": [
-    84.0,
+    112.0,
     115.3,
     50.2
    ],
-   "bed_contact_mm2": 6775,
+   "bed_contact_mm2": 8467,
    "solid_check": "PASS",
    "thin_walls": 0,
    "pose": "base down, no supports",
    "settings": "0.2 layers, 4 walls, 25 % gyroid, PCTG at PETG + 10 C",
-   "time": "4h30"
+   "time": "7h00"
   },
   {
    "file": "print/box_dome_plate_1_l.stl",
    "count": 1,
-   "g": 7.7,
+   "g": 8.0,
    "bed_mm": [
     59.9,
-    25.0,
+    26.0,
     17.6
    ],
-   "bed_contact_mm2": 608,
+   "bed_contact_mm2": 624,
    "solid_check": "PASS",
    "thin_walls": 0,
    "pose": "outer face down (as laid), supports under the arm only (build plate only)",
    "settings": "0.2 layers, 4 walls, 25 % gyroid, PCTG at PETG + 10 C",
-   "time": "0h40"
+   "time": "0h45"
   },
   {
    "file": "print/box_dome_plate_2_l.stl",
    "count": 1,
-   "g": 10.1,
+   "g": 10.3,
    "bed_mm": [
     59.9,
     39.2,
     17.6
    ],
-   "bed_contact_mm2": 863,
+   "bed_contact_mm2": 874,
    "solid_check": "PASS",
    "thin_walls": 0,
    "pose": "outer face down (as laid), supports under the arm only (build plate only)",
    "settings": "0.2 layers, 4 walls, 25 % gyroid, PCTG at PETG + 10 C",
-   "time": "0h40"
+   "time": "0h45"
   },
   {
    "file": "print/box_dome_plate_3_l.stl",
    "count": 1,
-   "g": 7.7,
+   "g": 8.0,
    "bed_mm": [
     59.9,
-    25.0,
+    26.0,
     17.6
    ],
-   "bed_contact_mm2": 608,
+   "bed_contact_mm2": 624,
    "solid_check": "PASS",
    "thin_walls": 0,
    "pose": "outer face down (as laid), supports under the arm only (build plate only)",
    "settings": "0.2 layers, 4 walls, 25 % gyroid, PCTG at PETG + 10 C",
-   "time": "0h40"
+   "time": "0h45"
   },
   {
    "file": "print/box_dome_plate_4_l.stl",
    "count": 1,
-   "g": 7.7,
+   "g": 8.2,
    "bed_mm": [
     63.4,
     23.0,
     17.6
    ],
-   "bed_contact_mm2": 622,
+   "bed_contact_mm2": 658,
    "solid_check": "PASS",
    "thin_walls": 0,
    "pose": "outer face down (as laid), supports under the arm only (build plate only)",
    "settings": "0.2 layers, 4 walls, 25 % gyroid, PCTG at PETG + 10 C",
-   "time": "0h40"
+   "time": "0h45"
   },
   {
    "file": "print/box_dome_hub_r.stl",
    "count": 1,
-   "g": 93.2,
+   "g": 142.9,
    "bed_mm": [
-    84.0,
+    112.0,
     115.3,
     50.2
    ],
-   "bed_contact_mm2": 6775,
+   "bed_contact_mm2": 8467,
    "solid_check": "PASS",
    "thin_walls": 0,
    "pose": "base down, no supports",
    "settings": "0.2 layers, 4 walls, 25 % gyroid, PCTG at PETG + 10 C",
-   "time": "4h30"
+   "time": "7h00"
   },
   {
    "file": "print/box_dome_plate_1_r.stl",
    "count": 1,
-   "g": 7.7,
+   "g": 8.0,
    "bed_mm": [
     59.9,
-    25.0,
+    26.0,
     17.6
    ],
-   "bed_contact_mm2": 608,
+   "bed_contact_mm2": 624,
    "solid_check": "PASS",
    "thin_walls": 0,
    "pose": "outer face down (as laid), supports under the arm only (build plate only)",
    "settings": "0.2 layers, 4 walls, 25 % gyroid, PCTG at PETG + 10 C",
-   "time": "0h40"
+   "time": "0h45"
   },
   {
    "file": "print/box_dome_plate_2_r.stl",
    "count": 1,
-   "g": 10.1,
+   "g": 10.3,
    "bed_mm": [
     59.9,
     39.2,
     17.6
    ],
-   "bed_contact_mm2": 863,
+   "bed_contact_mm2": 874,
    "solid_check": "PASS",
    "thin_walls": 0,
    "pose": "outer face down (as laid), supports under the arm only (build plate only)",
    "settings": "0.2 layers, 4 walls, 25 % gyroid, PCTG at PETG + 10 C",
-   "time": "0h40"
+   "time": "0h45"
   },
   {
    "file": "print/box_dome_plate_3_r.stl",
    "count": 1,
-   "g": 7.7,
+   "g": 8.0,
    "bed_mm": [
     59.9,
-    25.0,
+    26.0,
     17.6
    ],
-   "bed_contact_mm2": 608,
+   "bed_contact_mm2": 624,
    "solid_check": "PASS",
    "thin_walls": 0,
    "pose": "outer face down (as laid), supports under the arm only (build plate only)",
    "settings": "0.2 layers, 4 walls, 25 % gyroid, PCTG at PETG + 10 C",
-   "time": "0h40"
+   "time": "0h45"
   },
   {
    "file": "print/box_dome_plate_4_r.stl",
    "count": 1,
-   "g": 7.7,
+   "g": 8.2,
    "bed_mm": [
     63.4,
     23.0,
     17.6
    ],
-   "bed_contact_mm2": 622,
+   "bed_contact_mm2": 658,
    "solid_check": "PASS",
    "thin_walls": 0,
    "pose": "outer face down (as laid), supports under the arm only (build plate only)",
    "settings": "0.2 layers, 4 walls, 25 % gyroid, PCTG at PETG + 10 C",
-   "time": "0h40"
+   "time": "0h45"
   },
   {
    "file": "print/box_dome_ring_spoke.stl",

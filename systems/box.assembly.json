@@ -3579,7 +3579,7 @@
 "owner": "box dome",
 "version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_hub_l.stl: base on the ring (4 x M3 x 12 from below), the inner wall with plate 0, the gearbox's side walls; base down, no supports",
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_hub_l.stl: base on the ring (4 x M3 x 12 from below), the inner wall with plate 0, the gearbox's 10 thick side walls with their buttresses; base down, no supports",
 "part": "box_dome"
 },
 {
@@ -3620,7 +3620,7 @@
 "owner": "box dome",
 "version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_hub_r.stl: base on the ring (4 x M3 x 12 from below), the inner wall with plate 0, the gearbox's side walls; base down, no supports",
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_hub_r.stl: base on the ring (4 x M3 x 12 from below), the inner wall with plate 0, the gearbox's 10 thick side walls with their buttresses; base down, no supports",
 "part": "box_dome"
 },
 {
@@ -3743,7 +3743,7 @@
 "owner": "box dome",
 "version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_plate_2_l.stl: turns on the hub's tube, its pin at r 13; outer face down (as laid), supports under the arm only (build plate only)",
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_plate_2_l.stl: turns on the hub's tube, its pin at r 15; outer face down (as laid), supports under the arm only (build plate only)",
 "part": "box_dome"
 },
 {
@@ -3784,7 +3784,7 @@
 "owner": "box dome",
 "version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_plate_2_r.stl: turns on the hub's tube, its pin at r 13; outer face down (as laid), supports under the arm only (build plate only)",
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_plate_2_r.stl: turns on the hub's tube, its pin at r 15; outer face down (as laid), supports under the arm only (build plate only)",
 "part": "box_dome"
 },
 {
@@ -3907,7 +3907,7 @@
 "owner": "box dome",
 "version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_plate_4_l.stl: turns on the hub's tube, its pin at r 13; outer face down (as laid), supports under the arm only (build plate only)",
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_plate_4_l.stl: turns on the hub's tube, its pin at r 15; outer face down (as laid), supports under the arm only (build plate only)",
 "part": "box_dome"
 },
 {
@@ -3948,7 +3948,7 @@
 "owner": "box dome",
 "version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_plate_4_r.stl: turns on the hub's tube, its pin at r 13; outer face down (as laid), supports under the arm only (build plate only)",
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_plate_4_r.stl: turns on the hub's tube, its pin at r 15; outer face down (as laid), supports under the arm only (build plate only)",
 "part": "box_dome"
 },
 {
@@ -5045,7 +5045,7 @@
 "owner": "box dome",
 "version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "four M3 x 8 into plate 4, set screws on the motor's shaft (E: flange O22, holes on O16)"
+"note": "Bonsicoky 6 mm rigid flange coupling (amazon.com/dp/B096MK9T66): four M3 x 8 into plate 4, set screws on the motor's shaft (listing: base O22, cylinder O10; holes on O16 E)"
 },
 {
 "id": "box_dome_drive_l",
@@ -5205,7 +5205,7 @@
 "owner": "box dome",
 "version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "four M3 x 8 into plate 4, set screws on the motor's shaft (E: flange O22, holes on O16)"
+"note": "Bonsicoky 6 mm rigid flange coupling (amazon.com/dp/B096MK9T66): four M3 x 8 into plate 4, set screws on the motor's shaft (listing: base O22, cylinder O10; holes on O16 E)"
 },
 {
 "id": "box_dome_drive_r",

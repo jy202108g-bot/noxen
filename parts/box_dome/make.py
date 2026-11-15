@@ -15,7 +15,7 @@ What it is
 
 How it folds: a folding fan
   Hoop 0 is fixed (its plate is the hub's inner wall). At each hub, plates 1..4 turn on one 6 mm carbon tube bonded in that
-  wall; plate k carries a 3 mm carbon pin that rides in a 45 deg slot in plate k-1 (pins at r 24 and r 13 in turn, so a plate's
+  wall; plate k carries a 3 mm carbon pin that rides in a 45 deg slot in plate k-1 (pins at r 24 and r 15 in turn, so a plate's
   own pin and its slot never meet), so neighbouring hoops stay 0..45 deg apart. A self-locking worm-gear motor at each hub turns
   plate 4 (the free edge's hoop) through a 6 mm flange coupling screwed to it: opening, hoop 4 sweeps from 180 down to 0 and
   picks up hoops 3, 2, 1 in turn; shutting, it pulls each one out after it once their slot is at its end. Shut, hoop 4 is held
@@ -24,20 +24,32 @@ How it folds: a folding fan
   The fabric is one silnylon sheet sewn in sleeves to the five hoops (drawn as four sub-strips per panel).
 
 Printed pieces (PCTG, all in print/box_dome_*.stl in their print pose; `python parts/box_dome/make.py` prints each one's line)
-  hub l / r        the bracket: a 6 thick base on the ring's top (4 x M3 x 12 up through the ring into its pilots), the inner wall
-                   (plate 0 and the cheek behind it, 13.4), a stop post and two side walls that take the gearbox (32 across, slide)
-                   and the switches. Prints base down, no supports.
-  plate 1..4 l / r a 7.4 sector round the tube, an 8 x 14 arm along the rod's tangent with its 18 deep socket. Prints outer face
+  hub l / r        the bracket: a 6 thick base on the ring's top (4 x M3 x 12 up through the ring into its pilots), 9 thick and
+                   out to +-56 past the lid; the inner wall (plate 0 and the cheek behind it, 13.4), a stop post and two solid 10
+                   side walls that take the gearbox (32 across, slide) and the switches, each rooted 11 on the base behind plate 4
+                   with a buttress from its top out to the base's edge. Prints base down, no supports.
+  plate 1..4 l / r a 7.4 sector round the tube, an 8 x 15.5 arm along the rod's tangent with its 18 deep socket. Prints outer face
                    down, supports under the arm (it rises 29 deg).
   ring             16 segments (r 255..297, W Z 130..142) in half laps, two 3 mm carbon pins a lap: 8 spoke segments (lower
                    tongues, on the spokes first), 6 plain and 2 hub segments (upper tongues, dropped on; printed top face down).
-Hand calculation (PCTG yield 46 MPa E, in-layer; SF 2.5 storm, 10 sustained)
+Hand calculation (PCTG yield 46 MPa E, in-layer; SF 2.5 storm, 10 sustained; index = stress x SF / yield, every case <= 0.5)
   loads      storm 20 m/s on the shut dome: q 240 Pa x 0.141 m2 x Cd 1.2 = 41 N at 0.13 m: 5.3 N m on the axis, 2.7 N m a hub (the
              worm holds hoop 4); 20 N shear a hub. Operating (10 m/s) a quarter of it. Moving mass 0.1 kg at 0.3 m: 0.15 N m a hub.
-  pins       2.7 N m at r 13: 208 N on a 3 mm pin in 7.4 of plate: 9.4 MPa bearing (18.4 allowed): 0.51
-  arm        hoop 4's share at its socket, 2.7 N m about the axis on 8 x 14 (Z = 8 x 14^2 / 6 = 261 mm3): 10.3 MPa: 0.56
+  pins       2.7 N m at r 15: 180 N on a 3 mm pin in 7.4 of plate: 8.1 MPa bearing (18.4 allowed): 0.44   (was r 13: 0.51)
+  pin boss   plate 4's pin stands outside its sector: 180 N through the 8.4 x 7.4 web to the ring round the tube: 2.9 MPa shear
+             (10.6 allowed): 0.27   (the boss alone met the ring on a 4 wide neck at r 15: 0.57)
+  arm        hoop 4's share at its socket, 2.7 N m about the axis on 8 x 15.5 (Z = 8 x 15.5^2 / 6 = 320 mm3): 8.4 MPa: 0.46   (was 8 x 14: 0.56)
   flange     2.7 N m on four M3 at r 8: 84 N each in 2.6 pilots, 7.4 deep (shear area pi x 3 x 7.4 x 0.5 = 35 mm2): 2.4 MPa: 0.13
-  side wall  the gearbox's torque as a couple 19 apart: 142 N at 12.4 from the base's end on 31 x 5.5 (Z 156 mm3): 11.3 MPa: 0.61
+  side wall  the gearbox's torque as a couple 19 apart: 142 N, taken at a wall's top, 12.5 past the base's end. The pins' side wall
+             (25 x 10, the lower one, governs): bending 142 x 12.5 on Z 25 x 10^2 / 6 = 417 mm3: 4.3 MPa; twist 142 x 12.5 (its top
+             above its centre) on 0.258 x 25 x 10^2: 2.8 MPa; von Mises 6.4 MPa: 0.35. The other (31 x 10): 0.31   (was 31 x 5.5,
+             bending alone 0.61; the 25 high wall and the twist, left out then, gave 0.76 and more)
+  wall root  each wall with its buttress stands 11.2 x 39.7 on the base (wall face to toe): 142 N x 22 (the top above the 9 base)
+             = 3.1 N m on Z 11.2 x 39.7^2 / 6 = 2940 mm3: 1.1 MPa; 142 x 18.1 about the upright on 0.27 x 39.7 x 11.2^2: 1.9 MPa;
+             von Mises 3.5 MPa: 0.19   (was the wall's 6 x 5.5 foot and the post beside it: over 1)
+  base       past the ring the root's 3.1 N m is +-118 N on a 26.5 arm; the toe's 118 N on the 9 thick base, 33 from the screws,
+             36 wide (x 20..56): 3.9 N m on Z 36 x 9^2 / 6 = 486 mm3: 8.0 MPa: 0.44 (the wall's opposite 118 N beside it left out);
+             the hub's whole 2.7 N m as twist in the 100 x 9 base: 3 T / (b t^2) = 1.0 MPa: 0.09
   hub screws 2.7 N m + 20 N x 19 mm on M3 pairs 36 apart: 86 N a screw, 5 mm in a 2.6 pilot (590 N E): 0.15
   socket     14 N thrust + the wind's 10 N a rod end on 18 x 3.2 of bond: under 0.5 MPa; rod sustained moment 0 (tangent socket)
 Fits (systems/fit_table.json through topo/fit.py): rod and pin sockets and the tube's bore in the wall 3.2 / 6.2 (bond), each
@@ -46,13 +58,13 @@ Fits (systems/fit_table.json through topo/fit.py): rod and pin sockets and the t
 Assembly (declared for tools/assembly_check.py in assembly_block()): spoke segments on the spokes, the other segments dropped on,
   lap pins, the lid; each hub down onto the ring; each hoop (rod bonded in its two plates on the bench, hoop 4 with its
   couplings) lowered between the walls; the tubes pushed in from inside the dome; with every hoop folded to 0 the pin bores line
-  up: pins 1 and 3 pushed in along r 24 (past plate 4's edge), 2 and 4 along r 13, a drop of CA on each; the motors
+  up: pins 1 and 3 pushed in along r 24 (past plate 4's edge, over the lower side wall), 2 and 4 along r 15, a drop of CA on each; the motors
   slid in from outside, shafts into the couplings; the fabric last.
 
 Bought (Amazon, Spark 29 Oct)
   hoops     KARBXON 3 x 1000 mm pultruded carbon rod (hoops cut to 743..860; pins 17 from the offcuts)   https://www.amazon.com/KARBXON-Carbon-Pultruded-Planes-Drones-Projects/dp/B09Q8CKC2L
   motors    JGY-370 12 V 6 rpm self-locking worm gear motor, double output shaft, 2 (gearbox 46 x 32 x 25, shaft 6 D x 14: E, listing)   https://www.amazon.com/JGY370-Double-Electric-Self-Locking-6RPM-150RPM/dp/B0DL2S9GPZ
-  couplings 6 mm rigid flange coupling, 2 (flange O22 x 2, four holes on O16, hub O10, 12 long: E, the usual part; listing to pick: https://www.amazon.com/s?k=6mm+rigid+flange+coupling)
+  couplings Bonsicoky 6 mm rigid flange coupling, steel, 4-pack with M3 set screws and key, 2 used (listing: bore 6, base O22, cylinder O10; flange 2 thick, four O3 holes on O16, 12 long: E, the usual part)   https://www.amazon.com/Bonsicoky-Rigid-Flange-Coupling/dp/B096MK9T66
   switches  KW11-3Z roller lever micro switch, 4 of a 10-pack     https://www.amazon.com/clp/B0B342RXJM
   fabric    emma kites 20D silnylon, white, 60 x 36 in, 2         https://www.amazon.com/emma-kites-Waterproof-Ultralight-Resistant/dp/B09VWZQT22
   lid       24 x 24 in 3 mm UV-stabilised polycarbonate sheet    https://www.amazon.com/clp/B01KZG8NBQ
@@ -79,8 +91,8 @@ ROD = 1.5                                       # 3 mm carbon rod
 RHO_SOCK, SOCK_D = 50.0, 18.0                   # the socket's mouth from the axis, its depth along the rod
 UM0, PITCH, CROWN0 = 258.2, 10.7, 263.0         # hoop 0's mouth from the dome's centre along the axis, the step between hoops, hoop 0's crown from the axis
 PLATE_T, PLATE_R, HUB_R = 7.4, 32.0, 8.0        # hub plates: thickness, sector radius, the ring round the tube
-ARM_T, ARM_W, ARM_C, ARM_S = 8.0, 14.0, 9.4, 34.0  # the socket arm: across the rod's plane, in it at its root and round the socket (a 3.1 collar), its length along the rod
-RHO_PIN = (24.0, 13.0)                          # the pins: odd plates at r 24, even at r 13
+ARM_T, ARM_W, ARM_C, ARM_S = 8.0, 15.5, 9.4, 34.0  # the socket arm: across the rod's plane, in it at its root and round the socket (a 3.1 collar), its length along the rod
+RHO_PIN = (24.0, 15.0)                          # the pins: odd plates at r 24, even at r 15
 PIN_LEAD = math.radians(22.0)                   # pins and slots lead their plate's arm by this, clear of its root
 M = 4                                           # fabric sub-strips per panel
 FAB = 0.8                                       # fabric thickness drawn
@@ -281,7 +293,7 @@ def slab(k, n0=None):
     for s, hw in ((0.0, ARM_C / 2), (SOCK_D - 2.0, ARM_C / 2), (SOCK_D + 4.0, ARM_W / 2), (ARM_S, ARM_W / 2)):
         for w in (-ARM_T / 2, ARM_T / 2):
             u, rho = sock_axis(k, s)
-            pts += [Wp(u + w * SA, rho + w * CA, 0.0, n) for n in (-hw if n0 is None else n0, hw)]
+            pts += [Wp(u + w * SA, rho + w * CA, 0.0, n) for n in ((-hw, hw) if n0 is None else (n0, min(hw, 7.0)))]   # the hub's own arm stands on the base: 7 above the rod as before, plate 1's wider arm swings over it
     return hull(pts) ^ hbox(-200.0, 200.0, 0.0, up(k) + PLATE_T / 2, 0.0, 400.0)
 
 
@@ -308,7 +320,7 @@ def plate_profile(k):
         if rho_pin(k + 1) < 20: body.append(sl.buffer(R_SLOT + 2.5, 12))
     if k >= 1:                                                               # its own pin's bore
         c = Point(_pt(rho_pin(k), L)); holes.append(c.buffer(R_ROD, 24))
-        if rho_pin(k) < 20: body.append(c.buffer(R_ROD + 2.6, 24))
+        if rho_pin(k) < 20: body += [c.buffer(R_ROD + 2.6, 24), LineString([(0.0, 0.0), _pt(rho_pin(k), L)]).buffer(R_ROD + 2.6, 24)]   # its boss and a web as wide back to the ring round the tube (plate 4's pin is outside its sector)
     if k == NH - 1:
         holes += [Point(_pt(8.0, d(45.0 + 90.0 * i))).buffer(R_TAP3, 16) for i in range(4)]   # the flange's four M3
     return unary_union(body), unary_union(holes)
@@ -330,7 +342,9 @@ A_P4 = up(NH - 1) + PLATE_T / 2                  # plate 4's outer face: the cou
 A_GB = A_P4 + 12.6                               # the gearbox's face (the stop post's outer face)
 A_END = A_GB + FIT.across(25.0, "slide") + 14.0  # the side walls' ends, past the cam and the switches
 A_TUBE = (A_IN, up(NH - 1) + 0.6)                # the pivot tube
-WALL_T = 5.5
+WALL_T = 10.0                                    # the side walls, solid (the gearbox's torque: bending past the base and twist)
+A_W0 = A_P4 + 1.4                                # the side walls' and their buttresses' start on the base, clear of plate 4's outer face
+A_B2, BASE2, X_FOOT = 280.0, RING[3] + 9.0, 56.0  # the base beyond the lid's notch: 9 thick and out to +-56 (under the arms' sweep, W Z 153), the buttresses' toes
 
 
 def hub0():
@@ -340,11 +354,15 @@ def hub0():
     body, _ = plate_profile(0)
     prof = unary_union([body, box(-PLATE_R, BASE[1] - ZB, 12.0, 0.0), box(-12.0, 0.0, 12.0, 12.0)]).difference(Point(0, 0).buffer(R_TUBE_B, 32))
     top = ZB + 12.0; gw = GEAR_W / 2
+    butt = lambda sx, zt: hull([[sx * x, YC + a, z] for a in (A_W0, A_GB) for x, z in ((gw + WALL_T - 1.0, BASE[0]), (gw + WALL_T - 1.0, zt), (X_FOOT, BASE2 + 3.0), (X_FOOT, BASE[0]))])
     solid = U([hbox(-56.0, 28.0, 252.0, A_GB, *BASE),                                   # the base on the ring
+               hbox(-X_FOOT, -14.0, A_B2, A_GB, BASE[0], BASE2), hbox(20.0, X_FOOT, A_B2, A_GB, BASE[0], BASE2),   # 9 thick past the lid, either side of plate 4's hub, pin boss and the coupling
+               hbox(-X_FOOT, -gw, A_W0, A_GB, BASE[0], BASE2), hbox(gw, X_FOOT, A_W0, A_GB, BASE[0], BASE2),
+               butt(1, top), butt(-1, ZB + 6.0),                                           # a buttress from each wall's top out to the base's edge
                prism(prof, A_IN, A_F0), slab(0, n0=BASE[1] - ZB) - cyl([0, YC + A_IN - 1.0, ZB], [0, YC + A_F0 + 1.0, ZB], R_TUBE_B),                         # the inner wall: the cheek, plate 0, hoop 0's arm down to the base
                hbox(12.0, gw, A_GB - 6.0, A_GB, BASE[1], top),                            # the gearbox's stop post, and a low one on the pins' side
                hbox(-gw, -12.0, A_GB - 6.0, A_GB, BASE[1], ZB - 8.0),
-               hbox(gw, gw + WALL_T, A_GB - 6.0, A_END, BASE[0], top), hbox(-gw - WALL_T, -gw, A_GB - 6.0, A_END, BASE[0], ZB + 6.0)])   # the side walls (the pins' side lower: the way in for pins 1 and 3 passes over it)
+               hbox(gw, gw + WALL_T, A_W0, A_END, BASE[0], top), hbox(-gw - WALL_T, -gw, A_W0, A_END, BASE[0], ZB + 6.0)])   # the side walls (the pins' side lower: the way in for pins 1 and 3 passes over it)
     slot = prism(LineString(_arc(rho_pin(1), PIN_LEAD, PIN_LEAD + math.radians(GAP))).buffer(R_SLOT, 12), A_F0 - 6.5, A_F0 + 1.0)     # plate 1's pin: a blind slot
     cuts = [slot] + rod_socket(0)
     cuts += socket_cuts([0, YC + A_IN - 1.0, ZB], [0, YC + A_F0 + 1.0, ZB], R_TUBE_B, [0, 0, 1.0], port_at=1.0 + (A_F0 - A_IN) / 2, port_len=16.0)   # the tube's bore, its port down from the cheek's top
@@ -567,7 +585,7 @@ def lines():
         out.append(P(f"ring_{j:02d}", f"dome base ring, segment {j} ({kind})", "r 255..297 at W Z 130..142, half laps with two 3 mm carbon pins; " + PRINT[f"ring_{kind}"][1], f"ring_{kind}"))
     for sgn, s in SIDES:
         nm = "left" if s == "l" else "right"
-        out.append(P(f"hub_{s}", f"dome hub bracket, {nm}", "base on the ring (4 x M3 x 12 from below), the inner wall with plate 0, the gearbox's side walls; " + PRINT["hub_l"][1], f"hub_{s}"))
+        out.append(P(f"hub_{s}", f"dome hub bracket, {nm}", "base on the ring (4 x M3 x 12 from below), the inner wall with plate 0, the gearbox's 10 thick side walls with their buttresses; " + PRINT["hub_l"][1], f"hub_{s}"))
     for k in range(1, NH):
         for sgn, s in SIDES:
             out.append(P(f"plate_{k}_{s}", f"dome hoop {k} plate, {'left' if s == 'l' else 'right'}", f"turns on the hub's tube, its pin at r {rho_pin(k):.0f}; " + PRINT["plate_1_l"][1], f"plate_{k}_{s}"))
@@ -583,7 +601,7 @@ def lines():
     for sgn, s in SIDES:
         nm = "left" if s == "l" else "right"
         out.append(L(f"pivot_{s}", f"dome pivot, {nm} (6 mm carbon tube x 53)", "bought", None, "#222222", "bonded in the hub's inner wall; plates 1..4 turn on it"))
-        out.append(L(f"coupling_{s}", f"dome drive coupling, {nm} (6 mm flange coupling)", "bought", None, "#b08d57", "four M3 x 8 into plate 4, set screws on the motor's shaft (E: flange O22, holes on O16)"))
+        out.append(L(f"coupling_{s}", f"dome drive coupling, {nm} (6 mm flange coupling)", "bought", None, "#b08d57", "Bonsicoky 6 mm rigid flange coupling (amazon.com/dp/B096MK9T66): four M3 x 8 into plate 4, set screws on the motor's shaft (listing: base O22, cylinder O10; holes on O16 E)"))
         out.append(L(f"drive_{s}", f"dome drive, {nm}: worm motor and cam", "bought", None, "#555555", "JGY-370 12 V 6 rpm double shaft, self-locking, between the hub's side walls; a cam on the outer shaft"))
         out.append(L(f"switches_{s}", f"dome limit switches, {nm} (2 x KW11)", "bought", None, "#333333", "on the side walls either side of the cam: open and shut"))
     out.append(L("ring_pins", "dome ring lap pins (32 x 3 mm carbon x 11)", "bought", None, "#222222", "two through each half lap, resin from the top"))
@@ -617,10 +635,10 @@ def assembly_block():
 # ---------------------------------------------------------------------------------------------------------------- print files
 SET = "0.2 layers, 4 walls, 25 % gyroid, PCTG at PETG + 10 C"
 PRINT = {  # print file -> (count, pose and supports, time E)
-    "hub_l": (1, "base down, no supports", "4h30"), "hub_r": (1, "base down, no supports", "4h30"),
+    "hub_l": (1, "base down, no supports", "7h00"), "hub_r": (1, "base down, no supports", "7h00"),
     "ring_spoke": (8, "bottom face down, no supports", "2h30"), "ring_plain": (6, "top face down (as laid), no supports", "2h30"), "ring_hub": (2, "top face down (as laid), no supports", "2h30"),
 }
-PRINT.update({f"plate_{k}_{s}": (1, "outer face down (as laid), supports under the arm only (build plate only)", "0h40") for k in range(1, NH) for _, s in SIDES})
+PRINT.update({f"plate_{k}_{s}": (1, "outer face down (as laid), supports under the arm only (build plate only)", "0h45") for k in range(1, NH) for _, s in SIDES})
 
 
 def print_files():
