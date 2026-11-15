@@ -1,11 +1,15 @@
 {
  "part_sha": "8e9942732506",
  "lib_sha": "90da941eae09",
- "data_sha": "2bb307d32f28",
+ "data_sha": "fd074468fb52",
  "setup_sha": "76fc246d00e8bfab",
  "reads": [
+  "parts/box_funnel/make.py",
   "parts/latch5/battery_latch_v4.py",
+  "parts/latch5/make.py",
+  "parts/latch6/make.py",
   "parts/latch7/make.py",
+  "parts/latch7_receiver/part.py",
   "parts/latch7_recv_lib.py"
  ]
 }
