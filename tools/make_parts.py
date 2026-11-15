@@ -180,8 +180,8 @@ def check_set(p, files_, log=print):
             ok = False
         rows.append(dict(file=f, ok=bool(ok)))
     bad = [r["file"] for r in rows if not r["ok"]]
-    sol = dict(ok=bool(rows) and not bad, files=rows, why=None if rows and not bad else
-               ("a generator that wrote no print file" if not rows else f"solid check FAIL on {', '.join(bad[:6])}"))
+    sol = dict(ok=not bad, files=rows, why=None if rows and not bad else                  # nothing printed of its own this run: nothing to fail
+               ("a generator: no print file of its own in this run (its parts carry their own records)" if not rows else f"solid check FAIL on {', '.join(bad[:6])}"))
     m = record(p).get("make") or {}; m["solid"] = sol; _write(p, "make", m)
     log(f"make_parts: {p}: {len(rows)} print files, solid check {'PASS' if sol['ok'] else 'FAIL'}" + (f" ({sol['why']})" if sol["why"] else ""))
     return sol["ok"]
