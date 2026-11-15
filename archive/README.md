@@ -27,3 +27,9 @@ A sweep moves a folder here when it is mesh-only, in no `systems/*.assembly.json
   mesh); `parts/box_ctx_*` x 4, the 3 Nov context latches (latch v7's `box_latch7_*` replaced them); `parts/box_stand_bara`,
   `barb`, `cradle_keel`, `kb`, `toe`, the v1 demo stand the stand v2 replaced (`parts/box_stand_mast` stays: its check.py
   holds the arm's load cases stand v2 uses).
+- Latch, superseded generations: `parts/latch5_*` x 12 and `parts/latch6_*` x 13 (what latch v5 and v6's make.py wrote; v7
+  replaced both, their systems are archived), `parts/latch7_rib` (v7 before the 12 Nov stop bar; latch7/make.py no longer
+  writes it), and the 30 Oct latch copies `parts/cartridge`, `receiver`, `pack`, `cartridge_v6_latch`, `receiver_v3_latch`.
+  `systems/latch5.assembly.json` (archived, nothing writes or reads it) and its timeline `tools/latch5_motion.py` are in
+  `systems/` and `tools/` here. `parts/latch5/` and `parts/latch6/` stay: latch v7 imports their make.py and reads
+  latch6's result.json, and `latch7/make.py --appendix` folds `systems/latch6.appendix.html` into v7's page.
