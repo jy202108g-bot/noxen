@@ -206,25 +206,49 @@
  "pairs": [
   {
    "a": "box_swaparm_box_arm8_hub_run",
-   "b": "box_swaparm_box_arm8_fx_detent_roller",
-   "mm3": 5.28,
+   "b": "box_swaparm_box_arm8_fx_bearings",
+   "mm3": 13114.24,
    "limit_mm3": 0.5,
    "contact": null,
    "ok": false,
    "pieces": [
     {
-     "mm3": 5.28,
+     "mm3": 13114.24,
      "at": [
-      35.2,
-      21.7,
-      35.1
+      0.0,
+      30.0,
+      0.0
      ],
      "extent_mm": [
-      2.9,
-      4.0,
-      2.9
+      80.0,
+      32.0,
+      80.0
      ],
-     "depth_mm": 2.91
+     "depth_mm": 32.0
+    }
+   ]
+  },
+  {
+   "a": "box_swaparm_box_arm8_hub_run",
+   "b": "box_swaparm_box_arm8_fx_stub",
+   "mm3": 4860.99,
+   "limit_mm3": 0.5,
+   "contact": null,
+   "ok": false,
+   "pieces": [
+    {
+     "mm3": 4860.99,
+     "at": [
+      0.0,
+      10.0,
+      0.0
+     ],
+     "extent_mm": [
+      90.0,
+      4.0,
+      90.0
+     ],
+     "depth_mm": 4.01
     }
    ]
   },
@@ -322,14 +346,6 @@
    "a": "box_swaparm_box_arm8_hub_run",
    "b": "box_swaparm_box_arm8_b_rail",
    "mm3": 0.01,
-   "limit_mm3": 0.5,
-   "contact": null,
-   "ok": true
-  },
-  {
-   "a": "box_swaparm_box_arm8_hub_run",
-   "b": "box_swaparm_box_arm8_fx_bearings",
-   "mm3": 0.0,
    "limit_mm3": 0.5,
    "contact": null,
    "ok": true
@@ -637,11 +653,15 @@
   }
  ],
  "not_print_ready": {
+  "box_swaparm_box_arm8_fx_stub": [
+   "clashes with box_swaparm_box_arm8_hub_run: 4861.0 mm3"
+  ],
   "box_swaparm_box_arm8_hub_run": [
-   "clashes with box_swaparm_box_arm8_fx_detent_roller: 5.3 mm3"
+   "clashes with box_swaparm_box_arm8_fx_stub: 4861.0 mm3",
+   "clashes with box_swaparm_box_arm8_fx_bearings: 13114.2 mm3"
   ]
  },
  "would_block": {},
- "seconds": 15.6,
+ "seconds": 13.5,
  "placed": {}
 }

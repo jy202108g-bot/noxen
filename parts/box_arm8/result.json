@@ -1453,8 +1453,8 @@
     "part": "box_arm8_hub",
     "count": 1,
     "current": false,
-    "worst": 0.556,
-    "mass_g": 322.91,
+    "worst": 0.353,
+    "mass_g": 349.58,
     "solid_check": "PASS"
    },
    {
@@ -2548,5 +2548,38 @@
   "head_vs_funnel_at_the_drone": [],
   "funnel_note": "the funnel as of 4bef046 (turned pose) leaves the head's lane clear below W Z 161.5 over Y 58..79: the carriage tops out at 158.3, the yoke at 160.3 with the over-travel (inside |X| 28, Y 80..112)",
   "stand_note": "the stand in systems/box.assembly.json is the built demo v1's (mast, keel, kb, toe, bars), drawn for v4's 8 bays at R 100; whatever it meets here is a box-structure change, not an arm one"
+ },
+ "make": {
+  "sha": {
+   "parts/box_arm8/kit.json": "391c5d2bbd08",
+   "parts/box_arm8/make.py": "b1cb58677455",
+   "parts/box_arm8_lib.py": "1b88e29d7dcb",
+   "parts/box_arm8p_lib.py": "e0aa3a687a0e",
+   "parts/box_funnel/make.py": "b3f11778ab8e",
+   "parts/box_stand2_lib.py": "7bf70a17ab06",
+   "parts/box_stand2p_lib.py": "225b41c7fc09",
+   "parts/cage_node_lib.py": "bad3d25f2b60",
+   "parts/latch5/battery_latch_v4.py": "f55aaf78bdf7",
+   "parts/latch5/make.py": "5e01bbf4890a",
+   "parts/latch6/make.py": "783c373b02e5",
+   "parts/latch7/make.py": "3ee20169a07e",
+   "parts/socket_inject.py": "6613a0572d9f",
+   "systems/box.assembly.json": "d1c4c71b12c0",
+   "systems/fit_table.json": "8d560ff6f55b",
+   "systems/overseer.cage.json": "298700a6d756",
+   "systems/swap_arm.assembly.json": "b169a6b056f2",
+   "tools/build_site.py": "954e55503aa7",
+   "tools/seat_check.py": "5acab205ab60",
+   "tools/seat_envelope.py": "fe96ec54e18a"
+  },
+  "rc": 0,
+  "s": 54.0,
+  "at": "2026-11-15 07:45",
+  "commit": "8258bcd8",
+  "solid": {
+   "ok": true,
+   "files": [],
+   "why": "a generator: no print file of its own in this run (its parts carry their own records)"
+  }
  }
 }
