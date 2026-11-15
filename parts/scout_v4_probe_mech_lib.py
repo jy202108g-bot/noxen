@@ -99,4 +99,7 @@ def save(name, m_print, m_drone, note):
     print(f"{name}: {v:.2f} cm3, {v * PCTG:.1f} g PCTG, {np.round(m_print.extents, 1).tolist()} mm as printed, solid check {ok}; {note}")
     if ok == "FAIL":
         print(sc.stdout[-1500:], sc.stderr[-800:])
+    from topo.build import render                                                               # every drawn part gets the preview Spark looks at
+    render(m_print, os.path.join(d, "preview.png"), title=f"{name} (drawn prototype)",
+           info=f"{v * PCTG:.1f} g | solid check {ok} | as printed")
     return ok
