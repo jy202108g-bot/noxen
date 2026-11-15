@@ -4,10 +4,10 @@
  "solid_ok": true,
  "solid": {
   "bodies_plain": 1,
-  "specks_plain": 1,
+  "specks_plain": 0,
   "bodies_eroded": 1,
   "eroded_volumes_mm3": [
-   93839.1
+   93841.4
   ],
   "sealed_voids": [],
   "inner_shells": [],
@@ -18,10 +18,74 @@
    {
     "kind": "wall",
     "thick_mm": 1.5,
-    "core_mm3": 54.36,
+    "core_mm3": 54.55,
+    "at": [
+     327.8,
+     -11.8,
+     88.0
+    ],
+    "span": [
+     1.6,
+     1.6,
+     1.5
+    ],
+    "mm3": 95.1
+   },
+   {
+    "kind": "wall",
+    "thick_mm": 1.5,
+    "core_mm3": 54.55,
+    "at": [
+     327.8,
+     -11.8,
+     116.0
+    ],
+    "span": [
+     1.6,
+     1.6,
+     1.5
+    ],
+    "mm3": 95.1
+   },
+   {
+    "kind": "wall",
+    "thick_mm": 1.5,
+    "core_mm3": 54.48,
     "at": [
      318.3,
      -38.1,
+     88.0
+    ],
+    "span": [
+     1.6,
+     1.6,
+     1.5
+    ],
+    "mm3": 95.2
+   },
+   {
+    "kind": "wall",
+    "thick_mm": 1.5,
+    "core_mm3": 54.48,
+    "at": [
+     318.3,
+     -38.1,
+     116.0
+    ],
+    "span": [
+     1.6,
+     1.6,
+     1.5
+    ],
+    "mm3": 95.2
+   },
+   {
+    "kind": "wall",
+    "thick_mm": 1.5,
+    "core_mm3": 54.47,
+    "at": [
+     318.3,
+     38.1,
      88.0
     ],
     "span": [
@@ -34,10 +98,10 @@
    {
     "kind": "wall",
     "thick_mm": 1.5,
-    "core_mm3": 54.36,
+    "core_mm3": 54.47,
     "at": [
      318.3,
-     -38.1,
+     38.1,
      116.0
     ],
     "span": [
@@ -50,73 +114,9 @@
    {
     "kind": "wall",
     "thick_mm": 1.5,
-    "core_mm3": 54.33,
-    "at": [
-     318.3,
-     38.1,
-     88.0
-    ],
-    "span": [
-     1.6,
-     1.6,
-     1.5
-    ],
-    "mm3": 94.8
-   },
-   {
-    "kind": "wall",
-    "thick_mm": 1.5,
-    "core_mm3": 54.33,
-    "at": [
-     318.3,
-     38.1,
-     116.0
-    ],
-    "span": [
-     1.6,
-     1.6,
-     1.5
-    ],
-    "mm3": 94.8
-   },
-   {
-    "kind": "wall",
-    "thick_mm": 1.5,
-    "core_mm3": 54.3,
+    "core_mm3": 54.22,
     "at": [
      327.8,
-     -11.8,
-     88.0
-    ],
-    "span": [
-     1.6,
-     1.5,
-     1.5
-    ],
-    "mm3": 94.6
-   },
-   {
-    "kind": "wall",
-    "thick_mm": 1.5,
-    "core_mm3": 54.3,
-    "at": [
-     327.8,
-     -11.8,
-     116.0
-    ],
-    "span": [
-     1.6,
-     1.5,
-     1.5
-    ],
-    "mm3": 94.6
-   },
-   {
-    "kind": "wall",
-    "thick_mm": 1.5,
-    "core_mm3": 54.11,
-    "at": [
-     327.9,
      11.8,
      88.0
     ],
@@ -125,14 +125,14 @@
      1.6,
      1.5
     ],
-    "mm3": 94.4
+    "mm3": 94.5
    },
    {
     "kind": "wall",
     "thick_mm": 1.5,
-    "core_mm3": 54.11,
+    "core_mm3": 54.22,
     "at": [
-     327.9,
+     327.8,
      11.8,
      116.0
     ],
@@ -141,7 +141,7 @@
      1.6,
      1.5
     ],
-    "mm3": 94.4
+    "mm3": 94.5
    }
   ],
   "acute_edges": 5,
@@ -215,7 +215,7 @@
     "case": "crash 5 (35 g)",
     "cls": "crash",
     "inlayer": 0.041,
-    "across": 0.057,
+    "across": 0.056,
     "at": [
      309.9,
      -1.0,
@@ -247,7 +247,7 @@
    {
     "case": "crash 8 (35 g)",
     "cls": "crash",
-    "inlayer": 0.045,
+    "inlayer": 0.044,
     "across": 0.053,
     "at": [
      323.9,
@@ -280,10 +280,10 @@
    {
     "case": "crash 11 (35 g)",
     "cls": "crash",
-    "inlayer": 0.045,
+    "inlayer": 0.044,
     "across": 0.075,
     "at": [
-     311.9,
+     309.9,
      3.0,
      34.7
     ]
@@ -305,7 +305,7 @@
     "inlayer": 0.044,
     "across": 0.075,
     "at": [
-     311.9,
+     309.9,
      -3.0,
      34.7
     ]
@@ -357,8 +357,8 @@
    {
     "case": "tube 15-17 tension 181 N + side 4 N",
     "cls": "crash",
-    "inlayer": 0.047,
-    "across": 0.051,
+    "inlayer": 0.046,
+    "across": 0.05,
     "at": [
      349.9,
      41.0,
@@ -369,7 +369,7 @@
     "case": "tube 15-17 compression 181 N + side 4 N",
     "cls": "crash",
     "inlayer": 0.047,
-    "across": 0.053,
+    "across": 0.052,
     "at": [
      349.9,
      49.0,
@@ -379,7 +379,7 @@
    {
     "case": "tube 16-17 tension 181 N + side 4 N",
     "cls": "crash",
-    "inlayer": 0.046,
+    "inlayer": 0.047,
     "across": 0.051,
     "at": [
      355.9,
@@ -402,7 +402,7 @@
     "case": "tube 17-18 tension 229 N + side 4 N",
     "cls": "crash",
     "inlayer": 0.118,
-    "across": 0.185,
+    "across": 0.186,
     "at": [
      355.9,
      33.0,
@@ -445,7 +445,7 @@
    {
     "case": "core tie front.2 tension 425 N + side 0 N",
     "cls": "crash",
-    "inlayer": 0.184,
+    "inlayer": 0.183,
     "across": 0.131,
     "at": [
      335.9,
@@ -477,33 +477,33 @@
  "mass_g": 154.74,
  "watertight": true,
  "export": {
-  "faces_in": 679332,
+  "faces_in": 680210,
   "degenerate": 0,
   "folded": 0,
-  "caps_split": 1,
+  "caps_split": 0,
   "pinch_vertices": 0,
   "caps_left": 0,
   "dropped_shells": [],
   "n_dropped_shells": 0,
   "bodies": 1,
   "open_kept": [],
-  "faces": 679332,
+  "faces": 680210,
   "boundary_edges": 0,
   "nonmanifold_edges": 0,
   "watertight": true,
   "simplified": true,
   "first_pass": {
-   "degenerate": 324,
+   "degenerate": 326,
    "folded": 8,
    "caps_split": 11,
    "caps_left": 2,
    "watertight": true,
-   "faces": 948340,
+   "faces": 948780,
    "n_dropped_shells": 0,
    "dropped_shells": []
   },
-  "volume_mm3": 125802.8,
-  "exact_mm3": 125806.4
+  "volume_mm3": 125801.0,
+  "exact_mm3": 125804.7
  },
  "bodies": {
   "bodies_raw": 69,
@@ -581,15 +581,13 @@
   ],
   "bodies": 1
  },
- "volume_mm3": 125806.4,
+ "volume_mm3": 125804.7,
  "drawn_g": 20.18,
  "export_cleanup": {
   "pitch": 0.25,
   "erode_mm": 0.9,
   "core_limit_mm3": 10.0,
-  "specks_mm3": [
-   0.016
-  ],
+  "specks_mm3": [],
   "slivers": [],
   "kept_walls": [
    {
@@ -599,8 +597,8 @@
      88.0
     ],
     "thick_mm": 1.5,
-    "core_mm3": 54.36,
-    "mm3": 95.0
+    "core_mm3": 54.48,
+    "mm3": 95.2
    },
    {
     "at": [
@@ -609,28 +607,28 @@
      116.0
     ],
     "thick_mm": 1.5,
-    "core_mm3": 54.36,
+    "core_mm3": 54.48,
+    "mm3": 95.2
+   },
+   {
+    "at": [
+     318.3,
+     38.1,
+     88.0
+    ],
+    "thick_mm": 1.5,
+    "core_mm3": 54.47,
     "mm3": 95.0
    },
    {
     "at": [
      318.3,
      38.1,
-     88.0
-    ],
-    "thick_mm": 1.5,
-    "core_mm3": 54.33,
-    "mm3": 94.8
-   },
-   {
-    "at": [
-     318.3,
-     38.1,
      116.0
     ],
     "thick_mm": 1.5,
-    "core_mm3": 54.33,
-    "mm3": 94.8
+    "core_mm3": 54.47,
+    "mm3": 95.0
    },
    {
     "at": [
@@ -639,8 +637,8 @@
      88.0
     ],
     "thick_mm": 1.5,
-    "core_mm3": 54.3,
-    "mm3": 94.6
+    "core_mm3": 54.55,
+    "mm3": 95.1
    },
    {
     "at": [
@@ -649,38 +647,37 @@
      116.0
     ],
     "thick_mm": 1.5,
-    "core_mm3": 54.3,
-    "mm3": 94.6
+    "core_mm3": 54.55,
+    "mm3": 95.1
    },
    {
     "at": [
-     327.9,
+     327.8,
      11.8,
      88.0
     ],
     "thick_mm": 1.5,
-    "core_mm3": 54.11,
-    "mm3": 94.4
+    "core_mm3": 54.22,
+    "mm3": 94.5
    },
    {
     "at": [
-     327.9,
+     327.8,
      11.8,
      116.0
     ],
     "thick_mm": 1.5,
-    "core_mm3": 54.11,
-    "mm3": 94.4
+    "core_mm3": 54.22,
+    "mm3": 94.5
    }
   ],
-  "removed_mm3": 0.0,
-  "specks": 1
+  "removed_mm3": 0.0
  },
  "memory_build": [
   {
    "estimate_gb": 10.11,
    "parts": {
-    "held": 1.34,
+    "held": 1.33,
     "gate": 2.85,
     "mesh": 5.92
    },
@@ -691,7 +688,7 @@
     127.6,
     128.3
    ],
-   "faces": 1059724,
+   "faces": 1060172,
    "when": "before the export cleanup"
   },
   {
@@ -799,7 +796,7 @@
   "n_real": 28,
   "n_ties": 168,
   "backend": "direct",
-  "iterations": 45,
+  "iterations": 46,
   "stopped": "time",
   "checks": [
    {
@@ -827,7 +824,7 @@
    "index": 0.285
   },
   "cavity": {
-   "last": 1.3727070158247954,
+   "last": 1.3738906326381684,
    "ratio": 5.0,
    "T0": 96.81022665569378,
    "row": false
@@ -893,11 +890,11 @@
    "held but core tie front.2"
   ]
  },
- "build_s": 399.7,
- "layout_s": 17076,
- "peak_gb": 5.59616,
+ "build_s": 381.6,
+ "layout_s": 17443,
+ "peak_gb": 5.590516,
  "memory": {
-  "estimate_gb": 6.16,
+  "estimate_gb": 6.15,
   "parts": {
    "held": 1.0,
    "factor": 3.07,
@@ -1254,7 +1251,7 @@
   "k": 3.0
  },
  "field": {
-  "worst": 0.202,
+  "worst": 0.203,
   "worst_case": "tube 17-18 compression 229 N + side 4 N",
   "worst_at": [
    355.9,
@@ -1262,7 +1259,7 @@
    50.7
   ],
   "beta": 32.0,
-  "iteration": 45
+  "iteration": 46
  },
  "gen_cm3": 110.0,
  "h": 2.0,
@@ -1303,7 +1300,11 @@
      88.2
     ],
     "core_mm": 2.0,
-    "free_cells": 23
+    "free_cells": 23,
+    "room_faces": [
+     "-x",
+     "+y"
+    ]
    },
    {
     "id": 3,
@@ -1320,7 +1321,11 @@
      116.2
     ],
     "core_mm": 2.0,
-    "free_cells": 23
+    "free_cells": 23,
+    "room_faces": [
+     "-x",
+     "+y"
+    ]
    },
    {
     "id": 4,
@@ -1337,7 +1342,11 @@
      88.2
     ],
     "core_mm": 2.0,
-    "free_cells": 23
+    "free_cells": 23,
+    "room_faces": [
+     "-x",
+     "-y"
+    ]
    },
    {
     "id": 5,
@@ -1354,7 +1363,11 @@
      116.2
     ],
     "core_mm": 2.0,
-    "free_cells": 23
+    "free_cells": 23,
+    "room_faces": [
+     "-x",
+     "-y"
+    ]
    },
    {
     "id": 6,
@@ -1371,7 +1384,14 @@
      5.6
     ],
     "core_mm": 3.7,
-    "free_cells": 173
+    "free_cells": 173,
+    "room_faces": [
+     "-x",
+     "+y",
+     "-y",
+     "+z",
+     "-z"
+    ]
    },
    {
     "id": 7,
@@ -1388,7 +1408,14 @@
      5.6
     ],
     "core_mm": 3.7,
-    "free_cells": 173
+    "free_cells": 173,
+    "room_faces": [
+     "-x",
+     "+y",
+     "-y",
+     "+z",
+     "-z"
+    ]
    },
    {
     "id": 8,
@@ -1405,7 +1432,15 @@
      40.4
     ],
     "core_mm": 3.7,
-    "free_cells": 190
+    "free_cells": 190,
+    "room_faces": [
+     "+x",
+     "-x",
+     "+y",
+     "-y",
+     "+z",
+     "-z"
+    ]
    },
    {
     "id": 9,
@@ -1422,7 +1457,11 @@
      88.4
     ],
     "core_mm": 2.0,
-    "free_cells": 21
+    "free_cells": 21,
+    "room_faces": [
+     "-x",
+     "+y"
+    ]
    },
    {
     "id": 10,
@@ -1439,7 +1478,11 @@
      116.4
     ],
     "core_mm": 2.0,
-    "free_cells": 21
+    "free_cells": 21,
+    "room_faces": [
+     "-x",
+     "+y"
+    ]
    },
    {
     "id": 11,
@@ -1456,7 +1499,11 @@
      88.4
     ],
     "core_mm": 2.0,
-    "free_cells": 21
+    "free_cells": 21,
+    "room_faces": [
+     "-x",
+     "-y"
+    ]
    },
    {
     "id": 12,
@@ -1473,7 +1520,11 @@
      116.4
     ],
     "core_mm": 2.0,
-    "free_cells": 21
+    "free_cells": 21,
+    "room_faces": [
+     "-x",
+     "-y"
+    ]
    },
    {
     "id": 13,
@@ -1490,7 +1541,15 @@
      40.4
     ],
     "core_mm": 3.7,
-    "free_cells": 190
+    "free_cells": 190,
+    "room_faces": [
+     "+x",
+     "-x",
+     "+y",
+     "-y",
+     "+z",
+     "-z"
+    ]
    },
    {
     "id": 14,
@@ -1562,6 +1621,7 @@
     "free_cells": 249
    }
   ],
+  "lone_posts": [],
   "envelope_waste": 0.0,
   "plate": {
    "L_mm": 136.0,
@@ -1571,7 +1631,53 @@
   },
   "drawn_thin": [],
   "drawn_walls": [],
+  "bed": {
+   "build": "+z",
+   "drawn_mm2": 0.0,
+   "room_mm2": 0.9,
+   "min_mm2": null
+  },
   "parity": [],
+  "paths": [],
+  "fit_sizes": {
+   "recorded": true,
+   "declared": [
+    {
+     "shape": "round",
+     "nominal": 2.11,
+     "kinds": [
+      "port"
+     ],
+     "window": [
+      2.35,
+      2.65
+     ]
+    },
+    {
+     "shape": "round",
+     "nominal": 3.0,
+     "kinds": [
+      "bond"
+     ],
+     "window": [
+      3.05,
+      3.35
+     ]
+    },
+    {
+     "shape": "round",
+     "nominal": 6.0,
+     "kinds": [
+      "bond"
+     ],
+     "window": [
+      6.05,
+      6.35
+     ]
+    }
+   ],
+   "refused": []
+  },
   "cases": 28,
   "supports": 11,
   "fails": [],
@@ -1585,28 +1691,25 @@
    ],
    "budget_share": 0.183,
    "thinned": 0.21,
-   "max_worst": 0.3
+   "max_worst": 0.3,
+   "fin_cells": 663,
+   "worst_in_fin": false
   }
  },
  "baseline": null,
- "total_s": 17476,
+ "total_s": 17825,
  "part_sha": "f9f2c2587d00",
- "lib_sha": "3bca3914ee6f",
+ "lib_sha": "728e1eec1d3f",
  "setup_sha": "67f1d48b8c75f46e",
  "max_worst": 0.3,
  "strength_ok": true,
  "print_stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/overseer_head_mount.stl",
-  "sha256": "174111bdef1ae8bdbd0c7950c1bed04b3dbc42309d79dac67cce6b1a60a64373",
-  "bytes": 33966684,
-  "faces": 679332,
+  "sha256": "5bab90e72b7219a521968ccc349ad722982d42c7f23152abec4febba4ee8cd98",
+  "bytes": 34010584,
+  "faces": 680210,
   "view_faces": 60000,
-  "view_sha256": "295641b1e1a7e84d4b351a46b2df0a33497e358019a62570d4ccd5194cb341c4",
-  "at": "2026-11-13 09:02"
- },
- "assembly": {
-  "drone": "overseer",
-  "ok": true,
-  "why": []
+  "view_sha256": "c61f46b1ad8c2b9eb9df5cc114c646de0b14538fafdee6ed809b83c4e5babe73",
+  "at": "2026-11-15 08:23"
  }
 }
