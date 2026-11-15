@@ -1753,5 +1753,10 @@
   "view_faces": 60000,
   "view_sha256": "560385ba6bb812dac5173225a812df4371e85f722bcf0d598e94c40ad84f86c6",
   "at": "2026-11-15 04:53"
+ },
+ "assembly": {
+  "drone": "scout_v4",
+  "ok": true,
+  "why": []
  }
 }

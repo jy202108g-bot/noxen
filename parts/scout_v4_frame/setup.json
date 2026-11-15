@@ -2,7 +2,7 @@
  "part_sha": "634c02e63d28",
  "lib_sha": "fe45618f0b1f",
  "data_sha": "e5b9e86ce6d8",
- "setup_sha": "bcd0d0cbf3efd3f6",
+ "setup_sha": "4d19bdb900451255",
  "reads": [
   "parts/cage_node_lib.py",
   "parts/latch7/view/keepout/carrier_cap.stl",
