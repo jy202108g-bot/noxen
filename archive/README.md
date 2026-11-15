@@ -18,3 +18,12 @@ through history. Move a folder back to `parts/` (and give it an assembly line) t
   (`parts/box_scout_*`).
 
 A sweep moves a folder here when it is mesh-only, in no `systems/*.assembly.json` (by `id`, `part` or `mesh`) and named by no code.
+
+15 Nov sweep (tools/sweep.py now keeps a folder only by what draws, names or regenerates it; each group checked by hand):
+- Box, superseded by what the box page now draws (tools/import_box.py): `parts/box_arm_*` x 55, the arm v7 import of 3 Nov
+  and its 8 Nov bays (systems/swap_arm.assembly.json, arm v8, replaced it; import_box drops `box_arm_` lines, only a re-import
+  from the nox repo read `box_arm_rec0`); `parts/box_scout_*` x 17, the seated Scout v3 copies; `parts/box_overseer_*` x 18,
+  seated Overseer copies (the page seats both drones from their own folders, its `box_overseer_<id>` lines name the drone's
+  mesh); `parts/box_ctx_*` x 4, the 3 Nov context latches (latch v7's `box_latch7_*` replaced them); `parts/box_stand_bara`,
+  `barb`, `cradle_keel`, `kb`, `toe`, the v1 demo stand the stand v2 replaced (`parts/box_stand_mast` stays: its check.py
+  holds the arm's load cases stand v2 uses).
