@@ -1,0 +1,830 @@
+{
+ "name": "box_stand2_yoke_r",
+ "engine": "nox/topo",
+ "solid_ok": true,
+ "solid": {
+  "bodies_plain": 1,
+  "specks_plain": 0,
+  "bodies_eroded": 1,
+  "eroded_volumes_mm3": [
+   145952.4
+  ],
+  "sealed_voids": [],
+  "inner_shells": [],
+  "necks": [],
+  "drawn_not_in_main": [],
+  "thin_walls": [],
+  "thin_allowed": [],
+  "acute_edges": 0,
+  "ok": true
+ },
+ "function_check": {
+  "skin_mm3": 12578.7,
+  "skin_missing_mm3": 0.0,
+  "in_cuts_mm3": -0.0,
+  "outside_env_mm3": 0.0,
+  "ok": true
+ },
+ "strength": {
+  "rows": [
+   {
+    "case": "standing: arm v8, 11 bays with packs, the ring at its worst unbalance, flat floor",
+    "cls": "sustained",
+    "inlayer": 0.585,
+    "across": 0.598,
+    "at": [
+     17.1,
+     -52.0,
+     -148.0
+    ]
+   },
+   {
+    "case": "standing: arm v8, 11 bays with packs, the ring at its worst unbalance, uneven floor, right rear foot off",
+    "cls": "sustained",
+    "inlayer": 0.881,
+    "across": 1.141,
+    "at": [
+     39.1,
+     -44.0,
+     -174.0
+    ]
+   },
+   {
+    "case": "standing: arm v8, 11 bays with packs, the ring at its worst unbalance, uneven floor, left rear foot off",
+    "cls": "sustained",
+    "inlayer": 0.382,
+    "across": 0.442,
+    "at": [
+     9.1,
+     -48.0,
+     -146.0
+    ]
+   },
+   {
+    "case": "insert at the drone, 106.6 N every swap, flat floor",
+    "cls": "flight",
+    "inlayer": 0.522,
+    "across": 0.557,
+    "at": [
+     39.1,
+     -44.0,
+     -174.0
+    ]
+   },
+   {
+    "case": "insert at the drone, 106.6 N every swap, uneven floor, right rear foot off",
+    "cls": "flight",
+    "inlayer": 0.679,
+    "across": 0.876,
+    "at": [
+     39.1,
+     -44.0,
+     -174.0
+    ]
+   },
+   {
+    "case": "insert at the drone, 106.6 N every swap, uneven floor, left rear foot off",
+    "cls": "flight",
+    "inlayer": 0.399,
+    "across": 0.409,
+    "at": [
+     17.1,
+     -52.0,
+     -148.0
+    ]
+   },
+   {
+    "case": "carrying an Overseer at full reach, flat floor",
+    "cls": "flight",
+    "inlayer": 0.258,
+    "across": 0.264,
+    "at": [
+     17.1,
+     -52.0,
+     -148.0
+    ]
+   },
+   {
+    "case": "insert at the float limit, 118 N, flat floor",
+    "cls": "misuse",
+    "inlayer": 0.345,
+    "across": 0.371,
+    "at": [
+     39.1,
+     -44.0,
+     -174.0
+    ]
+   },
+   {
+    "case": "dropped Overseer onto the head at the drone, 150 N, flat floor",
+    "cls": "misuse",
+    "inlayer": 0.377,
+    "across": 0.393,
+    "at": [
+     25.1,
+     -50.0,
+     -154.0
+    ]
+   },
+   {
+    "case": "axle stall 5.53 N m about Y, head held at the drone, flat floor",
+    "cls": "misuse",
+    "inlayer": 0.188,
+    "across": 0.192,
+    "at": [
+     17.1,
+     -52.0,
+     -148.0
+    ]
+   },
+   {
+    "case": "box handling 3 g down + 2 g side (+X), uneven floor, left rear foot off",
+    "cls": "misuse",
+    "inlayer": 0.632,
+    "across": 0.944,
+    "at": [
+     39.1,
+     -44.0,
+     -174.0
+    ]
+   },
+   {
+    "case": "box handling 3 g down + 2 g side (+X), uneven floor, left front foot off",
+    "cls": "misuse",
+    "inlayer": 0.648,
+    "across": 0.999,
+    "at": [
+     39.1,
+     -44.0,
+     -174.0
+    ]
+   },
+   {
+    "case": "box handling 3 g down + 2 g side (-X), flat floor",
+    "cls": "misuse",
+    "inlayer": 0.247,
+    "across": 0.261,
+    "at": [
+     15.1,
+     -10.0,
+     -146.0
+    ]
+   },
+   {
+    "case": "box handling 3 g down + 2 g side (-X), uneven floor, right rear foot off",
+    "cls": "misuse",
+    "inlayer": 0.276,
+    "across": 0.292,
+    "at": [
+     15.1,
+     -10.0,
+     -146.0
+    ]
+   },
+   {
+    "case": "box handling 3 g down + 2 g side (-X), uneven floor, right front foot off",
+    "cls": "misuse",
+    "inlayer": 0.105,
+    "across": 0.147,
+    "at": [
+     13.1,
+     -36.0,
+     -158.0
+    ]
+   }
+  ],
+  "worst": 1.141,
+  "worst_case": "standing: arm v8, 11 bays with packs, the ring at its worst unbalance, uneven floor, right rear foot off",
+  "worst_at": [
+   39.1,
+   -44.0,
+   -174.0
+  ],
+  "ok": true
+ },
+ "mass_g": 227.81,
+ "watertight": true,
+ "export": {
+  "faces_in": 678756,
+  "degenerate": 0,
+  "folded": 0,
+  "caps_split": 0,
+  "pinch_vertices": 0,
+  "caps_left": 0,
+  "dropped_shells": [],
+  "n_dropped_shells": 0,
+  "bodies": 1,
+  "open_kept": [],
+  "faces": 678756,
+  "boundary_edges": 0,
+  "nonmanifold_edges": 0,
+  "watertight": true,
+  "simplified": true,
+  "first_pass": {
+   "degenerate": 0,
+   "folded": 2,
+   "caps_split": 3,
+   "caps_left": 0,
+   "watertight": true,
+   "faces": 1130746,
+   "n_dropped_shells": 0,
+   "dropped_shells": []
+  },
+  "volume_mm3": 185207.6,
+  "exact_mm3": 185213.7
+ },
+ "bodies": {
+  "bodies_raw": 1,
+  "dropped_specks_mm3": [],
+  "cavities_mm3": [],
+  "bodies": 1
+ },
+ "volume_mm3": 185213.7,
+ "drawn_g": 32.67,
+ "export_cleanup": {
+  "pitch": 0.25,
+  "erode_mm": 0.9,
+  "core_limit_mm3": 10.0,
+  "specks_mm3": [],
+  "slivers": [],
+  "kept_walls": [],
+  "removed_mm3": 0.0
+ },
+ "memory_build": [
+  {
+   "estimate_gb": 11.64,
+   "parts": {
+    "held": 1.43,
+    "gate": 3.13,
+    "mesh": 7.09
+   },
+   "limit_gb": 14.0,
+   "gate_cells": 74673368,
+   "bounds_mm": [
+    119.4,
+    124.5,
+    76.0
+   ],
+   "faces": 1268156,
+   "when": "before the export cleanup"
+  },
+  {
+   "estimate_gb": 4.79,
+   "parts": {
+    "held": 1.66,
+    "gate": 3.13,
+    "mesh": 0.0
+   },
+   "limit_gb": 14.0,
+   "gate_cells": 74673368,
+   "bounds_mm": [
+    119.4,
+    124.5,
+    76.0
+   ],
+   "faces": 0,
+   "when": "before the solid check"
+  }
+ ],
+ "stl": "box_stand2_yoke_r.stl",
+ "view_stl": "box_stand2_yoke_r_view.stl",
+ "view_faces": 120000,
+ "preview": "preview.png",
+ "layout": {
+  "settings": {
+   "min_member_mm": 6.25,
+   "eta": [
+    0.75,
+    0.5,
+    0.25
+   ],
+   "betas": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32
+   ],
+   "penal": 3.0,
+   "emin": 1e-06,
+   "pmean": 6.0,
+   "tie_weight": 0.5,
+   "tie_moments": true,
+   "tie_min_cells": 4,
+   "move": 0.1,
+   "min_stage": 10,
+   "max_stage": 35,
+   "grey_stop": 0.02,
+   "vol_gain": 0.3,
+   "geometric": false,
+   "geo_margin": 0.05,
+   "geo_beta": 16.0,
+   "geo_eps": 0.0,
+   "erosion": "masked",
+   "gate_ties": true,
+   "gate_thin_mm": 2.0,
+   "case_norm": "solid",
+   "held_ties": true,
+   "gate_member": true,
+   "collar_mm": 0.0,
+   "finish": "organic",
+   "skin_mm": 2.5,
+   "fillet_mm": 2.5,
+   "skin_round_mm": 1.0,
+   "reach_check": "raise",
+   "audit": "raise",
+   "auto_sym": true,
+   "near_sym": false,
+   "backend": "auto",
+   "early_beta": 4,
+   "early_k": 3.0,
+   "nominal_hold": true,
+   "hold_beta": 4.0,
+   "hold_proj_beta": 32.0,
+   "hold_tol": 0.05,
+   "hold_eroded": true,
+   "hold_stage": 50,
+   "no_cavity": true,
+   "cavity_ratio": 5.0,
+   "cavity_ks": 0.0001,
+   "cavity_p": 8.0,
+   "cavity_on": 0.5,
+   "mg_tol": 1e-05,
+   "time_limit_s": 16200.0,
+   "mem_limit_gb": 14.0,
+   "checkpoint_every": 10
+  },
+  "R_mm": 6.44256687412536,
+  "R_cells": 3.22128343706268,
+  "calibration": {
+   "rod": 0.9701102250255644,
+   "plate": 0.8809289894691206,
+   "erode": 0.26588526507976606,
+   "dilate": 0.2668852650798993,
+   "rod_input": 1.2608727148268373,
+   "plate_input": 0.8849130530977847
+  },
+  "volfrac": 0.17023939785801917,
+  "nd": 120636,
+  "sym_axes": [],
+  "n_real": 15,
+  "n_ties": 24,
+  "backend": "direct",
+  "iterations": 74,
+  "stopped": "grey",
+  "checks": [
+   {
+    "it": 32,
+    "beta": 4.0,
+    "worst": 1.042,
+    "worst_case": "standing: arm v8, 11 bays with packs, the ring at its worst unbalance, uneven floor, right rear foot off"
+   },
+   {
+    "it": 49,
+    "beta": 8.0,
+    "worst": 1.046,
+    "worst_case": "standing: arm v8, 11 bays with packs, the ring at its worst unbalance, uneven floor, right rear foot off"
+   },
+   {
+    "it": 64,
+    "beta": 16.0,
+    "worst": 1.066,
+    "worst_case": "standing: arm v8, 11 bays with packs, the ring at its worst unbalance, uneven floor, right rear foot off"
+   }
+  ],
+  "hold": {
+   "started_it": 32,
+   "beta": 4.0,
+   "index": 1.042
+  },
+  "cavity": {
+   "last": 2.241545276203976,
+   "ratio": 5.0,
+   "T0": 273.8731744615932,
+   "row": true
+  }
+ },
+ "grid": {
+  "name": "box_stand2_yoke_r",
+  "h": 2.0,
+  "shape": [
+   64,
+   72,
+   40
+  ],
+  "origin": [
+   -3.875,
+   -73.0,
+   -213.0
+  ],
+  "cells": 184320,
+  "design": 120099,
+  "drawn": 3113,
+  "cases": [
+   "standing: arm v8, 11 bays with packs, the ring at its worst unbalance, flat floor",
+   "standing: arm v8, 11 bays with packs, the ring at its worst unbalance, uneven floor, right rear foot off",
+   "standing: arm v8, 11 bays with packs, the ring at its worst unbalance, uneven floor, left rear foot off",
+   "insert at the drone, 106.6 N every swap, flat floor",
+   "insert at the drone, 106.6 N every swap, uneven floor, right rear foot off",
+   "insert at the drone, 106.6 N every swap, uneven floor, left rear foot off",
+   "carrying an Overseer at full reach, flat floor",
+   "insert at the float limit, 118 N, flat floor",
+   "dropped Overseer onto the head at the drone, 150 N, flat floor",
+   "axle stall 5.53 N m about Y, head held at the drone, flat floor",
+   "box handling 3 g down + 2 g side (+X), uneven floor, left rear foot off",
+   "box handling 3 g down + 2 g side (+X), uneven floor, left front foot off",
+   "box handling 3 g down + 2 g side (-X), flat floor",
+   "box handling 3 g down + 2 g side (-X), uneven floor, right rear foot off",
+   "box handling 3 g down + 2 g side (-X), uneven floor, right front foot off"
+  ],
+  "supports": [
+   "default"
+  ]
+ },
+ "build_s": 250.0,
+ "layout_s": 10852,
+ "peak_gb": 8.372452,
+ "memory": {
+  "estimate_gb": 8.65,
+  "parts": {
+   "held": 1.08,
+   "factor": 5.13,
+   "assembly": 1.15,
+   "block": 1.18,
+   "energies": 0.12
+  },
+  "limit_gb": 14.0,
+  "cases": 39,
+  "active_dofs": 400110,
+  "backend": "direct",
+  "block": 57,
+  "build": {
+   "estimate_gb": 4.25,
+   "parts": {
+    "held": 1.08,
+    "gate": 3.17,
+    "mesh": 0.0
+   },
+   "limit_gb": 14.0,
+   "gate_cells": 75572112,
+   "bounds_mm": [
+    119.8,
+    126.0,
+    76.0
+   ],
+   "faces": 0,
+   "when": "from the envelope"
+  },
+  "peak_it1_gb": 7.96
+ },
+ "early": {
+  "rows": [
+   {
+    "case": "standing: arm v8, 11 bays with packs, the ring at its worst unbalance, flat floor",
+    "cls": "sustained",
+    "inlayer": 0.585,
+    "across": 0.716,
+    "at": [
+     15.1,
+     -10.0,
+     -146.0
+    ]
+   },
+   {
+    "case": "standing: arm v8, 11 bays with packs, the ring at its worst unbalance, uneven floor, right rear foot off",
+    "cls": "sustained",
+    "inlayer": 0.911,
+    "across": 1.042,
+    "at": [
+     27.1,
+     -52.0,
+     -148.0
+    ]
+   },
+   {
+    "case": "standing: arm v8, 11 bays with packs, the ring at its worst unbalance, uneven floor, left rear foot off",
+    "cls": "sustained",
+    "inlayer": 0.373,
+    "across": 0.521,
+    "at": [
+     15.1,
+     -10.0,
+     -146.0
+    ]
+   },
+   {
+    "case": "insert at the drone, 106.6 N every swap, flat floor",
+    "cls": "flight",
+    "inlayer": 0.523,
+    "across": 0.618,
+    "at": [
+     15.1,
+     -10.0,
+     -146.0
+    ]
+   },
+   {
+    "case": "insert at the drone, 106.6 N every swap, uneven floor, right rear foot off",
+    "cls": "flight",
+    "inlayer": 0.7,
+    "across": 0.801,
+    "at": [
+     27.1,
+     -52.0,
+     -148.0
+    ]
+   },
+   {
+    "case": "insert at the drone, 106.6 N every swap, uneven floor, left rear foot off",
+    "cls": "flight",
+    "inlayer": 0.398,
+    "across": 0.504,
+    "at": [
+     15.1,
+     -10.0,
+     -146.0
+    ]
+   },
+   {
+    "case": "carrying an Overseer at full reach, flat floor",
+    "cls": "flight",
+    "inlayer": 0.259,
+    "across": 0.315,
+    "at": [
+     15.1,
+     -10.0,
+     -146.0
+    ]
+   },
+   {
+    "case": "insert at the float limit, 118 N, flat floor",
+    "cls": "misuse",
+    "inlayer": 0.346,
+    "across": 0.409,
+    "at": [
+     15.1,
+     -10.0,
+     -146.0
+    ]
+   },
+   {
+    "case": "dropped Overseer onto the head at the drone, 150 N, flat floor",
+    "cls": "misuse",
+    "inlayer": 0.378,
+    "across": 0.45,
+    "at": [
+     15.1,
+     -10.0,
+     -146.0
+    ]
+   },
+   {
+    "case": "axle stall 5.53 N m about Y, head held at the drone, flat floor",
+    "cls": "misuse",
+    "inlayer": 0.188,
+    "across": 0.231,
+    "at": [
+     15.1,
+     -10.0,
+     -146.0
+    ]
+   },
+   {
+    "case": "box handling 3 g down + 2 g side (+X), uneven floor, left rear foot off",
+    "cls": "misuse",
+    "inlayer": 0.629,
+    "across": 0.804,
+    "at": [
+     15.1,
+     -52.0,
+     -146.0
+    ]
+   },
+   {
+    "case": "box handling 3 g down + 2 g side (+X), uneven floor, left front foot off",
+    "cls": "misuse",
+    "inlayer": 0.646,
+    "across": 0.835,
+    "at": [
+     39.1,
+     -42.0,
+     -172.0
+    ]
+   },
+   {
+    "case": "box handling 3 g down + 2 g side (-X), flat floor",
+    "cls": "misuse",
+    "inlayer": 0.217,
+    "across": 0.327,
+    "at": [
+     15.1,
+     -10.0,
+     -146.0
+    ]
+   },
+   {
+    "case": "box handling 3 g down + 2 g side (-X), uneven floor, right rear foot off",
+    "cls": "misuse",
+    "inlayer": 0.247,
+    "across": 0.368,
+    "at": [
+     15.1,
+     -10.0,
+     -146.0
+    ]
+   },
+   {
+    "case": "box handling 3 g down + 2 g side (-X), uneven floor, right front foot off",
+    "cls": "misuse",
+    "inlayer": 0.101,
+    "across": 0.162,
+    "at": [
+     11.1,
+     -38.0,
+     -152.0
+    ]
+   }
+  ],
+  "worst": 1.042,
+  "worst_case": "standing: arm v8, 11 bays with packs, the ring at its worst unbalance, uneven floor, right rear foot off",
+  "worst_at": [
+   27.1,
+   -52.0,
+   -148.0
+  ],
+  "ok": true,
+  "beta": 4.0,
+  "iteration": 32,
+  "max_worst": 0.5,
+  "k": 3.0
+ },
+ "field": {
+  "worst": 1.117,
+  "worst_case": "standing: arm v8, 11 bays with packs, the ring at its worst unbalance, uneven floor, right rear foot off",
+  "worst_at": [
+   39.1,
+   -44.0,
+   -174.0
+  ],
+  "beta": 32.0,
+  "iteration": 74
+ },
+ "gen_cm3": 160.0,
+ "h": 2.0,
+ "audit": {
+  "solid_ok": [],
+  "drawn_share": 0.025,
+  "load_room": [],
+  "bodies": [
+   {
+    "id": 1,
+    "cells": 1579,
+    "inscribed_mm": 6.0,
+    "touches_cut": true,
+    "touches_support": true,
+    "loaded": false,
+    "room": 0.8,
+    "room_depth_mm": 116.0,
+    "at": [
+     21.3,
+     -33.5,
+     -138.6
+    ],
+    "core_mm": 3.7,
+    "free_cells": 1579,
+    "share_of_drawn": 0.51
+   },
+   {
+    "id": 2,
+    "cells": 1003,
+    "inscribed_mm": 6.0,
+    "touches_cut": true,
+    "touches_support": false,
+    "loaded": true,
+    "room": 0.95,
+    "room_depth_mm": 120.0,
+    "at": [
+     114.9,
+     -8.4,
+     -204.2
+    ],
+    "core_mm": 6.0,
+    "free_cells": 1003
+   },
+   {
+    "id": 3,
+    "cells": 177,
+    "inscribed_mm": 2.0,
+    "touches_cut": true,
+    "touches_support": false,
+    "loaded": true,
+    "room": 0.97,
+    "room_depth_mm": 118.0,
+    "at": [
+     113.9,
+     -14.0,
+     -152.0
+    ],
+    "core_mm": 2.0,
+    "free_cells": 177
+   },
+   {
+    "id": 4,
+    "cells": 177,
+    "inscribed_mm": 2.0,
+    "touches_cut": true,
+    "touches_support": false,
+    "loaded": true,
+    "room": 0.97,
+    "room_depth_mm": 118.0,
+    "at": [
+     113.9,
+     26.0,
+     -152.0
+    ],
+    "core_mm": 2.0,
+    "free_cells": 177
+   },
+   {
+    "id": 5,
+    "cells": 177,
+    "inscribed_mm": 2.0,
+    "touches_cut": true,
+    "touches_support": false,
+    "loaded": true,
+    "room": 0.92,
+    "room_depth_mm": 122.0,
+    "at": [
+     113.9,
+     52.0,
+     -198.0
+    ],
+    "core_mm": 2.0,
+    "free_cells": 177
+   }
+  ],
+  "envelope_waste": 0.208,
+  "plate": {
+   "L_mm": 126.0,
+   "W_mm": 120.0,
+   "H_mm": 76.0,
+   "fits": true
+  },
+  "drawn_thin": [],
+  "drawn_walls": [],
+  "bed": {
+   "build": "+z",
+   "drawn_mm2": 944.0,
+   "room_mm2": 14707.9,
+   "min_mm2": 500.0
+  },
+  "parity": [],
+  "cases": 15,
+  "supports": 1,
+  "fails": [],
+  "room_full": {
+   "worst": 0.402,
+   "worst_case": "box handling 3 g down + 2 g side (+X), uneven floor, left front foot off",
+   "worst_at": [
+    39.1,
+    -60.0,
+    -172.0
+   ],
+   "budget_share": 0.17,
+   "thinned": 2.36,
+   "max_worst": 0.5,
+   "fin_cells": 238,
+   "worst_in_fin": true,
+   "fin": {
+    "cells": 28,
+    "lo": [
+     38.1,
+     -59.0,
+     -173.0
+    ],
+    "hi": [
+     40.1,
+     -55.0,
+     -145.0
+    ]
+   }
+  }
+ },
+ "baseline": null,
+ "total_s": 11102,
+ "part_sha": "96b4f2c97a74",
+ "lib_sha": "edabef884e54",
+ "setup_sha": "6a158a3aa4ca032e",
+ "max_worst": 0.5,
+ "strength_ok": false,
+ "print_stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/box_stand2_yoke_r.stl",
+  "sha256": "9a751a73aeca8285781c2e2d79b86cde4ac95877be0dd844d79f918b0372249f",
+  "bytes": 33937884,
+  "faces": 678756,
+  "view_faces": 60000,
+  "view_sha256": "1f3f0ad27314d7f5c6d4bf73e5228984fadd366697a3f947dfbd0f183feae1ba",
+  "at": "2026-11-15 00:32"
+ }
+}

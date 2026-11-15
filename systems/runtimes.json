@@ -8406,6 +8406,15 @@
    "minutes": 185.1,
    "peak_gb": 4.551752,
    "at": "4c7db8a244b4:11106"
+  },
+  {
+   "part": "box_stand2_yoke_r",
+   "engine": "no-cavity",
+   "design": 120099,
+   "cases": 15,
+   "minutes": 185.0,
+   "peak_gb": 8.372452,
+   "at": "96b4f2c97a74:11102"
   }
  ]
 }

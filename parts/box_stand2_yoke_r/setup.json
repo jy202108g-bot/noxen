@@ -1,0 +1,10 @@
+{
+ "part_sha": "96b4f2c97a74",
+ "lib_sha": "edabef884e54",
+ "data_sha": "db7afb450e3c",
+ "setup_sha": "6a158a3aa4ca032e",
+ "reads": [
+  "parts/box_stand2_frame_lib.py",
+  "parts/box_stand2_lib.py"
+ ]
+}
