@@ -38,7 +38,7 @@
    "between": "funnel (walls at scout)",
    "and_": "latch receiver (scout)",
    "mm": 0.1,
-   "at": "latch v7 receiver (scout, PROTOTYPE print/latch7_receiver.st at seat [42, 31, -44]"
+   "at": "latch v7 receiver (scout, PROTOTYPE print/latch7_receiver.st at seat [52, 34, -44]"
   },
   {
    "between": "funnel",
@@ -209,5 +209,5 @@
    "overseer": 59
   }
  },
- "seconds": 120
+ "seconds": 110
 }
