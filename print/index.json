@@ -193,15 +193,15 @@
  },
  "box_funnel_proto_half_nose.stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_funnel_proto_half_nose.stl",
-  "sha256": "5e644b3ffb57f918e0740c0bd76997c362f66636f6558348be5defdd04ac9b31",
-  "bytes": 327984,
-  "at": "2026-11-15 01:46"
+  "sha256": "37f3d4b1cd37ffc7ef7741620b8567eaf57ed5c6f0cf78a360b9c166cf004659",
+  "bytes": 326984,
+  "at": "2026-11-15 07:07"
  },
  "box_funnel_proto_half_tail.stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_funnel_proto_half_tail.stl",
-  "sha256": "07e86b1f9946c41deff276a3e0d9607eab9d6d8ef853aba4ab8e9859c32daf45",
-  "bytes": 313884,
-  "at": "2026-11-15 01:46"
+  "sha256": "da2b48928ad4bb1b895677226c527df21d27d57767a835ad6e66be7c0af8d36e",
+  "bytes": 313284,
+  "at": "2026-11-15 07:07"
  },
  "box_funnel_strips.stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_funnel_strips.stl",
