@@ -1,10 +1,10 @@
 {
- "part_sha": "52698691b5ff",
- "lib_sha": "deabdc067fe0",
- "data_sha": "01c4541bd312",
- "setup_sha": "839cfe7918d62929",
+ "part_sha": "9f5d153dc0f8",
+ "lib_sha": "edabef884e54",
+ "data_sha": "db7afb450e3c",
+ "setup_sha": "c7d8596b62787bf8",
  "reads": [
-  "parts/box_stand2_lib.py",
-  "parts/box_stand2_rail_l/part.py"
+  "parts/box_stand2_frame_lib.py",
+  "parts/box_stand2_lib.py"
  ]
 }

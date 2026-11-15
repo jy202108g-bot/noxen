@@ -8442,6 +8442,15 @@
    "minutes": 169.8,
    "peak_gb": 4.531532,
    "at": "4c7db8a244b4:10187"
+  },
+  {
+   "part": "box_stand2_rail_l",
+   "engine": "no-cavity",
+   "design": 126501,
+   "cases": 14,
+   "minutes": 224.3,
+   "peak_gb": 8.768172,
+   "at": "9f5d153dc0f8:13458"
   }
  ]
 }
