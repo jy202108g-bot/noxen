@@ -119,23 +119,23 @@
 "note": ""
 },
 {
-"id": "box_swaparm_box_arm8_hub_run",
-"name": "arm: hub (generated)",
+"id": "box_swaparm_box_arm8_hub",
+"name": "arm: hub (drawn prototype)",
 "role": "structure",
 "group": "hub (turns)",
 "color": "#c9d3dc",
 "opacity": null,
-"mesh": "parts/box_arm8_hub/part.stl",
+"mesh": "parts/box_arm8p_hub/part.stl",
 "pose": null,
 "material": "PCTG",
 "tag": "C",
 "owner": "swap arm",
-"version": "run, arm v8",
+"version": "prototype 15 Nov",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "hub"
 },
-"part": "box_arm8_hub_run",
+"part": "box_arm8p_hub",
 "max_faces": 4000
 },
 {
@@ -265,6 +265,42 @@
 "max_faces": 4000
 },
 {
+"id": "box_swaparm_box_arm8_fx_stub_bolts",
+"name": "arm: stub bolts",
+"role": "bought",
+"group": "stub side (fixed)",
+"color": "#8a8f96",
+"opacity": null,
+"mesh": "parts/box_arm8/view/box_arm8_fx_stub_bolts.stl",
+"pose": null,
+"material": null,
+"tag": "C",
+"owner": "swap arm",
+"version": "arm v8 (13 Nov)",
+"source": "systems/swap_arm.assembly.json",
+"kin": null,
+"part": "box_arm8_fx_stub_bolts",
+"max_faces": 4000
+},
+{
+"id": "box_swaparm_box_arm8_fx_post_bolt",
+"name": "arm: post bolt",
+"role": "bought",
+"group": "stub side (fixed)",
+"color": "#8a8f96",
+"opacity": null,
+"mesh": "parts/box_arm8/view/box_arm8_fx_post_bolt.stl",
+"pose": null,
+"material": null,
+"tag": "C",
+"owner": "swap arm",
+"version": "arm v8 (13 Nov)",
+"source": "systems/swap_arm.assembly.json",
+"kin": null,
+"part": "box_arm8_fx_post_bolt",
+"max_faces": 4000
+},
+{
 "id": "box_swaparm_box_arm8_a_rail",
 "name": "arm: head A: rail",
 "role": "structure",
@@ -276,7 +312,7 @@
 "material": "PCTG",
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "hub",
@@ -298,7 +334,7 @@
 "material": null,
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "hub",
@@ -320,7 +356,7 @@
 "material": null,
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "hub",
@@ -342,7 +378,7 @@
 "material": null,
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "hub",
@@ -364,7 +400,7 @@
 "material": null,
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "hub",
@@ -375,25 +411,25 @@
 "max_faces": 4000
 },
 {
-"id": "box_swaparm_box_arm8_a_carriage_run",
-"name": "arm: head A: carriage (generated)",
+"id": "box_swaparm_box_arm8_a_carriage",
+"name": "arm: head A: carriage (drawn prototype)",
 "role": "structure",
 "group": "head A",
 "color": "#e8b04a",
 "opacity": null,
-"mesh": "parts/box_arm8_carriage/part.stl",
+"mesh": "parts/box_arm8p_carriage/part.stl",
 "pose": null,
 "material": "PCTG",
 "tag": "C",
 "owner": "swap arm",
-"version": "run, arm v8",
+"version": "prototype 15 Nov",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "carriage",
 "head": "A",
 "blade": 0
 },
-"part": "box_arm8_a_carriage_run",
+"part": "box_arm8p_carriage",
 "max_faces": 4000
 },
 {
@@ -408,7 +444,7 @@
 "material": "PCTG",
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "carriage",
@@ -416,6 +452,28 @@
 "blade": 0
 },
 "part": "box_arm8_a_wheels",
+"max_faces": 4000
+},
+{
+"id": "box_swaparm_box_arm8_a_axles",
+"name": "arm: head A: axles",
+"role": "bought",
+"group": "head A",
+"color": "#8a8f96",
+"opacity": null,
+"mesh": "parts/box_arm8/view/box_arm8_a_axles.stl",
+"pose": null,
+"material": null,
+"tag": "C",
+"owner": "swap arm",
+"version": "arm v8 (15 Nov)",
+"source": "systems/swap_arm.assembly.json",
+"kin": {
+"stage": "carriage",
+"head": "A",
+"blade": 0
+},
+"part": "box_arm8_a_axles",
 "max_faces": 4000
 },
 {
@@ -430,7 +488,7 @@
 "material": null,
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "carriage",
@@ -441,25 +499,25 @@
 "max_faces": 4000
 },
 {
-"id": "box_swaparm_box_arm8_a_lift_run",
-"name": "arm: head A: lift (generated)",
+"id": "box_swaparm_box_arm8_a_lift",
+"name": "arm: head A: lift (drawn prototype)",
 "role": "structure",
 "group": "head A",
 "color": "#5f9ed1",
 "opacity": null,
-"mesh": "parts/box_arm8_lift/part.stl",
+"mesh": "parts/box_arm8p_lift/part.stl",
 "pose": null,
 "material": "PCTG",
 "tag": "C",
 "owner": "swap arm",
-"version": "run, arm v8",
+"version": "prototype 15 Nov",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
 "head": "A",
 "blade": 0
 },
-"part": "box_arm8_a_lift_run",
+"part": "box_arm8p_lift",
 "max_faces": 4000
 },
 {
@@ -474,7 +532,7 @@
 "material": null,
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
@@ -496,7 +554,7 @@
 "material": null,
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
@@ -518,7 +576,7 @@
 "material": null,
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
@@ -540,7 +598,7 @@
 "material": "PCTG",
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
@@ -562,7 +620,7 @@
 "material": "PCTG",
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
@@ -584,7 +642,7 @@
 "material": "TPU",
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
@@ -606,7 +664,7 @@
 "material": "PCTG",
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
@@ -628,7 +686,7 @@
 "material": "PCTG",
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
@@ -650,7 +708,7 @@
 "material": "PCTG",
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
@@ -672,7 +730,7 @@
 "material": null,
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
@@ -694,7 +752,7 @@
 "material": null,
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
@@ -716,7 +774,7 @@
 "material": null,
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
@@ -738,7 +796,7 @@
 "material": null,
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
@@ -760,7 +818,7 @@
 "material": null,
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
@@ -782,7 +840,7 @@
 "material": null,
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
@@ -804,7 +862,7 @@
 "material": null,
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
@@ -826,7 +884,7 @@
 "material": "PCTG",
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "hub",
@@ -848,7 +906,7 @@
 "material": null,
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "hub",
@@ -870,7 +928,7 @@
 "material": null,
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "hub",
@@ -892,7 +950,7 @@
 "material": null,
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "hub",
@@ -914,7 +972,7 @@
 "material": null,
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "hub",
@@ -925,13 +983,13 @@
 "max_faces": 4000
 },
 {
-"id": "box_swaparm_box_arm8_b_carriage_run",
-"name": "arm: head B: carriage (generated)",
+"id": "box_swaparm_box_arm8_b_carriage",
+"name": "arm: head B: carriage (drawn prototype)",
 "role": "structure",
 "group": "head B",
 "color": "#e8b04a",
 "opacity": null,
-"mesh": "parts/box_arm8_carriage/part.stl",
+"mesh": "parts/box_arm8p_carriage/part.stl",
 "pose": [
 [
 -1.0,
@@ -961,14 +1019,14 @@
 "material": "PCTG",
 "tag": "C",
 "owner": "swap arm",
-"version": "run, arm v8",
+"version": "prototype 15 Nov",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "carriage",
 "head": "B",
 "blade": 0
 },
-"part": "box_arm8_b_carriage_run",
+"part": "box_arm8p_carriage",
 "max_faces": 4000
 },
 {
@@ -983,7 +1041,7 @@
 "material": "PCTG",
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "carriage",
@@ -991,6 +1049,28 @@
 "blade": 0
 },
 "part": "box_arm8_b_wheels",
+"max_faces": 4000
+},
+{
+"id": "box_swaparm_box_arm8_b_axles",
+"name": "arm: head B: axles",
+"role": "bought",
+"group": "head B",
+"color": "#8a8f96",
+"opacity": null,
+"mesh": "parts/box_arm8/view/box_arm8_b_axles.stl",
+"pose": null,
+"material": null,
+"tag": "C",
+"owner": "swap arm",
+"version": "arm v8 (15 Nov)",
+"source": "systems/swap_arm.assembly.json",
+"kin": {
+"stage": "carriage",
+"head": "B",
+"blade": 0
+},
+"part": "box_arm8_b_axles",
 "max_faces": 4000
 },
 {
@@ -1005,7 +1085,7 @@
 "material": null,
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "carriage",
@@ -1016,13 +1096,13 @@
 "max_faces": 4000
 },
 {
-"id": "box_swaparm_box_arm8_b_lift_run",
-"name": "arm: head B: lift (generated)",
+"id": "box_swaparm_box_arm8_b_lift",
+"name": "arm: head B: lift (drawn prototype)",
 "role": "structure",
 "group": "head B",
 "color": "#5f9ed1",
 "opacity": null,
-"mesh": "parts/box_arm8_lift/part.stl",
+"mesh": "parts/box_arm8p_lift/part.stl",
 "pose": [
 [
 -1.0,
@@ -1052,14 +1132,14 @@
 "material": "PCTG",
 "tag": "C",
 "owner": "swap arm",
-"version": "run, arm v8",
+"version": "prototype 15 Nov",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
 "head": "B",
 "blade": 0
 },
-"part": "box_arm8_b_lift_run",
+"part": "box_arm8p_lift",
 "max_faces": 4000
 },
 {
@@ -1074,7 +1154,7 @@
 "material": null,
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
@@ -1096,7 +1176,7 @@
 "material": null,
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
@@ -1118,7 +1198,7 @@
 "material": null,
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
@@ -1140,7 +1220,7 @@
 "material": "PCTG",
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
@@ -1162,7 +1242,7 @@
 "material": "PCTG",
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
@@ -1184,7 +1264,7 @@
 "material": "TPU",
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
@@ -1206,7 +1286,7 @@
 "material": "PCTG",
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
@@ -1228,7 +1308,7 @@
 "material": "PCTG",
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
@@ -1250,7 +1330,7 @@
 "material": "PCTG",
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
@@ -1272,7 +1352,7 @@
 "material": null,
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
@@ -1294,7 +1374,7 @@
 "material": null,
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
@@ -1316,7 +1396,7 @@
 "material": null,
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
@@ -1338,7 +1418,7 @@
 "material": null,
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
@@ -1360,7 +1440,7 @@
 "material": null,
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
@@ -1382,7 +1462,7 @@
 "material": null,
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
@@ -1404,7 +1484,7 @@
 "material": null,
 "tag": "C",
 "owner": "swap arm",
-"version": "arm v8 (14 Nov)",
+"version": "arm v8 (15 Nov)",
 "source": "systems/swap_arm.assembly.json",
 "kin": {
 "stage": "lift",
