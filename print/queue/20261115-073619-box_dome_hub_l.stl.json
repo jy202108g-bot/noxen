@@ -10,8 +10,9 @@
  "settings": "PCTG: Generic PETG profile +10 C, 0.2 mm, 4 walls, 25 % gyroid",
  "time": "4h30",
  "note": "dome hub bracket (PROTOTYPE): bolts on a ring hub segment with 4 x M3 x 12; the motor fit (JGY-370 32 across) is E until the motor is in hand",
- "status": "ready",
+ "status": "cancelled",
  "history": [
-  "2026-11-15 07:36 UTC ready"
+  "2026-11-15 07:36 UTC ready",
+  "2026-11-15 07:57 UTC cancelled"
  ]
 }

@@ -10,8 +10,9 @@
  "settings": "0.2 layers, 4 walls, 40 % gyroid, PCTG at PETG + 10 C",
  "time": "4h00",
  "note": "drawn PROTOTYPE carriage (97 g each); hand calc worst 0.84 (M3 inserts, E)",
- "status": "ready",
+ "status": "cancelled",
  "history": [
-  "2026-11-15 07:52 UTC ready"
+  "2026-11-15 07:52 UTC ready",
+  "2026-11-15 07:57 UTC cancelled"
  ]
 }
