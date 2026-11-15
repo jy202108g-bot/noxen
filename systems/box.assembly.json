@@ -193,6 +193,60 @@
 "max_faces": 4000
 },
 {
+"id": "box_swaparm_box_arm8_fx_detent_spring",
+"name": "arm: detent spring",
+"role": "bought",
+"group": "stub side (fixed)",
+"color": "#8a8f96",
+"opacity": null,
+"mesh": "parts/box_arm8/view/box_arm8_fx_detent_spring.stl",
+"pose": null,
+"material": null,
+"tag": "C",
+"owner": "swap arm",
+"version": "arm v8 (13 Nov)",
+"source": "systems/swap_arm.assembly.json",
+"kin": null,
+"part": "box_arm8_fx_detent_spring",
+"max_faces": 4000
+},
+{
+"id": "box_swaparm_box_arm8_fx_detent_screws",
+"name": "arm: detent screws",
+"role": "bought",
+"group": "stub side (fixed)",
+"color": "#8a8f96",
+"opacity": null,
+"mesh": "parts/box_arm8/view/box_arm8_fx_detent_screws.stl",
+"pose": null,
+"material": null,
+"tag": "C",
+"owner": "swap arm",
+"version": "arm v8 (13 Nov)",
+"source": "systems/swap_arm.assembly.json",
+"kin": null,
+"part": "box_arm8_fx_detent_screws",
+"max_faces": 4000
+},
+{
+"id": "box_swaparm_box_arm8_fx_spigot_ties",
+"name": "arm: spigot ties",
+"role": "bought",
+"group": "stub side (fixed)",
+"color": "#8a8f96",
+"opacity": null,
+"mesh": "parts/box_arm8/view/box_arm8_fx_spigot_ties.stl",
+"pose": null,
+"material": null,
+"tag": "C",
+"owner": "swap arm",
+"version": "arm v8 (13 Nov)",
+"source": "systems/swap_arm.assembly.json",
+"kin": null,
+"part": "box_arm8_fx_spigot_ties",
+"max_faces": 4000
+},
+{
 "id": "box_swaparm_box_arm8_fx_detent_roller",
 "name": "arm: detent roller",
 "role": "bought",
@@ -320,6 +374,28 @@
 "blade": 0
 },
 "part": "box_arm8_a_rail",
+"max_faces": 4000
+},
+{
+"id": "box_swaparm_box_arm8_a_rail_bolts",
+"name": "arm: head A: rail bolts",
+"role": "bought",
+"group": "head A",
+"color": "#8a8f96",
+"opacity": null,
+"mesh": "parts/box_arm8/view/box_arm8_a_rail_bolts.stl",
+"pose": null,
+"material": null,
+"tag": "C",
+"owner": "swap arm",
+"version": "arm v8 (15 Nov)",
+"source": "systems/swap_arm.assembly.json",
+"kin": {
+"stage": "hub",
+"head": "A",
+"blade": 0
+},
+"part": "box_arm8_a_rail_bolts",
 "max_faces": 4000
 },
 {
@@ -496,6 +572,28 @@
 "blade": 0
 },
 "part": "box_arm8_a_mgn_rail",
+"max_faces": 4000
+},
+{
+"id": "box_swaparm_box_arm8_a_mgn_bolts",
+"name": "arm: head A: mgn bolts",
+"role": "bought",
+"group": "head A",
+"color": "#8a8f96",
+"opacity": null,
+"mesh": "parts/box_arm8/view/box_arm8_a_mgn_bolts.stl",
+"pose": null,
+"material": null,
+"tag": "C",
+"owner": "swap arm",
+"version": "arm v8 (15 Nov)",
+"source": "systems/swap_arm.assembly.json",
+"kin": {
+"stage": "carriage",
+"head": "A",
+"blade": 0
+},
+"part": "box_arm8_a_mgn_bolts",
 "max_faces": 4000
 },
 {
@@ -895,6 +993,28 @@
 "max_faces": 4000
 },
 {
+"id": "box_swaparm_box_arm8_b_rail_bolts",
+"name": "arm: head B: rail bolts",
+"role": "bought",
+"group": "head B",
+"color": "#8a8f96",
+"opacity": null,
+"mesh": "parts/box_arm8/view/box_arm8_b_rail_bolts.stl",
+"pose": null,
+"material": null,
+"tag": "C",
+"owner": "swap arm",
+"version": "arm v8 (15 Nov)",
+"source": "systems/swap_arm.assembly.json",
+"kin": {
+"stage": "hub",
+"head": "B",
+"blade": 0
+},
+"part": "box_arm8_b_rail_bolts",
+"max_faces": 4000
+},
+{
 "id": "box_swaparm_box_arm8_b_motor",
 "name": "arm: head B: motor",
 "role": "bought",
@@ -1093,6 +1213,28 @@
 "blade": 0
 },
 "part": "box_arm8_b_mgn_rail",
+"max_faces": 4000
+},
+{
+"id": "box_swaparm_box_arm8_b_mgn_bolts",
+"name": "arm: head B: mgn bolts",
+"role": "bought",
+"group": "head B",
+"color": "#8a8f96",
+"opacity": null,
+"mesh": "parts/box_arm8/view/box_arm8_b_mgn_bolts.stl",
+"pose": null,
+"material": null,
+"tag": "C",
+"owner": "swap arm",
+"version": "arm v8 (15 Nov)",
+"source": "systems/swap_arm.assembly.json",
+"kin": {
+"stage": "carriage",
+"head": "B",
+"blade": 0
+},
+"part": "box_arm8_b_mgn_bolts",
 "max_faces": 4000
 },
 {

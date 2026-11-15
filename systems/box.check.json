@@ -23,7 +23,7 @@
    "ok": true
   },
   {
-   "what": "the wheel's 53 turning parts, every 3 deg, against the funnel and both seated drones",
+   "what": "the wheel's 57 turning parts, every 3 deg, against the funnel and both seated drones",
    "ok": true
   }
  ],
@@ -175,14 +175,14 @@
   {
    "between": "funnel",
    "and_": "the wheel turning, closest pass",
-   "mm": 4.5,
-   "at": "arm: head B: rail at seat [126, -20, -68] at 174 deg"
+   "mm": 4.6,
+   "at": "arm: head A: rail at seat [126, 20, -68] at 6 deg"
   },
   {
    "between": "funnel",
    "and_": "arm: head A: rail",
    "mm": 8.9,
-   "at": "at seat [129, 7, -73]"
+   "at": "at seat [129, 4, -86]"
   },
   {
    "between": "funnel (walls at scout)",
@@ -202,12 +202,12 @@
  "quick": false,
  "counts": {
   "box": 76,
-  "arm": 96,
-  "turning": 53,
+  "arm": 103,
+  "turning": 57,
   "drone_parts": {
    "scout_v4": 51,
    "overseer": 59
   }
  },
- "seconds": 115
+ "seconds": 120
 }
