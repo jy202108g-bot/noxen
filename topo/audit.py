@@ -674,6 +674,22 @@ def audit(part, min_member_mm, log=print, hard=True, floor_mm=3.2):
         fails.append(f"fit: a {'round' if r['shape'] == 'round' else 'width'} of {r['drawn']} mm is drawn next to a declared bought part of {r['nominal']} "
                      f"({', '.join(r['kinds'])}), at a size the fit table does not give for it (its sizes there: {r['table']}): take it from the table "
                      f"(topo/fit.py bore / across / insert, systems/fit_table.json), or add the coupon's row there, tagged.")
+    # held_load: a case whose every loaded dof its own support fixes loads nothing (the full solid's compliance is zero: the layout
+    # raised it only after the whole build, no result.json). 15 Nov, the Scout v4 frame: its receiver-bolt insert bosses declared to
+    # topo/handling.py (install, tighten) on the main support, which holds the same insert lining (REC_SUPPORT "insert"): 8 cases on
+    # fixed nodes, the CI run died 24 min in. Declare the feature only where its case's support leaves it free.
+    rep["held_load"] = []
+    for c in part.cases:
+        fx = part.supports.get(c.support)
+        F = np.abs(np.asarray(c.F, float)).reshape(-1, 3)
+        if fx is None or (c.accel is not None and np.any(c.accel)) or not F.max() > 0:
+            continue
+        if not F[~fx].max(initial=0.0) > 1e-9 * F.max():
+            rep["held_load"].append(c.name)
+    if rep["held_load"]:
+        fails.append(f"held_load: {len(rep['held_load'])} cases load only nodes their own support fixes ({', '.join(rep['held_load'][:4])}"
+                     f"{' ...' if len(rep['held_load']) > 4 else ''}): they load nothing. A handling feature (topo/handling.py) on a face the "
+                     f"part's support holds is that support: draw it without the declaration there, or move the load off the support.")
     rep["cases"] = len(part.cases)
     rep["supports"] = len(part.supports)
     if not part.cases or not part.supports:

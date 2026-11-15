@@ -257,7 +257,8 @@ def bodies():
         if REC_SUPPORT == "insert":                                                   # and the insert's length: the M3's shear goes in along its 6 mm
             reg = U([reg, cyl(x, y, S.REC_TOP, S.REC_TOP + M3_INS[1], M3_INS[0] + 1.5) - cyl(x, y, S.REC_TOP - 1, S.REC_TOP + M3_INS[1] + 1, M3_INS[0])])
         rec_regs.append(reg)
-        cuts.append(ins_hole(x, y, S.REC_TOP - 1, S.REC_TOP + M3_INS[1], M3_INS[0]))
+        hole = ins_hole if REC_SUPPORT != "insert" else cyl                           # the insert support holds this lining: its install and
+        cuts.append(hole(x, y, S.REC_TOP - 1, S.REC_TOP + M3_INS[1], M3_INS[0]))      # tighten would load fixed nodes only (audit held_load, 15 Nov)
     # ---- the turret's bosses: M3 x 5.7 inserts from the top (PROBE's interface)
     tur, tur_regs = [], []
     for x, y in TURRET_BOLTS:
@@ -294,6 +295,11 @@ def bodies():
                   ((fb[0][0] - 0.5, fb[0][1] - 0.5, ftop), (fb[1][0] + 0.5, fb[1][1] + 0.5, fb[1][2] + 0.5), fc_rings)]   # its top components but not within 6.5
     # of a hole (E: the grommets' zone): each post's room runs out past the board's edge; their y faces on the grid (grid_snap, at the end)
     cuts.append(Kf - U(posts))                                                        # and in those rings its body + the gap (the USB-C, the FETs)
+    for x, y in REC_BOLTS:                                                            # 15 Nov (audit room_full, the FC posts' tighten cases: 0.40 in a
+        if fb[0][0] < x < fb[1][0]:                                                   # fin of room one cell thin between the front receiver bosses and
+            yb = y - np.sign(y) * (BOSS_R - 0.1)                                      # the FC bay's cut, its y face on the grid): the bay's cut runs
+            ylo, yhi = (yb, fb[0][1]) if y < 0 else (fb[1][1], yb)                    # out to the boss's face, 0.1 short of it
+            cuts.append(box(x - BOSS_R, x + BOSS_R, ylo, yhi, fb[0][2] - 0.5, ftop))
     boards.append(("FC MicoAir743", pts, regs, ASM["scout_v4_fc"]["mass_g"], tuple(fb.mean(0))))
     rb = bounds("scout_v4_radxa_zero_3w")                                            # 65 along x, the STEP's X 0 end forward (x = rb x1 - X), its Y 0 edge
     rtop = rb[0][2] + 2.86 + 1.6                                                     # (USB-C, micro HDMI) to +y, the HDMI 1.5 over it (y = rb y1 - 1.5 - Y);
@@ -307,6 +313,9 @@ def bodies():
     board_cuts.append(((rb[0][0] - 0.2, rb[0][1] - 0.5, rb[0][2] - 0.5), (rb[1][0] + 2.4, rb[1][1] + 0.5, rb[1][2] + 0.5), U(posts)))   # 0.2 at its tail end; its front end
     # 2.4 on, into the turret's cut (13 Nov round 5: at gen 185 / 200 the engine filled the 1.9 gap between the two cuts, a 1.5-1.7 wall the gate refused)
     cuts.append(Kr - U(posts))
+    cx_, g0_ = S.SPOOL["c"][0], S.N20_FACE                                         # 15 Nov (audit room_full, the Radxa front posts' tighten cases: 0.30
+    cuts.append(box(max(x for x, _, _ in pts) + 3.75 + 0.1, cx_ - 6.5, g0_ - 27.6, g0_ + 0.6, rb[1][2] + 0.4, DZ1 + 1))   # in a fin of room one
+    # cell thin between the posts' faces and the N20's pocket, over the board's cut): the pocket runs out to the posts, 0.1 short
     xc, zc = rb[1][0] - 41.55, rtop + 1.58                                           # one USB-C plug out the +y edge (its ports' edge), the camera's on
     cuts.append(box(xc - 6.2, xc + 6.2, rb[1][1] - 1.5, 41.0, zc - 3.3, zc + 3.3))   # USB-C 1 (X 37.1..46; 12 Nov: the board runs on the UBEC through its 5 V
     # pins, so the other port's cut, across motor 4's arm root, went: room filled solid 0.270 there); the plug's overmold 12.4 x 6.6 (E)

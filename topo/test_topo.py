@@ -1163,6 +1163,30 @@ def t_audit_load_room():
         check("audit load_room", False, str(e))
 
 
+def t_audit_held_load():
+    """audit: held_load (15 Nov: the Scout v4 frame's receiver insert bosses got handling cases on the support that holds them). A pad
+    loaded on itself passes; a load on the supported face only is refused."""
+    try:
+        import manifold3d as mf
+        from topo.audit import audit, SetupError
+        from .part import Part
+        box = lambda x0, x1, y0, y1, z0, z1: mf.Manifold.cube([x1 - x0, y1 - y0, z1 - z0]).translate([x0, y0, z0])
+        def refused(on_support):
+            p = Part("heldmini", 1.0, box(0, 3, 0, 20, 0, 20) + box(30, 34, 6, 14, 6, 14), box(100, 101, 100, 101, 100, 101),
+                     box(0, 34, 0, 20, 0, 30), log=lambda s_: None)
+            p.support("default", box(-1, 1.5, -1, 21, -1, 21))
+            p.load("down", box(-1, 1.5, 6, 14, 6, 14) if on_support else box(30, 34, 6, 14, 6, 14), (0, 0, -10.0))
+            try:
+                audit(p, 4.0, log=lambda s_: None); return False
+            except SetupError as e:
+                return "held_load" in str(e)
+        a, b = refused(True), refused(False)
+        check("audit held_load: a load on its own support's nodes only is refused, on the pad it passes", a and not b, f"held refused {a}, pad refused {b}")
+    except Exception as e:
+        traceback.print_exc()
+        check("audit held_load", False, str(e))
+
+
 def t_design_hash():
     """the design hash (topo/run.py) is the same for the same setup built twice and differs when a load, a cut or the budget
     changes (29 Oct: parts.yml stops a running part whose design main has since changed)."""
@@ -1805,7 +1829,7 @@ ARMS_GEN = 14.0
 def main():
     quick = "--quick" in sys.argv
     t0 = time.time()
-    for t in (t_ke, t_voxelise, t_matvec, t_transfer, t_galerkin, t_mg_vs_direct, t_mma, t_calibration, t_gradients, t_masked_neck, t_gate_ties, t_neck, t_skin_core, t_near_symmetry, t_gate_specks, t_export_cleanup, t_organic_drawn_walls, t_audit_drawn_wall_large, t_gate_drawn_body, t_gate_thin_ok, t_export_mesh, t_export_fallback, t_export_pinch, t_setup_sha, t_setup_reads, t_early_check, t_strength_floating, t_floating_load, t_audit_plate, t_audit_block_measure, t_audit_drawn_thin, t_audit_parity, t_audit_env_neck, t_audit_lone_post, t_audit_load_room, t_audit_solid_ok, t_design_hash, t_coarse_setup_fails, t_audit_room_full, t_audit_bed, t_memory_gate, t_gate_memory, t_build_memory_gate, t_built_hold, t_no_cavity, t_audit_path, t_audit_fit, t_path_sweep_gap):
+    for t in (t_ke, t_voxelise, t_matvec, t_transfer, t_galerkin, t_mg_vs_direct, t_mma, t_calibration, t_gradients, t_masked_neck, t_gate_ties, t_neck, t_skin_core, t_near_symmetry, t_gate_specks, t_export_cleanup, t_organic_drawn_walls, t_audit_drawn_wall_large, t_gate_drawn_body, t_gate_thin_ok, t_export_mesh, t_export_fallback, t_export_pinch, t_setup_sha, t_setup_reads, t_early_check, t_strength_floating, t_floating_load, t_audit_plate, t_audit_block_measure, t_audit_drawn_thin, t_audit_parity, t_audit_env_neck, t_audit_lone_post, t_audit_load_room, t_audit_held_load, t_audit_solid_ok, t_design_hash, t_coarse_setup_fails, t_audit_room_full, t_audit_bed, t_memory_gate, t_gate_memory, t_build_memory_gate, t_built_hold, t_no_cavity, t_audit_path, t_audit_fit, t_path_sweep_gap):
         t()
     if not quick:
         t_end_to_end()
