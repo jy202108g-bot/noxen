@@ -1,0 +1,17 @@
+{
+ "id": "20261115-090254-box_arm8_stub.stl",
+ "part": "box_arm8_stub.stl",
+ "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_arm8_stub.stl",
+ "sha256": "89f3573c5ab9e43ebd21d080580d58fe63fc1cb7e9aa5818e598fb8931113062",
+ "qty": 1,
+ "material": "PCTG",
+ "orient": "flange down (the flat back), as laid",
+ "supports": "none",
+ "settings": "0.2 layers, 5 walls, 40 % gyroid, PCTG at PETG + 10 C",
+ "time": "7h00",
+ "note": "stub, new file (186 g): flange 13 on o 20 washers, six o 5.4 bores for the bonded M5 x 40 ties, o 22 detent pivot boss and the spring's anchor boss; after the coupon's line; hand calc worst 0.44",
+ "status": "ready",
+ "history": [
+  "2026-11-15 09:02 UTC ready"
+ ]
+}

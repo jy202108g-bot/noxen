@@ -1,0 +1,17 @@
+{
+ "id": "20261115-090254-box_arm8p_hub.stl",
+ "part": "box_arm8p_hub.stl",
+ "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_arm8p_hub.stl",
+ "sha256": "cbeddb9ef885a1055ff17a169c262fbe8939b58bf2e7d2522d6e94bcaf556853",
+ "qty": 1,
+ "material": "PCTG",
+ "orient": "stub end (the toothed ring) down, as laid; 160 x 175: no brim, no skirt",
+ "supports": "tree supports from the bed only (keel ends and their bolt pockets, slabs, stepper walls)",
+ "settings": "0.2 layers, 4 walls, 25 % gyroid, PCTG at PETG + 10 C",
+ "time": "16h00",
+ "note": "drawn PROTOTYPE hub (332 g), 15 Nov second file: four bolts a rail (two inserts, two through to nylocs); after the coupon's line; hand calc worst 0.43",
+ "status": "ready",
+ "history": [
+  "2026-11-15 09:02 UTC ready"
+ ]
+}

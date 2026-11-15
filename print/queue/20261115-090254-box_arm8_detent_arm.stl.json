@@ -1,0 +1,17 @@
+{
+ "id": "20261115-090254-box_arm8_detent_arm.stl",
+ "part": "box_arm8_detent_arm.stl",
+ "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_arm8_detent_arm.stl",
+ "sha256": "b3659447efa871337630ca42defc280b1cae35dba9a5f36048d6fd10f63cad2f",
+ "qty": 1,
+ "material": "PCTG",
+ "orient": "standing on its roller-end side, as laid (76 mm2 down: 5 mm brim)",
+ "supports": "none",
+ "settings": "0.2 layers, 4 walls, 40 % gyroid, PCTG at PETG + 10 C",
+ "time": "0h20",
+ "note": "detent arm, new file: a tail with three M3 holes for the spring's screw",
+ "status": "ready",
+ "history": [
+  "2026-11-15 09:02 UTC ready"
+ ]
+}

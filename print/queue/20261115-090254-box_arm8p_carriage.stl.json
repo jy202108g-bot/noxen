@@ -1,0 +1,17 @@
+{
+ "id": "20261115-090254-box_arm8p_carriage.stl",
+ "part": "box_arm8p_carriage.stl",
+ "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_arm8p_carriage.stl",
+ "sha256": "7a6aad9e7f5c7708d7c56765386c5bc00ceb2b9be6d5b0f9956359ff18608044",
+ "qty": 2,
+ "material": "PCTG",
+ "orient": "rail seat's plane down, as laid",
+ "supports": "none (the nut slots bridge 5.7)",
+ "settings": "0.2 layers, 4 walls, 40 % gyroid, PCTG at PETG + 10 C",
+ "time": "4h00",
+ "note": "drawn PROTOTYPE carriage (96 g each), 15 Nov second file: MGN rail on four M3 x 25 to nylocs in side slots, o 20 washers on the wheel pair; hand calc worst 0.45",
+ "status": "ready",
+ "history": [
+  "2026-11-15 09:02 UTC ready"
+ ]
+}

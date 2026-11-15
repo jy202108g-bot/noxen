@@ -1,0 +1,17 @@
+{
+ "id": "20261115-090254-box_arm8_rail.stl",
+ "part": "box_arm8_rail.stl",
+ "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_arm8_rail.stl",
+ "sha256": "86bf6503a3de608f0154b47c12b556701387f17395ca1f82d86407e08a542953",
+ "qty": 2,
+ "material": "PCTG",
+ "orient": "ridge side down, keel up, as laid",
+ "supports": "none",
+ "settings": "0.2 layers, 4 walls, 40 % gyroid, PCTG at PETG + 10 C",
+ "time": "2h45",
+ "note": "V rail, new file: four bolt holes (u 36, 52, 64, 77), each counterbored for an o 10 washer; replaces the two-hole rail",
+ "status": "ready",
+ "history": [
+  "2026-11-15 09:02 UTC ready"
+ ]
+}
