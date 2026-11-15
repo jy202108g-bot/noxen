@@ -26,14 +26,14 @@
   "at": "2026-11-15 03:17",
   "commit": "1a7afeaf",
   "solid": {
-   "ok": true,
-   "file": "print/scout_v4_arm_coupon.stl",
-   "sha256": "83ac4be5768104fd5d3fe222b8f41cfe7848b18829c9bb14bdcc43c76278bc70",
-   "cm3": 49.426,
-   "bodies_plain": 1,
-   "specks_plain": 0,
-   "bodies_eroded": 1,
-   "acute_edges": 1
+   "ok": false,
+   "file": "parts/scout_v4_arm_coupon/part.stl",
+   "sha256": "ff7b10261415fe2b09cd4a167aa9e3a24c40bbc3da46e09b8e05aca2a806e209",
+   "cm3": 55.585,
+   "bodies_plain": 4,
+   "specks_plain": 11,
+   "bodies_eroded": 5,
+   "acute_edges": 18
   }
  },
  "assembly": {

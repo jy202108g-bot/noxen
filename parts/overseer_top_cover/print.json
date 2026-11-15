@@ -26,11 +26,11 @@
   "solid": {
    "ok": false,
    "file": "parts/overseer_top_cover/part.stl",
-   "sha256": "35d1ad200d1cef4149666a165213c2588a2d9fbcb536aea6bbdd0bcc7c2c9bd0",
-   "cm3": 23.201,
+   "sha256": "9301e3abba26d1973affb3c79652a5c5c0b03fc7e859653bbfac8d6061756a2d",
+   "cm3": 23.207,
    "bodies_plain": 1,
    "specks_plain": 0,
-   "bodies_eroded": 13,
+   "bodies_eroded": 12,
    "acute_edges": 3
   }
  },

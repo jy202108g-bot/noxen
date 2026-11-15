@@ -30,8 +30,8 @@
   "commit": "b4ee40e4",
   "solid": {
    "ok": true,
-   "file": "print/scout_v4_cradle.stl",
-   "sha256": "c190695ab190a86fc8f1b0f88a054a19aaea6d688f127cff034256c2be76c8c3",
+   "file": "parts/scout_v4_cradle/part.stl",
+   "sha256": "baf0a8bacd0b598283844cfa3c768f7e657e4b7030f1f1a6c4acf0c5095f8d3f",
    "cm3": 8.162,
    "bodies_plain": 1,
    "specks_plain": 0,

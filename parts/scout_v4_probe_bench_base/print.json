@@ -29,8 +29,8 @@
   "commit": "b4ee40e4",
   "solid": {
    "ok": true,
-   "file": "print/scout_v4_probe_bench_base.stl",
-   "sha256": "67b9505a8df2707ea57592ce617bfef11586e7ff4e905a55f6e7cb904b67714d",
+   "file": "parts/scout_v4_probe_bench_base/part.stl",
+   "sha256": "fc47fe1ee8cc9b9d71f48a17d319a72ac92590fa6f510a65ac5ff63ccda09654",
    "cm3": 33.785,
    "bodies_plain": 1,
    "specks_plain": 0,

@@ -31,13 +31,13 @@
   "commit": "b4ee40e4",
   "solid": {
    "ok": true,
-   "file": "print/scout_v4_probe_bench_turret.stl",
-   "sha256": "76e374429e65e9ed0507c72fc3409b1c8ca131595b73faaf890092eef2b40ab4",
+   "file": "parts/scout_v4_probe_bench_turret/part.stl",
+   "sha256": "885171ed72e6bd7fa22575250842ce81f157cae43bdc54cab08447b2a9816e08",
    "cm3": 44.067,
    "bodies_plain": 1,
    "specks_plain": 0,
    "bodies_eroded": 1,
-   "acute_edges": 17
+   "acute_edges": 15
   }
  },
  "assembly": {

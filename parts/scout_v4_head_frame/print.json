@@ -31,8 +31,8 @@
   "commit": "b4ee40e4",
   "solid": {
    "ok": true,
-   "file": "print/scout_v4_head_frame.stl",
-   "sha256": "f3f9d56a8e7e4c3bd0acbbfec173ccdb59b95efcd10d3a524919fb1ddccccbb9",
+   "file": "parts/scout_v4_head_frame/part.stl",
+   "sha256": "efbdc644450d9fd7c3d53479e89559d8d60b4b1920f3a50f087eaee5b04080d8",
    "cm3": 25.332,
    "bodies_plain": 1,
    "specks_plain": 0,
