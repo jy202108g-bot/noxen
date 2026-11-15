@@ -1,19 +1,19 @@
 {
  "print_stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/scout_v4_probe_bench_turret.stl",
-  "sha256": "885171ed72e6bd7fa22575250842ce81f157cae43bdc54cab08447b2a9816e08",
+  "sha256": "9b219b5356d693ab5f2f2df7f544aa5e26e6b0b36e30716f9830b06e00fe9176",
   "bytes": 263684,
   "faces": 5272,
   "view_faces": 5272,
-  "view_sha256": "885171ed72e6bd7fa22575250842ce81f157cae43bdc54cab08447b2a9816e08",
-  "at": "2026-11-15 03:24"
+  "view_sha256": "9b219b5356d693ab5f2f2df7f544aa5e26e6b0b36e30716f9830b06e00fe9176",
+  "at": "2026-11-15 08:19"
  },
  "make": {
   "sha": {
    "parts/cage_node_lib.py": "bad3d25f2b60",
    "parts/scout_units_lib.py": "edbb61c2b9c7",
    "parts/scout_v4_probe_bench_turret/make.py": "b6b576823d7e",
-   "parts/scout_v4_probe_mech_lib.py": "736ade7c0a36",
+   "parts/scout_v4_probe_mech_lib.py": "c13dbfbfcb4b",
    "parts/scout_v4_probe_turret/part.py": "9d896992a52b",
    "parts/scout_v4_units_lib.py": "f5b138d4c6b6",
    "parts/socket_inject.py": "6613a0572d9f",
@@ -26,18 +26,18 @@
    "tools/scout_v4_shape.py": "c0dafeecc6c9"
   },
   "rc": 0,
-  "s": 15.2,
-  "at": "2026-11-15 03:45",
-  "commit": "b4ee40e4",
+  "s": 15.7,
+  "at": "2026-11-15 08:17",
+  "commit": "070aea3f",
   "solid": {
    "ok": true,
-   "file": "parts/scout_v4_probe_bench_turret/part.stl",
-   "sha256": "885171ed72e6bd7fa22575250842ce81f157cae43bdc54cab08447b2a9816e08",
+   "file": "print/scout_v4_probe_bench_turret.stl",
+   "sha256": "69d9e1340619cd30278dfc029dbe1080a0b73c3db0ab951a2d21438da4be9108",
    "cm3": 44.067,
    "bodies_plain": 1,
    "specks_plain": 0,
    "bodies_eroded": 1,
-   "acute_edges": 15
+   "acute_edges": 17
   }
  },
  "assembly": {

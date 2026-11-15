@@ -6,7 +6,7 @@
   "faces": 3236,
   "view_faces": 3236,
   "view_sha256": "97bc3190586e2f5b65780360e00dd95ad9d42a30b8ef91f7d9b2418451da7e26",
-  "at": "2026-11-14 01:22"
+  "at": "2026-11-15 08:19"
  },
  "assembly": {
   "drone": "scout_v4_bench",
@@ -14,15 +14,16 @@
   "why": []
  },
  "make": {
+  "sha": {
+   "parts/scout_v4_probe_pinion/make.py": "48448debe800"
+  },
+  "rc": 1,
+  "s": 1.7,
+  "at": "2026-11-15 08:18",
+  "commit": "070aea3f",
   "solid": {
-   "ok": true,
-   "file": "parts/scout_v4_probe_pinion/part.stl",
-   "sha256": "97bc3190586e2f5b65780360e00dd95ad9d42a30b8ef91f7d9b2418451da7e26",
-   "cm3": 0.227,
-   "bodies_plain": 1,
-   "specks_plain": 0,
-   "bodies_eroded": 1,
-   "acute_edges": 12
+   "ok": false,
+   "why": "make.py failed (exit 1): ModuleNotFoundError: No module named 'topo'"
   }
  }
 }
