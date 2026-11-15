@@ -40,14 +40,18 @@ Each system's `artifact` URL is in its `systems/<name>.assembly.json`; a session
 - xswap short lock in the Overseer: https://claude.ai/artifact/Tiij4hVRdJWVdtLy9JdeQv
 
 ## How it works
-One script per part, GitHub runs the topology engine, one page shows the assembly. Claude writes scripts, nothing else.
+Every part is drawn first and printed the same day; the topology engine only lightens parts Spark's tests froze. One page shows
+the assembly. Claude writes scripts, nothing else.
 
 ## Every part
-1. Tell the design chat what the part mounts and carries. It writes your notes to `parts/<name>/feedback.md` and starts a worker
-   session for the stream (CLAUDE.md, Sessions), so the chat stays free.
-2. The worker writes `parts/<name>/part.py` and a line in `systems/<drone>.assembly.json`, pushes to main (the push starts the run).
-3. The runner optimises, solid-checks, commits `result.json` + `part.stl`. The page rebuilds; the grey box becomes the real part.
-4. The worker fixes fails at the root cause, republishes the artifact, reports once to the design chat and archives itself.
+1. Tell the design chat what the part mounts and carries. It writes your notes to `parts/<name>/feedback.md` and starts a
+   background subagent for the stream (CLAUDE.md, Sessions), so the chat stays free. No new sessions.
+2. The subagent draws `parts/<name>/make.py` (plus a fit coupon when an interface is new), places it in
+   `systems/<drone>.assembly.json` with its assembly path, and makes it pass the solid check and the assembly check
+   (installable in order, no collisions). It reports once with the print lines.
+3. You print and test. "<part>: pass" or "<part>: fail, <notes>" to the design chat; a fail goes back to step 2.
+4. A frozen part that should be lighter gets a `part.py`: the push runs the engine in CI, and the result replaces the
+   prototype on the page only when every gate passes.
 
 Manual run of any part(s): Actions -> parts -> Run workflow -> names. Empty = everything missing or stale.
 Housekeeping: a weekly scheduled session runs `tools/sweep.py` on Monday morning and archives finished sessions.
