@@ -1641,6 +1641,13 @@ def receiver_proto(B):
     return (R + seat + (k["recv_add"] - bl.cart_path(r))) - k["recv_cut"]
 
 
+def receiver_all_print(B):
+    """m6.receiver_all as printed (15 Nov): the PROTOTYPE receiver (receiver_proto), the clamped carrier and cap, strips, plug, pegs, the clamp's bolts: what a system
+    that seats this latch (tools/box_check.latch_bodies) should draw instead of the engine's room"""
+    B = apply_clamp(B); k = B.get("clamp")
+    return U(B["recv_print"], B["carrier"], B["cap"], B["strips"], B["male"], *B["poles"], *([k["bolts"], k["inserts"]] if k else []))
+
+
 def apply_clamp(B):
     """B with the print parts (15 Nov): the Overseer's carrier and cap as clamped (ov_clamp), B["clamp"] its bolts and inserts; the receiver as printed (receiver_proto)
     in B["recv_print"]. B["recv"] (the engine's room) is left as build() made it."""
