@@ -155,6 +155,84 @@
   "bytes": 49684,
   "at": "2026-11-14 02:30"
  },
+ "box_dome_hub_l.stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_dome_hub_l.stl",
+  "sha256": "14393aa21bf691831711cc678ac1a5aefee477fe224bb8ec6a2448af0c665c88",
+  "bytes": 98884,
+  "at": "2026-11-15 07:32"
+ },
+ "box_dome_hub_r.stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_dome_hub_r.stl",
+  "sha256": "a138cb4afbd7b6e052997a6a1aa5e305b0ae32e51392628532a92bcf7b9209ec",
+  "bytes": 98884,
+  "at": "2026-11-15 07:32"
+ },
+ "box_dome_plate_1_l.stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_dome_plate_1_l.stl",
+  "sha256": "74a208548e71368296c48c25b8e28a0d321dec7321d3ec7c3eef07cb58431277",
+  "bytes": 130684,
+  "at": "2026-11-15 07:32"
+ },
+ "box_dome_plate_1_r.stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_dome_plate_1_r.stl",
+  "sha256": "3924e8ace1f0a74ea1d2c3ff14f167f4b9febe57d1ed407100aafd624201ba36",
+  "bytes": 130684,
+  "at": "2026-11-15 07:32"
+ },
+ "box_dome_plate_2_l.stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_dome_plate_2_l.stl",
+  "sha256": "e5bb88a4fab45fa60cff32313378fe80d5412448444cddbf280627b40b4148ce",
+  "bytes": 113584,
+  "at": "2026-11-15 07:32"
+ },
+ "box_dome_plate_2_r.stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_dome_plate_2_r.stl",
+  "sha256": "2c8b960143cf93aea2245ce349a1a11dbf2b0f7a99ceb1c1a19e3d701f8d5631",
+  "bytes": 113584,
+  "at": "2026-11-15 07:32"
+ },
+ "box_dome_plate_3_l.stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_dome_plate_3_l.stl",
+  "sha256": "c2f53790fd6ee379d03c04080d1b905ae5147f32961a6b6879c79ef1cd643f8c",
+  "bytes": 130384,
+  "at": "2026-11-15 07:32"
+ },
+ "box_dome_plate_3_r.stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_dome_plate_3_r.stl",
+  "sha256": "44e0f514cfae0e926266e8f978127d0425c13f9172ee32497e2a3d2ef7127dae",
+  "bytes": 130384,
+  "at": "2026-11-15 07:32"
+ },
+ "box_dome_plate_4_l.stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_dome_plate_4_l.stl",
+  "sha256": "c7c58ad8c75dcb6d9ba15a6f7fd1d584cd0237cfb8e9875dfe31c3aea2132002",
+  "bytes": 149484,
+  "at": "2026-11-15 07:33"
+ },
+ "box_dome_plate_4_r.stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_dome_plate_4_r.stl",
+  "sha256": "1bc01328df6eb89a54015aca19d228fe30fc39223e3211faf3c783866b79107a",
+  "bytes": 149484,
+  "at": "2026-11-15 07:33"
+ },
+ "box_dome_ring_hub.stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_dome_ring_hub.stl",
+  "sha256": "d0199a4172a4d909901e955961b479b7f87ea396d6d5b7cd770b6c44ca1018df",
+  "bytes": 96584,
+  "at": "2026-11-15 07:33"
+ },
+ "box_dome_ring_plain.stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_dome_ring_plain.stl",
+  "sha256": "1b6de6dc6ef2db23d01b375c86170b1355313f4c30914e287d054389c55e0a27",
+  "bytes": 55684,
+  "at": "2026-11-15 07:33"
+ },
+ "box_dome_ring_spoke.stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_dome_ring_spoke.stl",
+  "sha256": "1d710c1bcd56bfd8bd6ed3b7e3b607cc146d24b3c7173954979bd485fe95e2db",
+  "bytes": 73584,
+  "at": "2026-11-15 07:33"
+ },
  "box_funnel_arm.stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_funnel_arm.stl",
   "sha256": "1a834c19e3cfbf2653e1698a382cf7d99911ea280dd41f1486584ecb8002919a",
