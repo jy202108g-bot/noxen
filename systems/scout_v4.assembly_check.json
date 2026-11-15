@@ -245,6 +245,30 @@
    ]
   },
   {
+   "a": "scout_v4_probe_turret",
+   "b": "scout_v4_probe_pinion",
+   "mm3": 3.0,
+   "limit_mm3": 0.5,
+   "contact": null,
+   "ok": false,
+   "pieces": [
+    {
+     "mm3": 3.0,
+     "at": [
+      0.0,
+      15.3,
+      21.8
+     ],
+     "extent_mm": [
+      7.0,
+      0.2,
+      3.5
+     ],
+     "depth_mm": 0.2
+    }
+   ]
+  },
+  {
    "a": "scout_v4_probe_spool",
    "b": "scout_v4_probe_drum",
    "mm3": 303.05,
@@ -2302,9 +2326,15 @@
    "clashes with scout_v4_radxa_zero_3w: 165.0 mm3",
    "blocks the path 'DRV8833 up onto its land' (249.4 mm3 8.0 mm out)",
    "blocks the path 'Radxa up onto its posts' (962.1 mm3 15.0 mm out)"
+  ],
+  "scout_v4_probe_pinion": [
+   "clashes with scout_v4_probe_turret: 3.0 mm3"
+  ],
+  "scout_v4_probe_turret": [
+   "clashes with scout_v4_probe_pinion: 3.0 mm3"
   ]
  },
  "would_block": {},
- "seconds": 5.7,
+ "seconds": 5.4,
  "placed": {}
 }
