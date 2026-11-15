@@ -1,6 +1,6 @@
 {
  "drone": "box",
- "ok": false,
+ "ok": true,
  "gate": true,
  "fit_tol_mm3": 0.5,
  "fit_table": [
@@ -85,7 +85,7 @@
   }
  ],
  "grow_mm": 0.1,
- "parts_checked": 176,
+ "parts_checked": 180,
  "printed": [
   "box_dome_hub_l",
   "box_dome_hub_r",
@@ -136,8 +136,8 @@
   "box_stand2p_rail_r",
   "box_swaparm_box_arm8_a_blade_n",
   "box_swaparm_box_arm8_a_blade_p",
-  "box_swaparm_box_arm8_a_carriage_run",
-  "box_swaparm_box_arm8_a_lift_run",
+  "box_swaparm_box_arm8_a_carriage",
+  "box_swaparm_box_arm8_a_lift",
   "box_swaparm_box_arm8_a_pads",
   "box_swaparm_box_arm8_a_pilots",
   "box_swaparm_box_arm8_a_rail",
@@ -146,8 +146,8 @@
   "box_swaparm_box_arm8_a_wheels",
   "box_swaparm_box_arm8_b_blade_n",
   "box_swaparm_box_arm8_b_blade_p",
-  "box_swaparm_box_arm8_b_carriage_run",
-  "box_swaparm_box_arm8_b_lift_run",
+  "box_swaparm_box_arm8_b_carriage",
+  "box_swaparm_box_arm8_b_lift",
   "box_swaparm_box_arm8_b_pads",
   "box_swaparm_box_arm8_b_pilots",
   "box_swaparm_box_arm8_b_rail",
@@ -179,7 +179,7 @@
   "box_swaparm_box_arm8_fx_detent_arm",
   "box_swaparm_box_arm8_fx_post",
   "box_swaparm_box_arm8_fx_stub",
-  "box_swaparm_box_arm8_hub_run"
+  "box_swaparm_box_arm8_hub"
  ],
  "skipped": [
   {
@@ -204,54 +204,6 @@
   }
  ],
  "pairs": [
-  {
-   "a": "box_swaparm_box_arm8_hub_run",
-   "b": "box_swaparm_box_arm8_fx_bearings",
-   "mm3": 13114.24,
-   "limit_mm3": 0.5,
-   "contact": null,
-   "ok": false,
-   "pieces": [
-    {
-     "mm3": 13114.24,
-     "at": [
-      0.0,
-      30.0,
-      0.0
-     ],
-     "extent_mm": [
-      80.0,
-      32.0,
-      80.0
-     ],
-     "depth_mm": 32.0
-    }
-   ]
-  },
-  {
-   "a": "box_swaparm_box_arm8_hub_run",
-   "b": "box_swaparm_box_arm8_fx_stub",
-   "mm3": 4860.99,
-   "limit_mm3": 0.5,
-   "contact": null,
-   "ok": false,
-   "pieces": [
-    {
-     "mm3": 4860.99,
-     "at": [
-      0.0,
-      10.0,
-      0.0
-     ],
-     "extent_mm": [
-      90.0,
-      4.0,
-      90.0
-     ],
-     "depth_mm": 4.01
-    }
-   ]
-  },
   {
    "a": "box_scout_v4_scout_v4_frame",
    "b": "box_scout_v4_scout_v4_receiver_bolts",
@@ -330,38 +282,6 @@
    "a": "box_swaparm_box_arm8_b_unit_body",
    "b": "box_swaparm_box_arm8_b_pads",
    "mm3": 0.15,
-   "limit_mm3": 0.5,
-   "contact": null,
-   "ok": true
-  },
-  {
-   "a": "box_swaparm_box_arm8_hub_run",
-   "b": "box_swaparm_box_arm8_a_rail",
-   "mm3": 0.01,
-   "limit_mm3": 0.5,
-   "contact": null,
-   "ok": true
-  },
-  {
-   "a": "box_swaparm_box_arm8_hub_run",
-   "b": "box_swaparm_box_arm8_b_rail",
-   "mm3": 0.01,
-   "limit_mm3": 0.5,
-   "contact": null,
-   "ok": true
-  },
-  {
-   "a": "box_swaparm_box_arm8_hub_run",
-   "b": "box_swaparm_box_arm8_a_motor",
-   "mm3": 0.0,
-   "limit_mm3": 0.5,
-   "contact": null,
-   "ok": true
-  },
-  {
-   "a": "box_swaparm_box_arm8_hub_run",
-   "b": "box_swaparm_box_arm8_b_motor",
-   "mm3": 0.0,
    "limit_mm3": 0.5,
    "contact": null,
    "ok": true
@@ -652,16 +572,8 @@
    "why": "slid in between the side walls from outside, its shaft into the coupling (bought in bought: the coupling's own bore) and plate 4"
   }
  ],
- "not_print_ready": {
-  "box_swaparm_box_arm8_fx_stub": [
-   "clashes with box_swaparm_box_arm8_hub_run: 4861.0 mm3"
-  ],
-  "box_swaparm_box_arm8_hub_run": [
-   "clashes with box_swaparm_box_arm8_fx_stub: 4861.0 mm3",
-   "clashes with box_swaparm_box_arm8_fx_bearings: 13114.2 mm3"
-  ]
- },
+ "not_print_ready": {},
  "would_block": {},
- "seconds": 13.5,
+ "seconds": 10.4,
  "placed": {}
 }
