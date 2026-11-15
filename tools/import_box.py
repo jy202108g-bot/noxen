@@ -111,8 +111,17 @@ def funnel_parts():
            ("box_funnel_half_tail", "funnel frame, tail half (generated)", fm.half_bodies(-1), np.eye(4), None)]
     eng += [(f"box_funnel_arm{'' if (sx, sy) == (1, 1) else '_' + 'nt'[sx < 0] + 'pm'[sy < 0]}", f"funnel cross arm, {'nose' if sx > 0 else 'tail'} {'+y' if sy > 0 else '-y'}"
              f"{'' if sx * sy > 0 else ' (mirrored print)'} (generated)", fm.arm_bodies(1, 1), placing(sx, sy), "box_funnel_arm") for sx in (1, -1) for sy in (1, -1)]
+    proto = {"box_funnel_half_nose": "box_funnel_proto_half_nose", "box_funnel_half_tail": "box_funnel_proto_half_tail", "box_funnel_arm": "box_funnel_proto_arm"}
     for pid, name, (drawn, cuts, env, R), P, src in eng:
         folder = src or pid; bb = np.asarray(drawn.bounding_box(), float)
+        pf = proto[folder]
+        if os.path.exists(os.path.join(ROOT, "parts", pf, "part.stl")):   # 15 Nov: the drawn PROTOTYPE prints (parts/box_funnel/proto.py); the engine piece waits at OPTIMISE
+            e = dict(base, id=pid, name=name.replace("(generated)", "(PROTOTYPE, drawn)"), color="#e07020", pose=(T @ P).tolist(), version="v5 prototype 15 Nov",
+                     mesh=f"parts/{pf}/part.stl", part=pf, note=f"PROTOTYPE: the setup's room filled solid less its cuts (parts/{pf}/make.py); "
+                     f"the engine piece parts/{folder} is at OPTIMISE")
+            if src and pid != folder:                                    # the mirrored corners show the one mesh mirrored by their pose
+                e["part"] = pf
+            out.append(e); continue
         e = dict(base, id=pid, name=name, color="#e07020", pose=(T @ P).tolist(), version="v5 setup 13 Nov",
                  box=[float(bb[0]), float(bb[3]), float(bb[1]), float(bb[4]), float(bb[2]), float(bb[5])], opacity=0.15,
                  note="engine part (parts/%s/part.py): the box is its drawn faces' extent until its run commits a mesh" % folder)
@@ -313,8 +322,8 @@ def main(nox=None):
     parts += stand_parts() + funnel_parts() + kept("box_dome_") + latch_parts() + drone_parts()
     a = dict(old, parts=parts, appendix="systems/box.appendix.html", fps=8,
              note=("Box W frame (X across, Y along the axle toward the front, Z up; the swap arm hub at the origin, the drone seat at (0, 167.1, 220.3)). "
-                   "In: the landing funnel v5 (13 Nov: the frame in two halves on four cross arms under the rain lid, each end wall on two lead-screw gearmotors; the halves and the arm are "
-                   "engine parts, shown as their drawn faces and room until their runs), latch v7 for both packs at the seat, the Scout v4 and the Overseer seated as they stand today, "
+                   "In: the landing funnel v5 (13 Nov: the frame in two halves on four cross arms under the rain lid, each end wall on two lead-screw gearmotors; the halves and the arm "
+                   "print as drawn PROTOTYPES, the setup's room filled solid less its cuts; their engine pieces wait at OPTIMISE), latch v7 for both packs at the seat, the Scout v4 and the Overseer seated as they stand today, "
                    + ("the swap arm from systems/swap_arm.assembly.json, " if os.path.exists(new_arm) else "the swap arm v7 at park with 11 bay receivers and two packs (3 Nov import, SUPERSEDED: the arm stream's new arm replaces it when pushed), ")
                    + "the stand v2 (mast, two base halves, two rails: engine parts, shown as their drawn faces and room until their runs; four TPU feet), the v2 enclosure sheets to W Z 145 and the PSU as boxes, the Scout's rain dome and the rain lid. Out: the electronics. "
                    "Compatibility between the streams: tools/box_check.py, its result under the viewer."))

@@ -4,7 +4,7 @@
 "readme_view": "iso",
 "artifact": "https://claude.ai/artifact/QyhSnHpskSzztt5kajHG9z",
 "machine": "box",
-"note": "Box W frame (X across, Y along the axle toward the front, Z up; the swap arm hub at the origin, the drone seat at (0, 167.1, 220.3)). In: the landing funnel v5 (13 Nov: the frame in two halves on four cross arms under the rain lid, each end wall on two lead-screw gearmotors; the halves and the arm are engine parts, shown as their drawn faces and room until their runs), latch v7 for both packs at the seat, the Scout v4 and the Overseer seated as they stand today, the swap arm from systems/swap_arm.assembly.json, the stand v2 (mast, two base halves, two rails: engine parts, shown as their drawn faces and room until their runs; four TPU feet), the v2 enclosure sheets to W Z 145 and the PSU as boxes, the Scout's rain dome and the rain lid. Out: the electronics. Compatibility between the streams: tools/box_check.py, its result under the viewer.",
+"note": "Box W frame (X across, Y along the axle toward the front, Z up; the swap arm hub at the origin, the drone seat at (0, 167.1, 220.3)). In: the landing funnel v5 (13 Nov: the frame in two halves on four cross arms under the rain lid, each end wall on two lead-screw gearmotors; the halves and the arm print as drawn PROTOTYPES, the setup's room filled solid less its cuts; their engine pieces wait at OPTIMISE), latch v7 for both packs at the seat, the Scout v4 and the Overseer seated as they stand today, the swap arm from systems/swap_arm.assembly.json, the stand v2 (mast, two base halves, two rails: engine parts, shown as their drawn faces and room until their runs; four TPU feet), the v2 enclosure sheets to W Z 145 and the PSU as boxes, the Scout's rain dome and the rain lid. Out: the electronics. Compatibility between the streams: tools/box_check.py, its result under the viewer.",
 "cg_ref": null,
 "timeline": "tools/landing_box.py:timeline",
 "parts": [
@@ -2570,7 +2570,7 @@
 "owner": "box funnel",
 "source": "parts/box_funnel/make.py",
 "id": "box_funnel_half_nose",
-"name": "funnel frame, nose half (generated)",
+"name": "funnel frame, nose half (PROTOTYPE, drawn)",
 "color": "#e07020",
 "pose": [
 [
@@ -2598,17 +2598,10 @@
 1.0
 ]
 ],
-"version": "v5 setup 13 Nov",
-"box": [
-0.0,
-162.0,
--88.0,
-88.0,
--99.5,
--16.299999999999997
-],
-"note": "engine part (parts/box_funnel_half_nose/part.py): the box is its drawn faces' extent until its run commits a mesh",
-"mesh": "parts/box_funnel_half_nose/part.stl"
+"version": "v5 prototype 15 Nov",
+"mesh": "parts/box_funnel_proto_half_nose/part.stl",
+"part": "box_funnel_proto_half_nose",
+"note": "PROTOTYPE: the setup's room filled solid less its cuts (parts/box_funnel_proto_half_nose/make.py); the engine piece parts/box_funnel_half_nose is at OPTIMISE"
 },
 {
 "role": "structure",
@@ -2618,7 +2611,7 @@
 "owner": "box funnel",
 "source": "parts/box_funnel/make.py",
 "id": "box_funnel_half_tail",
-"name": "funnel frame, tail half (generated)",
+"name": "funnel frame, tail half (PROTOTYPE, drawn)",
 "color": "#e07020",
 "pose": [
 [
@@ -2646,17 +2639,10 @@
 1.0
 ]
 ],
-"version": "v5 setup 13 Nov",
-"box": [
--128.0,
-0.0,
--88.0,
-88.0,
--99.5,
--16.299999999999997
-],
-"note": "engine part (parts/box_funnel_half_tail/part.py): the box is its drawn faces' extent until its run commits a mesh",
-"mesh": "parts/box_funnel_half_tail/part.stl"
+"version": "v5 prototype 15 Nov",
+"mesh": "parts/box_funnel_proto_half_tail/part.stl",
+"part": "box_funnel_proto_half_tail",
+"note": "PROTOTYPE: the setup's room filled solid less its cuts (parts/box_funnel_proto_half_tail/make.py); the engine piece parts/box_funnel_half_tail is at OPTIMISE"
 },
 {
 "role": "structure",
@@ -2666,7 +2652,7 @@
 "owner": "box funnel",
 "source": "parts/box_funnel/make.py",
 "id": "box_funnel_arm",
-"name": "funnel cross arm, nose +y (generated)",
+"name": "funnel cross arm, nose +y (PROTOTYPE, drawn)",
 "color": "#e07020",
 "pose": [
 [
@@ -2694,18 +2680,10 @@
 1.0
 ]
 ],
-"version": "v5 setup 13 Nov",
-"box": [
-142.0,
-186.0,
-46.0,
-205.7,
--108.0,
--80.30000000000001
-],
-"note": "engine part (parts/box_funnel_arm/part.py): the box is its drawn faces' extent until its run commits a mesh",
-"part": "box_funnel_arm",
-"mesh": "parts/box_funnel_arm/part.stl"
+"version": "v5 prototype 15 Nov",
+"mesh": "parts/box_funnel_proto_arm/part.stl",
+"part": "box_funnel_proto_arm",
+"note": "PROTOTYPE: the setup's room filled solid less its cuts (parts/box_funnel_proto_arm/make.py); the engine piece parts/box_funnel_arm is at OPTIMISE"
 },
 {
 "role": "structure",
@@ -2715,7 +2693,7 @@
 "owner": "box funnel",
 "source": "parts/box_funnel/make.py",
 "id": "box_funnel_arm_nm",
-"name": "funnel cross arm, nose -y (mirrored print) (generated)",
+"name": "funnel cross arm, nose -y (mirrored print) (PROTOTYPE, drawn)",
 "color": "#e07020",
 "pose": [
 [
@@ -2743,18 +2721,10 @@
 1.0
 ]
 ],
-"version": "v5 setup 13 Nov",
-"box": [
-142.0,
-186.0,
-46.0,
-205.7,
--108.0,
--80.30000000000001
-],
-"note": "engine part (parts/box_funnel_arm/part.py): the box is its drawn faces' extent until its run commits a mesh",
-"part": "box_funnel_arm",
-"mesh": "parts/box_funnel_arm/part.stl"
+"version": "v5 prototype 15 Nov",
+"mesh": "parts/box_funnel_proto_arm/part.stl",
+"part": "box_funnel_proto_arm",
+"note": "PROTOTYPE: the setup's room filled solid less its cuts (parts/box_funnel_proto_arm/make.py); the engine piece parts/box_funnel_arm is at OPTIMISE"
 },
 {
 "role": "structure",
@@ -2764,7 +2734,7 @@
 "owner": "box funnel",
 "source": "parts/box_funnel/make.py",
 "id": "box_funnel_arm_tp",
-"name": "funnel cross arm, tail +y (mirrored print) (generated)",
+"name": "funnel cross arm, tail +y (mirrored print) (PROTOTYPE, drawn)",
 "color": "#e07020",
 "pose": [
 [
@@ -2792,18 +2762,10 @@
 1.0
 ]
 ],
-"version": "v5 setup 13 Nov",
-"box": [
-142.0,
-186.0,
-46.0,
-205.7,
--108.0,
--80.30000000000001
-],
-"note": "engine part (parts/box_funnel_arm/part.py): the box is its drawn faces' extent until its run commits a mesh",
-"part": "box_funnel_arm",
-"mesh": "parts/box_funnel_arm/part.stl"
+"version": "v5 prototype 15 Nov",
+"mesh": "parts/box_funnel_proto_arm/part.stl",
+"part": "box_funnel_proto_arm",
+"note": "PROTOTYPE: the setup's room filled solid less its cuts (parts/box_funnel_proto_arm/make.py); the engine piece parts/box_funnel_arm is at OPTIMISE"
 },
 {
 "role": "structure",
@@ -2813,7 +2775,7 @@
 "owner": "box funnel",
 "source": "parts/box_funnel/make.py",
 "id": "box_funnel_arm_tm",
-"name": "funnel cross arm, tail -y (generated)",
+"name": "funnel cross arm, tail -y (PROTOTYPE, drawn)",
 "color": "#e07020",
 "pose": [
 [
@@ -2841,18 +2803,10 @@
 1.0
 ]
 ],
-"version": "v5 setup 13 Nov",
-"box": [
-142.0,
-186.0,
-46.0,
-205.7,
--108.0,
--80.30000000000001
-],
-"note": "engine part (parts/box_funnel_arm/part.py): the box is its drawn faces' extent until its run commits a mesh",
-"part": "box_funnel_arm",
-"mesh": "parts/box_funnel_arm/part.stl"
+"version": "v5 prototype 15 Nov",
+"mesh": "parts/box_funnel_proto_arm/part.stl",
+"part": "box_funnel_proto_arm",
+"note": "PROTOTYPE: the setup's room filled solid less its cuts (parts/box_funnel_proto_arm/make.py); the engine piece parts/box_funnel_arm is at OPTIMISE"
 },
 {
 "role": "structure",
