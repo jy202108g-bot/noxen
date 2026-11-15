@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 permissions: { pages: write, id-token: write, contents: read }
-concurrency: { group: site, cancel-in-progress: true }
+concurrency: { group: site, cancel-in-progress: false }   # the running build finishes and the newest waiting one runs next: back-to-back results commits were cancelling every build (15 Nov)
 
 jobs:
   build:
