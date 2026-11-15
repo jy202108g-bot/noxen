@@ -517,5 +517,14 @@
    "source": "parts/latch7/make.py"
   }
  ],
- "archived": true
+ "archived": true,
+ "assembly": {
+  "fit_tol_mm3": 0.5,
+  "note": "written by parts/latch7/make.py assembly_block: the tools/assembly_check.py block of a pack's latch page (15 Nov): the guide poles are a second drawing of the pegs printed on the plug carrier (build: carrier + pegs) and the v6 nose skid is gone in v7 (build: rskids = []): left out; the Overseer's lead clamp in its order, on the bench before the receiver goes on (ov_clamp).",
+  "exclude": [
+   "latch7_view_guide_pole_p",
+   "latch7_view_guide_pole_n",
+   "latch7_view_receiver_skid_nose"
+  ]
+ }
 }
