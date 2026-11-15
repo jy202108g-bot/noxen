@@ -2077,11 +2077,9 @@
 "tag": "C",
 "owner": "box stand v2",
 "source": "parts/box_stand2_lib.py",
-"id": "box_stand2_yoke_r_drawn",
-"name": "stand v2: yoke, right (+X, under the PSU): drawn faces (what the stub, a bolt or the floor touches)",
-"color": "#7f8a96",
-"opacity": null,
-"mesh": "parts/box_stand2_yoke_r_drawn/part.stl",
+"id": "box_stand2_yoke_r",
+"name": "stand v2: yoke, right (+X, under the PSU)",
+"color": "#b7bfc9",
 "pose": [
 [
 1.0,
@@ -2108,51 +2106,9 @@
 1.0
 ]
 ],
-"part": "box_stand2_yoke_r_drawn",
-"version": "v2 14 Nov",
-"note": "shown until the run's mesh is in"
-},
-{
-"role": "structure",
-"group": "stand",
-"material": "PCTG",
-"tag": "C",
-"owner": "box stand v2",
-"source": "parts/box_stand2_lib.py",
-"id": "box_stand2_yoke_r_room",
-"name": "stand v2: yoke, right (+X, under the PSU): room the engine may fill (what every clearance check uses)",
-"color": "#d5dbe2",
-"opacity": 0.25,
-"mesh": "parts/box_stand2_yoke_r_room/part.stl",
-"pose": [
-[
-1.0,
-0.0,
-0.0,
-0.0
-],
-[
-0.0,
-1.0,
-0.0,
-0.0
-],
-[
-0.0,
-0.0,
-1.0,
-0.0
-],
-[
-0.0,
-0.0,
-0.0,
-1.0
-]
-],
-"part": "box_stand2_yoke_r_room",
-"version": "v2 14 Nov",
-"note": "shown until the run's mesh is in"
+"version": "v2 setup 14 Nov",
+"note": "engine part (parts/box_stand2_yoke_r/part.py)",
+"mesh": "parts/box_stand2_yoke_r/part.stl"
 },
 {
 "role": "structure",
