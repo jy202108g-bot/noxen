@@ -1,8 +1,8 @@
 {
  "make": {
   "sha": {
-   "parts/box_arm8_lib.py": "1b88e29d7dcb",
-   "parts/box_arm8p_lib.py": "e0aa3a687a0e",
+   "parts/box_arm8_lib.py": "d6cf377137c6",
+   "parts/box_arm8p_lib.py": "13f2d0df1458",
    "parts/box_arm8p_lift/make.py": "f046431b3ce8",
    "parts/cage_node_lib.py": "bad3d25f2b60",
    "parts/latch5/battery_latch_v4.py": "f55aaf78bdf7",
@@ -11,9 +11,9 @@
    "systems/overseer.cage.json": "298700a6d756"
   },
   "rc": 0,
-  "s": 21.7,
-  "at": "2026-11-15 07:49",
-  "commit": "8258bcd8",
+  "s": 21.6,
+  "at": "2026-11-15 11:31",
+  "commit": "6a64006a",
   "solid": {
    "ok": true,
    "file": "print/box_arm8p_lift.stl",

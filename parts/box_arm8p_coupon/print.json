@@ -1,15 +1,15 @@
 {
  "make": {
   "sha": {
-   "parts/box_arm8_lib.py": "1b88e29d7dcb",
+   "parts/box_arm8_lib.py": "d6cf377137c6",
    "parts/box_arm8p_coupon/make.py": "4195a3bafcc6",
-   "parts/box_arm8p_lib.py": "e0aa3a687a0e",
+   "parts/box_arm8p_lib.py": "13f2d0df1458",
    "systems/fit_table.json": "8d560ff6f55b"
   },
   "rc": 0,
-  "s": 13.2,
-  "at": "2026-11-15 07:49",
-  "commit": "8258bcd8",
+  "s": 10.8,
+  "at": "2026-11-15 11:30",
+  "commit": "6a64006a",
   "solid": {
    "ok": true,
    "file": "print/box_arm8p_coupon.stl",

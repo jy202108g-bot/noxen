@@ -165,7 +165,7 @@
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_arm8p_coupon.stl",
   "sha256": "b9664dac7c7d839d7e609c6d9e92e516c7304764fe566d87cdf35807c340824d",
   "bytes": 239784,
-  "at": "2026-11-15 07:50"
+  "at": "2026-11-15 11:31"
  },
  "box_arm8p_hub.stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_arm8p_hub.stl",
@@ -177,7 +177,7 @@
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_arm8p_lift.stl",
   "sha256": "8a450967966d50900840f653687b36937bf20c87051cf5151fff022947f6d7de",
   "bytes": 289184,
-  "at": "2026-11-15 07:50"
+  "at": "2026-11-15 11:31"
  },
  "box_dome_hub_l.stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_dome_hub_l.stl",
