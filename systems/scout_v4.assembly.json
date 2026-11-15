@@ -283,6 +283,20 @@
 "note": "its shaft on the tilt axis facing -y, held by its 32.8 tabs on the head frame's +y pads; the capacitor on its lead covers its > 1 A start"
 },
 {
+"id": "scout_v4_probe_horn",
+"name": "the SG90's single-arm horn and its centre screw (from its bag), screwed to the cradle's +y wall",
+"role": "bought",
+"group": "camera",
+"color": "#2f3b45",
+"mesh": "parts/scout_v4_probe_horn/part.stl",
+"mass_g": 0.5,
+"tag": "E",
+"owner": "scout v4",
+"version": "shape 8 Nov",
+"source": "tools/scout_v4_shape.py",
+"note": "on the SG90's spline, its arm in the cradle's channel (parts/scout_v4_head_lib.py): it turns with the cradle"
+},
+{
 "id": "scout_v4_head_frame",
 "name": "probe head frame: the clip on the blades' tip, the SG90's closed ring, the idler's bracket (drawn prototype, parts/scout_v4_head_frame/make.py)",
 "role": "structure",
@@ -829,6 +843,12 @@
 "b": "scout_v4_probe_feed",
 "allow_mm3": 15.0,
 "why": "the blades leave the wound coil at its tangent (the feed drawn from the coil's surface)"
+},
+{
+"a": "scout_v4_probe_horn",
+"b": "scout_v4_probe_servo",
+"allow_mm3": 2.0,
+"why": "the horn's hub on the SG90's spline, 0.25 off the case on the spline's shoulder (the spline itself not drawn)"
 }
 ],
 "mates": [
@@ -922,7 +942,10 @@
 "into": [
 "scout_v4_head_frame"
 ],
-"why": "step 2 (parts/scout_v4_head_lib.py): the SG90 with its horn slid +y into the frame's closed ring from the cradle's room, its tabs stop on the ring's face"
+"why": "step 2 (parts/scout_v4_head_lib.py): the SG90 with its horn slid +y into the frame's closed ring from the cradle's room, its tabs stop on the ring's face",
+"with": [
+"scout_v4_probe_horn"
+]
 },
 {
 "name": "camera into the cradle (in hand)",
@@ -950,7 +973,8 @@
 "order": 80,
 "with": [
 "scout_v4_probe_tilt",
-"scout_v4_probe_leds"
+"scout_v4_probe_leds",
+"scout_v4_probe_horn"
 ],
 "moves": [
 {
@@ -982,9 +1006,8 @@
 "scout_v4_head_frame",
 "scout_v4_probe_servo"
 ],
-"why": "step 4: the cradle with the camera and LED bars at nod 0, lowered straight down between the bracket and the horn (shown here lifted out: nodded from parked 15 to 0, then up)",
-"min_body_mm3": 50,
-"note": "the SG90's horn is drawn with the SG90 (parts/scout_v4_probe_servo) at the parked angle, so it cannot ride with the cradle here: the horn's channel shows as a ~1 mm clash with it once the cradle turns"
+"why": "step 5: the cradle with the camera and LED bars at nod 0 lowered straight down between the bracket and the SG90, the horn's arm, hub and centre screw sliding up its channel from the open bottom edge; with the horn here (shown lifted out together; head_frame/make.py checks the channel over the horn)",
+"min_body_mm3": 50
 },
 {
 "name": "head nods -20..+90 deg",
@@ -992,7 +1015,8 @@
 "order": 100,
 "with": [
 "scout_v4_probe_tilt",
-"scout_v4_probe_leds"
+"scout_v4_probe_leds",
+"scout_v4_probe_horn"
 ],
 "turn": {
 "axis": [
@@ -1016,8 +1040,7 @@
 "scout_v4_probe_servo"
 ],
 "why": "the cradle, camera and LED bars about the SG90's axis from 20 down to 90 up (parked 15 up)",
-"min_body_mm3": 50,
-"note": "the SG90's horn is drawn with the SG90 (parts/scout_v4_probe_servo) at the parked angle, so it cannot ride with the cradle here: the horn's channel shows as a ~1 mm clash with it once the cradle turns"
+"min_body_mm3": 50
 }
 ],
 "generate": [
