@@ -168,7 +168,7 @@ def drone_parts():
     import seat_envelope as se
     from build_site import pose_matrix
     out = []
-    for sysname, label, TD in (("scout_v4", "Scout", np.eye(4)), ("overseer", "Overseer", se.T_OV)):
+    for sysname, label, TD in (("scout_v4", "Scout", se.T_SCOUT), ("overseer", "Overseer", se.T_OV)):   # T_SCOUT: the Scout's receiver bolts on latch v7's (15 Nov: eye put it 6.65 off)
         a = json.load(open(os.path.join(ROOT, "systems", f"{sysname}.assembly.json")))
         for p in a["parts"]:
             if any(k in p["name"].lower() for k in se.SKIP):
@@ -190,6 +190,36 @@ def drone_parts():
             e["max_faces"] = 8000 if any(k in p["name"].lower() for k in ("rods", "tubes")) else 1200      # context on this page: 113 drone parts must fit the 16 MB artifact
             out.append(e)
     return out
+
+
+GATED_LANDING = "landing: Scout"     # the page seats both drones at the one seat (two states drawn together); the gate checks the Scout's, the dome shut over it
+DRONE_MOUNT = {"scout_v4": ("scout_v4_frame", "scout_v4_receiver_bolts"), "overseer": ("overseer_base",)}   # the drone's lines latch v7's receiver bolts to
+BOX_CONTACTS = [dict(a="box_dome_ring", b="box_dome_spokes", allow_mm3=7800.0,
+                     why="the eight 6 mm spokes' ends in their sockets in the base ring (the dome's concept mesh does not cut the bores)")]
+
+
+def assembly(parts):
+    """the box's tools/assembly_check.py block, rebuilt with its lines: the other drone's landing set left out (staging: one seat, one
+    drone at a time; the Overseer seated, landing and on the swap path is tools/box_check.py's, with every box part); a drone's own lines
+    are a second drawing of its system (gated in systems/<drone>.assembly.json with its fit meshes, contacts and paths), but for its
+    lines the latch's receiver bolts to; their contacts come with them."""
+    ex, keep = [], set()
+    for p in parts:
+        own = p.get("owner")
+        if p.get("group", "").startswith("landing: ") and p.get("group") != GATED_LANDING:
+            ex.append(p["id"])
+        elif own in DRONE_MOUNT and p["id"][len(f"box_{own}_"):] not in DRONE_MOUNT[own]:
+            ex.append(p["id"])
+        else:
+            keep.add(p["id"])
+    contacts = [c for c in BOX_CONTACTS if c["a"] in keep and c["b"] in keep]
+    for sysname in DRONE_MOUNT:
+        a = json.load(open(os.path.join(ROOT, "systems", f"{sysname}.assembly.json")))
+        for c in (a.get("assembly") or {}).get("contacts", []):
+            ca, cb = f"box_{sysname}_{c['a']}", f"box_{sysname}_{c['b']}"
+            if ca in keep and cb in keep:
+                contacts.append(dict(c, a=ca, b=cb, why=f"{c.get('why', '')} (systems/{sysname}.assembly.json)"))
+    return {"fit_tol_mm3": 0.5, "note": "written by tools/import_box.py (assembly()): " + " ".join(assembly.__doc__.split()), "exclude": ex, "contacts": contacts}
 
 
 BOUGHT_LIST = [
@@ -315,7 +345,7 @@ def main(nox=None):
             if p["id"].startswith("box_arm_"):
                 p["version"] = "v7, superseded (the arm stream's systems/swap_arm.assembly.json replaces it when pushed)"
     parts += stand_parts() + funnel_parts() + kept("box_dome_") + latch_parts() + drone_parts()
-    a = dict(old, parts=parts, appendix="systems/box.appendix.html", fps=8,
+    a = dict(old, parts=parts, appendix="systems/box.appendix.html", fps=8, assembly=assembly(parts),
              note=("Box W frame (X across, Y along the axle toward the front, Z up; the swap arm hub at the origin, the drone seat at (0, 167.1, 220.3)). "
                    "In: the landing funnel v5 (13 Nov: the frame in two halves on four cross arms under the rain lid, each end wall on two lead-screw gearmotors; the halves and the arm "
                    "print as drawn PROTOTYPES, the setup's room filled solid less its cuts; their engine pieces wait at OPTIMISE), latch v7 for both packs at the seat, the Scout v4 and the Overseer seated as they stand today, "
