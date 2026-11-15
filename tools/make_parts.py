@@ -7,10 +7,12 @@ prototype it was drawn from (its assembly line's "prototype": "<folder of the ma
 What a make.py run is made of goes to the part's print record (print.json; result.json where the make writes one) as "make":
   sha    {file: sha12} make.py and every repo file the run read (opened under the repo, tools/part_sha.py's audit hook), less what
          it wrote; a change to any of them makes the drawn part stale (CI runs it again)
-  solid  the solid check (tools/solid_check.py) on its print mesh: print/<p>.stl when the make writes one, else part.stl
+  solid  the solid check (tools/solid_check.py) on its print mesh: print/<p>.stl when the make writes one, else part.stl; a generator
+         with neither (latch7) is held to every print file its run wrote
   at, commit
 
-    python tools/make_parts.py --affected < changed-files     the drawn parts a push reruns (git diff --name-only on stdin)
+    python tools/make_parts.py --affected < changed-files     the drawn parts a push reruns (git diff --name-only on stdin), and every
+                                                              drawn part whose recorded reads changed since its run
     python tools/make_parts.py run <p> ... | --all            run each make.py, solid-check, record (exit 1 if any fails)
     python tools/make_parts.py check <p> ... | --all          solid-check the committed print mesh only (no run), record
     python tools/make_parts.py status [<p> ...]               stage, status and solid verdict per drawn part
@@ -87,7 +89,7 @@ def stale(p):
     m = record(p).get("make") or {}
     if not m.get("sha"):
         return True
-    return any(_h(os.path.join(ROOT, f)) != s for f, s in m["sha"].items())
+    return any(_h(os.path.join(ROOT, f)) != s for f, s in m["sha"].items() if f not in ("tools/make_parts.py", "tools/print_mesh.py"))
 
 
 def affected(changed):
@@ -108,16 +110,19 @@ def check(p, path=None, log=print):
     import trimesh
     from solid_check import solid_check
     path = path or print_file(p)
-    if path is None:
-        sol = dict(ok=False, why="no mesh: the make wrote neither print/<p>.stl nor part.stl")
-    else:
-        try:
-            m = trimesh.load(path, force="mesh")
-            ok, info = solid_check(m)
-            keep = {k: v for k, v in (info or {}).items() if isinstance(v, (int, float, str, bool, type(None))) and k not in ("ok", "file", "sha256", "cm3")}
-            sol = dict(ok=bool(ok), file=os.path.relpath(path, ROOT), sha256=print_mesh.sha256(path), cm3=round(abs(m.volume) / 1000, 3), **keep)
-        except Exception as e:
-            sol = dict(ok=False, file=os.path.relpath(path, ROOT), why=f"the check did not run: {str(e)[:200]}")
+    if path is None:                                              # a generator: its last run's print files, or nothing to check until it runs
+        fs = [r["file"] for r in ((record(p).get("make") or {}).get("solid") or {}).get("files", []) if os.path.exists(os.path.join(ROOT, r["file"]))]
+        if fs:
+            return check_set(p, fs, log=log)
+        log(f"make_parts: {p}: no print mesh of its own (a generator): made, its print files are checked; nothing to check now")
+        return True
+    try:
+        m = trimesh.load(path, force="mesh")
+        ok, info = solid_check(m)
+        keep = {k: v for k, v in (info or {}).items() if isinstance(v, (int, float, str, bool, type(None))) and k not in ("ok", "file", "sha256", "cm3")}
+        sol = dict(ok=bool(ok), file=os.path.relpath(path, ROOT), sha256=print_mesh.sha256(path), cm3=round(abs(m.volume) / 1000, 3), **keep)
+    except Exception as e:
+        sol = dict(ok=False, file=os.path.relpath(path, ROOT), why=f"the check did not run: {str(e)[:200]}")
     m = record(p).get("make") or {}
     m["solid"] = sol
     _write(p, "make", m)
@@ -146,7 +151,8 @@ def run(p, log=print):
     wrote = _changed_now() - before
     own = f"parts/{p}/make.py"
     reads = sorted(({own} | set(reads)) - (wrote - {own}))
-    reads = [f for f in reads if not f.startswith("print/") and os.path.basename(f) not in OUTPUTS and not f.endswith(".stl")]
+    reads = [f for f in reads if not f.startswith("print/") and os.path.basename(f) not in OUTPUTS and not f.endswith(".stl")
+             and f not in ("tools/make_parts.py", "tools/print_mesh.py")]                 # this runner's own modules, not the part's
     m = dict(sha={f: _h(os.path.join(ROOT, f)) for f in reads}, rc=rc, s=round(time.time() - t0, 1), at=time.strftime("%Y-%m-%d %H:%M"),
              commit=subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=ROOT, capture_output=True, text=True).stdout.strip())
     if rc != 0:
@@ -156,7 +162,29 @@ def run(p, log=print):
         return False
     _write(p, "make", m)
     log(f"make_parts: {p}: made in {m['s']} s ({len(reads)} files read, {len(wrote)} written)")
+    if print_file(p) is None:                                    # a generator (latch7: its parts' folders and print files, none of its own)
+        made = sorted(f for f in wrote if f.startswith("print/") and f.endswith(".stl"))
+        return check_set(p, made, log=log)
     return check(p, log=log)
+
+
+def check_set(p, files_, log=print):
+    """a generator's verdict: the solid check on every print file its run wrote (make.solid.files); it passes when all do"""
+    import trimesh
+    from solid_check import solid_check
+    rows = []
+    for f in files_:
+        try:
+            ok, _ = solid_check(trimesh.load(os.path.join(ROOT, f), force="mesh"))
+        except Exception as e:
+            ok = False
+        rows.append(dict(file=f, ok=bool(ok)))
+    bad = [r["file"] for r in rows if not r["ok"]]
+    sol = dict(ok=bool(rows) and not bad, files=rows, why=None if rows and not bad else
+               ("a generator that wrote no print file" if not rows else f"solid check FAIL on {', '.join(bad[:6])}"))
+    m = record(p).get("make") or {}; m["solid"] = sol; _write(p, "make", m)
+    log(f"make_parts: {p}: {len(rows)} print files, solid check {'PASS' if sol['ok'] else 'FAIL'}" + (f" ({sol['why']})" if sol["why"] else ""))
+    return sol["ok"]
 
 
 def _exec(p, out):
@@ -221,8 +249,9 @@ if __name__ == "__main__":
         sys.exit(__doc__)
     if a[0] == "_exec":
         _exec(a[1], a[2]); sys.exit(0)
-    if a[0] == "--affected":
-        print(" ".join(affected(sys.stdin.read().split())))
+    if a[0] == "--affected":                                     # and every drawn part whose recorded reads changed since its run (a push
+        ch = affected(sys.stdin.read().split())                  # whose meshes run was cancelled in the queue still gets its parts made)
+        print(" ".join(sorted(set(ch) | {p for p in names() if (record(p).get("make") or {}).get("sha") and stale(p)})))
         sys.exit(0)
     cmd, ps = a[0], a[1:]
     if ps == ["--all"] or (cmd == "status" and not ps):

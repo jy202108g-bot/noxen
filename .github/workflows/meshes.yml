@@ -50,7 +50,8 @@ jobs:
         shell: bash
         run: |
           if [ "${{ github.event_name }}" = "push" ]; then
-            # every commit of the push (the push's own range, as parts.yml), not only the last one
+            # every commit of the push (the push's own range, as parts.yml), not only the last one, and every drawn part whose recorded
+            # reads changed since its run (a queued run the next push cancelled made nothing: concurrency keeps one pending run)
             make=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} 2>/dev/null | python3 tools/make_parts.py --affected)
           else
             make="${{ inputs.make }}"; [ "$make" = "all" ] && make=$(python3 -c "import sys; sys.path.insert(0, 'tools'); import make_parts; print(' '.join(make_parts.names()))")
