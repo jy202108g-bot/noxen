@@ -10,12 +10,12 @@ through history. Move a folder back to `parts/` (and give it an assembly line) t
   (`parts/scout_cage_node_*` x 15, `scout_arm_clip_1..4`, `scout_nose_unit`, `scout_tail_unit`: all stale, so a blanket dispatch
   would have rerun them), its mesh-only folders (`scout_cage_v21`, `scout_prop_1..4`, `camera`, `frame_plate_bee35_carbon`,
   `pack_4s_1500`, `pack_xt60_plug`), `tools/bee35_plate.py` and `dimensions_scout_v3.md` (its section of systems/dimensions.md).
-  Their print meshes stay downloadable from the `meshes` release (`<part>.stl`). Kept live, because Scout v4 or the box reads
-  them: `systems/scout.assembly.json` (tools/import_box.py's seated Scout), `systems/scout.cage_loads.json` (imported by
+  Their print meshes stay downloadable from the `meshes` release (`<part>.stl`). Kept live, because Scout v4 reads
+  them: `systems/scout.assembly.json` (tools/scout_cage_loads.py's masses), `systems/scout.cage_loads.json` (imported by
   `parts/scout_node_lib.py` / `scout_units_lib.py`, which the v4 libs import), `tools/scout_cage.py` and `scout_cage_loads.py` (the
   v4 libs and tools/scout_v4_shape.py import them), `tools/scout_meshes.py` and the bought meshes tools/scout_v4_shape.py places
-  (`scout_motor_1..4`, `scout_flow_mtf_02p`, `fc`, `radxa_zero_3w`, `ubec`, `xr2`). The box keeps its own seated copies
-  (`parts/box_scout_*`).
+  (`scout_motor_1..4`, `scout_flow_mtf_02p`, `fc`, `radxa_zero_3w`, `ubec`, `xr2`). The box's seated copies (`parts/box_scout_*`)
+  followed on 15 Nov (below).
 
 A sweep moves a folder here when it is mesh-only, in no `systems/*.assembly.json` (by `id`, `part` or `mesh`) and named by no code.
 
