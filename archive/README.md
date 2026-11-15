@@ -17,7 +17,7 @@ through history. Move a folder back to `parts/` (and give it an assembly line) t
   (`scout_motor_1..4`, `scout_flow_mtf_02p`, `fc`, `radxa_zero_3w`, `ubec`, `xr2`). The box's seated copies (`parts/box_scout_*`)
   followed on 15 Nov (below).
 
-A sweep moves a folder here when it is mesh-only, in no `systems/*.assembly.json` (by `id`, `part` or `mesh`) and named by no code.
+A sweep moves a folder here when it is mesh-only and nothing draws, names or regenerates it (tools/sweep.py says how it decides).
 
 15 Nov sweep (tools/sweep.py now keeps a folder only by what draws, names or regenerates it; each group checked by hand):
 - Box, superseded by what the box page now draws (tools/import_box.py): `parts/box_arm_*` x 55, the arm v7 import of 3 Nov
