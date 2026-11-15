@@ -3418,18 +3418,16 @@
  "make": {
   "sha": {
    "parts/latch5/battery_latch_v4.py": "f55aaf78bdf7",
-   "parts/latch5/make.py": "5e01bbf4890a",
-   "parts/latch6/make.py": "783c373b02e5",
    "parts/latch7/make.py": "3ee20169a07e",
    "parts/latch7_recv_lib.py": "1b5a38b50c5a",
-   "tools/build_site.py": "954e55503aa7",
+   "tools/build_site.py": "84afdaadc851",
    "tools/seat_check.py": "5acab205ab60",
    "tools/seat_envelope.py": "fe96ec54e18a"
   },
   "rc": 0,
-  "s": 9.2,
-  "at": "2026-11-15 07:07",
-  "commit": "aded3b23",
+  "s": 8.1,
+  "at": "2026-11-15 08:13",
+  "commit": "8e58aaec",
   "solid": {
    "ok": true,
    "files": [],
