@@ -179,6 +179,30 @@
   "bytes": 18955484,
   "at": "2026-11-14 01:51"
  },
+ "box_funnel_proto_arm.stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_funnel_proto_arm.stl",
+  "sha256": "851fa8b4a272b932670e58aeebc5dc30d86feb3e70238cfc01838fa71abaef23",
+  "bytes": 92984,
+  "at": "2026-11-15 01:46"
+ },
+ "box_funnel_proto_arm_mirrored.stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_funnel_proto_arm_mirrored.stl",
+  "sha256": "1ffed0b8573ee15ab12da07806b1f54b19d46797b7686453d4b6d68f00842953",
+  "bytes": 92984,
+  "at": "2026-11-15 01:46"
+ },
+ "box_funnel_proto_half_nose.stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_funnel_proto_half_nose.stl",
+  "sha256": "5e644b3ffb57f918e0740c0bd76997c362f66636f6558348be5defdd04ac9b31",
+  "bytes": 327984,
+  "at": "2026-11-15 01:46"
+ },
+ "box_funnel_proto_half_tail.stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_funnel_proto_half_tail.stl",
+  "sha256": "07e86b1f9946c41deff276a3e0d9607eab9d6d8ef853aba4ab8e9859c32daf45",
+  "bytes": 313884,
+  "at": "2026-11-15 01:46"
+ },
  "box_funnel_strips.stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_funnel_strips.stl",
   "sha256": "55154dbfbf90237cfc50a23c3f24b15e3ef11cd3df1136e727bdb309ad6e7252",
