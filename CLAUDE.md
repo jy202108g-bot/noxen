@@ -20,17 +20,17 @@ python tools/print_queue.py list                                  # print jobs: 
   order), the frame model's loads, and the simulations a mechanism needs. Bought parts are chosen here, each with an Amazon listing.
 - PROTOTYPE: every new part, or a changed interface, starts as a drawn `make.py` (pattern `parts/scout_v4_probe_bench_turret/make.py`):
   simple generous sections sized by a hand calculation with margin, written in its docstring; every hole, bore, slot, sleeve and press
-  fit from the printer fit table (`systems/fit_table.json`, from Spark's coupons); its assembly path declared. It is print-ready when
-  the solid check and the assembly check pass: on the release that hour and queued (`tools/print_queue.py add <part> --orient --supports
+  fit from the printer fit table (`systems/fit_table.json`, from Spark's coupons; `topo/fit.py`, the audit refuses a setup's hand-drawn one); its assembly path declared. It is print-ready when
+  the solid check and the assembly check pass (CI makes, checks and publishes every changed `make.py` on a push: `tools/make_parts.py`): on the release that hour and queued (`tools/print_queue.py add <part> --orient --supports
   --settings --time`; Spark's "print <part>" = the design chat's `approve`, the desktop app prints it). A new interface Spark can't judge by eye gets a small fit coupon first (labelled choices, Spark reports one line, measures nothing).
 - TEST: Spark's bench and flight results go to `parts/<part>/feedback.md` and `systems/dimensions.md` (tagged M). A prototype that fails
   goes back to PROTOTYPE at once; a mechanism that works freezes its interfaces.
 - OPTIMISE (only parts Spark's tests froze, and only where mass matters): `parts/<name>/part.py`, `setup(h) -> Part` and `SPEC`; its
   drawn attachments are the prototype's tested interfaces (pads, bosses, socket walls, seats, contact faces), every bolt, rod, tool and
   assembly path cut through the whole envelope, everything between generated. Supports are the faces it bolts to; loads are the masses
-  at their CG, the system's joint reactions and the handling and assembly cases (screws driven, inserts set, clips bent, a hand's push),
+  at their CG, the system's joint reactions and the handling and assembly cases (screws driven, inserts set, clips bent, a hand's push: `topo/handling.py` adds them for what the shared helpers draw, SPEC `hand_held`),
   each its own case; no guessed loads. Push to main: CI runs the engine (1-5 h), the gates, the assembly check; it replaces the prototype
-  on the page only when all pass, and the prototype stays printable until then. A grid over 300k cells at the SPEC h is refused.
+  on the page (its assembly line's `"prototype": "<make.py folder>"`) only when all pass, and the prototype stays printable until then. A grid over 300k cells at the SPEC h is refused.
 - A fail at any stage is a class, not one part (Spark 28 Oct): name the cause, add the check that would have caught it (`topo/audit.py`
   for setups, `tools/assembly_check.py` for fit and assembly, each with a `test_topo` case), apply the fix to every part that shares it.
   The setup audit (`topo/audit.py`, its list in the module's docstring) is fixed in the setup (room, cuts, loads), never by `--set audit=warn`.

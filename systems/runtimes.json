@@ -1,5 +1,5 @@
 {
- "engine": "assembly-paths",
+ "engine": "fit-handling",
  "runs": [
   {
    "part": "holder",
