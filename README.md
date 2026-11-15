@@ -37,6 +37,7 @@ Each system's `artifact` URL is in its `systems/<name>.assembly.json`; a session
 - Nox Ground Unit: https://claude.ai/artifact/QyhSnHpskSzztt5kajHG9z
 - Battery latch v7: https://claude.ai/artifact/Pqu6aZFdW9g7jtRyBFdraw
 - xswap short lock (retired): https://claude.ai/artifact/Tiij4hVRdJWVdtLy9JdeQv
+- Probe bench build sheet (no sign-in, served from `artifacts/`): https://sparkiscool.github.io/noxen/artifacts/probe_bench_assembly.html
 
 ## How it works
 Every part is drawn first and printed the same day; the topology engine only lightens parts Spark's tests froze. One page shows
