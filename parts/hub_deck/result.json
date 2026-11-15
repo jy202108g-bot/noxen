@@ -1161,5 +1161,12 @@
   "view_faces": 60000,
   "view_sha256": "85001c6bbecc8e2ce5c26327b1bcac2dd72dd82a52ea491438c6bda07ff66efb",
   "at": "2026-11-15 04:27"
+ },
+ "assembly": {
+  "drone": "overseer",
+  "ok": false,
+  "why": [
+   "clashes with ubec_5_v: 0.8 mm3"
+  ]
  }
 }

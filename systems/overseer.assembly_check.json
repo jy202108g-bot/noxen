@@ -1,6 +1,6 @@
 {
  "drone": "overseer",
- "ok": true,
+ "ok": false,
  "gate": true,
  "fit_tol_mm3": 0.5,
  "fit_table": [
@@ -125,6 +125,30 @@
  ],
  "pairs": [
   {
+   "a": "ubec_5_v",
+   "b": "hub_deck",
+   "mm3": 0.79,
+   "limit_mm3": 0.5,
+   "contact": null,
+   "ok": false,
+   "pieces": [
+    {
+     "mm3": 0.79,
+     "at": [
+      83.8,
+      -5.0,
+      11.0
+     ],
+     "extent_mm": [
+      0.3,
+      1.8,
+      1.8
+     ],
+     "depth_mm": 0.35
+    }
+   ]
+  },
+  {
    "a": "overseer_fc_mount",
    "b": "wires",
    "mm3": 652.72,
@@ -217,58 +241,44 @@
   {
    "a": "wires",
    "b": "hub_deck",
-   "mm3": 136.93,
+   "mm3": 133.25,
    "limit_mm3": 140.0,
    "contact": "the front runs (flow sensor, UBEC, buck leads) drawn straight through the deck's generated nose (v13, 29 Oct, after the runs). the lead runs are a schematic (E): straight 3-8 mm bundles drawn on the core v2 layout (26-30 Oct, its script gone), never re-routed for the parts drawn after them; the real leads are flexible and routed by hand round the printed parts",
    "ok": true,
    "pieces": [
     {
-     "mm3": 124.67,
+     "mm3": 133.25,
      "at": [
-      77.1,
+      77.6,
       3.9,
       6.6
      ],
      "extent_mm": [
-      26.7,
-      10.6,
+      27.6,
+      10.7,
       4.1
      ],
-     "depth_mm": 4.14
-    },
-    {
-     "mm3": 12.26,
-     "at": [
-      90.0,
-      0.0,
-      6.0
-     ],
-     "extent_mm": [
-      3.0,
-      3.0,
-      3.0
-     ],
-     "depth_mm": 3.0
+     "depth_mm": 4.11
     }
    ]
   },
   {
    "a": "wires_red",
    "b": "hub_deck",
-   "mm3": 74.1,
+   "mm3": 74.99,
    "limit_mm3": 76.0,
    "contact": "the + leads of the front runs through the deck nose. the lead runs are a schematic (E): straight 3-8 mm bundles drawn on the core v2 layout (26-30 Oct, its script gone), never re-routed for the parts drawn after them; the real leads are flexible and routed by hand round the printed parts",
    "ok": true,
    "pieces": [
     {
-     "mm3": 74.1,
+     "mm3": 74.99,
      "at": [
-      88.7,
+      89.2,
       -2.0,
       8.1
      ],
      "extent_mm": [
-      10.2,
+      11.2,
       3.0,
       6.9
      ],
@@ -415,14 +425,6 @@
    ]
   },
   {
-   "a": "ubec_5_v",
-   "b": "hub_deck",
-   "mm3": 0.45,
-   "limit_mm3": 0.5,
-   "contact": null,
-   "ok": true
-  },
-  {
    "a": "overseer_head_mount",
    "b": "unitree_l2",
    "mm3": 0.03,
@@ -481,8 +483,12 @@
  ],
  "mates": [],
  "paths": [],
- "not_print_ready": {},
+ "not_print_ready": {
+  "hub_deck": [
+   "clashes with ubec_5_v: 0.8 mm3"
+  ]
+ },
  "would_block": {},
- "seconds": 3.0,
+ "seconds": 4.5,
  "placed": {}
 }
