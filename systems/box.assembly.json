@@ -4705,6 +4705,47 @@
 "max_faces": 1200
 },
 {
+"id": "box_scout_v4_scout_v4_probe_horn",
+"name": "Scout: the SG90's single-arm horn and its centre screw (from its bag), screwed to the cradle's +y wall",
+"role": "bought",
+"group": "landing: Scout",
+"color": "#2f3b45",
+"pose": [
+[
+0.0,
+1.0,
+0.0,
+0.0
+],
+[
+-1.0,
+0.0,
+0.0,
+167.1
+],
+[
+0.0,
+0.0,
+1.0,
+220.3
+],
+[
+0.0,
+0.0,
+0.0,
+1.0
+]
+],
+"material": null,
+"tag": "E",
+"owner": "scout_v4",
+"version": "shape 8 Nov",
+"source": "systems/scout_v4.assembly.json, seated",
+"mesh": "parts/scout_v4_probe_horn/part.stl",
+"part": "box_scout_v4_scout_v4_probe_horn",
+"max_faces": 1200
+},
+{
 "id": "box_scout_v4_scout_v4_head_frame",
 "name": "Scout: probe head frame: the clip on the blades' tip, the SG90's closed ring, the idler's bracket (drawn prototype, parts/scout_v4_head_frame/make.py)",
 "role": "structure",
