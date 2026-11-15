@@ -1,5 +1,5 @@
 """The printer's fit table (15 Nov, Spark's Scout v4 bench print: the camera did not slide into its sleeve, the head frame and the
-cradle did not go together, though every part passed its gates). One table for the Bambu A1 mini printing PCTG, from the Scout v4
+cradle did not go together, though every part passed its gates). One table (systems/fit_table.json, read here) for the Bambu A1 mini printing PCTG, from the Scout v4
 probe coupon (parts/scout_v4_probe_coupon, read by Spark 14 Nov; tools/scout_v4_shape.COUPON_PICK; systems/dimensions.md):
 printed holes come out ~0.1-0.2 small on the diameter, outer faces slightly fat, a D bore needed +0.3 to press home, an axle bore
 +0.3 to turn free. Every setup sizes its holes, bores, slots and sleeves from here instead of the bought part's nominal size, and
@@ -18,21 +18,13 @@ gap    = the least clearance per side, in the drawn geometry (the part's mesh, b
          the depth the check allows the two to overlap.
 """
 
-GROW = 0.10          # mm a printed face stands proud of the drawn one (holes ~0.1-0.2 small on the diameter, outer faces fat): coupon M
-MESH = 0.05          # mm the viewing mesh (parts/<p>/part.stl) may sit off the print mesh (tools/print_mesh.py: bounds within 0.05)
+import json as _json, os as _os
 
-FIT = {
-    # kind      allow (total, mm)  tag  source
-    "bond":   dict(allow=0.20, min_gap=0.0, tag="M", src="carbon rod in a resin socket: the 3.2 / 6.2 bores for 3 / 6 rods (CLAUDE.md), the resin fills the rest: it only has to go in"),
-    "press":  dict(allow=0.30, tag="M", src="a D bore pressed on the N20's 3.0 / 2.5 D shaft: 3.3 / 2.8 (coupon D: 3.0..3.2 would not go or not press home)"),
-    "free":   dict(allow=0.30, tag="M", src="a bore turning free on an M3 axle or a 3 mm rod: 3.3 (coupon A1, the snuggest of 3.3 / 3.4 / 3.5, all free)"),
-    "slide":  dict(allow=0.60, tag="E", src="a bought body sliding into a printed pocket, sleeve or slot over its length (camera case, SG90 body): "
-                                                     "the axle's +0.3 plus 0.3 for the long contact and the case's own tolerance; check on the bench"),
-    "mate":   dict(allow=0.50, tag="E", src="a printed part sliding onto another printed part: both faces print GROW fat (0.2 of it gone) + 0.3 running"),
-    "clear":  dict(allow=2.00, tag="E", src="parts that pass each other and must never touch (an assembly path past a neighbour, a moving part)"),
-    "screw":  dict(allow=0.40, tag="E", src="a screw's shank through a printed clearance hole: M2 2.4, M3 3.4"),
-    "tap":    dict(allow=-0.40, tag="E", src="a screw cutting its own thread in a printed pilot: M2 1.6, M3 2.6 (the SG90 tab pilots)"),
-}
+TABLE = _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))), "systems", "fit_table.json")
+_T = _json.load(open(TABLE))
+GROW = float(_T["grow_mm"])       # mm a printed face stands proud of the drawn one (holes ~0.1-0.2 small on the diameter, outer faces fat): coupon M
+MESH = float(_T["mesh_mm"])       # mm the viewing mesh (parts/<p>/part.stl) may sit off the print mesh (tools/print_mesh.py: bounds within 0.05)
+FIT = _T["fits"]                  # kind -> allow (total, mm), tag, src (and min_gap where the kind needs no running gap)
 
 
 def _row(kind):

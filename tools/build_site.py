@@ -157,7 +157,7 @@ def rod_segments():
 
 
 def assembly_report(sysname, a):
-    """the drone's assembly check (tools/assembly_check.py); a drone file with no "assembly" block is reported and blocks nothing"""
+    """the drone's assembly check (tools/assembly_check.py): a part in a failing pair, mate or path is not print-ready"""
     import assembly_check
     try:
         rep = assembly_check.run(sysname)
@@ -195,7 +195,7 @@ def assembly_html(rep):
     if rep.get("error"):
         rows.append(("check", "the check did not run", e(rep["error"]), ""))
     n_ok = sum(1 for r in rep.get("paths", []) if r["ok"])
-    head = (f"<h2>Assembly check: {'PASS' if rep['ok'] else 'FAIL'}{'' if rep.get('gate', True) else ' (report only: no assembly block declared yet)'}</h2><p>{rep.get('parts_checked')} parts, every printed pair and printed / bought pair, "
+    head = (f"<h2>Assembly check: {'PASS' if rep['ok'] else 'FAIL'}{'' if rep.get('gate', True) else ' (report only: archived)'}</h2><p>{rep.get('parts_checked')} parts, every printed pair and printed / bought pair, "
             f"{len(rep.get('mates', []))} mates against the printer's fit table (topo/fit.py, the probe coupon), {n_ok} of {len(rep.get('paths', []))} "
             f"assembly paths clear (tools/assembly_check.py). Not print-ready: {', '.join(rep.get('not_print_ready') or {}) or 'none'}.</p>")
     body = "".join(f"<tr><td>{k}</td><td>{w}</td><td>{h}</td><td>{at}</td></tr>" for k, w, h, at in rows)

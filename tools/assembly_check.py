@@ -29,8 +29,8 @@ Format (systems/<drone>.assembly.json, top level):
   role "placeholder" parts are left out, and "exclude": [ids] (a second drawing of a part already placed, e.g. a page's cut-away copy).
 
     python tools/assembly_check.py <drone> [<drone> ...] | --all   [--write]  [--quiet]
-      --all: every drone file not archived. One with no "assembly" block is checked for interference and reported, but blocks nothing
-      until its owner declares the block (its contacts, mates and paths).
+      --all: every drone file not archived; each gates, with or without an "assembly" block (without one: interference alone, every
+      overlap a clash until its owner declares the contacts, mates and paths).
       --write: systems/<drone>.assembly_check.json, and each printed part's result.json "assembly" (its verdict, the lines that name it)
       exit 1 when a gated drone fails.
 """
@@ -253,7 +253,7 @@ def run(drone, log=print):
             bad(b_["part"], f"tight on the path '{nm}' (gap {b_['gap_mm']:.2f} of {g:.2f} {b_['along']})"); bad(mv, f"path '{nm}' tight on {b_['part']} (gap {b_['gap_mm']:.2f} of {g:.2f} {b_['along']})")
 
     ok = all(r["ok"] for r in pairs) and all(r["ok"] for r in mrows) and all(r["ok"] for r in prow)
-    gate = a.get("assembly") is not None                     # a drone file with no "assembly" block is reported, it blocks nothing yet
+    gate = not a.get("archived")                              # every live drone gates (design chat 15 Nov: project-wide); archived ones only report
     rep = dict(drone=drone, ok=bool(ok), gate=gate, fit_tol_mm3=tol, fit_table=FIT.table(), grow_mm=FIT.GROW, parts_checked=len(M), printed=sorted(printed),
                skipped=skipped, pairs=sorted(pairs, key=lambda r: (r["ok"], -r["mm3"])), mates=mrows, paths=prow,
                not_print_ready={k: v for k, v in sorted(blame.items())} if gate else {},
@@ -262,7 +262,7 @@ def run(drone, log=print):
 
 
 def summary(rep):
-    L = [f"assembly {rep['drone']}: {'PASS' if rep['ok'] else 'FAIL'}{'' if rep.get('gate', True) else ' (report only: the drone file has no assembly block)'} "
+    L = [f"assembly {rep['drone']}: {'PASS' if rep['ok'] else 'FAIL'}{'' if rep.get('gate', True) else ' (report only: archived)'} "
          f"({rep['parts_checked']} parts, {rep['seconds']} s)"]
     for r in rep["pairs"]:
         if not r["ok"]:
