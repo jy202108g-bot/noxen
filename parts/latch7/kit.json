@@ -256,6 +256,58 @@
    "used_by": {
     "overseer": 1
    }
+  },
+  {
+   "part": "latch7_receiver",
+   "file": "latch7_receiver.stl",
+   "release": "https://github.com/sparkiscool/noxen/releases/download/meshes/latch7_receiver.stl",
+   "sha256": "046b99a8cd6cab5109a02399f5a614d819552c94b569675d489991bbe866f3b2",
+   "picture": "parts/latch7/kit/latch7_receiver.png",
+   "solid_check": "PASS",
+   "thin_walls": 0,
+   "pose": "as exported: the mount plane (the drone's face) on the bed, the cartridge's mouth up",
+   "on_the_diagonal": false,
+   "bed_mm2": 1521,
+   "underside_off_bed_mm2": 1334,
+   "size_on_bed_mm": [
+    68.0,
+    111.4,
+    53.9
+   ],
+   "fits_bed": true,
+   "supports": "yes: 3464 mm2 overhangs past 45 deg (tree supports, touching the bed only where they can)",
+   "material": "PCTG",
+   "grams_each": 94.83,
+   "note": "the engine's part (setup 76fc246d, worst 0.506); one per drone",
+   "used_by": {
+    "scout": 1
+   }
+  },
+  {
+   "part": "latch7_ov_receiver",
+   "file": "latch7_ov_receiver.stl",
+   "release": "https://github.com/sparkiscool/noxen/releases/download/meshes/latch7_ov_receiver.stl",
+   "sha256": "4f7e740d55952b0204b3368d169b29d7e2d1b024d0e98a6eca9a2a41de13e9ec",
+   "picture": "parts/latch7/kit/latch7_ov_receiver.png",
+   "solid_check": "PASS",
+   "thin_walls": 0,
+   "pose": "as exported: the mount plane (the drone's face) on the bed, the cartridge's mouth up; 183.6 long, over the 180 bed: turned 45 deg about z on the bed (177.9 x 177.9), no brim, glue stick on the plate",
+   "on_the_diagonal": true,
+   "bed_mm2": 698,
+   "underside_off_bed_mm2": 604,
+   "size_on_bed_mm": [
+    68.0,
+    183.6,
+    68.6
+   ],
+   "fits_bed": true,
+   "supports": "yes: 6487 mm2 overhangs past 45 deg (tree supports, touching the bed only where they can)",
+   "material": "PCTG",
+   "grams_each": 142.82,
+   "note": "the engine's part (setup 6394c063, worst 0.447); one per drone",
+   "used_by": {
+    "overseer": 1
+   }
   }
  ],
  "waiting": [
@@ -283,6 +335,24 @@
      "spec": "Amass XT60W, male + female (Spark 10 Nov)",
      "url": "https://www.amazon.com/dp/B0DZ288QD2",
      "note": "female on the pack's lead, male in the collar and carrier"
+    },
+    {
+     "part": "M3 x 35 socket head cap screw",
+     "n": 4,
+     "spec": "DIN 912, 304 stainless; receiver to the drone from below (head on the counterbore at 24.5, 5.4 into the drone's insert)",
+     "url": "https://www.amazon.com/uxcell-M3x35mm-Thread-Stainless-Socket/dp/B01MAZ4SZB"
+    },
+    {
+     "part": "M3 x 8 cup point set screw",
+     "n": 2,
+     "spec": "DIN 916, stainless; per cartridge, through the end wall's o 2.5 holes (6.0 of boss and wall) onto the XT60W-F",
+     "url": "https://www.amazon.com/50-M3-0-50-8mm-Stainless-MonsterBolts/dp/B079541R6D"
+    },
+    {
+     "part": "5-minute epoxy",
+     "n": 1,
+     "spec": "J-B Weld ClearWeld 50112, 25 ml syringe: the XT60W-M in its collar (after the fit coupon)",
+     "url": "https://www.amazon.com/J-B-Weld-50112-Clear-0-85/dp/B009EU5ZM0"
     }
    ],
    "cartridge": [
@@ -297,7 +367,8 @@
     "7 XT60W-M glued into the plug collar (after the measurement), laid in the plug carrier, cap on",
     "8 carrier and cap onto the lead-end bosses; the receiver's M3 mount bolts from below clamp them"
    ],
-   "checked": "parts/latch7/result.json build.install: every step swept, 0 mm3"
+   "checked": "parts/latch7/result.json build.install: every step swept, 0 mm3",
+   "open": null
   },
   "overseer": {
    "bought": [
@@ -320,6 +391,30 @@
      "spec": "Amass XT60W, male + female (Spark 10 Nov)",
      "url": "https://www.amazon.com/dp/B0DZ288QD2",
      "note": "female on the pack's lead, male in the collar and carrier"
+    },
+    {
+     "part": "M3 x 10 socket head cap screw",
+     "n": 4,
+     "spec": "DIN 912, 304 stainless; the deck bosses into the base's inserts (5.0 of deck, 5.0 of thread)",
+     "url": "https://www.amazon.com/Socket-Screws-Washers-Assortment-Stainless/dp/B091N1J6F8"
+    },
+    {
+     "part": "M3 x 5.7 heat-set insert",
+     "n": 2,
+     "spec": "ruthex RX-M3x5.7 brass, in the plug cap's o 4.0 holes over the lead-end bolts",
+     "url": "https://www.amazon.com/ruthex-M3-Threaded-Inserts-RX-M3x5-7/dp/B08BCRZZS3"
+    },
+    {
+     "part": "M3 x 8 cup point set screw",
+     "n": 2,
+     "spec": "DIN 916, stainless; per cartridge, through the end wall's o 2.5 holes (6.0 of boss and wall) onto the XT60W-F",
+     "url": "https://www.amazon.com/50-M3-0-50-8mm-Stainless-MonsterBolts/dp/B079541R6D"
+    },
+    {
+     "part": "5-minute epoxy",
+     "n": 1,
+     "spec": "J-B Weld ClearWeld 50112, 25 ml syringe: the XT60W-M in its collar (after the fit coupon)",
+     "url": "https://www.amazon.com/J-B-Weld-50112-Clear-0-85/dp/B009EU5ZM0"
     }
    ],
    "cartridge": [
@@ -334,7 +429,8 @@
     "7 XT60W-M glued into the plug collar (after the measurement), laid in the plug carrier, cap on",
     "8 carrier and cap onto the lead-end bosses; the receiver's M3 mount bolts from below clamp them"
    ],
-   "checked": "parts/latch7_overseer/result.json build.install: every step swept, 0 mm3"
+   "checked": "parts/latch7_overseer/result.json build.install: every step swept, 0 mm3",
+   "open": "the Overseer's six mount-plane bolts (lead pair into the cap's inserts, four for a bay): no head seat from below, length not listed"
   }
  },
  "supersedes": [

@@ -127,6 +127,22 @@ for _b in m6.BOUGHT:
 m6.BOUGHT = [_b for _b in m6.BOUGHT if not _b["part"].startswith("dowel pin")]      # no steel: the bolt noses and the guide pegs are printed (Spark 12 Nov)
 m6.BOUGHT.append(dict(part="stop bar", spec="printed PCTG, one per cartridge, dropped in after the bolts", per_cartridge=1, listing="printed", url="", check=""))
 GUIDE_PIN = (2.0, 7.0)
+# ---- fasteners and glue (14 Nov, the design chat: the install steps use them, the bought list did not have them). Lengths from the drawn receiver
+#      (head seat to the thread's end): Scout, each outboard bolt's head on its counterbore's flat at HEAD_Y 24.5, 29.6 of receiver to the mount plane
+#      (lead pair: receiver 22.6 + carrier 3.0 + cap 4.0), 5.4 into the drone's insert. Overseer: the base's four inserts take an M3 x 10 (DRONE_HEAD).
+#      OPEN (not listed): the Overseer's six mount-plane bolts (the lead pair into the cap's inserts, four for a bay) have no head seat from below: their
+#      o 3.4 holes run half inside the side wall's face from the receiver's bottom (y 0.2), 68.6 under the mount plane.
+FASTENERS = {
+    "scout": [dict(part="M3 x 35 socket head cap screw", n=4, spec="DIN 912, 304 stainless; receiver to the drone from below (head on the counterbore at 24.5, 5.4 into the drone's insert)",
+                   url="https://www.amazon.com/uxcell-M3x35mm-Thread-Stainless-Socket/dp/B01MAZ4SZB")],
+    "overseer": [dict(part="M3 x 10 socket head cap screw", n=4, spec="DIN 912, 304 stainless; the deck bosses into the base's inserts (5.0 of deck, 5.0 of thread)",
+                      url="https://www.amazon.com/Socket-Screws-Washers-Assortment-Stainless/dp/B091N1J6F8"),
+                 dict(part="M3 x 5.7 heat-set insert", n=2, spec="ruthex RX-M3x5.7 brass, in the plug cap's o 4.0 holes over the lead-end bolts",
+                      url="https://www.amazon.com/ruthex-M3-Threaded-Inserts-RX-M3x5-7/dp/B08BCRZZS3")],
+    "both": [dict(part="M3 x 8 cup point set screw", n=2, spec="DIN 916, stainless; per cartridge, through the end wall's o 2.5 holes (6.0 of boss and wall) onto the XT60W-F",
+                  url="https://www.amazon.com/50-M3-0-50-8mm-Stainless-MonsterBolts/dp/B079541R6D"),
+             dict(part="5-minute epoxy", n=1, spec="J-B Weld ClearWeld 50112, 25 ml syringe: the XT60W-M in its collar (after the fit coupon)",
+                  url="https://www.amazon.com/J-B-Weld-50112-Clear-0-85/dp/B009EU5ZM0")]}
 # ---- slanted landings (Spark 13 Nov: "if the battery lands slightly slanted it might not latch"). The bolts sprang out only in the last 0.45 mm
 #      before the seat, and the seat was two strips the whole length of the pack: a cartridge held 0.5 deg off square left a bolt behind.
 #   window  -> the bolts spring out 1.5 mm before the seat (the pocket shelf 1.05 lower; the lead-in under it 35 deg, was 30, to make the room)
@@ -1411,6 +1427,12 @@ def kit_receivers():
                                  material="PCTG", grams_each=res.get("mass_g"), note="the engine's part (setup %s, worst %s); one per drone" % (res.get("setup_sha", "")[:8], res.get("field", {}).get("worst") if isinstance(res.get("field"), dict) else ""),
                                  used_by={pack: 1}))
         if not (ok and flat): out["waiting"].append(rid)
+    for pack in ("scout", "overseer"):                    # the fasteners and glue (FASTENERS) in each pack's bought list, replacing earlier copies
+        a_ = out.get("assembly", {}).get(pack)
+        if a_ is None: continue
+        names = {f_["part"] for k_ in FASTENERS for f_ in FASTENERS[k_]}
+        a_["bought"] = [b_ for b_ in a_["bought"] if b_["part"] not in names] + [dict(f_) for f_ in FASTENERS[pack] + FASTENERS["both"]]
+        a_["open"] = "the Overseer's six mount-plane bolts (lead pair into the cap's inserts, four for a bay): no head seat from below, length not listed" if pack == "overseer" else None
     json.dump(out, open(kj, "w"), indent=1)
     for f_ in out["files"]:
         if f_.get("part"): print(f_["file"], f_["solid_check"], f_["bed_mm2"], "mm2 on the bed", f_["size_on_bed_mm"], f_["supports"][:30], f_["grams_each"], f_["used_by"])
