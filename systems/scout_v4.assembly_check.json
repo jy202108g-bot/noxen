@@ -247,13 +247,13 @@
   {
    "a": "scout_v4_probe_turret",
    "b": "scout_v4_probe_pinion",
-   "mm3": 3.01,
+   "mm3": 3.0,
    "limit_mm3": 0.5,
    "contact": null,
    "ok": false,
    "pieces": [
     {
-     "mm3": 3.01,
+     "mm3": 3.0,
      "at": [
       0.0,
       15.3,
@@ -485,7 +485,7 @@
    "b": "scout_v4_probe_turret",
    "fit": "mate",
    "need_mm": 0.2,
-   "gap_mm": 0.5,
+   "gap_mm": 0.499,
    "overlap_mm3": 0.0,
    "ok": true,
    "why": "the spool turns between the turret's side plates"
