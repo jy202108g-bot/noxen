@@ -2,7 +2,7 @@
  "part_sha": "bbf753738fb9",
  "lib_sha": "265dd11f384f",
  "data_sha": "51ea44ba3d53",
- "setup_sha": "9b75c308e261132a",
+ "setup_sha": "f30a4155e830124c",
  "reads": [
   "parts/cage_node_lib.py",
   "parts/scout_units_lib.py",
