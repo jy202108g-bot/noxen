@@ -8444,7 +8444,7 @@
 },
 {
 "id": "box_overseer_overseer_top_cover",
-"name": "Overseer: top cover (translucent PETG, N logo)",
+"name": "Overseer: top cover (translucent PCTG, N logo)",
 "role": "structure",
 "group": "landing: Overseer",
 "color": "#dbe9f5",
@@ -8474,10 +8474,10 @@
 1.0
 ]
 ],
-"material": "PETG",
+"material": "PCTG",
 "tag": "C",
 "owner": "overseer",
-"version": "v1 (3 Nov, Spark: cover over the FC for looks, thin, translucent; clamped by the 8 top plate bolts, the plate sandwiched, no seams). Drawn: parts/overseer_top_cover/make.py",
+"version": "v2.1 (3 Nov, Spark: cover over the FC for looks, thin, translucent; clamped by 4 top plate bolts, the plate sandwiched, no seams; 15 Nov: shell 2.52, 6 lines, over the 2 mm floor, PCTG). Drawn: parts/overseer_top_cover/make.py",
 "source": "systems/overseer.assembly.json, seated",
 "mesh": "parts/overseer_top_cover/part.stl",
 "part": "box_overseer_overseer_top_cover",
