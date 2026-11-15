@@ -14,7 +14,10 @@ A path in systems/<drone>.assembly.json "assembly" -> "paths":
     "body": {"box": [x0, x1, y0, y1, z0, z1]} | {"cylinder": {"p0", "p1", "r"}} | {"mesh": "<path>"} replaces the part's mesh as
     the swept body (a generated part's mesh is its result, so a cut in another part cannot be made from it: give a body).
     "turn": {"axis": [0, 1, 0], "at": [16.5, 0, 110], "deg": [-20, 90]} instead of out / length_mm: a nod through its range.
-    "moves": [{"out": [0, 1, 0], "length_mm": 4}, {"out": [0, 0, 1], "length_mm": 40}] instead: a pull in steps.
+    "moves": [{"out": [0, 1, 0], "length_mm": 4}, {"out": [0, 0, 1], "length_mm": 40}] instead: a pull in steps (a step may be
+    {"turn": {"axis", "at", "deg": d}}: turned by d first, the check only; the engine's cut takes pulls).
+    "min_body_mm3": n  the check leaves out the moving parts' loose bodies under n mm3 (a screw drawn with the camera that goes in later).
+    "against": [ids] a step done in hand, off the drone (the camera into the cradle before the cradle goes in): only these are in its way.
     "with": [ids] the parts that ride on the piece (the LEDs on the camera); "ignore": [ids] what it may pass; "order": when it goes in.
 """
 import json, os
@@ -109,12 +112,18 @@ def poses(path, step_mm=0.5, step_deg=0.5):
             out += [_rot(t["axis"], t["at"], d) for d in np.linspace(0, lo_hi[1], n + 1)[1:]]
         return out
     moves = path.get("moves") or [dict(out=path["out"], length_mm=path["length_mm"])]
-    out, off = [np.eye(4)], np.zeros(3)
+    out, cur = [np.eye(4)], np.eye(4)
     for mv in moves:
+        if "turn" in mv:                                          # a turn inside a sequence (the cradle nodded to 0 before it lifts out)
+            t = mv["turn"]; d = float(t["deg"]); n = max(1, int(np.ceil(abs(d) / step_deg)))
+            for a in np.linspace(0, d, n + 1)[1:]:
+                out.append(_rot(t["axis"], t["at"], a) @ cur)
+            cur = _rot(t["axis"], t["at"], d) @ cur
+            continue
         u = _unit(mv["out"]); L = float(mv["length_mm"]); n = max(1, int(np.ceil(L / step_mm)))
-        for t in np.linspace(0, L, n + 1)[1:]:
-            T = np.eye(4); T[:3, 3] = off + u * t; out.append(T)
-        off = off + u * L
+        for tt in np.linspace(0, L, n + 1)[1:]:
+            T = np.eye(4); T[:3, 3] = u * tt; out.append(T @ cur)
+        T = np.eye(4); T[:3, 3] = u * L; cur = T @ cur
     return out
 
 

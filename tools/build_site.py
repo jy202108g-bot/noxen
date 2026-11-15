@@ -320,7 +320,7 @@ def build(inline=False, offline=False):
             return (50, f)
     for f in sorted(glob.glob(os.path.join(ROOT, "systems", "*.assembly.json")), key=_order):
         a = json.load(open(f))
-        if a.get("archived"):                      # a superseded design stays in the repo for its tools but is off the page (Spark 9 Nov: only the newest Scout)
+        if a.get("archived") or a.get("check_only"):   # a superseded design stays in the repo for its tools but is off the page (Spark 9 Nov: only the newest Scout); a check-only kit (the probe bench) is the assembly check's
             continue
         sysname = os.path.basename(f).split(".")[0]
         S = {"name": a.get("name", sysname), "file": sysname, "title": a.get("title") or a.get("name", sysname),

@@ -205,13 +205,18 @@ def run(drone, log=print):
             if p.get("body") is not None:
                 piece = PATHS.body(p)
             else:
-                piece = mf.Manifold.batch_boolean([MM[r] for r in ride if r in MM], mf.OpType.Add)
+                ms = [MM[r] for r in ride if r in MM]
+                if p.get("min_body_mm3"):                       # leave out a part's small loose bodies (a screw drawn with it that goes in later)
+                    ms = [b_ for m_ in ms for b_ in m_.decompose() if b_.volume() >= float(p["min_body_mm3"])]
+                piece = mf.Manifold.batch_boolean(ms, mf.OpType.Add)
             Ts = PATHS.poses(p)
         except Exception as e:
             prow.append(dict(name=nm, part=mv, ok=False, why=f"sweep failed: {str(e)[:160]}")); bad(mv, f"path '{nm}': sweep failed"); continue
         g = FIT.gap(p.get("fit", "slide"))
         order = p.get("order", 0)
         placed = [i for i in M if i not in ride and i not in p.get("ignore", []) and movers.get(i, -1e9) < order]
+        if p.get("against") is not None:                       # a step done in hand off the drone: only these are in its way
+            placed = [i for i in p["against"] if i in M]
         into = set(p.get("into", []))
         Ps = [piece.transform(T[:3, :].tolist()) for T in Ts]
         BB = [np.asarray(q.bounding_box(), float) for q in Ps]
@@ -311,7 +316,7 @@ def drones():
     for f in sorted(os.listdir(os.path.join(ROOT, "systems"))):
         if f.endswith(".assembly.json"):
             a = json.load(open(os.path.join(ROOT, "systems", f)))
-            if not a.get("archived"):
+            if not a.get("archived"):   # check_only files (a bench kit) too
                 out.append(f[:-len(".assembly.json")])
     return out
 
