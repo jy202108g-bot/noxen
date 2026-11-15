@@ -33,3 +33,6 @@ A sweep moves a folder here when it is mesh-only, in no `systems/*.assembly.json
   `systems/latch5.assembly.json` (archived, nothing writes or reads it) and its timeline `tools/latch5_motion.py` are in
   `systems/` and `tools/` here. `parts/latch5/` and `parts/latch6/` stay: latch v7 imports their make.py and reads
   latch6's result.json, and `latch7/make.py --appendix` folds `systems/latch6.appendix.html` into v7's page.
+- Overseer: `parts/overseer_cage_node_0`, `1`, `8`, `9`, `12`, `14`, `16`, `19`, the 30 Oct meshes of nodes that are now mirrors
+  (systems/overseer.assembly.json draws each from its `part`: 0 from 4, 1 from 3, 8 from 6, 9 from 10, 12 from 11, 14 from
+  13, 16 from 15, 19 from 18).
