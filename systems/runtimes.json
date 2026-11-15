@@ -8505,6 +8505,15 @@
    "minutes": 286.7,
    "peak_gb": 9.075196,
    "at": "1c1d9ed897a9:17204"
+  },
+  {
+   "part": "scout_v4_probe_turret",
+   "engine": "fit-handling",
+   "design": 48363,
+   "cases": 44,
+   "minutes": 94.7,
+   "peak_gb": 4.381808,
+   "at": "de8b10af8bc6:5680"
   }
  ]
 }
