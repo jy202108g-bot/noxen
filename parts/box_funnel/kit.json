@@ -10,7 +10,7 @@
   {
    "name": "box_funnel_proto_half_nose",
    "file": "print/box_funnel_proto_half_nose.stl",
-   "sha256": "b3cea2456bfb8ee2cc1b800847a4338d1125a9c3415ee644902bc16eebe119cb",
+   "sha256": "37f3d4b1cd37ffc7ef7741620b8567eaf57ed5c6f0cf78a360b9c166cf004659",
    "count": 1,
    "material": "PCTG (PETG settings + 10 C)",
    "pose": "upside down: the two rims behind the side walls' top edges and the rib's top on the bed",
@@ -51,12 +51,13 @@
     "filament_cm3": 297.8,
     "filament_g_with_supports_and_brim": 366,
     "how": "PrusaSlicer 2.7.2 slice of this file at the kit's settings (0.2 layers, 6 walls, 12 top / bottom, 25 % gyroid, brim 5, organic supports over 45 deg, 8 mm3/s cap, A1 mini limits); Bambu Studio's own estimate will differ"
-   }
+   },
+   "published": "the release's file is CI's make of this piece (same solid, its own triangulation), solid check PASS in CI (print.json make.solid)"
   },
   {
    "name": "box_funnel_proto_half_tail",
    "file": "print/box_funnel_proto_half_tail.stl",
-   "sha256": "1563124a9858dc2b06131c5d20a189b721ce28368be17aabce8916304322c8ed",
+   "sha256": "da2b48928ad4bb1b895677226c527df21d27d57767a835ad6e66be7c0af8d36e",
    "count": 1,
    "material": "PCTG (PETG settings + 10 C)",
    "pose": "upside down: the two rims behind the side walls' top edges and the rib's top on the bed",
@@ -97,7 +98,8 @@
     "filament_cm3": 258.7,
     "filament_g_with_supports_and_brim": 318,
     "how": "PrusaSlicer 2.7.2 slice of this file at the kit's settings (0.2 layers, 6 walls, 12 top / bottom, 25 % gyroid, brim 5, organic supports over 45 deg, 8 mm3/s cap, A1 mini limits); Bambu Studio's own estimate will differ"
-   }
+   },
+   "published": "the release's file is CI's make of this piece (same solid, its own triangulation), solid check PASS in CI (print.json make.solid)"
   },
   {
    "name": "box_funnel_proto_arm",
