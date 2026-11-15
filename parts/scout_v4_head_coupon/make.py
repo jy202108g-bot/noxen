@@ -89,6 +89,10 @@ whole = coupon
 save("scout_v4_head_coupon", whole, whole, "flat, no supports, ~1 h 45 (and its H tongue)")
 tongue = bx(0.0, 20.0, 0.0, 8.0, 0.0, 10.0)                                                       # the H tongue, its own print: 10.0 along z
 t_lab = [extrude(g, 10.0 - 0.01, 10.0 + EMB) for g in getattr(text2d("H", 10.0, 4.0, size=4.0), "geoms", [text2d("H", 10.0, 4.0, size=4.0)])]
-save("scout_v4_head_coupon_tongue", union([tongue] + t_lab), union([tongue] + t_lab), "flat, no supports, ~10 min")
+tg = union([tongue] + t_lab); assert tg.is_watertight and tg.is_volume
+tg.export(os.path.join(ROOT, "print", "scout_v4_head_coupon_tongue.stl"))                       # its own print file only (as the roller's saddles)
+import subprocess                                                                               # noqa: E402
+sc = subprocess.run([sys.executable, os.path.join(ROOT, "tools", "solid_check.py"), os.path.join(ROOT, "print", "scout_v4_head_coupon_tongue.stl")], capture_output=True, text=True)
+print(f"scout_v4_head_coupon_tongue: {tg.volume / 1000 * PCTG:.1f} g, solid check {'PASS' if sc.returncode == 0 else 'FAIL'}; flat, no supports, ~10 min")
 from topo.build import render                                                                   # noqa: E402
 render(whole, os.path.join(HERE, "preview.png"), title="scout_v4_head_coupon", info=f"{whole.volume / 1000 * PCTG:.1f} g | C P H K, three sizes each | flat, no supports")
