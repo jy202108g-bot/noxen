@@ -7,7 +7,7 @@
   "specks_plain": 0,
   "bodies_eroded": 1,
   "eroded_volumes_mm3": [
-   14586.2
+   14577.3
   ],
   "sealed_voids": [],
   "inner_shells": [],
@@ -21,7 +21,7 @@
  "function_check": {
   "skin_mm3": 1045.8,
   "skin_missing_mm3": 0.0,
-  "in_cuts_mm3": -0.0,
+  "in_cuts_mm3": 0.0,
   "outside_env_mm3": 0.0,
   "ok": true
  },
@@ -31,7 +31,7 @@
     "case": "cradle, camera and LEDs crash 0 (35 g [1.0, 0.0, 0.0])",
     "cls": "crash",
     "inlayer": 0.087,
-    "across": 0.135,
+    "across": 0.138,
     "at": [
      18.6,
      -23.5,
@@ -86,7 +86,7 @@
     "case": "cradle, camera and LEDs crash 5 (35 g [0.0, 0.0, -1.0])",
     "cls": "crash",
     "inlayer": 0.03,
-    "across": 0.071,
+    "across": 0.07,
     "at": [
      14.6,
      22.5,
@@ -96,8 +96,8 @@
    {
     "case": "cradle, camera and LEDs crash 6 (35 g [0.58, 0.58, 0.58])",
     "cls": "crash",
-    "inlayer": 0.063,
-    "across": 0.118,
+    "inlayer": 0.064,
+    "across": 0.121,
     "at": [
      18.6,
      -23.5,
@@ -108,7 +108,7 @@
     "case": "cradle, camera and LEDs crash 7 (35 g [0.58, 0.58, -0.58])",
     "cls": "crash",
     "inlayer": 0.059,
-    "across": 0.122,
+    "across": 0.124,
     "at": [
      18.6,
      -23.5,
@@ -130,7 +130,7 @@
     "case": "cradle, camera and LEDs crash 9 (35 g [0.58, -0.58, -0.58])",
     "cls": "crash",
     "inlayer": 0.098,
-    "across": 0.106,
+    "across": 0.107,
     "at": [
      17.6,
      15.5,
@@ -173,8 +173,8 @@
    {
     "case": "cradle, camera and LEDs crash 13 (35 g [-0.58, -0.58, -0.58])",
     "cls": "crash",
-    "inlayer": 0.063,
-    "across": 0.084,
+    "inlayer": 0.064,
+    "across": 0.081,
     "at": [
      10.6,
      -12.5,
@@ -288,7 +288,7 @@
     "at": [
      4.6,
      15.5,
-     91.5
+     90.5
     ]
    },
    {
@@ -317,7 +317,7 @@
     "case": "SG90 crash 8 (35 g [0.58, -0.58, 0.58])",
     "cls": "crash",
     "inlayer": 0.027,
-    "across": 0.04,
+    "across": 0.041,
     "at": [
      17.6,
      15.5,
@@ -380,10 +380,10 @@
     ]
    },
    {
-    "case": "head-first crash: 250 N on the crash stop (the cradle landed)",
+    "case": "head-first crash: 260 N on the crash stop (the cradle landed)",
     "cls": "crash",
-    "inlayer": 0.12,
-    "across": 0.121,
+    "inlayer": 0.124,
+    "across": 0.125,
     "at": [
      18.6,
      -12.5,
@@ -416,7 +416,7 @@
     "case": "SG90 stall torque -1.8 kg cm on its tabs",
     "cls": "flight",
     "inlayer": 0.121,
-    "across": 0.221,
+    "across": 0.218,
     "at": [
      14.6,
      22.5,
@@ -436,7 +436,7 @@
  "mass_g": 26.1,
  "watertight": true,
  "export": {
-  "faces_in": 120510,
+  "faces_in": 120498,
   "degenerate": 0,
   "folded": 0,
   "caps_split": 0,
@@ -446,23 +446,23 @@
   "n_dropped_shells": 0,
   "bodies": 1,
   "open_kept": [],
-  "faces": 120510,
+  "faces": 120498,
   "boundary_edges": 0,
   "nonmanifold_edges": 0,
   "watertight": true,
   "simplified": true,
   "first_pass": {
    "degenerate": 4,
-   "folded": 2,
-   "caps_split": 1,
+   "folded": 0,
+   "caps_split": 0,
    "caps_left": 0,
    "watertight": true,
-   "faces": 180878,
+   "faces": 180744,
    "n_dropped_shells": 0,
    "dropped_shells": []
   },
-  "volume_mm3": 21221.2,
-  "exact_mm3": 21222.4
+  "volume_mm3": 21215.9,
+  "exact_mm3": 21217.1
  },
  "bodies": {
   "bodies_raw": 1,
@@ -470,7 +470,7 @@
   "cavities_mm3": [],
   "bodies": 1
  },
- "volume_mm3": 21222.4,
+ "volume_mm3": 21217.1,
  "drawn_g": 4.12,
  "export_cleanup": {
   "pitch": 0.25,
@@ -483,9 +483,9 @@
  },
  "memory_build": [
   {
-   "estimate_gb": 2.61,
+   "estimate_gb": 2.62,
    "parts": {
-    "held": 1.06,
+    "held": 1.07,
     "gate": 0.36,
     "mesh": 1.19
    },
@@ -496,7 +496,7 @@
     64.7,
     51.3
    ],
-   "faces": 212656,
+   "faces": 212540,
    "when": "before the export cleanup"
   },
   {
@@ -630,7 +630,7 @@
    "index": 0.258
   },
   "cavity": {
-   "last": 1.2052619146373624,
+   "last": 1.2087371313599156,
    "ratio": 5.0,
    "T0": 38.728242733996574,
    "row": true
@@ -685,7 +685,7 @@
    "SG90 crash 11 (35 g [-0.58, 0.58, -0.58])",
    "SG90 crash 12 (35 g [-0.58, -0.58, 0.58])",
    "SG90 crash 13 (35 g [-0.58, -0.58, -0.58])",
-   "head-first crash: 250 N on the crash stop (the cradle landed)",
+   "head-first crash: 260 N on the crash stop (the cradle landed)",
    "head-first crash: the pivots until the SG90 slips (18 N)",
    "SG90 stall torque +1.8 kg cm on its tabs",
    "SG90 stall torque -1.8 kg cm on its tabs"
@@ -694,13 +694,13 @@
    "default"
   ]
  },
- "build_s": 30.1,
- "layout_s": 6419,
- "peak_gb": 5.923612,
+ "build_s": 29.1,
+ "layout_s": 6514,
+ "peak_gb": 5.927236,
  "memory": {
-  "estimate_gb": 6.24,
+  "estimate_gb": 6.25,
   "parts": {
-   "held": 0.81,
+   "held": 0.83,
    "factor": 3.4,
    "assembly": 0.83,
    "block": 0.96,
@@ -712,9 +712,9 @@
   "backend": "direct",
   "block": 54,
   "build": {
-   "estimate_gb": 1.18,
+   "estimate_gb": 1.2,
    "parts": {
-    "held": 0.81,
+    "held": 0.83,
     "gate": 0.37,
     "mesh": 0.0
    },
@@ -1085,10 +1085,10 @@
     ]
    },
    {
-    "case": "head-first crash: 250 N on the crash stop (the cradle landed)",
+    "case": "head-first crash: 260 N on the crash stop (the cradle landed)",
     "cls": "crash",
-    "inlayer": 0.123,
-    "across": 0.121,
+    "inlayer": 0.128,
+    "across": 0.126,
     "at": [
      19.6,
      -11.5,
@@ -1265,19 +1265,19 @@
   }
  },
  "baseline": null,
- "total_s": 6449,
+ "total_s": 6543,
  "part_sha": "7164dc5ee036",
- "lib_sha": "75bc9ff30b85",
- "setup_sha": "dc249f0405bc05d9",
+ "lib_sha": "265dd11f384f",
+ "setup_sha": "e2d20d37fc8cf4b4",
  "max_worst": 0.3,
  "strength_ok": true,
  "print_stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/scout_v4_head_frame.stl",
-  "sha256": "afd499bbe1a89a143404a99c742b616a6f5254bd1982407a536e590c89fa1014",
-  "bytes": 6025584,
-  "faces": 120510,
+  "sha256": "1f92ec6cc414aa413120ac59d2c28fdc79501b7e9f56b32448b31b23a891e3a5",
+  "bytes": 6024984,
+  "faces": 120498,
   "view_faces": 60000,
-  "view_sha256": "2fda6a2239dfdd03cf519749e742f2734f4bea5d0896946dea5f63b4d44a4181",
-  "at": "2026-11-14 08:28"
+  "view_sha256": "3c2e7c96bfb0385f54d31e96e2d210a2ff749cf9f2e5520145f897f239017a90",
+  "at": "2026-11-15 00:00"
  }
 }
