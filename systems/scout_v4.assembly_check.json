@@ -413,7 +413,7 @@
   {
    "a": "scout_v4_frame",
    "b": "scout_v4_probe_turret",
-   "mm3": 0.07,
+   "mm3": 0.06,
    "limit_mm3": 0.5,
    "contact": null,
    "ok": true
@@ -2305,6 +2305,6 @@
   ]
  },
  "would_block": {},
- "seconds": 4.5,
+ "seconds": 5.4,
  "placed": {}
 }
