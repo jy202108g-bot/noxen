@@ -3424,18 +3424,17 @@
    "parts/latch7/make.py": "3ee20169a07e",
    "parts/latch7_recv_lib.py": "1b5a38b50c5a",
    "tools/build_site.py": "954e55503aa7",
-   "tools/make_parts.py": "62175e8d9271",
-   "tools/print_mesh.py": "70ee08eda91a",
    "tools/seat_check.py": "5acab205ab60",
    "tools/seat_envelope.py": "fe96ec54e18a"
   },
   "rc": 0,
-  "s": 12.7,
-  "at": "2026-11-15 03:14",
-  "commit": "1e2ee95a",
+  "s": 14.2,
+  "at": "2026-11-15 03:43",
+  "commit": "b4ee40e4",
   "solid": {
    "ok": false,
-   "why": "no mesh: the make wrote neither print/<p>.stl nor part.stl"
+   "files": [],
+   "why": "a generator that wrote no print file"
   }
  }
 }

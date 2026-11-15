@@ -14,7 +14,7 @@
    "parts/scout_units_lib.py": "edbb61c2b9c7",
    "parts/scout_v4_probe_bench_base/make.py": "411e2b106309",
    "parts/scout_v4_probe_mech_lib.py": "736ade7c0a36",
-   "parts/scout_v4_units_lib.py": "782d91575fab",
+   "parts/scout_v4_units_lib.py": "f5b138d4c6b6",
    "parts/socket_inject.py": "6613a0572d9f",
    "systems/fit_table.json": "8d560ff6f55b",
    "systems/overseer.cage.json": "298700a6d756",
@@ -24,9 +24,9 @@
    "tools/scout_v4_shape.py": "c0dafeecc6c9"
   },
   "rc": 0,
-  "s": 19.5,
-  "at": "2026-11-15 03:23",
-  "commit": "b3556996",
+  "s": 23.7,
+  "at": "2026-11-15 03:44",
+  "commit": "b4ee40e4",
   "solid": {
    "ok": true,
    "file": "print/scout_v4_probe_bench_base.stl",
