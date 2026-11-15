@@ -345,15 +345,15 @@
    ],
    "fits_bed": true,
    "brim": "a 5 mm brim fits",
-   "first_layer_mm2": 1845,
+   "first_layer_mm2": 1744,
    "low_gap_mm2": 0,
-   "overhang_mm2": 795,
+   "overhang_mm2": 839,
    "support_mm2": 0,
    "widest_overhang_mm": 0.0,
    "widest_at": null,
-   "supports": "none: 795 mm2 past 45 deg, none of it wider than 6 mm",
+   "supports": "none: 839 mm2 past 45 deg, none of it wider than 6 mm",
    "bed_note": "",
-   "grams_each": 62.36
+   "grams_each": 60.69
   },
   {
    "file": "print/box_arm8_wheel.stl",
@@ -426,21 +426,21 @@
    "pose": "the part's -y side on the bed",
    "pose_why": "least to support, then most on the bed, of the six flat poses",
    "size_on_bed_mm": [
-    136.0,
-    110.0,
+    138.0,
+    113.0,
     46.0
    ],
    "fits_bed": true,
    "brim": "a 5 mm brim fits",
-   "first_layer_mm2": 8884,
+   "first_layer_mm2": 8994,
    "low_gap_mm2": 0,
-   "overhang_mm2": 86,
+   "overhang_mm2": 194,
    "support_mm2": 0,
    "widest_overhang_mm": 0.0,
    "widest_at": null,
-   "supports": "none: 86 mm2 past 45 deg, none of it wider than 6 mm",
+   "supports": "none: 194 mm2 past 45 deg, none of it wider than 6 mm",
    "bed_note": "",
-   "grams_each": 177.81
+   "grams_each": 186.42
   },
   {
    "file": "print/box_arm8_post.stl",
@@ -481,24 +481,24 @@
    "solid_check": "PASS",
    "watertight": true,
    "thin_walls": 0,
-   "pose": "the part's +z side on the bed",
+   "pose": "the part's -x side on the bed",
    "pose_why": "least to support, then most on the bed, of the six flat poses",
    "size_on_bed_mm": [
-    27.6,
+    29.5,
     8.6,
-    18.4
+    33.1
    ],
    "fits_bed": true,
    "brim": "a 5 mm brim fits",
-   "first_layer_mm2": 121,
-   "low_gap_mm2": 8,
-   "overhang_mm2": 66,
+   "first_layer_mm2": 76,
+   "low_gap_mm2": 0,
+   "overhang_mm2": 128,
    "support_mm2": 0,
    "widest_overhang_mm": 0.0,
    "widest_at": null,
-   "supports": "none: 66 mm2 past 45 deg, none of it wider than 6 mm",
+   "supports": "none: 128 mm2 past 45 deg, none of it wider than 6 mm",
    "bed_note": "",
-   "grams_each": 3.47
+   "grams_each": 5.9
   },
   {
    "file": "print/box_arm8_saddle_overseer.stl",
@@ -931,21 +931,21 @@
    "brim": "NO room for a 5 mm brim: 2.5 mm to the bed's edge each side, print without brim or skirt",
    "first_layer_mm2": 2553,
    "low_gap_mm2": 0,
-   "overhang_mm2": 9914,
-   "support_mm2": 9622,
-   "widest_overhang_mm": 31.5,
+   "overhang_mm2": 9738,
+   "support_mm2": 9445,
+   "widest_overhang_mm": 20.5,
    "widest_at": [
-    80.1,
-    16.2,
-    26.0
+    10.0,
+    73.8,
+    32.0
    ],
-   "supports": "yes: 9622 mm2 of overhang wider than 6 mm (the widest 31.5); tree supports from the bed",
+   "supports": "yes: 9445 mm2 of overhang wider than 6 mm (the widest 20.5); tree supports from the bed",
    "bed_note": "",
-   "grams_each": 335.46,
+   "grams_each": 331.52,
    "stage": "PROTOTYPE (drawn)",
    "make": "parts/box_arm8p_hub/make.py",
-   "hand_calc_worst": 0.622,
-   "hand_calc": "rail bolts: M5 heat-set inserts, 1500 N (E) (insert off square, overseer: the limit + 43.5 N across at the mouth)"
+   "hand_calc_worst": 0.431,
+   "hand_calc": "keel through the outer bolt's pocket (u 76.9; W 953 mm3) (insert off square, overseer: the limit + 43.5 N across at the mouth)"
   },
   {
    "file": "print/box_arm8p_carriage.stl",
@@ -966,19 +966,23 @@
    ],
    "fits_bed": true,
    "brim": "a 5 mm brim fits",
-   "first_layer_mm2": 4943,
+   "first_layer_mm2": 4874,
    "low_gap_mm2": 0,
-   "overhang_mm2": 516,
-   "support_mm2": 0,
-   "widest_overhang_mm": 0.0,
-   "widest_at": null,
-   "supports": "none: 516 mm2 past 45 deg, none of it wider than 6 mm",
+   "overhang_mm2": 1034,
+   "support_mm2": 579,
+   "widest_overhang_mm": 7.5,
+   "widest_at": [
+    56.5,
+    21.8,
+    5.5
+   ],
+   "supports": "yes: 579 mm2 of overhang wider than 6 mm (the widest 7.5); tree supports from the bed",
    "bed_note": "",
-   "grams_each": 96.6,
+   "grams_each": 96.23,
    "stage": "PROTOTYPE (drawn)",
    "make": "parts/box_arm8p_carriage/make.py",
-   "hand_calc_worst": 0.837,
-   "hand_calc": "MGN rail on the spine: four M3 heat-set inserts, 900 N (E) (insert off square, overseer: the limit + 43.5 N across at the mouth)"
+   "hand_calc_worst": 0.453,
+   "hand_calc": "spine and plate, every section from the low wheel's boss up to the MGN block (1 mm apart) (dropped pack: an Overseer falls 50 onto the head (float springs take 0.38 J) (u 27))"
   },
   {
    "file": "print/box_arm8p_lift.stl",
@@ -1023,8 +1027,14 @@
   {
    "item": "MGN12H rail hole positions",
    "state": "E until the rail is here",
-   "what": "the carriage's four M3 inserts are 25 apart from 12.5 in from the rail's end (a 100 rail with four holes can only be 12.5 / 25 / 25 / 25 / 12.5 if it is cut evenly). Measure the first hole from each end and the pitch before printing the carriage",
-   "if_off": "parts/box_arm8_lib.py MGN first / pitch, then python parts/box_arm8p_carriage/make.py (a drawn piece, no run)"
+   "what": "the carriage's four M3 through holes are 25 apart from 12.5 in from the rail's end (a 100 rail with four holes can only be 12.5 / 25 / 25 / 25 / 12.5 if it is cut evenly), and the rail is taken as 3.5 thick under each screw head. Measure the first hole from each end, the pitch and that thickness before printing the carriage",
+   "if_off": "parts/box_arm8_lib.py MGN first / pitch, MGN_BOLT under_head, then python parts/box_arm8p_carriage/make.py (a drawn piece, no run)"
+  },
+  {
+   "item": "detent spring",
+   "state": "E 1.4 N/mm from wire and coil count",
+   "what": "the roller must drop into each notch by itself and the arm must not turn out of a notch with one Overseer carried: middle hole of the tail first, then hole 1 (lighter) or 3 (firmer)",
+   "if_off": "parts/box_arm8/make.py DET: the anchor's place; stub and detent arm are drawn pieces"
   },
   {
    "item": "6010-2RS press fits",
@@ -1053,10 +1063,11 @@
  ],
  "assembly": [
   "First the bearing coupon (print/box_arm8p_coupon.stl): set a 6010 on it and report how many steps it goes down in the ring and on the plug.",
-  "Stub on the mast: the M8 nut into the pocket in the flange's back, the stub's flange on the mast's face, three M5 x 25 on o 15 washers from the front through the flange's pockets and the mast's holes, a nyloc on an o 15 washer on each from behind (8 mm socket through the mast's o 18 holes). The 135 deg hole is gone: it sat behind the axle stepper.",
-  "Hub: press the two 6010-2RS into the sleeve from the stub end, slide the hub on the spigot until the inner ring sits on its shoulder, the post on the spigot's end, the M8 x 60 through post and spigot into the nut; axle stepper on the ear (four M3), its 16T pulley hub side toward the motor, belt round the ring's teeth, detent arm with its 623ZZ on an M3 x 30 into the boss.",
-  "Each V rail on the hub's plate: two M5 x 10 into the heat-set M5 inserts.",
-  "Each carriage: four M3 inserts in the spine, the MGN12 rail on it with four M3 x 12 (block on the rail, stoppers off only at the bench). Each V wheel (two 625ZZ in it): M5 x 20 button head through the wheel from behind, an o 10 washer, then through the plate with an o 15 washer in the recess each side and an M5 nut in the front one (3 mm key behind, 8 mm socket in front). Roll it onto the V rail from the tip, slide it to the top (the third wheel is then clear of the hub's plate: key from behind), push the third wheel onto the ridge in its slot until the carriage runs without play, tighten. The tab on the spine's side is the pick-up stop.",
+  "Stub, on the bench first: the six M5 x 40 countersunk screws bonded into the spigot from the flange's back (stub spigot down, each o 5.4 bore a third full of G/flex, the screw pushed home and turned until its head is flush, wiped; cured before the stub is loaded).",
+  "Stub on the mast: the M8 nut into the pocket in the flange's back, the stub's flange on the mast's face, three M5 x 25 on o 20 washers from the front through the flange's pockets and the mast's holes, a nyloc on an o 15 washer on each from behind (8 mm socket through the mast's o 18 holes). The 135 deg hole is gone: it sat behind the axle stepper.",
+  "Hub: the four M5 heat-set inserts into the plate (two a rail seat, over the bearings); press the two 6010-2RS into the sleeve from the stub end, slide the hub on the spigot until the inner ring sits on its shoulder, the post on the spigot's end, the M8 x 60 through post and spigot into the nut; axle stepper on the ear (four M3), its 16T pulley hub side toward the motor, belt round the ring's teeth, detent arm with its 623ZZ on an M3 x 30 into the boss; an M3 x 16 into the arm's tail from behind (middle hole first: hole 1 nearest the pivot is the lightest, hole 3 the firmest) and one into the ear's boss, the o 6 x 25 extension spring hooked over both shanks.",
+  "Each V rail on the hub's plate, an o 10 washer under every head: two M5 x 12 into the inserts, two M5 x 25 through rail and keel to nylocs on o 15 washers in the pockets in the hub's back (the nyloc stands 3 out of its pocket: an 8 mm open wrench on it from the side, the rail turned level beside the mast; easier still on the bench before the hub goes on).",
+  "Each carriage: an M3 nyloc and an o 9 washer slid into each of the four slots in the spine's side (washer toward the rail), the MGN12 rail on the spine with four M3 x 25 through it into them (block on the rail, stoppers off only at the bench). Each V wheel (two 625ZZ in it): M5 x 20 button head through the wheel from behind, an o 10 washer, then through the plate with a washer in the recess each side (o 20 on the wheel pair, o 15 on the third wheel) and an M5 nut in the front one (3 mm key behind, 8 mm socket in front). Roll it onto the V rail from the tip, slide it to the top (the third wheel is then clear of the hub's plate: key from behind), push the third wheel onto the ridge in its slot until the carriage runs without play, tighten. The tab on the spine's side is the pick-up stop.",
   "Each screw drive: stepper on its face plate (four M3), coupler, inner F8-16M, screw through the thrust wall, outer F8-16M, lock ring; the nut on the screw with its flange's two sides filed to the body.",
   "Each lift: bond the three o 6 x 115 carbon rods in the yoke's sockets (resin through each port until it shows at the mouth), slide the two ties on and bond them at their stations (float bolt centres 45 hub side and 20 far side of the tab line); four M4 inserts in each pair of ties.",
   "Yoke on the MGN block with four M3 x 12, an o 9 washer under each head; the nut into its lug (flange in the slot); the return spring from the carriage to the rail's channel.",

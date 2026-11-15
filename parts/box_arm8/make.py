@@ -58,9 +58,17 @@ RING_R = 47.75                # GT2 150T pitch radius on the hub's sleeve
 # FL_T thick, and everything on the stub in front of it (bearings, hub sleeve, belt lane, detent, post) sits DY further along the axle; the hub's plate, the rails
 # and the heads stay where they were. The bolts go in from the front: M5 x 25 socket heads on o 15 washers in pockets in the flange (FL_SKIN under the washer),
 # through the mast's o 5.5 holes to nylocs on o 15 washers on its seats at Y -10 (the stand's own M5 x 25, washers and nylocs: no mast change but the bolts' direction).
+# 15 Nov (design chat: every hand index over 0.5 is a fail; the stub's own rows read 0.59 and 0.62). Flange: 13 thick (1.0 under the hub's end) and each bolt on an
+# M5 x o 20 x 1.2 fender washer (its load spreads over 38 of root, was 33): 0.44. Spigot: o 49.7 of PCTG across its layers cannot pass alone (0.62 handling, 0.52 every
+# swap, 0.51 standing), so six M5 x 40 countersunk screws are bonded in it along the axle (G/flex, o 5.4 bores from the flange's back, heads flush under the mast's
+# face): steel through every layer of the spigot, anchored by its head and 11 of bond under the bearing's shoulder (SPIGOT_TIES; hand check parts/box_arm8p_lib.py).
 DY = 6.0
-FL_T = 6.0 + DY               # flange
+FL_T = 13.0                   # flange (was 6.0 + DY = 12)
+FL_WASHER = 20.0
 FL_SKIN = FL_T - (5.0 + 1.2 + 0.2)   # under each bolt's washer: head 5.0, washer 1.2, 0.2 under the flange's face
+SPIGOT_TIES = dict(n=6, r=18.5, d=5.0, len=40.0, head_d=10.0, head_h=2.8, bore=5.4, As=14.2, E=200000.0, bond_MPa=12.0)   # DIN 7991 M5 x 40; bore: 0.2 of resin round the thread; bond: the node lib's G/flex number (E)
+def spigot_ties():
+    t = SPIGOT_TIES; return [(t["r"] * math.cos(math.radians(a)), t["r"] * math.sin(math.radians(a))) for a in np.arange(0.0, 360.0, 360.0 / t["n"])]
 BOLT_R, BOLT_A = 38.0, (45.0, 225.0, 315.0)     # the mast's pattern (parts/box_stand2_lib.py STUB_BOLTS); its 135 deg hole is behind the axle stepper: not drawn any more
 HUB_Y0 = 8.0 + DY             # the hub's stub end and the first bearing's face, 2.0 over the flange
 BRG = (HUB_Y0, HUB_Y0 + 32.0) # two 6010-2RS
@@ -74,27 +82,59 @@ ARM_Y = (ROLLER_Y[0] - 2.3, ROLLER_Y[1] + 2.3)  # the detent arm: 2.2 cheeks eit
 FLARE_Y0 = round(ARM_Y[1] + FIT.gap("clear"), 2)   # below this nothing of the hub stands outside BAND_R: pulley, belt, roller and detent arm pass there (fit table "clear")
 NOTCH = dict(n=12, a0=45.0, depth=1.2, r=5.0 + FIT.FIT["free"]["allow"] / 2)   # twelve notches for the roller (at 45 deg in W with head A at the drone), E
 POST_BOLT = 8.0               # one M8 x 60 through the post and the spigot to a nut in the flange's back
+# 15 Nov: the detent arm had no spring (nothing pressed its roller on the band). Now an extension spring (o 6 x 0.8 wire x 25, two hooks) lies behind the arm from an
+# M3 x 16 in the arm's new tail (three tapped holes 4 apart: the hold is picked on the bench) to an M3 x 16 in a boss on the stub's ear. E (wire and coil count:
+# 1.4 N/mm, 1.5 N wound in, 20.4 between pegs free): 9 / 15 / 20 N at holes 1 / 2 / 3 = 20 / 32 / 44 N on the roller = 0.57 / 0.92 / 1.26 N m to turn the arm out of a
+# notch (v7's detent 1.07; the axle stalls at 5.5; start at hole 2). The pivot's boss is o 22 (was o 10: the spring's and the roller's 32 N on it, 22 up, read 3.4 across its layers).
+DET = dict(piv=(52.0, 40.0), boss_r=11.0, tail=(52.0, 58.0), holes=(0.0, 4.0, 8.0), anchor=(26.0, 58.0), anchor_r=8.5, anchor_top=16.0, screw=16.0,
+           spring=dict(od=6.0, wire=0.8, free=25.0, k=1.4, f0=1.5, pegs_free=20.4))
+def detent_forces():
+    """per tail hole: spring N, roller N on the band, N m to turn the arm out of a notch, the pivot's load N (statics of the arm about its pivot; spring numbers E)"""
+    d = DET; sp = d["spring"]; rc = (BAND_R + 5.0) / math.sqrt(2); px, pz = d["piv"]; n = np.array([1.0, 1.0]) / math.sqrt(2)      # the band pushes the roller outward at 45 deg
+    lr = abs((rc - px) * n[1] - (rc - pz) * n[0]); out = []
+    cs = (5.0 + NOTCH["r"] - NOTCH["depth"]) / (5.0 + NOTCH["r"])                                                                    # the notch's edge: the flank angle the roller climbs
+    for h in d["holes"]:
+        tx, tz = d["tail"][0] + h, d["tail"][1]; L_ = math.hypot(tx - d["anchor"][0], tz - d["anchor"][1]); f = sp["f0"] + sp["k"] * (L_ - sp["pegs_free"])
+        u = np.array([d["anchor"][0] - tx, d["anchor"][1] - tz]) / L_; ls = abs((tx - px) * u[1] - (tz - pz) * u[0]); N = f * ls / lr
+        out.append(dict(hole=len(out) + 1, pegs_mm=round(L_, 1), spring_N=round(f, 1), roller_N=round(float(N), 1), hold_Nm=round(float(N * math.tan(math.acos(cs)) * (BAND_R + 5.0) / 1000), 2),
+                        pivot_N=round(float(np.linalg.norm(f * u + N * n)), 1)))
+    return out
 def fixed_parts():
     hexp = lambda af, t0, t1: mf.Manifold.cylinder(t1 - t0, af / 2 / math.cos(math.pi / 6), af / 2 / math.cos(math.pi / 6), 6).rotate([-90, 0, 0]).translate([0, t0, 0])
     bolts = [(BOLT_R * math.cos(math.radians(a)), BOLT_R * math.sin(math.radians(a))) for a in BOLT_A]
     stub = U(cyl("y", 0, 0, 45.0, 0.0, FL_T, 96), cyl("y", 0, 0, BRG_SEAT, FL_T, BRG[1], 96), cyl("y", 0, 0, 29.0, FL_T, HUB_Y0, 96),     # flange, spigot, the inner ring's shoulder
-             *[cyl("y", x, z, 10.5, 0.0, FL_T) for x, z in bolts],                                                                         # 2.7 of wall round each washer pocket
+             *[cyl("y", x, z, FIT.across(FL_WASHER, "slide") / 2 + 2.35, 0.0, FL_T, 64) for x, z in bolts],                                # 2.35 of wall round each washer pocket
              hullp([[x, y, z] for y in (0.0, 6.0) for x, z in ((-28, 15), (-74, 15), (-74, 65), (-28, 65), (-20, 40))]),      # the motor's ear
-             hullp([[x, y, z] for y in (0.0, 6.0) for x, z in ((20, 20), (62, 28), (62, 52), (30, 52))]))                      # the detent's ear
+             hullp([[x, y, z] for y in (0.0, 6.0) for x, z in ((20, 20), (64, 28), (64, 52), (30, 52))]),                      # the detent's ear
+             mf.Manifold.batch_hull([cyl("y", *DET["anchor"], DET["anchor_r"] + 1.5, 0.0, 6.0), cyl("y", 26.0, 36.0, 6.0, 0.0, 6.0), cyl("y", 40.0, 46.0, 6.0, 0.0, 6.0)]),   # and its lobe under the spring's anchor
+             cyl("y", *DET["anchor"], DET["anchor_r"], 6.0, DET["anchor_top"]))
     stub = stub - cyl("y", 0, 0, 12.0, 20.0, BRG[1] + 1) - cyl("y", 0, 0, FIT.bore(POST_BOLT, "screw") / 2, -1, 21) - hexp(FIT.across(13.0, "nut"), -1.0, 6.8)   # the M8 nut's pocket: shut by the mast's face
     stub = stub - cyl("y", *AXLE_M, FIT.bore(22.0, "slide") / 2, -1, 7)
-    stub = stub - U(*[U(cyl("y", x, z, FIT.bore(5.0, "screw") / 2, -1, FL_T + 1), cyl("y", x, z, FIT.across(15.0, "slide") / 2, FL_SKIN, FL_T + 1)) for x, z in bolts])
+    stub = stub - U(*[U(cyl("y", x, z, FIT.bore(5.0, "screw") / 2, -1, FL_T + 1), cyl("y", x, z, FIT.across(FL_WASHER, "slide") / 2, FL_SKIN, HUB_Y0 + 0.01, 64)) for x, z in bolts])   # each pocket notches the inner ring's shoulder 1.3
+    tt = SPIGOT_TIES
+    stub = stub - U(*[U(cyl("y", x, z, tt["bore"] / 2, -1, tt["len"] + 1.5), mf.Manifold.cylinder(tt["head_h"] + 0.2, tt["head_d"] / 2 + 0.2 + 0.2, tt["bore"] / 2, 40).rotate([-90, 0, 0]).translate([x, -0.2, z]))
+                      for x, z in spigot_ties()])                                                                                           # the ties' bores and countersinks, from the back
     stub = stub - U(*[cyl("y", AXLE_M[0] + sx * 15.5, AXLE_M[1] + sz * 15.5, FIT.bore(3.0, "screw") / 2, -1, 7) for sx in (-1, 1) for sz in (-1, 1)])
-    piv = (52.0, 40.0)                                                                                                         # detent arm pivot: an M3 x 30 cutting its thread in the boss (fit table "tap")
-    stub = stub + cyl("y", *piv, 5.0, 6.0, ARM_Y[0] - 0.2) - cyl("y", *piv, FIT.bore(3.0, "tap") / 2, 0.5, ARM_Y[0])
+    piv = DET["piv"]                                                                                                           # detent arm pivot: an M3 x 30 cutting its thread in the boss (fit table "tap")
+    stub = stub + cyl("y", *piv, DET["boss_r"], 6.0, ARM_Y[0] - 0.2, 64) - cyl("y", *piv, FIT.bore(3.0, "tap") / 2, 0.5, ARM_Y[0])
+    stub = stub - cyl("y", *DET["anchor"], FIT.bore(3.0, "tap") / 2, DET["anchor_top"] - 11.0, DET["anchor_top"] + 1)          # the spring's anchor: an M3 x 16, 9 into the boss, 7 of shank under its head
     post = U(cyl("y", 0, 0, 28.5, BRG[1], BRG[1] + 4.0), cyl("y", 0, 0, 9.0, BRG[1] + 4.0, 62.0)) - cyl("y", 0, 0, FIT.bore(POST_BOLT, "screw") / 2, BRG[1] - 1, 63)
     rc = (BAND_R + 5.0) / math.sqrt(2)                                                                                         # roller centre on the band, at 45 deg
     a0, a1 = ARM_Y; r0, r1 = ROLLER_Y
     arm = U(hullp([[x, y, z] for y in (a0, a1) for x, z in ((piv[0] - 6, piv[1] - 6), (piv[0] + 6, piv[1] + 6), (rc + 7, rc + 13), (rc - 7, rc + 13), (rc - 7, rc - 2), (rc + 7, rc - 2))]),
-            cyl("y", *piv, 7.0, a0, a1)) - cyl("y", *piv, FIT.bore(3.0, "free") / 2, a0 - 1, a1 + 1) - box(rc - 8, rc + 8, r0 - 0.1, r1 + 0.1, rc - 8, rc + 6.5) \
+            cyl("y", *piv, 7.0, a0, a1),
+            mf.Manifold.batch_hull([cyl("y", *piv, 7.0, a0, a1)] + [cyl("y", DET["tail"][0] + h, DET["tail"][1], 4.5, a0, a1) for h in (DET["holes"][0], DET["holes"][-1])])) \
+        - U(*[cyl("y", DET["tail"][0] + h, DET["tail"][1], FIT.bore(3.0, "tap") / 2, a0 - 1, a1 + 1) for h in DET["holes"]]) \
+        - cyl("y", *piv, FIT.bore(3.0, "free") / 2, a0 - 1, a1 + 1) - box(rc - 8, rc + 8, r0 - 0.1, r1 + 0.1, rc - 8, rc + 6.5) \
         - cyl("y", rc, rc, 1.5, a0 - 1, a1 + 1) - cyl("y", 0, 0, RING_R + 3.0, a0 - 1, a1 + 1, 96)   # 8.6 thick: 2.2 cheeks either side of the 623ZZ
-    bh = U(*[U(cyl("y", x, z, 4.25, FL_T - 5.2, FL_T - 0.2), cyl("y", x, z, 2.5, -13.0, FL_T - 5.0), cyl("y", x, z, 7.5, FL_SKIN, FL_SKIN + 1.2) - cyl("y", x, z, 2.6, 0, FL_T)) for x, z in bolts])
+    bh = U(*[U(cyl("y", x, z, 4.25, FL_T - 5.2, FL_T - 0.2), cyl("y", x, z, 2.5, -13.0, FL_T - 5.0), cyl("y", x, z, FL_WASHER / 2, FL_SKIN, FL_SKIN + 1.2) - cyl("y", x, z, 2.6, 0, FL_T)) for x, z in bolts])
+    ties = U(*[U(cyl("y", x, z, tt["d"] / 2, 0.0, tt["len"]), mf.Manifold.cylinder(tt["head_h"], tt["head_d"] / 2, tt["d"] / 2, 40).rotate([-90, 0, 0]).translate([x, 0.0, z])) for x, z in spigot_ties()])
+    ys = (DET["anchor_top"] + a0) / 2 - 0.15; tx, tz = DET["tail"]; axn = DET["anchor"]                                              # the spring's plane: between the anchor boss's top and the arm's back
+    spring = cyl("x", ys, tz, DET["spring"]["od"] / 2, axn[0] + 3.5, tx - 3.5) - cyl("x", ys, tz, DET["spring"]["od"] / 2 - DET["spring"]["wire"], axn[0], tx)
+    scr = U(cyl("y", tx, tz, 1.5, a1 - DET["screw"], a0 - 0.01), cyl("y", tx, tz, 2.75, a1 - DET["screw"] - 3.0, a1 - DET["screw"]),         # the tail's M3 x 16, from behind: its head toward the stub (drawn: what stands out of the print)
+            cyl("y", *axn, 1.5, DET["anchor_top"] + 0.01, DET["anchor_top"] + 7.0), cyl("y", *axn, 2.75, DET["anchor_top"] + 7.0, DET["anchor_top"] + 10.0))
     return dict(stub=(stub, "PCTG", "print"), post=(post, "PCTG", "print"), detent_arm=(arm, "PCTG", "print"),
+                detent_spring=(spring, None, "bought"), detent_screws=(scr, None, "bought"), spigot_ties=(ties, None, "bought"),
                 detent_roller=(cyl("y", rc, rc, 5.0, r0, r1) - cyl("y", rc, rc, 1.5, r0 - 1, r1 + 1), None, "bought"),
                 axle_motor=(U(box(AXLE_M[0] - 21.15, AXLE_M[0] + 21.15, -48.0, 0.0, AXLE_M[1] - 21.15, AXLE_M[1] + 21.15), cyl("y", *AXLE_M, 2.5, 0.0, 24.0)), None, "bought"),
                 axle_pulley=(cyl("y", *AXLE_M, 6.5, TEETH[0] - 5.5, TEETH[0] - 0.5) + cyl("y", *AXLE_M, 5.1, TEETH[0] - 0.5, TEETH[1] - 0.5), None, "bought"),   # its hub toward the motor, teeth in the belt's lane
@@ -136,7 +176,8 @@ def hub_cuts(cradle=False):
               f(lane_in),                                                                                                   # coupler and the inner thrust bearing, in front of the plate
               f(cyl("z", x, y, 4.3, -12.5, -6.5)),
               f(lane_out),                                                                                                  # the lane the screw, the outer bearing, the lock ring and the nut's lug run in
-              *[f(cyl("y", 0, u, FIT.insert("M5") / 2, BRG[1], 60)) for u in L.RAIL_BOLTS],                                 # M5 heat-set inserts, 8 deep (fit table)
+              *[f(cyl("y", 0, u, FIT.insert("M5") / 2, BRG[1], 60)) for u in L.RAIL_INSERTS],                               # M5 heat-set inserts, 8 deep (fit table)
+              *[f(U(cyl("y", 0, u, FIT.bore(5.0, "screw") / 2, 30, 60), cyl("y", 0, u, FIT.across(15.0, "slide") / 2, 25.0, L.RAIL_NUT_SEAT))) for u in L.RAIL_THRU],   # the through bolts and their washer pockets in the keel's back
               f(box(-12.5, 12.5, y1, 82, L.RAIL[0] - 1, 160)),                                                              # rail seat
               f(box(9.0, L.SPINE["x"][1] + 0.8, y1 + 0.5, 82, -45, 160)), f(box(-L.WHEEL_R - 22.8, -9.0, y1 + 0.5, 82, 0.0, 160))]   # the lanes of the wheel pair with the carriage's spine, and of the third wheel
     return c
@@ -173,11 +214,13 @@ def head_parts(state="grip"):
     P = {}
     f = L.faces()[state]
     P["rail"] = (L.rail(), "PCTG", "print", "hub")
+    P["rail_bolts"] = (L.rail_fasteners(), None, "bought", "hub")
     for k, m in L.screw_drive().items(): P[k] = (m, None, "bought", "hub")
     P["carriage"] = (L.carriage_proto(), "PCTG", "proto", "carriage")
     P["wheels"] = (U(*[L.wheel(x, c) for x, c in L.WHEELS]), "PCTG", "print", "carriage")
     P["axles"] = (U(*[L.axle_stack(x, c) for x, c in L.WHEELS]), None, "bought", "carriage")
     P["mgn_rail"] = (L.mgn_rail(), None, "bought", "carriage")
+    P["mgn_bolts"] = (L.mgn_fasteners(), None, "bought", "carriage")
     P["lift"] = (L.lift_proto(), "PCTG", "proto", "lift")
     for k, m in L.lift_bought().items(): P[k] = (m, None, "bought", "lift")
     P["ties"] = (U(*L.ties()), "PCTG", "print", "lift")
@@ -495,10 +538,11 @@ PRINTED = {  # part folder -> (source key or callable, material, print pose note
 
 # poses, supports and the files themselves: parts/box_arm8/kit.py (measured on each print file), parts/box_arm8/kit.json
 ORDER = ["First the bearing coupon (print/box_arm8p_coupon.stl): set a 6010 on it and report how many steps it goes down in the ring and on the plug.",
-         "Stub on the mast: the M8 nut into the pocket in the flange's back, the stub's flange on the mast's face, three M5 x 25 on o 15 washers from the front through the flange's pockets and the mast's holes, a nyloc on an o 15 washer on each from behind (8 mm socket through the mast's o 18 holes). The 135 deg hole is gone: it sat behind the axle stepper.",
-         "Hub: press the two 6010-2RS into the sleeve from the stub end, slide the hub on the spigot until the inner ring sits on its shoulder, the post on the spigot's end, the M8 x 60 through post and spigot into the nut; axle stepper on the ear (four M3), its 16T pulley hub side toward the motor, belt round the ring's teeth, detent arm with its 623ZZ on an M3 x 30 into the boss.",
-         "Each V rail on the hub's plate: two M5 x 10 into the heat-set M5 inserts.",
-         "Each carriage: four M3 inserts in the spine, the MGN12 rail on it with four M3 x 12 (block on the rail, stoppers off only at the bench). Each V wheel (two 625ZZ in it): M5 x 20 button head through the wheel from behind, an o 10 washer, then through the plate with an o 15 washer in the recess each side and an M5 nut in the front one (3 mm key behind, 8 mm socket in front). Roll it onto the V rail from the tip, slide it to the top (the third wheel is then clear of the hub's plate: key from behind), push the third wheel onto the ridge in its slot until the carriage runs without play, tighten. The tab on the spine's side is the pick-up stop.",
+         "Stub, on the bench first: the six M5 x 40 countersunk screws bonded into the spigot from the flange's back (stub spigot down, each o 5.4 bore a third full of G/flex, the screw pushed home and turned until its head is flush, wiped; cured before the stub is loaded).",
+         "Stub on the mast: the M8 nut into the pocket in the flange's back, the stub's flange on the mast's face, three M5 x 25 on o 20 washers from the front through the flange's pockets and the mast's holes, a nyloc on an o 15 washer on each from behind (8 mm socket through the mast's o 18 holes). The 135 deg hole is gone: it sat behind the axle stepper.",
+         "Hub: the four M5 heat-set inserts into the plate (two a rail seat, over the bearings); press the two 6010-2RS into the sleeve from the stub end, slide the hub on the spigot until the inner ring sits on its shoulder, the post on the spigot's end, the M8 x 60 through post and spigot into the nut; axle stepper on the ear (four M3), its 16T pulley hub side toward the motor, belt round the ring's teeth, detent arm with its 623ZZ on an M3 x 30 into the boss; an M3 x 16 into the arm's tail from behind (middle hole first: hole 1 nearest the pivot is the lightest, hole 3 the firmest) and one into the ear's boss, the o 6 x 25 extension spring hooked over both shanks.",
+         "Each V rail on the hub's plate, an o 10 washer under every head: two M5 x 12 into the inserts, two M5 x 25 through rail and keel to nylocs on o 15 washers in the pockets in the hub's back (the nyloc stands 3 out of its pocket: an 8 mm open wrench on it from the side, the rail turned level beside the mast; easier still on the bench before the hub goes on).",
+         "Each carriage: an M3 nyloc and an o 9 washer slid into each of the four slots in the spine's side (washer toward the rail), the MGN12 rail on the spine with four M3 x 25 through it into them (block on the rail, stoppers off only at the bench). Each V wheel (two 625ZZ in it): M5 x 20 button head through the wheel from behind, an o 10 washer, then through the plate with a washer in the recess each side (o 20 on the wheel pair, o 15 on the third wheel) and an M5 nut in the front one (3 mm key behind, 8 mm socket in front). Roll it onto the V rail from the tip, slide it to the top (the third wheel is then clear of the hub's plate: key from behind), push the third wheel onto the ridge in its slot until the carriage runs without play, tighten. The tab on the spine's side is the pick-up stop.",
          "Each screw drive: stepper on its face plate (four M3), coupler, inner F8-16M, screw through the thrust wall, outer F8-16M, lock ring; the nut on the screw with its flange's two sides filed to the body.",
          "Each lift: bond the three o 6 x 115 carbon rods in the yoke's sockets (resin through each port until it shows at the mouth), slide the two ties on and bond them at their stations (float bolt centres 45 hub side and 20 far side of the tab line); four M4 inserts in each pair of ties.",
          "Yoke on the MGN block with four M3 x 12, an o 9 washer under each head; the nut into its lug (flange in the slot); the return spring from the carriage to the rail's channel.",
@@ -611,9 +655,14 @@ BOUGHT = [
     dict(part="lift rail", spec="MGN12 rail 100 long (uncut) with one MGN12H block: the block's four M3 hold the yoke, the rail's four M3 go into the carriage's spine", n=2,
          url=A + "Iverntech-Linear-MGN12H-Carriage-Printer/dp/B086SNDDXH", check="block 27 x 45.4, 13 high on the rail; holes 20 x 20; rail holes 25 apart from 12.5 in (M: measure, the setup's seats follow)"),
     dict(part="carbon rod 6", spec="o 6 x 500 solid pultruded carbon: three 115 long per head (the booms)", n=2, url=A + "clp/B0DK3LWS3V", check="take the round 6 x 500; 6.0 +- 0.1 in the 6.2 sockets"),
-    dict(part="rail and yoke bolts", spec="M3 x 12 socket head, stainless: rail to spine (8), yoke to block (8)", n=16, url=A + "Socket-Screws-Available-Stainless-Machine/dp/B08P6DYH7V", check="100 in the pack"),
+    dict(part="yoke bolts", spec="M3 x 12 socket head, stainless: yoke to block (8)", n=8, url=A + "Socket-Screws-Available-Stainless-Machine/dp/B08P6DYH7V", check="100 in the pack"),
+    dict(part="lift rail bolts", spec="M3 x 25 socket head, stainless: each MGN rail's four, through the rail and the carriage's spine", n=8, url=A + "uxcell-M3x25mm-Thread-Stainless-Socket/dp/B01M4LNN3C", check="55 in the pack. E: 3.5 of rail under the head; the tip must stand 0.5 out of the nyloc and not reach the spine's back (2.1 behind it)"),
+    dict(part="lift rail nylocs", spec="M3 nyloc (5.5 across, 4.0 high), one per lift rail bolt in the spine's slot, on an M3 x o 9 washer (the yoke's listing)", n=8, url=A + "Hordion-Stainless-Insert-Locknuts-Non-Slip/dp/B0CX1J3MT3", check="100 in the pack"),
     dict(part="wheel bearing", spec="625ZZ, two per V wheel", n=12, url=A + "Double-Bearings-5x16x5mm-0-2x0-63x0-2-BlueStars/dp/B09XT9TKY8"),
     dict(part="detent roller", spec="623ZZ", n=1, url=A + "uxcell-Groove-Bearings-Metric-Shielded/dp/B085RSRF2F"),
+    dict(part="detent spring", spec="extension spring, two hooks: o 6 x 0.8 wire x 25 long, stainless (E 1.4 N/mm): from the detent arm's tail to the boss on the stub's ear", n=1, url=A + "clp/B0CD7ZXK8H",
+         check="15 in the pack (0.8 x 6 x 25, dual hook). E from wire and coils: 9 / 15 / 20 N at the tail's holes 1 / 2 / 3; start at hole 2"),
+    dict(part="detent spring screws", spec="M3 x 16 socket head: one into the arm's tail from behind, one into the ear's boss (o 2.6, they cut their thread); the spring's hooks go over their shanks", n=2, url=A + "Socket-Screws-Available-Stainless-Machine/dp/B08P6DYH7V", check="the M3 x 12 listing's other lengths"),
     dict(part="hub bearing", spec="6010-2RS 50 x 80 x 16", n=2, url=A + "uxcell-6010-2RS-Pre-Lubricated-Industrial-Machinery/dp/B0G2QPXVK9"),
     dict(part="axle pulley", spec="GT2 16T, 5 bore, 6 mm belt", n=1, url=A + "Drive-Pulleys-Timing-Pulley-Alumium/dp/B014IGOQK6"),
     dict(part="axle belt", spec="GT2 6 mm open belt (on hand), a 336 mm loop lap-spliced as v7's; the splice never reaches the 16T in 360 deg of arm travel", n=1, url=A + "SIMAX3D-GT2-Timing-Belt/dp/B09C5ZKXRT"),
@@ -626,15 +675,21 @@ BOUGHT = [
     dict(part="servo ear screws", spec="M3 x 8 socket head, two per servo into the unit body's tab (o 2.5, they cut their thread)", n=4, url=A + "Socket-Screws-Available-Stainless-Machine/dp/B08P6DYH7V"),
     dict(part="carriage return spring", spec="extension spring, 5 to 10 N over 60 mm, from the kit", n=2, url=A + "Extension-Different-Assortment-Stainless-Individual/dp/B0CFRF42LQ", check="rates not listed: pick on a scale"),
     dict(part="float washer", spec="PTFE washer M5 between each float bolt's head and its tie, with a steel M5 x 15 washer", n=8, url=A + "PATIKIL-Washer-Sealing-Gasket-Flanges/dp/B0H1XBGWPM"),
-    dict(part="insert M5", spec="heat-set, rail bolts", n=4, url=A + "Threaded-Inserts-M5xD7xL6-Printing-Components/dp/B0H142Y3BM"),
-    dict(part="insert M3 / M4", spec="heat-set: stepper faces M3 (16), MGN rail M3 (8); float bolts M4 (8, the next line)", n=24, url=A + "initeq-M3-0-5-Threaded-Inserts-Printing/dp/B077CHDSTR"),
+    dict(part="insert M5", spec="heat-set, the two rail bolts over the bearings on each rail", n=4, url=A + "Threaded-Inserts-M5xD7xL6-Printing-Components/dp/B0H142Y3BM"),
+    dict(part="rail bolts, inserts", spec="M5 x 12 socket cap, two a rail into the inserts (5 of thread in the 6 long insert)", n=4, url=A + "M5-80x12-Socket-Screws-DIN912-Stainless/dp/B07RYJ6X9N", check="50 in the pack"),
+    dict(part="rail bolts, through", spec="M5 x 25 socket cap (the stub bolts' listing), two a rail through rail and keel to an M5 nyloc on an o 15 washer (the stand's) in the hub's back", n=4, url=A + "dp/B0BQJ3DZ34", check="nylocs: " + A + "dp/B078NNFT93"),
+    dict(part="rail bolt washers", spec="M5 x o 10 x 1.0 washer DIN 125 under each of the eight rail bolt heads (the wheel spacers' listing)", n=8, url=A + "s?k=M5+flat+washer+DIN+125+10mm+304"),
+    dict(part="insert M3", spec="heat-set: stepper faces M3 (16)", n=16, url=A + "initeq-M3-0-5-Threaded-Inserts-Printing/dp/B077CHDSTR"),
     dict(part="insert M4", spec="heat-set M4-0.7, the float bolts screw into the ties", n=8, url=A + "clp/B07457F9ST", check="20 in the pack; the ties' holes are o 5.6: measure the insert first (M)"),
     dict(part="wheel axle", spec="M5 x 20 button head ISO 7380 (head o 9.5 x 2.75, 3 mm key), from behind each V wheel", n=6, url=A + "Button-Socket-Screws-Stainless-Threaded/dp/B0CJ919595", check="50 in the pack; a countersunk or socket head does not fit behind the wheel"),
     dict(part="wheel axle nut", spec="M5 hex nut DIN 934 (8 across, 4.0 thick), sunk in the carriage's front; a drop of threadlocker", n=6, url=A + "BinifiMux-Stainless-Silver-Furniture-Machinery/dp/B07J645J6L"),
-    dict(part="wheel axle washers", spec="M5 x o 15 x 1.2 (the stand's), two per axle sunk in the plate; and one each under the three stub bolts' heads", n=15, url=A + "dp/B0DX6TD1Q7"),
+    dict(part="wheel axle washers, pair", spec="M5 x o 20 x 1.2 fender washer, two per axle of each wheel pair sunk in the plate (8); and one under each of the three stub bolts' heads", n=11, url=A + "clp/B0H4Q6ZB36", check="50 in the pack; 1.2 thick (the recesses are 1.3 and 5.4 deep)"),
+    dict(part="wheel axle washers, third wheel", spec="M5 x o 15 x 1.2 (the stand's), two on each third wheel's axle; and one under each of the four through rail bolts' nylocs", n=8, url=A + "dp/B0DX6TD1Q7"),
     dict(part="wheel spacer", spec="M5 x o 10 x 1.0 washer DIN 125, one between each wheel's inner ring and the plate", n=6, url=A + "s?k=M5+flat+washer+DIN+125+10mm+304", check="1.0 thick, 10 OD: it must sit on the 625ZZ's inner ring only"),
-    dict(part="yoke bolt washer", spec="M3 x o 9 x 0.8, under each of the yoke's four M3 heads", n=8, url=A + "clp/B01IZL6G4E"),
-    dict(part="stub bolts", spec="M5 x 25 socket cap on an o 15 washer, from the front through the stub's flange and the mast's face to an M5 nyloc on an o 15 washer behind it (the stand's listings)", n=3, url=A + "dp/B0BQJ3DZ34", check="nylocs: " + A + "dp/B078NNFT93"),
+    dict(part="yoke bolt washer", spec="M3 x o 9 x 0.8, under each of the yoke's four M3 heads (8) and under each lift rail nyloc (8)", n=16, url=A + "clp/B01IZL6G4E"),
+    dict(part="stub bolts", spec="M5 x 25 socket cap on an o 20 fender washer, from the front through the stub's flange and the mast's face to an M5 nyloc on an o 15 washer behind it (the stand's listings)", n=3, url=A + "dp/B0BQJ3DZ34", check="nylocs: " + A + "dp/B078NNFT93"),
+    dict(part="spigot ties", spec="M5 x 40 countersunk (flat head) socket screw, stainless, full thread: six bonded in the stub's spigot from the flange's back with G/flex (on hand)", n=6, url=A + "Countersunk-Socket-Screws-20-piece-Stainless/dp/B07CNTW8QN",
+         check="20 in the pack; head o 10 x 2.8 (DIN 7991). They carry the spigot's bending across its layers: do not leave them out"),
     dict(part="post bolt", spec="M8 x 60 hex bolt and nut: through the post and the stub's spigot, its nut in the pocket in the flange's back", n=1, url=A + "clp/B08XZRVMD4", check="10 sets in the pack; full thread"),
     dict(part="detent pivot", spec="M3 x 30 socket head: through the detent arm into the stub's boss (o 2.6, it cuts its thread)", n=1, url=A + "Socket-Screws-Available-Stainless-Machine/dp/B08P6DYH7V", check="the M3 x 12 listing's other lengths"),
     dict(part="carbon rod 3", spec="o 3 x 500: blade rods 66 long, four; pilot pins 9 long, four; on hand", n=1, url=A + "Carbon-Fiber-Length-Diameter-Suitable/dp/B09N91J1FC"),
@@ -646,14 +701,14 @@ COL = dict(hub="#c9d3dc", rail="#9fb4cc", carriage="#e8b04a", lift="#5f9ed1", un
 _B = lambda hd: [f"box_arm8_{hd}_{k}" for k in ("motor", "coupler", "thrust", "screw")]
 ASSEMBLY = {
     "fit_tol_mm3": 0.5,
-    "order": {"box_arm8_fx_post": 20, "box_arm8_fx_post_bolt": 20, "box_arm8_fx_detent_*": 20, "box_arm8_fx_axle_pulley": 20, "box_arm8_?_rail": 30, "box_arm8_?_motor": 30, "box_arm8_?_coupler": 30, "box_arm8_?_thrust": 30, "box_arm8_?_screw": 30,
-              "box_arm8_?_wheels": 40, "box_arm8_?_axles": 40, "box_arm8_?_mgn_rail": 40, "box_arm8_?_mgn_block": 50, "box_arm8_?_nut": 50, "box_arm8_?_booms": 50, "box_arm8_?_*": 60,
+    "order": {"box_arm8_fx_spigot_ties": 0, "box_arm8_fx_post": 20, "box_arm8_fx_post_bolt": 20, "box_arm8_fx_detent_*": 20, "box_arm8_fx_axle_pulley": 20, "box_arm8_?_rail": 30, "box_arm8_?_motor": 30, "box_arm8_?_coupler": 30, "box_arm8_?_thrust": 30, "box_arm8_?_screw": 30,
+              "box_arm8_?_wheels": 40, "box_arm8_?_axles": 40, "box_arm8_?_mgn_rail": 40, "box_arm8_?_mgn_bolts": 40, "box_arm8_?_rail_bolts": 30, "box_arm8_?_mgn_block": 50, "box_arm8_?_nut": 50, "box_arm8_?_booms": 50, "box_arm8_?_*": 60,
               "box_arm8_bay_*": 90, "box_arm8_drone_*": 90, "box_arm8_funnel": 90},
     "contacts": [{"a": f"box_arm8_{hd}_carriage", "b": f"box_arm8_{hd}_axles", "allow_mm3": 2.0, "why": "the third wheel's axle is drawn at the middle of its slot; washers seated in their recesses"} for hd in "ab"],
     "paths": [{"name": "hub onto the stub", "part": "box_arm8_hub", "order": 10, "out": [0, 1, 0], "length_mm": 45, "fit": "press", "with": ["box_arm8_fx_bearings"], "into": ["box_arm8_fx_stub"],
                "why": "the two 6010 pressed in the sleeve from the stub end, then the hub with them slid on the spigot; the post and its M8 after it"}]
              + [{"name": f"carriage {hd.upper()} onto its rail", "part": f"box_arm8_{hd}_carriage", "order": 40, "out": [0, 0, sg], "length_mm": 150, "fit": "mate",
-                 "with": [f"box_arm8_{hd}_wheels", f"box_arm8_{hd}_axles", f"box_arm8_{hd}_mgn_rail"], "into": [f"box_arm8_{hd}_rail"], "ignore": _B(hd)[2:],
+                 "with": [f"box_arm8_{hd}_wheels", f"box_arm8_{hd}_axles", f"box_arm8_{hd}_mgn_rail", f"box_arm8_{hd}_mgn_bolts"], "into": [f"box_arm8_{hd}_rail"], "ignore": _B(hd)[2:],
                  "why": "wheels and MGN rail on the carriage at the bench, then rolled onto the V rail from its tip; the screw goes in after it (order in parts/box_arm8/make.py ORDER)"} for hd, sg in (("a", 1), ("b", -1))]
              + [{"name": f"lift {hd.upper()} onto its block", "part": f"box_arm8_{hd}_lift", "order": 50, "out": [0, 1, 0], "length_mm": 40, "fit": "mate", "with": [f"box_arm8_{hd}_booms"],
                  "into": [f"box_arm8_{hd}_carriage"], "ignore": [f"box_arm8_{hd}_nut", f"box_arm8_{hd}_screw", f"box_arm8_{hd}_thrust"],

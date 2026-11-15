@@ -120,9 +120,26 @@ def rail():
              box(-9, 9, 38, 54.01, PLATE[2] + 1.0, u1),                                       # the keel beyond the plate
              )                                                                                # no park stop on the rail: the screw sets park
     for u in RAIL_BOLTS:
-        body = body - cyl("y", 0, u, 2.75, 50, 70) - cyl("y", 0, u, 4.6, 61.0, 70)            # M5 x 10 socket head into the hub's insert
+        body = body - cyl("y", 0, u, FIT.bore(5.0, "screw") / 2, 30, 70) - cyl("y", 0, u, FIT.across(RAIL_WASHER, "slide") / 2, RAIL_CB, 70)   # each M5 socket head on an o 10 washer in its counterbore
     return body - box(-2.5, 2.5, 62.75, 67, u0 + 3.5, u1 + 1)                                 # the lift's return spring lies in the channel
-RAIL_BOLTS = (40.0, 78.0)
+# 15 Nov (design chat: every hand index over 0.5 is a fail): two M5 x 10 into inserts at u 40 and 78 read 0.62 (373 N on an insert of 1500 N / 2.5, insert off square), and
+# the bare o 8.5 heads 0.72 on the printed rail. Now four bolts a rail, each head on an M5 x o 10 washer: two M5 x 12 into M5 inserts where nothing can be reached behind
+# (u 36 and 52, over the bearings and the cone: 0.38) and two M5 x 25 through the rail and the keel to nylocs on o 15 washers in pockets in the keel's back (u 64 and 77,
+# outside the cone: 0.05 on the washer). Screw tips end at Y 36, 2.8 over the detent arm's lane.
+RAIL_INSERTS = (36.0, 52.0)
+RAIL_THRU = (64.0, 77.0)
+RAIL_BOLTS = RAIL_INSERTS + RAIL_THRU
+RAIL_WASHER = 10.0             # M5 x o 10 x 1.0 under each head
+RAIL_CB = 60.0                 # the counterbores' floor: washer 1.0, head 5.0, its top 0.75 under the rail's top
+RAIL_NUT_SEAT = 43.0           # the through bolts' washer seats in the keel's back: 11 of keel under the rail; washer 1.2 + nyloc 5.0 end at 36.8, an M5 x 25's tip at 36.0
+def rail_fasteners():
+    """bought: per rail two M5 x 12 into the inserts, two M5 x 25 to nylocs on o 15 washers, an o 10 washer under each head"""
+    out = []
+    for u in RAIL_BOLTS:
+        ln = 12.0 if u in RAIL_INSERTS else 25.0
+        out += [cyl("y", 0, u, 4.25, RAIL_CB + 1.0, RAIL_CB + 6.0), cyl("y", 0, u, 2.5, RAIL_CB + 1.0 - ln, RAIL_CB + 1.0), cyl("y", 0, u, RAIL_WASHER / 2, RAIL_CB, RAIL_CB + 1.0) - cyl("y", 0, u, 2.6, RAIL_CB - 1, RAIL_CB + 2)]
+        if u in RAIL_THRU: out += [cyl("y", 0, u, 7.5, RAIL_NUT_SEAT - 1.2, RAIL_NUT_SEAT) - cyl("y", 0, u, 2.6, RAIL_NUT_SEAT - 2, RAIL_NUT_SEAT + 1), cyl("y", 0, u, 4.6, RAIL_NUT_SEAT - 6.2, RAIL_NUT_SEAT - 1.2, 6) - cyl("y", 0, u, 2.5, 30, 50)]
+    return U(*out)
 SCREW_TOP = 145.0
 
 
@@ -153,14 +170,24 @@ def wheel(x, c):
 # from behind the wheel (head 2.75: 1.0 off the hub's plate), an M5 x o 10 x 1.0 washer on the inner ring (the 1.0 between wheel and plate), an M5 x o 15 x 1.2
 # washer sunk in the plate's back, the plate's 3.15 web, the same washer and an M5 nut sunk in its front (nothing proud of the rail seat's plane, the bed).
 # The third wheel's bore and both its recesses are slots, +-AXLE["slot"] across the rail: slid home on the rail, then tightened (set-up, ORDER in make.py).
-AXLE = dict(bore=FIT.bore(5.0, "close") / 2, washer=FIT.across(15.0, "slide") / 2, back=1.2 + 0.1, front=1.2 + 4.0 + 0.2, slot=1.0, screw_tip=20.0,
-            washer_d=15.0, race_d=10.0, lever=WHEEL_R - 1.6)      # lever: the V's contact on the ridge from the axle (the groove's flank at mid-height)
+# 15 Nov (design chat: every hand index over 0.5 is a fail): the pair's o 15 washers read 0.65 on the dropped pack (245 N along each axle, 11.4 off it), so the wheel pair's
+# two washers are M5 x o 20 x 1.2 fender washers (0.28); the third wheel's stay o 15 (0.30: its boss is 2.0 from the other head's stepper as it is).
+AXLE = dict(bore=FIT.bore(5.0, "close") / 2, washer=FIT.across(15.0, "slide") / 2, washer2=FIT.across(20.0, "slide") / 2, back=1.2 + 0.1, front=1.2 + 4.0 + 0.2, slot=1.0, screw_tip=20.0,
+            washer_d=15.0, washer2_d=20.0, race_d=10.0, lever=WHEEL_R - 1.6)      # lever: the V's contact on the ridge from the axle (the groove's flank at mid-height)
+def axle_washer(i): return (AXLE["washer2"], AXLE["washer2_d"]) if i < 2 else (AXLE["washer"], AXLE["washer_d"])
+# 15 Nov: the MGN rail's four M3 heat-set inserts read 0.84 (301 N on one of 900 N / 2.5, insert off square). Now each is an M3 x 25 socket head through the rail and
+# the spine to an M3 nyloc on an M3 x o 9 washer, both slid into a slot in the spine's screw side (the nyloc's part 5.5 across: it cannot turn; 2.4 of spine stays
+# behind it, so the spine keeps its back): 0.35 on the washer.
+MGN_BOLT = dict(len=25.0, under_head=3.5, washer_d=9.0, washer_t=0.8, nut=4.0, past=0.5)      # under_head: the rail's 8.0 less its o 6 x 4.5 counterbore (E, the listing's drawing)
+def mgn_nut_floor():
+    """y of each nut pocket's floor (the washer's seat): the screw's tip stands MGN_BOLT["past"] out of the nyloc"""
+    b = MGN_BOLT; return SPINE["y"][1] + b["under_head"] - b["len"] + b["past"] + b["nut"] + b["washer_t"] + 0.2
 def mgn_bolts():
     """the rail's four bolt stations on the spine (u): 25 pitch from 12.5 in"""
     return [MGN_U[0] + MGN["first"] + MGN["pitch"] * k for k in range(4)]
 def carriage_bodies():
     """the drawn attachments: three wheel bosses, then the MGN rail's seat on the spine"""
-    b = [cyl("y", x, Z0 + c, 10.0, PLATE_Y[0], PLATE_Y[1]) for x, c in WHEELS[:2]]             # M5 axle bosses, the plate's full depth
+    b = [cyl("y", x, Z0 + c, AXLE["washer2"] + 2.35, PLATE_Y[0], PLATE_Y[1], 64) for x, c in WHEELS[:2]]   # M5 axle bosses, the plate's full depth: 2.35 round the o 20 washers' recesses
     x3, c3 = WHEELS[2]; sl = AXLE["slot"]                                                      # the third's is o 22 drawn out by its slot: 3.2 round the washers' recesses
     b += [mf.Manifold.batch_hull([cyl("y", x3 - sl, Z0 + c3, 11.0, PLATE_Y[0], PLATE_Y[1]), cyl("y", x3 + sl, Z0 + c3, 11.0, PLATE_Y[0], PLATE_Y[1])])]
     b += [box(RAIL_X - 6.0, RAIL_X + 6.0, SPINE["y"][1] - 3.0, SPINE["y"][1], MGN_U[0], MGN_U[1])]
@@ -171,33 +198,47 @@ def carriage_bodies():
 # nut lug meets a drawn tab on the spine's side when the block's top reaches the rail's end, and everything ends on the rail seat's plane: that plane is the bed.
 STOP = dict(u=LUG["u"][1] + T2, t=3.0, x1=54.0)     # 1.0 from the screw (o 8 at x 59); 2.7 x 16.1 of the lug's top under it
 CAR_TOP = MGN_U[1] + 3.0
+PLATE_X0 = 8.0
+RIB_END = 9.0                  # the rib's ends from the wheels' axles (its horns beside the spine are 2.0 wide there)
 def carriage_env():
     s = SPINE; w3 = Z0 + WHEELS[2][1]
-    return U(box(12.0, s["x"][0] + 0.01, PLATE_Y[0], PLATE_Y[1], 2.0, CAR_TOP),                               # the wheel pair's column of plate, 9.85 thick
-             box(12.5, s["x"][0] + 0.01, 58.0, PLATE_Y[0] + 0.01, Z0 + WHEELS[0][1] + WHEEL_R + 2.5, Z0 + WHEELS[1][1] - WHEEL_R - 2.5),   # a rib behind the plate between the wheel pair, 10.75 deep, 1.0 from the V rail's ridge
+    return U(box(PLATE_X0, s["x"][0] + 0.01, PLATE_Y[0], PLATE_Y[1], 2.0, CAR_TOP),                           # the wheel pair's column of plate, 9.85 thick (from x 8: 4.1 outside the o 20 recesses)
+             box(12.5, s["x"][0] + 0.01, 58.0, PLATE_Y[0] + 0.01, Z0 + WHEELS[0][1] + RIB_END, Z0 + WHEELS[1][1] - RIB_END)
+             - U(*[cyl("y", x, Z0 + c, WHEEL_R + 2.0, 57, 70, 64) for x, c in WHEELS[:2]]),   # a rib behind the plate between the wheel pair, 10.75 deep, 1.0 from the V rail's ridge; 15 Nov: its ends run on
+             #                                                                                  round each wheel (2.0 off its rim) beside the spine, where the nut slots take from the spine
              #                                                                                                  (13 Nov run: 0.53 where the plate bends between the low wheel's axle and the spine; it was 2.4 on the front, past the bed plane)
              box(-30.5, 12.01, PLATE_Y[0], PLATE_Y[1], w3 - 22.0, w3 + 22.0),                                 # and a strap across the rail to the third wheel, 44 wide
              box(s["x"][0], s["x"][1], s["y"][0], s["y"][1], MGN_U[0], CAR_TOP))                                 # the spine: the MGN rail on its front, the wheel pair beside it
-def axle_cut(x, c, slot=0.0):
+def axle_cut(x, c, slot=0.0, rw=None):
     """one wheel's axle through the plate: the bore and the two washer recesses (obround by +-slot across the rail for the third wheel)"""
-    a = AXLE; y0, y1 = PLATE_Y
+    a = AXLE; y0, y1 = PLATE_Y; rw = rw or a["washer"]
     def ob(r, t0, t1):
         if not slot: return cyl("y", x, Z0 + c, r, t0, t1)
         return mf.Manifold.batch_hull([cyl("y", x - slot, Z0 + c, r, t0, t1), cyl("y", x + slot, Z0 + c, r, t0, t1)])
-    return U(ob(a["bore"], 50, 82), ob(a["washer"], y0 - 0.01, y0 + a["back"]), ob(a["washer"], y1 - a["front"], y1 + 1))
+    return U(ob(a["bore"], 50, 82), ob(rw, y0 - 0.01, y0 + a["back"]), ob(rw, y1 - a["front"], y1 + 1))
 def carriage_cuts():
-    c = [axle_cut(x, cc, AXLE["slot"] if i == 2 else 0.0) for i, (x, cc) in enumerate(WHEELS)]
-    c += [cyl("y", RAIL_X, u, FIT.insert("M3") / 2, SPINE["y"][1] - 7.0, SPINE["y"][1] + 1) for u in mgn_bolts()]    # M3 heat-set inserts under the rail
+    c = [axle_cut(x, cc, AXLE["slot"] if i == 2 else 0.0, axle_washer(i)[0]) for i, (x, cc) in enumerate(WHEELS)]
+    rn = FIT.across(MGN_BOLT["washer_d"], "slide") / 2; an = FIT.across(5.5, "nut") / 2; yf = mgn_nut_floor(); s = SPINE
+    yw = yf - MGN_BOLT["washer_t"] - 0.2; yn = yw - MGN_BOLT["nut"] - 0.2                         # 0.2 over the washer and behind the nut; the screw's tip runs on in its bore
+    for u in mgn_bolts():                                                                                            # the MGN rail's through bolts and their nut pockets in the spine's back
+        c += [cyl("y", RAIL_X, u, FIT.bore(3.0, "screw") / 2, s["y"][0] - 1, s["y"][1] + 1),
+              U(cyl("y", RAIL_X, u, rn, yw, yf), box(RAIL_X, s["x"][1] + 1, yw, yf, u - rn, u + rn)),                              # the washer's slot, in from the spine's screw side
+              box(RAIL_X - 3.4, s["x"][1] + 1, yn, yw + 0.01, u - an, u + an)]                                                     # the nyloc's, 5.5 across its flats: it cannot turn
     return U(*c)
 def carriage_proto():
     """the drawn PROTOTYPE carriage (parts/box_arm8p_carriage/make.py): the setup's room filled, its drawn attachments, less its cuts"""
     return U(carriage_env(), *carriage_bodies()) - carriage_cuts()
 def axle_stack(x, c):
     """bought, one wheel: screw, the three washers and the nut (the page and the assembly check)"""
-    a = AXLE; y0, y1 = PLATE_Y; u = Z0 + c
+    a = AXLE; y0, y1 = PLATE_Y; u = Z0 + c; rw = axle_washer([w[1] for w in WHEELS].index(c))[1] / 2
     return U(cyl("y", x, u, 4.75, 55.0, 57.75), cyl("y", x, u, 2.5, 57.7, 57.75 + a["screw_tip"]),                       # button head, shank
              cyl("y", x, u, a["race_d"] / 2, 67.75, y0) - cyl("y", x, u, 2.5, 67, y0 + 1),
-             cyl("y", x, u, 7.5, y0, y0 + 1.2), cyl("y", x, u, 7.5, y1 - a["front"] + 0.0, y1 - a["front"] + 1.2), cyl("y", x, u, 4.6, y1 - 4.2, y1 - 0.2, 6))
+             cyl("y", x, u, rw, y0, y0 + 1.2), cyl("y", x, u, rw, y1 - a["front"] + 0.0, y1 - a["front"] + 1.2), cyl("y", x, u, 4.6, y1 - 4.2, y1 - 0.2, 6))
+def mgn_fasteners():
+    """bought: the MGN rail's four M3 x 25 (heads in the rail's counterbores), each with its o 9 washer and nyloc in the spine's pocket"""
+    b = MGN_BOLT; y1 = SPINE["y"][1]; yf = mgn_nut_floor(); yh = y1 + b["under_head"]
+    return U(*[U(cyl("y", RAIL_X, u, 1.5, yh - b["len"], yh), cyl("y", RAIL_X, u, b["washer_d"] / 2, yf - b["washer_t"], yf) - cyl("y", RAIL_X, u, 1.5, yf - 1, yf + 1),
+                 cyl("y", RAIL_X, u, 3.1, yf - b["washer_t"] - b["nut"], yf - b["washer_t"], 6)) for u in mgn_bolts()])
 def mgn_rail():
     return box(RAIL_X - 6.0, RAIL_X + 6.0, SPINE["y"][1], SPINE["y"][1] + MGN["rail_h"], MGN_U[0], MGN_U[1])
 def mgn_block():

@@ -74,6 +74,7 @@
  "assembly": {
   "fit_tol_mm3": 0.5,
   "order": {
+   "box_arm8_fx_spigot_ties": 0,
    "box_arm8_fx_post": 20,
    "box_arm8_fx_post_bolt": 20,
    "box_arm8_fx_detent_*": 20,
@@ -86,6 +87,8 @@
    "box_arm8_?_wheels": 40,
    "box_arm8_?_axles": 40,
    "box_arm8_?_mgn_rail": 40,
+   "box_arm8_?_mgn_bolts": 40,
+   "box_arm8_?_rail_bolts": 30,
    "box_arm8_?_mgn_block": 50,
    "box_arm8_?_nut": 50,
    "box_arm8_?_booms": 50,
@@ -142,7 +145,8 @@
     "with": [
      "box_arm8_a_wheels",
      "box_arm8_a_axles",
-     "box_arm8_a_mgn_rail"
+     "box_arm8_a_mgn_rail",
+     "box_arm8_a_mgn_bolts"
     ],
     "into": [
      "box_arm8_a_rail"
@@ -167,7 +171,8 @@
     "with": [
      "box_arm8_b_wheels",
      "box_arm8_b_axles",
-     "box_arm8_b_mgn_rail"
+     "box_arm8_b_mgn_rail",
+     "box_arm8_b_mgn_bolts"
     ],
     "into": [
      "box_arm8_b_rail"
@@ -297,6 +302,54 @@
    "kin": null
   },
   {
+   "id": "box_arm8_fx_detent_spring",
+   "name": "detent spring",
+   "role": "bought",
+   "group": "stub side (fixed)",
+   "color": "#8a8f96",
+   "opacity": null,
+   "mesh": "parts/box_arm8/view/box_arm8_fx_detent_spring.stl",
+   "pose": null,
+   "material": null,
+   "tag": "C",
+   "owner": "swap arm",
+   "version": "arm v8 (13 Nov)",
+   "source": "parts/box_arm8/make.py",
+   "kin": null
+  },
+  {
+   "id": "box_arm8_fx_detent_screws",
+   "name": "detent screws",
+   "role": "bought",
+   "group": "stub side (fixed)",
+   "color": "#8a8f96",
+   "opacity": null,
+   "mesh": "parts/box_arm8/view/box_arm8_fx_detent_screws.stl",
+   "pose": null,
+   "material": null,
+   "tag": "C",
+   "owner": "swap arm",
+   "version": "arm v8 (13 Nov)",
+   "source": "parts/box_arm8/make.py",
+   "kin": null
+  },
+  {
+   "id": "box_arm8_fx_spigot_ties",
+   "name": "spigot ties",
+   "role": "bought",
+   "group": "stub side (fixed)",
+   "color": "#8a8f96",
+   "opacity": null,
+   "mesh": "parts/box_arm8/view/box_arm8_fx_spigot_ties.stl",
+   "pose": null,
+   "material": null,
+   "tag": "C",
+   "owner": "swap arm",
+   "version": "arm v8 (13 Nov)",
+   "source": "parts/box_arm8/make.py",
+   "kin": null
+  },
+  {
    "id": "box_arm8_fx_detent_roller",
    "name": "detent roller",
    "role": "bought",
@@ -402,6 +455,26 @@
    "mesh": "parts/box_arm8/view/box_arm8_a_rail.stl",
    "pose": null,
    "material": "PCTG",
+   "tag": "C",
+   "owner": "swap arm",
+   "version": "arm v8 (15 Nov)",
+   "source": "parts/box_arm8/make.py",
+   "kin": {
+    "stage": "hub",
+    "head": "A",
+    "blade": 0
+   }
+  },
+  {
+   "id": "box_arm8_a_rail_bolts",
+   "name": "head A: rail bolts",
+   "role": "bought",
+   "group": "head A",
+   "color": "#8a8f96",
+   "opacity": null,
+   "mesh": "parts/box_arm8/view/box_arm8_a_rail_bolts.stl",
+   "pose": null,
+   "material": null,
    "tag": "C",
    "owner": "swap arm",
    "version": "arm v8 (15 Nov)",
@@ -561,6 +634,26 @@
    "color": "#8a8f96",
    "opacity": null,
    "mesh": "parts/box_arm8/view/box_arm8_a_mgn_rail.stl",
+   "pose": null,
+   "material": null,
+   "tag": "C",
+   "owner": "swap arm",
+   "version": "arm v8 (15 Nov)",
+   "source": "parts/box_arm8/make.py",
+   "kin": {
+    "stage": "carriage",
+    "head": "A",
+    "blade": 0
+   }
+  },
+  {
+   "id": "box_arm8_a_mgn_bolts",
+   "name": "head A: mgn bolts",
+   "role": "bought",
+   "group": "head A",
+   "color": "#8a8f96",
+   "opacity": null,
+   "mesh": "parts/box_arm8/view/box_arm8_a_mgn_bolts.stl",
    "pose": null,
    "material": null,
    "tag": "C",
@@ -935,6 +1028,26 @@
    }
   },
   {
+   "id": "box_arm8_b_rail_bolts",
+   "name": "head B: rail bolts",
+   "role": "bought",
+   "group": "head B",
+   "color": "#8a8f96",
+   "opacity": null,
+   "mesh": "parts/box_arm8/view/box_arm8_b_rail_bolts.stl",
+   "pose": null,
+   "material": null,
+   "tag": "C",
+   "owner": "swap arm",
+   "version": "arm v8 (15 Nov)",
+   "source": "parts/box_arm8/make.py",
+   "kin": {
+    "stage": "hub",
+    "head": "B",
+    "blade": 0
+   }
+  },
+  {
    "id": "box_arm8_b_motor",
    "name": "head B: motor",
    "role": "bought",
@@ -1108,6 +1221,26 @@
    "color": "#8a8f96",
    "opacity": null,
    "mesh": "parts/box_arm8/view/box_arm8_b_mgn_rail.stl",
+   "pose": null,
+   "material": null,
+   "tag": "C",
+   "owner": "swap arm",
+   "version": "arm v8 (15 Nov)",
+   "source": "parts/box_arm8/make.py",
+   "kin": {
+    "stage": "carriage",
+    "head": "B",
+    "blade": 0
+   }
+  },
+  {
+   "id": "box_arm8_b_mgn_bolts",
+   "name": "head B: mgn bolts",
+   "role": "bought",
+   "group": "head B",
+   "color": "#8a8f96",
+   "opacity": null,
+   "mesh": "parts/box_arm8/view/box_arm8_b_mgn_bolts.stl",
    "pose": null,
    "material": null,
    "tag": "C",
