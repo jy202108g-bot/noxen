@@ -2806,12 +2806,12 @@
 "note": "4 N20 gearmotors with an M4 x 100 screw shaft cut to 65, 4 KW12-3 roller switches (+y), 4 P156 spring probes in R156 sleeves, 16 M4 x 60 lap bolts, 8 M4 x 16 sheet bolts, 4 M4 x 16 and 2 M3 x 16 joint bolts"
 },
 {
-"id": "box_dome_hoop_1",
-"name": "dome hoop 1 (3 mm carbon, r 272) and its hub plates",
+"id": "box_dome_ring_00",
+"name": "dome base ring, segment 0 (hub)",
 "role": "structure",
 "group": "dome",
 "color": "#3a3f46",
-"mesh": "parts/box_dome/gore_meshes/hoop_1.stl",
+"mesh": "parts/box_dome/gore_meshes/ring_00.stl",
 "pose": [
 [
 1.0,
@@ -2841,17 +2841,18 @@
 "material": "PCTG",
 "tag": "C",
 "owner": "box dome",
-"version": "v3 mechanism 9 Nov",
+"version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "shut at 45 deg; its plates turn on the hub bolts, picked up / pulled out by hoop 2 through the pin in a 45 deg slot"
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_ring_hub.stl: r 255..297 at W Z 130..142, half laps with two 3 mm carbon pins; top face down (as laid), no supports",
+"part": "box_dome"
 },
 {
-"id": "box_dome_hoop_2",
-"name": "dome hoop 2 (3 mm carbon, r 281) and its hub plates",
+"id": "box_dome_ring_01",
+"name": "dome base ring, segment 1 (spoke)",
 "role": "structure",
 "group": "dome",
 "color": "#3a3f46",
-"mesh": "parts/box_dome/gore_meshes/hoop_2.stl",
+"mesh": "parts/box_dome/gore_meshes/ring_01.stl",
 "pose": [
 [
 1.0,
@@ -2881,17 +2882,18 @@
 "material": "PCTG",
 "tag": "C",
 "owner": "box dome",
-"version": "v3 mechanism 9 Nov",
+"version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "shut at 90 deg; its plates turn on the hub bolts, picked up / pulled out by hoop 3 through the pin in a 45 deg slot"
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_ring_spoke.stl: r 255..297 at W Z 130..142, half laps with two 3 mm carbon pins; bottom face down, no supports",
+"part": "box_dome"
 },
 {
-"id": "box_dome_hoop_3",
-"name": "dome hoop 3 (3 mm carbon, r 290) and its hub plates",
+"id": "box_dome_ring_02",
+"name": "dome base ring, segment 2 (plain)",
 "role": "structure",
 "group": "dome",
 "color": "#3a3f46",
-"mesh": "parts/box_dome/gore_meshes/hoop_3.stl",
+"mesh": "parts/box_dome/gore_meshes/ring_02.stl",
 "pose": [
 [
 1.0,
@@ -2921,17 +2923,18 @@
 "material": "PCTG",
 "tag": "C",
 "owner": "box dome",
-"version": "v3 mechanism 9 Nov",
+"version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "shut at 135 deg; its plates turn on the hub bolts, picked up / pulled out by hoop 4 through the pin in a 45 deg slot"
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_ring_plain.stl: r 255..297 at W Z 130..142, half laps with two 3 mm carbon pins; top face down (as laid), no supports",
+"part": "box_dome"
 },
 {
-"id": "box_dome_hoop_4",
-"name": "dome hoop 4 (3 mm carbon, r 299) and its hub plates",
+"id": "box_dome_ring_03",
+"name": "dome base ring, segment 3 (spoke)",
 "role": "structure",
 "group": "dome",
 "color": "#3a3f46",
-"mesh": "parts/box_dome/gore_meshes/hoop_4.stl",
+"mesh": "parts/box_dome/gore_meshes/ring_03.stl",
 "pose": [
 [
 1.0,
@@ -2961,17 +2964,18 @@
 "material": "PCTG",
 "tag": "C",
 "owner": "box dome",
-"version": "v3 mechanism 9 Nov",
+"version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "shut at 180 deg; its plates turn on the hub bolts, driven by the motors (the free edge)"
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_ring_spoke.stl: r 255..297 at W Z 130..142, half laps with two 3 mm carbon pins; bottom face down, no supports",
+"part": "box_dome"
 },
 {
-"id": "box_dome_fabric_00",
-"name": "dome fabric, panel 0 strip 0",
-"role": "bought",
+"id": "box_dome_ring_04",
+"name": "dome base ring, segment 4 (plain)",
+"role": "structure",
 "group": "dome",
-"color": "#dfe7ee",
-"mesh": "parts/box_dome/gore_meshes/fabric_00.stl",
+"color": "#3a3f46",
+"mesh": "parts/box_dome/gore_meshes/ring_04.stl",
 "pose": [
 [
 1.0,
@@ -2998,20 +3002,21 @@
 1.0
 ]
 ],
-"opacity": 0.35,
+"material": "PCTG",
 "tag": "C",
 "owner": "box dome",
-"version": "v3 mechanism 9 Nov",
+"version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "silnylon between hoops 0 and 1, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)"
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_ring_plain.stl: r 255..297 at W Z 130..142, half laps with two 3 mm carbon pins; top face down (as laid), no supports",
+"part": "box_dome"
 },
 {
-"id": "box_dome_fabric_01",
-"name": "dome fabric, panel 0 strip 1",
-"role": "bought",
+"id": "box_dome_ring_05",
+"name": "dome base ring, segment 5 (spoke)",
+"role": "structure",
 "group": "dome",
-"color": "#dfe7ee",
-"mesh": "parts/box_dome/gore_meshes/fabric_01.stl",
+"color": "#3a3f46",
+"mesh": "parts/box_dome/gore_meshes/ring_05.stl",
 "pose": [
 [
 1.0,
@@ -3038,20 +3043,21 @@
 1.0
 ]
 ],
-"opacity": 0.35,
+"material": "PCTG",
 "tag": "C",
 "owner": "box dome",
-"version": "v3 mechanism 9 Nov",
+"version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "silnylon between hoops 0 and 1, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)"
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_ring_spoke.stl: r 255..297 at W Z 130..142, half laps with two 3 mm carbon pins; bottom face down, no supports",
+"part": "box_dome"
 },
 {
-"id": "box_dome_fabric_02",
-"name": "dome fabric, panel 0 strip 2",
-"role": "bought",
+"id": "box_dome_ring_06",
+"name": "dome base ring, segment 6 (plain)",
+"role": "structure",
 "group": "dome",
-"color": "#dfe7ee",
-"mesh": "parts/box_dome/gore_meshes/fabric_02.stl",
+"color": "#3a3f46",
+"mesh": "parts/box_dome/gore_meshes/ring_06.stl",
 "pose": [
 [
 1.0,
@@ -3078,20 +3084,21 @@
 1.0
 ]
 ],
-"opacity": 0.35,
+"material": "PCTG",
 "tag": "C",
 "owner": "box dome",
-"version": "v3 mechanism 9 Nov",
+"version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "silnylon between hoops 0 and 1, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)"
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_ring_plain.stl: r 255..297 at W Z 130..142, half laps with two 3 mm carbon pins; top face down (as laid), no supports",
+"part": "box_dome"
 },
 {
-"id": "box_dome_fabric_03",
-"name": "dome fabric, panel 0 strip 3",
-"role": "bought",
+"id": "box_dome_ring_07",
+"name": "dome base ring, segment 7 (spoke)",
+"role": "structure",
 "group": "dome",
-"color": "#dfe7ee",
-"mesh": "parts/box_dome/gore_meshes/fabric_03.stl",
+"color": "#3a3f46",
+"mesh": "parts/box_dome/gore_meshes/ring_07.stl",
 "pose": [
 [
 1.0,
@@ -3118,20 +3125,21 @@
 1.0
 ]
 ],
-"opacity": 0.35,
+"material": "PCTG",
 "tag": "C",
 "owner": "box dome",
-"version": "v3 mechanism 9 Nov",
+"version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "silnylon between hoops 0 and 1, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)"
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_ring_spoke.stl: r 255..297 at W Z 130..142, half laps with two 3 mm carbon pins; bottom face down, no supports",
+"part": "box_dome"
 },
 {
-"id": "box_dome_fabric_10",
-"name": "dome fabric, panel 1 strip 0",
-"role": "bought",
+"id": "box_dome_ring_08",
+"name": "dome base ring, segment 8 (hub)",
+"role": "structure",
 "group": "dome",
-"color": "#dfe7ee",
-"mesh": "parts/box_dome/gore_meshes/fabric_10.stl",
+"color": "#3a3f46",
+"mesh": "parts/box_dome/gore_meshes/ring_08.stl",
 "pose": [
 [
 1.0,
@@ -3158,20 +3166,21 @@
 1.0
 ]
 ],
-"opacity": 0.35,
+"material": "PCTG",
 "tag": "C",
 "owner": "box dome",
-"version": "v3 mechanism 9 Nov",
+"version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "silnylon between hoops 1 and 2, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)"
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_ring_hub.stl: r 255..297 at W Z 130..142, half laps with two 3 mm carbon pins; top face down (as laid), no supports",
+"part": "box_dome"
 },
 {
-"id": "box_dome_fabric_11",
-"name": "dome fabric, panel 1 strip 1",
-"role": "bought",
+"id": "box_dome_ring_09",
+"name": "dome base ring, segment 9 (spoke)",
+"role": "structure",
 "group": "dome",
-"color": "#dfe7ee",
-"mesh": "parts/box_dome/gore_meshes/fabric_11.stl",
+"color": "#3a3f46",
+"mesh": "parts/box_dome/gore_meshes/ring_09.stl",
 "pose": [
 [
 1.0,
@@ -3198,20 +3207,21 @@
 1.0
 ]
 ],
-"opacity": 0.35,
+"material": "PCTG",
 "tag": "C",
 "owner": "box dome",
-"version": "v3 mechanism 9 Nov",
+"version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "silnylon between hoops 1 and 2, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)"
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_ring_spoke.stl: r 255..297 at W Z 130..142, half laps with two 3 mm carbon pins; bottom face down, no supports",
+"part": "box_dome"
 },
 {
-"id": "box_dome_fabric_12",
-"name": "dome fabric, panel 1 strip 2",
-"role": "bought",
+"id": "box_dome_ring_10",
+"name": "dome base ring, segment 10 (plain)",
+"role": "structure",
 "group": "dome",
-"color": "#dfe7ee",
-"mesh": "parts/box_dome/gore_meshes/fabric_12.stl",
+"color": "#3a3f46",
+"mesh": "parts/box_dome/gore_meshes/ring_10.stl",
 "pose": [
 [
 1.0,
@@ -3238,20 +3248,21 @@
 1.0
 ]
 ],
-"opacity": 0.35,
+"material": "PCTG",
 "tag": "C",
 "owner": "box dome",
-"version": "v3 mechanism 9 Nov",
+"version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "silnylon between hoops 1 and 2, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)"
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_ring_plain.stl: r 255..297 at W Z 130..142, half laps with two 3 mm carbon pins; top face down (as laid), no supports",
+"part": "box_dome"
 },
 {
-"id": "box_dome_fabric_13",
-"name": "dome fabric, panel 1 strip 3",
-"role": "bought",
+"id": "box_dome_ring_11",
+"name": "dome base ring, segment 11 (spoke)",
+"role": "structure",
 "group": "dome",
-"color": "#dfe7ee",
-"mesh": "parts/box_dome/gore_meshes/fabric_13.stl",
+"color": "#3a3f46",
+"mesh": "parts/box_dome/gore_meshes/ring_11.stl",
 "pose": [
 [
 1.0,
@@ -3278,20 +3289,21 @@
 1.0
 ]
 ],
-"opacity": 0.35,
+"material": "PCTG",
 "tag": "C",
 "owner": "box dome",
-"version": "v3 mechanism 9 Nov",
+"version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "silnylon between hoops 1 and 2, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)"
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_ring_spoke.stl: r 255..297 at W Z 130..142, half laps with two 3 mm carbon pins; bottom face down, no supports",
+"part": "box_dome"
 },
 {
-"id": "box_dome_fabric_20",
-"name": "dome fabric, panel 2 strip 0",
-"role": "bought",
+"id": "box_dome_ring_12",
+"name": "dome base ring, segment 12 (plain)",
+"role": "structure",
 "group": "dome",
-"color": "#dfe7ee",
-"mesh": "parts/box_dome/gore_meshes/fabric_20.stl",
+"color": "#3a3f46",
+"mesh": "parts/box_dome/gore_meshes/ring_12.stl",
 "pose": [
 [
 1.0,
@@ -3318,20 +3330,21 @@
 1.0
 ]
 ],
-"opacity": 0.35,
+"material": "PCTG",
 "tag": "C",
 "owner": "box dome",
-"version": "v3 mechanism 9 Nov",
+"version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "silnylon between hoops 2 and 3, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)"
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_ring_plain.stl: r 255..297 at W Z 130..142, half laps with two 3 mm carbon pins; top face down (as laid), no supports",
+"part": "box_dome"
 },
 {
-"id": "box_dome_fabric_21",
-"name": "dome fabric, panel 2 strip 1",
-"role": "bought",
+"id": "box_dome_ring_13",
+"name": "dome base ring, segment 13 (spoke)",
+"role": "structure",
 "group": "dome",
-"color": "#dfe7ee",
-"mesh": "parts/box_dome/gore_meshes/fabric_21.stl",
+"color": "#3a3f46",
+"mesh": "parts/box_dome/gore_meshes/ring_13.stl",
 "pose": [
 [
 1.0,
@@ -3358,20 +3371,21 @@
 1.0
 ]
 ],
-"opacity": 0.35,
+"material": "PCTG",
 "tag": "C",
 "owner": "box dome",
-"version": "v3 mechanism 9 Nov",
+"version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "silnylon between hoops 2 and 3, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)"
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_ring_spoke.stl: r 255..297 at W Z 130..142, half laps with two 3 mm carbon pins; bottom face down, no supports",
+"part": "box_dome"
 },
 {
-"id": "box_dome_fabric_22",
-"name": "dome fabric, panel 2 strip 2",
-"role": "bought",
+"id": "box_dome_ring_14",
+"name": "dome base ring, segment 14 (plain)",
+"role": "structure",
 "group": "dome",
-"color": "#dfe7ee",
-"mesh": "parts/box_dome/gore_meshes/fabric_22.stl",
+"color": "#3a3f46",
+"mesh": "parts/box_dome/gore_meshes/ring_14.stl",
 "pose": [
 [
 1.0,
@@ -3398,20 +3412,21 @@
 1.0
 ]
 ],
-"opacity": 0.35,
+"material": "PCTG",
 "tag": "C",
 "owner": "box dome",
-"version": "v3 mechanism 9 Nov",
+"version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "silnylon between hoops 2 and 3, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)"
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_ring_plain.stl: r 255..297 at W Z 130..142, half laps with two 3 mm carbon pins; top face down (as laid), no supports",
+"part": "box_dome"
 },
 {
-"id": "box_dome_fabric_23",
-"name": "dome fabric, panel 2 strip 3",
-"role": "bought",
+"id": "box_dome_ring_15",
+"name": "dome base ring, segment 15 (spoke)",
+"role": "structure",
 "group": "dome",
-"color": "#dfe7ee",
-"mesh": "parts/box_dome/gore_meshes/fabric_23.stl",
+"color": "#3a3f46",
+"mesh": "parts/box_dome/gore_meshes/ring_15.stl",
 "pose": [
 [
 1.0,
@@ -3438,20 +3453,21 @@
 1.0
 ]
 ],
-"opacity": 0.35,
+"material": "PCTG",
 "tag": "C",
 "owner": "box dome",
-"version": "v3 mechanism 9 Nov",
+"version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "silnylon between hoops 2 and 3, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)"
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_ring_spoke.stl: r 255..297 at W Z 130..142, half laps with two 3 mm carbon pins; bottom face down, no supports",
+"part": "box_dome"
 },
 {
-"id": "box_dome_fabric_30",
-"name": "dome fabric, panel 3 strip 0",
-"role": "bought",
+"id": "box_dome_hub_l",
+"name": "dome hub bracket, left",
+"role": "structure",
 "group": "dome",
-"color": "#dfe7ee",
-"mesh": "parts/box_dome/gore_meshes/fabric_30.stl",
+"color": "#3a3f46",
+"mesh": "parts/box_dome/gore_meshes/hub_l.stl",
 "pose": [
 [
 1.0,
@@ -3478,20 +3494,21 @@
 1.0
 ]
 ],
-"opacity": 0.35,
+"material": "PCTG",
 "tag": "C",
 "owner": "box dome",
-"version": "v3 mechanism 9 Nov",
+"version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "silnylon between hoops 3 and 4, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)"
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_hub_l.stl: base on the ring (4 x M3 x 12 from below), the inner wall with plate 0, the gearbox's side walls; base down, no supports",
+"part": "box_dome"
 },
 {
-"id": "box_dome_fabric_31",
-"name": "dome fabric, panel 3 strip 1",
-"role": "bought",
+"id": "box_dome_hub_r",
+"name": "dome hub bracket, right",
+"role": "structure",
 "group": "dome",
-"color": "#dfe7ee",
-"mesh": "parts/box_dome/gore_meshes/fabric_31.stl",
+"color": "#3a3f46",
+"mesh": "parts/box_dome/gore_meshes/hub_r.stl",
 "pose": [
 [
 1.0,
@@ -3518,20 +3535,21 @@
 1.0
 ]
 ],
-"opacity": 0.35,
+"material": "PCTG",
 "tag": "C",
 "owner": "box dome",
-"version": "v3 mechanism 9 Nov",
+"version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "silnylon between hoops 3 and 4, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)"
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_hub_r.stl: base on the ring (4 x M3 x 12 from below), the inner wall with plate 0, the gearbox's side walls; base down, no supports",
+"part": "box_dome"
 },
 {
-"id": "box_dome_fabric_32",
-"name": "dome fabric, panel 3 strip 2",
-"role": "bought",
+"id": "box_dome_plate_1_l",
+"name": "dome hoop 1 plate, left",
+"role": "structure",
 "group": "dome",
-"color": "#dfe7ee",
-"mesh": "parts/box_dome/gore_meshes/fabric_32.stl",
+"color": "#3a3f46",
+"mesh": "parts/box_dome/gore_meshes/plate_1_l.stl",
 "pose": [
 [
 1.0,
@@ -3558,20 +3576,21 @@
 1.0
 ]
 ],
-"opacity": 0.35,
+"material": "PCTG",
 "tag": "C",
 "owner": "box dome",
-"version": "v3 mechanism 9 Nov",
+"version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "silnylon between hoops 3 and 4, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)"
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_plate_1_l.stl: turns on the hub's tube, its pin at r 24; outer face down (as laid), supports under the arm only (build plate only)",
+"part": "box_dome"
 },
 {
-"id": "box_dome_fabric_33",
-"name": "dome fabric, panel 3 strip 3",
-"role": "bought",
+"id": "box_dome_plate_1_r",
+"name": "dome hoop 1 plate, right",
+"role": "structure",
 "group": "dome",
-"color": "#dfe7ee",
-"mesh": "parts/box_dome/gore_meshes/fabric_33.stl",
+"color": "#3a3f46",
+"mesh": "parts/box_dome/gore_meshes/plate_1_r.stl",
 "pose": [
 [
 1.0,
@@ -3598,19 +3617,266 @@
 1.0
 ]
 ],
-"opacity": 0.35,
+"material": "PCTG",
 "tag": "C",
 "owner": "box dome",
-"version": "v3 mechanism 9 Nov",
+"version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "silnylon between hoops 3 and 4, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)"
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_plate_1_r.stl: turns on the hub's tube, its pin at r 24; outer face down (as laid), supports under the arm only (build plate only)",
+"part": "box_dome"
+},
+{
+"id": "box_dome_plate_2_l",
+"name": "dome hoop 2 plate, left",
+"role": "structure",
+"group": "dome",
+"color": "#3a3f46",
+"mesh": "parts/box_dome/gore_meshes/plate_2_l.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": "PCTG",
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_plate_2_l.stl: turns on the hub's tube, its pin at r 13; outer face down (as laid), supports under the arm only (build plate only)",
+"part": "box_dome"
+},
+{
+"id": "box_dome_plate_2_r",
+"name": "dome hoop 2 plate, right",
+"role": "structure",
+"group": "dome",
+"color": "#3a3f46",
+"mesh": "parts/box_dome/gore_meshes/plate_2_r.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": "PCTG",
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_plate_2_r.stl: turns on the hub's tube, its pin at r 13; outer face down (as laid), supports under the arm only (build plate only)",
+"part": "box_dome"
+},
+{
+"id": "box_dome_plate_3_l",
+"name": "dome hoop 3 plate, left",
+"role": "structure",
+"group": "dome",
+"color": "#3a3f46",
+"mesh": "parts/box_dome/gore_meshes/plate_3_l.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": "PCTG",
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_plate_3_l.stl: turns on the hub's tube, its pin at r 24; outer face down (as laid), supports under the arm only (build plate only)",
+"part": "box_dome"
+},
+{
+"id": "box_dome_plate_3_r",
+"name": "dome hoop 3 plate, right",
+"role": "structure",
+"group": "dome",
+"color": "#3a3f46",
+"mesh": "parts/box_dome/gore_meshes/plate_3_r.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": "PCTG",
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_plate_3_r.stl: turns on the hub's tube, its pin at r 24; outer face down (as laid), supports under the arm only (build plate only)",
+"part": "box_dome"
+},
+{
+"id": "box_dome_plate_4_l",
+"name": "dome hoop 4 plate, left",
+"role": "structure",
+"group": "dome",
+"color": "#3a3f46",
+"mesh": "parts/box_dome/gore_meshes/plate_4_l.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": "PCTG",
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_plate_4_l.stl: turns on the hub's tube, its pin at r 13; outer face down (as laid), supports under the arm only (build plate only)",
+"part": "box_dome"
+},
+{
+"id": "box_dome_plate_4_r",
+"name": "dome hoop 4 plate, right",
+"role": "structure",
+"group": "dome",
+"color": "#3a3f46",
+"mesh": "parts/box_dome/gore_meshes/plate_4_r.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": "PCTG",
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "drawn prototype (parts/box_dome/make.py), print/box_dome_plate_4_r.stl: turns on the hub's tube, its pin at r 13; outer face down (as laid), supports under the arm only (build plate only)",
+"part": "box_dome"
 },
 {
 "id": "box_dome_hoop_0",
-"name": "dome hoop 0 (3 mm carbon, r 263, fixed at the base, rear)",
-"role": "structure",
+"name": "dome hoop 0 (3 mm carbon, 743 long, crown r 263)",
+"role": "bought",
 "group": "dome",
-"color": "#3a3f46",
+"color": "#222222",
 "mesh": "parts/box_dome/gore_meshes/hoop_0.stl",
 "pose": [
 [
@@ -3638,19 +3904,20 @@
 1.0
 ]
 ],
+"material": null,
 "tag": "C",
 "owner": "box dome",
-"version": "v3 mechanism 9 Nov",
+"version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "fixed: its plates are the hub brackets"
+"note": "fixed at the base, rear: in the hubs' own sockets"
 },
 {
-"id": "box_dome_hubs",
-"name": "dome hub brackets and bolts (printed)",
-"role": "structure",
+"id": "box_dome_hoop_1",
+"name": "dome hoop 1 (3 mm carbon, 772 long, crown r 272)",
+"role": "bought",
 "group": "dome",
-"color": "#c9d2d9",
-"mesh": "parts/box_dome/gore_meshes/hubs.stl",
+"color": "#222222",
+"mesh": "parts/box_dome/gore_meshes/hoop_1.stl",
 "pose": [
 [
 1.0,
@@ -3677,20 +3944,1036 @@
 1.0
 ]
 ],
+"material": null,
 "tag": "C",
 "owner": "box dome",
-"version": "v3 mechanism 9 Nov",
+"version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "left and right on the hinge axis (W X): a block through the lid's edge onto the ring, plate 0 with its slot, the cheeks, a 6 mm shoulder bolt",
-"material": "PCTG"
+"note": "shut at 45 deg; sprung between its two plates, bonded in their sockets"
 },
 {
-"id": "box_dome_drive",
-"name": "dome drive: 2 worm motors, cams, 4 limit switches",
+"id": "box_dome_hoop_2",
+"name": "dome hoop 2 (3 mm carbon, 801 long, crown r 281)",
+"role": "bought",
+"group": "dome",
+"color": "#222222",
+"mesh": "parts/box_dome/gore_meshes/hoop_2.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": null,
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "shut at 90 deg; sprung between its two plates, bonded in their sockets"
+},
+{
+"id": "box_dome_hoop_3",
+"name": "dome hoop 3 (3 mm carbon, 831 long, crown r 289)",
+"role": "bought",
+"group": "dome",
+"color": "#222222",
+"mesh": "parts/box_dome/gore_meshes/hoop_3.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": null,
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "shut at 135 deg; sprung between its two plates, bonded in their sockets"
+},
+{
+"id": "box_dome_hoop_4",
+"name": "dome hoop 4 (3 mm carbon, 860 long, crown r 298)",
+"role": "bought",
+"group": "dome",
+"color": "#222222",
+"mesh": "parts/box_dome/gore_meshes/hoop_4.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": null,
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "shut at 180 deg; sprung between its two plates, bonded in their sockets"
+},
+{
+"id": "box_dome_pins_1",
+"name": "dome hoop 1 pins (3 mm carbon x 17)",
+"role": "bought",
+"group": "dome",
+"color": "#222222",
+"mesh": "parts/box_dome/gore_meshes/pins_1.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": null,
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "bonded in plate 1, riding in the 45 deg slot of the hub wall"
+},
+{
+"id": "box_dome_pins_2",
+"name": "dome hoop 2 pins (3 mm carbon x 17)",
+"role": "bought",
+"group": "dome",
+"color": "#222222",
+"mesh": "parts/box_dome/gore_meshes/pins_2.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": null,
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "bonded in plate 2, riding in the 45 deg slot of plate 1"
+},
+{
+"id": "box_dome_pins_3",
+"name": "dome hoop 3 pins (3 mm carbon x 17)",
+"role": "bought",
+"group": "dome",
+"color": "#222222",
+"mesh": "parts/box_dome/gore_meshes/pins_3.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": null,
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "bonded in plate 3, riding in the 45 deg slot of plate 2"
+},
+{
+"id": "box_dome_pins_4",
+"name": "dome hoop 4 pins (3 mm carbon x 17)",
+"role": "bought",
+"group": "dome",
+"color": "#222222",
+"mesh": "parts/box_dome/gore_meshes/pins_4.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": null,
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "bonded in plate 4, riding in the 45 deg slot of plate 3"
+},
+{
+"id": "box_dome_fabric_00",
+"name": "dome fabric, panel 0 strip 0",
+"role": "bought",
+"group": "dome",
+"color": "#e8eef4",
+"mesh": "parts/box_dome/gore_meshes/fabric_00.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": null,
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "silnylon between hoops 0 and 1, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)",
+"opacity": 0.35
+},
+{
+"id": "box_dome_fabric_01",
+"name": "dome fabric, panel 0 strip 1",
+"role": "bought",
+"group": "dome",
+"color": "#e8eef4",
+"mesh": "parts/box_dome/gore_meshes/fabric_01.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": null,
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "silnylon between hoops 0 and 1, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)",
+"opacity": 0.35
+},
+{
+"id": "box_dome_fabric_02",
+"name": "dome fabric, panel 0 strip 2",
+"role": "bought",
+"group": "dome",
+"color": "#e8eef4",
+"mesh": "parts/box_dome/gore_meshes/fabric_02.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": null,
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "silnylon between hoops 0 and 1, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)",
+"opacity": 0.35
+},
+{
+"id": "box_dome_fabric_03",
+"name": "dome fabric, panel 0 strip 3",
+"role": "bought",
+"group": "dome",
+"color": "#e8eef4",
+"mesh": "parts/box_dome/gore_meshes/fabric_03.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": null,
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "silnylon between hoops 0 and 1, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)",
+"opacity": 0.35
+},
+{
+"id": "box_dome_fabric_10",
+"name": "dome fabric, panel 1 strip 0",
+"role": "bought",
+"group": "dome",
+"color": "#e8eef4",
+"mesh": "parts/box_dome/gore_meshes/fabric_10.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": null,
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "silnylon between hoops 1 and 2, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)",
+"opacity": 0.35
+},
+{
+"id": "box_dome_fabric_11",
+"name": "dome fabric, panel 1 strip 1",
+"role": "bought",
+"group": "dome",
+"color": "#e8eef4",
+"mesh": "parts/box_dome/gore_meshes/fabric_11.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": null,
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "silnylon between hoops 1 and 2, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)",
+"opacity": 0.35
+},
+{
+"id": "box_dome_fabric_12",
+"name": "dome fabric, panel 1 strip 2",
+"role": "bought",
+"group": "dome",
+"color": "#e8eef4",
+"mesh": "parts/box_dome/gore_meshes/fabric_12.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": null,
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "silnylon between hoops 1 and 2, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)",
+"opacity": 0.35
+},
+{
+"id": "box_dome_fabric_13",
+"name": "dome fabric, panel 1 strip 3",
+"role": "bought",
+"group": "dome",
+"color": "#e8eef4",
+"mesh": "parts/box_dome/gore_meshes/fabric_13.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": null,
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "silnylon between hoops 1 and 2, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)",
+"opacity": 0.35
+},
+{
+"id": "box_dome_fabric_20",
+"name": "dome fabric, panel 2 strip 0",
+"role": "bought",
+"group": "dome",
+"color": "#e8eef4",
+"mesh": "parts/box_dome/gore_meshes/fabric_20.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": null,
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "silnylon between hoops 2 and 3, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)",
+"opacity": 0.35
+},
+{
+"id": "box_dome_fabric_21",
+"name": "dome fabric, panel 2 strip 1",
+"role": "bought",
+"group": "dome",
+"color": "#e8eef4",
+"mesh": "parts/box_dome/gore_meshes/fabric_21.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": null,
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "silnylon between hoops 2 and 3, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)",
+"opacity": 0.35
+},
+{
+"id": "box_dome_fabric_22",
+"name": "dome fabric, panel 2 strip 2",
+"role": "bought",
+"group": "dome",
+"color": "#e8eef4",
+"mesh": "parts/box_dome/gore_meshes/fabric_22.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": null,
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "silnylon between hoops 2 and 3, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)",
+"opacity": 0.35
+},
+{
+"id": "box_dome_fabric_23",
+"name": "dome fabric, panel 2 strip 3",
+"role": "bought",
+"group": "dome",
+"color": "#e8eef4",
+"mesh": "parts/box_dome/gore_meshes/fabric_23.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": null,
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "silnylon between hoops 2 and 3, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)",
+"opacity": 0.35
+},
+{
+"id": "box_dome_fabric_30",
+"name": "dome fabric, panel 3 strip 0",
+"role": "bought",
+"group": "dome",
+"color": "#e8eef4",
+"mesh": "parts/box_dome/gore_meshes/fabric_30.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": null,
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "silnylon between hoops 3 and 4, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)",
+"opacity": 0.35
+},
+{
+"id": "box_dome_fabric_31",
+"name": "dome fabric, panel 3 strip 1",
+"role": "bought",
+"group": "dome",
+"color": "#e8eef4",
+"mesh": "parts/box_dome/gore_meshes/fabric_31.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": null,
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "silnylon between hoops 3 and 4, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)",
+"opacity": 0.35
+},
+{
+"id": "box_dome_fabric_32",
+"name": "dome fabric, panel 3 strip 2",
+"role": "bought",
+"group": "dome",
+"color": "#e8eef4",
+"mesh": "parts/box_dome/gore_meshes/fabric_32.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": null,
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "silnylon between hoops 3 and 4, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)",
+"opacity": 0.35
+},
+{
+"id": "box_dome_fabric_33",
+"name": "dome fabric, panel 3 strip 3",
+"role": "bought",
+"group": "dome",
+"color": "#e8eef4",
+"mesh": "parts/box_dome/gore_meshes/fabric_33.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": null,
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "silnylon between hoops 3 and 4, drawn as 4 strips that follow them (the real skin is one sheet sewn to the hoops)",
+"opacity": 0.35
+},
+{
+"id": "box_dome_pivot_l",
+"name": "dome pivot, left (6 mm carbon tube x 53)",
+"role": "bought",
+"group": "dome",
+"color": "#222222",
+"mesh": "parts/box_dome/gore_meshes/pivot_l.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": null,
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "bonded in the hub's inner wall; plates 1..4 turn on it"
+},
+{
+"id": "box_dome_coupling_l",
+"name": "dome drive coupling, left (6 mm flange coupling)",
+"role": "bought",
+"group": "dome",
+"color": "#b08d57",
+"mesh": "parts/box_dome/gore_meshes/coupling_l.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": null,
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "four M3 x 8 into plate 4, set screws on the motor's shaft (E: flange O22, holes on O16)"
+},
+{
+"id": "box_dome_drive_l",
+"name": "dome drive, left: worm motor and cam",
 "role": "bought",
 "group": "dome",
 "color": "#555555",
-"mesh": "parts/box_dome/gore_meshes/drive.stl",
+"mesh": "parts/box_dome/gore_meshes/drive_l.stl",
 "pose": [
 [
 1.0,
@@ -3717,19 +5000,20 @@
 1.0
 ]
 ],
+"material": null,
 "tag": "C",
 "owner": "box dome",
-"version": "v3 mechanism 9 Nov",
+"version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "JGY-370 12 V 6 rpm double shaft, self-locking, one per hub on plate 4; a cam on the outer shaft between two KW11 switches (open, shut)"
+"note": "JGY-370 12 V 6 rpm double shaft, self-locking, between the hub's side walls; a cam on the outer shaft"
 },
 {
-"id": "box_dome_ring",
-"name": "dome base ring (printed segments)",
-"role": "structure",
+"id": "box_dome_switches_l",
+"name": "dome limit switches, left (2 x KW11)",
+"role": "bought",
 "group": "dome",
-"color": "#c9d2d9",
-"mesh": "parts/box_dome/gore_meshes/ring.stl",
+"color": "#333333",
+"mesh": "parts/box_dome/gore_meshes/switches_l.stl",
 "pose": [
 [
 1.0,
@@ -3756,19 +5040,219 @@
 1.0
 ]
 ],
+"material": null,
 "tag": "C",
 "owner": "box dome",
-"version": "v3 mechanism 9 Nov",
+"version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "r 255..297 at W Z 132..142, the lid's edge on its inner lip, segments pinned with 3 mm carbon rods",
-"material": "PCTG"
+"note": "on the side walls either side of the cam: open and shut"
+},
+{
+"id": "box_dome_pivot_r",
+"name": "dome pivot, right (6 mm carbon tube x 53)",
+"role": "bought",
+"group": "dome",
+"color": "#222222",
+"mesh": "parts/box_dome/gore_meshes/pivot_r.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": null,
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "bonded in the hub's inner wall; plates 1..4 turn on it"
+},
+{
+"id": "box_dome_coupling_r",
+"name": "dome drive coupling, right (6 mm flange coupling)",
+"role": "bought",
+"group": "dome",
+"color": "#b08d57",
+"mesh": "parts/box_dome/gore_meshes/coupling_r.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": null,
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "four M3 x 8 into plate 4, set screws on the motor's shaft (E: flange O22, holes on O16)"
+},
+{
+"id": "box_dome_drive_r",
+"name": "dome drive, right: worm motor and cam",
+"role": "bought",
+"group": "dome",
+"color": "#555555",
+"mesh": "parts/box_dome/gore_meshes/drive_r.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": null,
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "JGY-370 12 V 6 rpm double shaft, self-locking, between the hub's side walls; a cam on the outer shaft"
+},
+{
+"id": "box_dome_switches_r",
+"name": "dome limit switches, right (2 x KW11)",
+"role": "bought",
+"group": "dome",
+"color": "#333333",
+"mesh": "parts/box_dome/gore_meshes/switches_r.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": null,
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "on the side walls either side of the cam: open and shut"
+},
+{
+"id": "box_dome_ring_pins",
+"name": "dome ring lap pins (32 x 3 mm carbon x 11)",
+"role": "bought",
+"group": "dome",
+"color": "#222222",
+"mesh": "parts/box_dome/gore_meshes/ring_pins.stl",
+"pose": [
+[
+1.0,
+0,
+0,
+0
+],
+[
+0,
+1.0,
+0,
+0
+],
+[
+0,
+0,
+1.0,
+0
+],
+[
+0,
+0,
+0,
+1.0
+]
+],
+"material": null,
+"tag": "C",
+"owner": "box dome",
+"version": "v4 prototype 15 Nov",
+"source": "parts/box_dome/make.py",
+"note": "two through each half lap, resin from the top"
 },
 {
 "id": "box_dome_spokes",
 "name": "dome spokes (6 mm carbon, under the lid)",
 "role": "bought",
 "group": "dome",
-"color": "#2b2b2b",
+"color": "#222222",
 "mesh": "parts/box_dome/gore_meshes/spokes.stl",
 "pose": [
 [
@@ -3796,18 +5280,19 @@
 1.0
 ]
 ],
+"material": null,
 "tag": "C",
 "owner": "box dome",
-"version": "v3 mechanism 9 Nov",
+"version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "eight, from the sheets' tops out to the ring"
+"note": "eight, from the sheets' tops out to the spoke segments' sockets"
 },
 {
 "id": "box_dome_lid",
 "name": "rain lid (3 mm UV polycarbonate)",
 "role": "bought",
 "group": "dome",
-"color": "#c9d6e2",
+"color": "#cfe3f1",
 "mesh": "parts/box_dome/gore_meshes/lid.stl",
 "pose": [
 [
@@ -3835,12 +5320,13 @@
 1.0
 ]
 ],
+"material": null,
 "tag": "C",
 "owner": "box dome",
-"version": "v3 mechanism 9 Nov",
+"version": "v4 prototype 15 Nov",
 "source": "parts/box_dome/make.py",
-"note": "at the sheets' top (W Z 142..145), flush between them and out to the ring; open within r 160 of the seat (the funnel, the 60 / 120 deg bays, the swap head)",
-"opacity": 0.5
+"note": "at the sheets' top (W Z 142..145), flush between them and out to the ring; open within r 160 of the seat; notched round the two hubs",
+"opacity": 0.3
 },
 {
 "id": "box_latch7_scout_receiver",
@@ -8718,17 +10204,187 @@
 ],
 "contacts": [
 {
-"a": "box_dome_ring",
-"b": "box_dome_spokes",
-"allow_mm3": 7800.0,
-"why": "the eight 6 mm spokes' ends in their sockets in the base ring (the dome's concept mesh does not cut the bores)"
-},
-{
 "a": "box_scout_v4_scout_v4_frame",
 "b": "box_scout_v4_scout_v4_receiver_bolts",
 "allow_mm3": 6.0,
 "why": "the M3 x 5.7 heat-set inserts (drawn with the bolts) melted into the yokes' insert holes (systems/scout_v4.assembly.json)"
 }
-]
+],
+"paths": [
+{
+"name": "dome ring: the upper-tongue segments onto the spoke segments",
+"part": "box_dome_ring_00",
+"with": [
+"box_dome_ring_02",
+"box_dome_ring_04",
+"box_dome_ring_06",
+"box_dome_ring_08",
+"box_dome_ring_10",
+"box_dome_ring_12",
+"box_dome_ring_14"
+],
+"order": 5,
+"out": [
+0,
+0,
+1.0
+],
+"length_mm": 14.0,
+"fit": "mate",
+"why": "the eight spoke segments sit on the spokes first; the others drop on from above, then the lap pins"
+},
+{
+"name": "dome hubs onto the ring",
+"part": "box_dome_hub_l",
+"with": [
+"box_dome_hub_r"
+],
+"order": 10,
+"out": [
+0,
+0,
+1.0
+],
+"length_mm": 20.0,
+"fit": "mate",
+"why": "each bracket down onto the ring's top inside the lid's notch, four M3 from below"
+},
+{
+"name": "dome hoop 1 with its plates into the hubs",
+"part": "box_dome_hoop_1",
+"with": [
+"box_dome_plate_1_l",
+"box_dome_plate_1_r"
+],
+"order": 21,
+"out": [
+0,
+0,
+1.0
+],
+"length_mm": 45.0,
+"fit": "mate",
+"why": "the rod bonded in its two plates on the bench, the hoop lowered between the hubs' walls"
+},
+{
+"name": "dome hoop 2 with its plates into the hubs",
+"part": "box_dome_hoop_2",
+"with": [
+"box_dome_plate_2_l",
+"box_dome_plate_2_r"
+],
+"order": 22,
+"out": [
+0,
+0,
+1.0
+],
+"length_mm": 45.0,
+"fit": "mate",
+"why": "the rod bonded in its two plates on the bench, the hoop lowered between the hubs' walls"
+},
+{
+"name": "dome hoop 3 with its plates into the hubs",
+"part": "box_dome_hoop_3",
+"with": [
+"box_dome_plate_3_l",
+"box_dome_plate_3_r"
+],
+"order": 23,
+"out": [
+0,
+0,
+1.0
+],
+"length_mm": 45.0,
+"fit": "mate",
+"why": "the rod bonded in its two plates on the bench, the hoop lowered between the hubs' walls"
+},
+{
+"name": "dome hoop 4 with its plates into the hubs",
+"part": "box_dome_hoop_4",
+"with": [
+"box_dome_plate_4_l",
+"box_dome_plate_4_r",
+"box_dome_coupling_l",
+"box_dome_coupling_r"
+],
+"order": 24,
+"out": [
+0,
+0,
+1.0
+],
+"length_mm": 45.0,
+"fit": "mate",
+"why": "the rod bonded in its two plates on the bench, the hoop lowered between the hubs' walls (the couplings screwed to plate 4 first)"
+},
+{
+"name": "dome pivot tube, l",
+"part": "box_dome_pivot_l",
+"order": 30,
+"out": [
+1.0,
+-0.0,
+-0.0
+],
+"length_mm": 55.10000000000002,
+"fit": "bond",
+"why": "pushed in from inside the dome through the wall and plates 1..3 into plate 4"
+},
+{
+"name": "dome motor, l",
+"part": "box_dome_drive_l",
+"order": 45,
+"out": [
+-1.0,
+0.0,
+0.0
+],
+"length_mm": 16.0,
+"fit": "free",
+"ignore": [
+"box_dome_coupling_l"
+],
+"why": "slid in between the side walls from outside, its shaft into the coupling (bought in bought: the coupling's own bore) and plate 4"
+},
+{
+"name": "dome pivot tube, r",
+"part": "box_dome_pivot_r",
+"order": 30,
+"out": [
+-1.0,
+0.0,
+0.0
+],
+"length_mm": 55.10000000000002,
+"fit": "bond",
+"why": "pushed in from inside the dome through the wall and plates 1..3 into plate 4"
+},
+{
+"name": "dome motor, r",
+"part": "box_dome_drive_r",
+"order": 45,
+"out": [
+1.0,
+-0.0,
+-0.0
+],
+"length_mm": 16.0,
+"fit": "free",
+"ignore": [
+"box_dome_coupling_r"
+],
+"why": "slid in between the side walls from outside, its shaft into the coupling (bought in bought: the coupling's own bore) and plate 4"
+}
+],
+"order": {
+"box_dome_lid": 6,
+"box_dome_ring_pins": 7,
+"box_dome_hoop_0": 12,
+"box_dome_pins_*": 40,
+"box_dome_switches_*": 46,
+"box_dome_fabric_*": 50
+}
 }
 }

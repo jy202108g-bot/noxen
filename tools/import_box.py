@@ -6,7 +6,7 @@ streams (tools/box_check.py). Writes systems/box.assembly.json (box W frame), sy
   enclosure        the v2 sheets and PSU as boxes (from the nox repo, 3 Nov)
   funnel           parts/box_funnel/make.py v5: the two frame halves and the cross arm (engine parts: their result once run, a
                    placeholder and their drawn faces and room until then), the two end walls, strips, drive
-  dome             parts/box_dome (its entries are kept as they stand in the file)
+  dome             parts/box_dome/make.py PROTOTYPE (15 Nov): its lines (lines()) and its part of the assembly check (assembly_block(): order and paths)
   latch            latch v7, both packs, seated: the PROTOTYPE receiver as printed and the cartridge with its pack (tools/box_check.py latch_bodies, in the seat frame)
   drones           the Scout v4 and the Overseer as their own systems stand today, seated (their meshes in place, no copies)
 Run: python tools/import_box.py            everything but the 3 Nov import is rebuilt; the arm and enclosure lines are kept
@@ -198,8 +198,13 @@ def drone_parts():
 
 GATED_LANDING = "landing: Scout"     # the page seats both drones at the one seat (two states drawn together); the gate checks the Scout's, the dome shut over it
 DRONE_MOUNT = {"scout_v4": ("scout_v4_frame", "scout_v4_receiver_bolts"), "overseer": ("overseer_base",)}   # the drone's lines latch v7's receiver bolts to
-BOX_CONTACTS = [dict(a="box_dome_ring", b="box_dome_spokes", allow_mm3=7800.0,
-                     why="the eight 6 mm spokes' ends in their sockets in the base ring (the dome's concept mesh does not cut the bores)")]
+BOX_CONTACTS = []                      # contacts between the box's own pieces (none: the dome's bores are cut since its prototype, 15 Nov)
+
+
+def _dome():
+    import importlib.util
+    sp = importlib.util.spec_from_file_location("box_dome_make", os.path.join(ROOT, "parts", "box_dome", "make.py")); m = importlib.util.module_from_spec(sp); sp.loader.exec_module(m)
+    return m
 
 
 def assembly(parts):
@@ -223,7 +228,9 @@ def assembly(parts):
             ca, cb = f"box_{sysname}_{c['a']}", f"box_{sysname}_{c['b']}"
             if ca in keep and cb in keep:
                 contacts.append(dict(c, a=ca, b=cb, why=f"{c.get('why', '')} (systems/{sysname}.assembly.json)"))
-    return {"fit_tol_mm3": 0.5, "note": "written by tools/import_box.py (assembly()): " + " ".join(assembly.__doc__.split()), "exclude": ex, "contacts": contacts}
+    dome = _dome().assembly_block()                       # the dome's order and assembly paths (parts/box_dome/make.py)
+    return {"fit_tol_mm3": 0.5, "note": "written by tools/import_box.py (assembly()): " + " ".join(assembly.__doc__.split()), "exclude": ex, "contacts": contacts + dome["contacts"],
+            "paths": dome["paths"], "order": dome["order"]}
 
 
 BOUGHT_LIST = [
@@ -263,7 +270,20 @@ def appendix(chk):
 <table><tr><th>file</th><th>count</th><th>on the bed (x, y, z)</th><th>pose</th><th>flat on the bed</th><th>supports</th><th>material</th><th>solid check</th><th>print file</th></tr>{prt}</table>
 <h3>Bought</h3><table><tr><th>part</th><th>qty</th><th>note</th></tr>{bought}</table><p>Fasteners: {e(FASTENERS)}.</p>
 <p>Hold-down: each end wall carries two 3 x 3 x 16 steel keys that enter the notches in the receiver's end faces; the walls land a drone at park, back off to open and drive in to seated (the arm v8 head pushes up to 118 N; the Overseer weighs 21.6 N, the Scout 4.9 N).</p>
-<h2>Stand v2</h2><p>{e(STAND_NOTE)}</p>{stand_rows()}"""
+<h2>Stand v2</h2><p>{e(STAND_NOTE)}</p>{stand_rows()}{dome_rows()}"""
+
+
+def dome_rows():
+    """the rain dome's printed pieces (parts/box_dome/make.json, written by its make.py: each print file in its print pose, solid-checked)"""
+    from html import escape as e
+    mj = os.path.join(ROOT, "parts", "box_dome", "make.json")
+    if not os.path.exists(mj):
+        return ""
+    k = json.load(open(mj))
+    rows = "".join(f"<tr><td>{e(p['file'])}</td><td>{p['count']}</td><td>{p['g']}</td><td>{' x '.join(f'{v:g}' for v in p['bed_mm'])}</td><td>{e(p['solid_check'])}</td>"
+                   f"<td>{e(p['pose'])}; {e(p['settings'])}, ~{e(p['time'])} (E)</td></tr>" for p in k["pieces"])
+    return ("<h2>Rain dome (PROTOTYPE, 15 Nov)</h2><p>Five sprung 3 mm carbon hoops on two printed hubs, a 16-segment base ring, the fabric; hand calculation, fits, "
+            "assembly order and bought parts in parts/box_dome/make.py.</p><table><tr><th>file</th><th>n</th><th>g each</th><th>on the bed</th><th>solid check</th><th>print</th></tr>" + rows + "</table>")
 
 
 STAND_PIECES = [("box_stand2p_mast", "stand v2: mast (the stub's face down to the foot)", 1),
@@ -348,7 +368,7 @@ def main(nox=None):
         for p in parts:
             if p["id"].startswith("box_arm_"):
                 p["version"] = "v7, superseded (the arm stream's systems/swap_arm.assembly.json replaces it when pushed)"
-    parts += stand_parts() + funnel_parts() + kept("box_dome_") + latch_parts() + drone_parts()
+    parts += stand_parts() + funnel_parts() + _dome().lines() + latch_parts() + drone_parts()
     a = dict(old, parts=parts, appendix="systems/box.appendix.html", fps=8, assembly=assembly(parts),
              note=("Box W frame (X across, Y along the axle toward the front, Z up; the swap arm hub at the origin, the drone seat at (0, 167.1, 220.3)). "
                    "In: the landing funnel v5 (13 Nov: the frame in two halves on four cross arms under the rain lid, each end wall on two lead-screw gearmotors; the halves and the arm "

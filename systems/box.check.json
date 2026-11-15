@@ -59,10 +59,40 @@
    "at": "at seat [113, 50, -63]"
   },
   {
+   "between": "funnel",
+   "and_": "dome base ring, segment 10 (plain)",
+   "mm": 1.2,
+   "at": "at seat [154, -202, -90]"
+  },
+  {
+   "between": "funnel",
+   "and_": "dome base ring, segment 14 (plain)",
+   "mm": 1.2,
+   "at": "at seat [179, 203, -90]"
+  },
+  {
+   "between": "funnel",
+   "and_": "dome spokes (6 mm carbon, under the lid)",
+   "mm": 1.2,
+   "at": "at seat [-148, -61, -87]"
+  },
+  {
    "between": "funnel (walls at overseer)",
    "and_": "overseer landing, closest pass",
    "mm": 1.3,
    "at": "overseer: cage node 0 at seat [-75, -78, -18] at +x+y at h 30"
+  },
+  {
+   "between": "funnel",
+   "and_": "dome base ring, segment 2 (plain)",
+   "mm": 1.3,
+   "at": "at seat [-152, 206, -90]"
+  },
+  {
+   "between": "funnel",
+   "and_": "dome base ring, segment 6 (plain)",
+   "mm": 1.3,
+   "at": "at seat [-152, -205, -90]"
   },
   {
    "between": "funnel (walls at overseer)",
@@ -84,15 +114,9 @@
   },
   {
    "between": "funnel",
-   "and_": "dome spokes (6 mm carbon, under the lid)",
-   "mm": 2.0,
-   "at": "at seat [-144, -63, -82]"
-  },
-  {
-   "between": "funnel",
    "and_": "rain lid (3 mm UV polycarbonate)",
    "mm": 2.0,
-   "at": "at seat [175, -86, -78]"
+   "at": "at seat [-148, 111, -78]"
   },
   {
    "between": "funnel",
@@ -102,9 +126,27 @@
   },
   {
    "between": "funnel",
-   "and_": "dome base ring (printed segments)",
-   "mm": 3.2,
-   "at": "at seat [172, 191, -88]"
+   "and_": "dome base ring, segment 1 (spoke)",
+   "mm": 3.0,
+   "at": "at seat [-148, 208, -90]"
+  },
+  {
+   "between": "funnel",
+   "and_": "dome base ring, segment 9 (spoke)",
+   "mm": 3.0,
+   "at": "at seat [147, -208, -90]"
+  },
+  {
+   "between": "funnel",
+   "and_": "dome base ring, segment 7 (spoke)",
+   "mm": 3.5,
+   "at": "at seat [-148, -208, -90]"
+  },
+  {
+   "between": "funnel",
+   "and_": "dome base ring, segment 15 (spoke)",
+   "mm": 3.8,
+   "at": "at seat [147, 208, -90]"
   },
   {
    "between": "funnel",
@@ -159,7 +201,7 @@
  "no_mesh_in_the_tree": [],
  "quick": false,
  "counts": {
-  "box": 40,
+  "box": 76,
   "arm": 92,
   "turning": 51,
   "drone_parts": {
@@ -167,5 +209,5 @@
    "overseer": 59
   }
  },
- "seconds": 141
+ "seconds": 222
 }
