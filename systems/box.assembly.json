@@ -7970,7 +7970,7 @@
 0.0,
 0.0,
 1.0,
-257.70000000000005
+258.15000000000003
 ],
 [
 0.0,
@@ -7982,7 +7982,7 @@
 "material": "PETG",
 "tag": "E",
 "owner": "overseer",
-"version": "core v2 30 Oct 9 pm: on the FC mount (overseer_fc_mount), 5 mm higher",
+"version": "core v2 30 Oct 9 pm: on the FC mount (overseer_fc_mount), 5.45 higher: the ESC board bottom (z 49.55 in its mesh) on the insert bosses' tops at z 55 (15 Nov, assembly check: at +5.0 it stood 0.45 into the 4 bosses)",
 "source": "systems/overseer.assembly.json, seated",
 "mesh": "parts/fc_stack_micoair743_lite_on_55a_4_in_1/part.stl",
 "part": "box_overseer_fc_stack_micoair743_lite_on_55a_4_in_1",
