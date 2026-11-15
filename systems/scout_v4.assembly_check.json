@@ -493,6 +493,192 @@
  ],
  "paths": [
   {
+   "name": "FC up onto its posts",
+   "part": "scout_v4_fc",
+   "order": 1,
+   "fit": "slide",
+   "gap_mm": 0.25,
+   "steps": 65,
+   "move": {
+    "out": [
+     0,
+     0,
+     -1
+    ],
+    "length_mm": 32
+   },
+   "into": [
+    "scout_v4_frame"
+   ],
+   "blocked_by": [],
+   "tight": [],
+   "ok": true,
+   "why": "the FC on its grommets up from below onto its 4 posts (M3 into the inserts) with the receiver off (the battery mechanism bolts on after: its room is the boards' way in), the screws' heads from below"
+  },
+  {
+   "name": "XR2 up onto its land",
+   "part": "scout_v4_xr2",
+   "order": 2,
+   "fit": "slide",
+   "gap_mm": 0.25,
+   "steps": 65,
+   "move": {
+    "out": [
+     0,
+     0,
+     -1
+    ],
+    "length_mm": 32
+   },
+   "into": [
+    "scout_v4_frame"
+   ],
+   "blocked_by": [],
+   "tight": [],
+   "ok": true,
+   "why": "the XR2 taped up from below onto its land beside the FC with the receiver off (the battery mechanism bolts on after: its room is the boards' way in)"
+  },
+  {
+   "name": "DRV8833 up onto its land",
+   "part": "scout_v4_drv8833",
+   "order": 3,
+   "fit": "slide",
+   "gap_mm": 0.25,
+   "steps": 65,
+   "move": {
+    "out": [
+     0,
+     0,
+     -1
+    ],
+    "length_mm": 32
+   },
+   "into": [
+    "scout_v4_frame"
+   ],
+   "blocked_by": [
+    {
+     "part": "scout_v4_frame",
+     "mm3": 249.49,
+     "at_step": 16,
+     "of_steps": 65,
+     "along": "8.0 mm out",
+     "pieces": [
+      {
+       "mm3": 249.49,
+       "at": [
+        13.2,
+        -36.5,
+        3.5
+       ],
+       "extent_mm": [
+        18.5,
+        4.5,
+        3.0
+       ],
+       "depth_mm": 3.0
+      }
+     ]
+    }
+   ],
+   "tight": [],
+   "ok": false,
+   "why": "the DRV8833 taped up from below onto its land beside the FC with the receiver off (the battery mechanism bolts on after: its room is the boards' way in)"
+  },
+  {
+   "name": "Radxa up onto its posts",
+   "part": "scout_v4_radxa_zero_3w",
+   "order": 4,
+   "fit": "slide",
+   "gap_mm": 0.25,
+   "steps": 65,
+   "move": {
+    "out": [
+     0,
+     0,
+     -1
+    ],
+    "length_mm": 32
+   },
+   "into": [
+    "scout_v4_frame"
+   ],
+   "blocked_by": [
+    {
+     "part": "scout_v4_frame",
+     "mm3": 962.62,
+     "at_step": 30,
+     "of_steps": 65,
+     "along": "15.0 mm out",
+     "pieces": [
+      {
+       "mm3": 1127.63,
+       "at": [
+        -63.8,
+        -0.1,
+        0.6
+       ],
+       "extent_mm": [
+        20.3,
+        31.2,
+        4.8
+       ],
+       "depth_mm": 4.76
+      }
+     ]
+    }
+   ],
+   "tight": [],
+   "ok": false,
+   "why": "the Radxa up from below onto its 4 posts (M2.5 into the inserts) with the receiver off (the battery mechanism bolts on after: its room is the boards' way in), the screws' heads from below; its tail third through the tail tray's window, before the UBEC (which hangs under it)"
+  },
+  {
+   "name": "UBEC up into its pod",
+   "part": "scout_v4_ubec",
+   "order": 5,
+   "fit": "slide",
+   "gap_mm": 0.25,
+   "steps": 41,
+   "move": {
+    "out": [
+     0,
+     0,
+     -1
+    ],
+    "length_mm": 20
+   },
+   "into": [
+    "scout_v4_frame"
+   ],
+   "blocked_by": [],
+   "tight": [],
+   "ok": true,
+   "why": "the UBEC taped up under its two end lands in the pod below the tail tray, after the Radxa (it closes the Radxa's way in)"
+  },
+  {
+   "name": "flow sensor up into its pod",
+   "part": "scout_v4_flow_mtf_02p",
+   "order": 6,
+   "fit": "slide",
+   "gap_mm": 0.25,
+   "steps": 41,
+   "move": {
+    "out": [
+     0,
+     0,
+     -1
+    ],
+    "length_mm": 20
+   },
+   "into": [
+    "scout_v4_frame"
+   ],
+   "blocked_by": [],
+   "tight": [],
+   "ok": true,
+   "why": "the MTF-02P taped up under its land in the nose pod, open below"
+  },
+  {
    "name": "turret onto the frame",
    "part": "scout_v4_probe_turret",
    "order": 10,
@@ -2137,7 +2323,9 @@
  "not_print_ready": {
   "scout_v4_frame": [
    "clashes with scout_v4_fc: 74.8 mm3",
-   "clashes with scout_v4_radxa_zero_3w: 165.0 mm3"
+   "clashes with scout_v4_radxa_zero_3w: 165.0 mm3",
+   "blocks the path 'DRV8833 up onto its land' (249.5 mm3 8.0 mm out)",
+   "blocks the path 'Radxa up onto its posts' (962.6 mm3 15.0 mm out)"
   ],
   "scout_v4_probe_pinion": [
    "clashes with scout_v4_probe_turret: 3.0 mm3"
@@ -2147,6 +2335,6 @@
   ]
  },
  "would_block": {},
- "seconds": 4.7,
+ "seconds": 4.5,
  "placed": {}
 }

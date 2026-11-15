@@ -2193,7 +2193,9 @@
   "ok": false,
   "why": [
    "clashes with scout_v4_fc: 74.8 mm3",
-   "clashes with scout_v4_radxa_zero_3w: 165.0 mm3"
+   "clashes with scout_v4_radxa_zero_3w: 165.0 mm3",
+   "blocks the path 'DRV8833 up onto its land' (249.5 mm3 8.0 mm out)",
+   "blocks the path 'Radxa up onto its posts' (962.6 mm3 15.0 mm out)"
   ]
  }
 }
