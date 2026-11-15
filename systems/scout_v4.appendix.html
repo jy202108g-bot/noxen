@@ -265,11 +265,20 @@
       <tr><td>Coupon (12 Nov)</td><td><a href="https://github.com/sparkiscool/noxen/releases/download/meshes/print-scout_v4_probe_coupon.stl" target="_blank" rel="noopener">print-scout_v4_probe_coupon.stl</a></td><td>printed and read 14 Nov (results below)</td><td class="r">1</td><td class="r">39</td><td class="r">50 min</td></tr>
       <tr><td>Head frame (drawn prototype, 15 Nov: reprint)</td><td><a href="https://github.com/sparkiscool/noxen/releases/download/meshes/print-scout_v4_head_frame.stl" target="_blank" rel="noopener">print-scout_v4_head_frame.stl</a></td><td>clip down, tree supports under the plate where it overhangs the clip; 0.2, 4 walls, 40 %</td><td class="r">1</td><td class="r">31.2</td><td class="r">2 h 15</td></tr>
       <tr><td>Cradle (drawn prototype, 15 Nov: reprint)</td><td><a href="https://github.com/sparkiscool/noxen/releases/download/meshes/print-scout_v4_cradle.stl" target="_blank" rel="noopener">print-scout_v4_cradle.stl</a></td><td>its +y face (the horn's side, flat) down, no supports; 0.2, 4 walls, 40 %</td><td class="r">1</td><td class="r">10.0</td><td class="r">1 h</td></tr>
+<tr><td>Head coupon (15 Nov) and its H tongue</td><td><a href="https://github.com/sparkiscool/noxen/releases/download/meshes/print-scout_v4_head_coupon.stl" target="_blank" rel="noopener">print-scout_v4_head_coupon.stl</a>, <a href="https://github.com/sparkiscool/noxen/releases/download/meshes/print-scout_v4_head_coupon_tongue.stl" target="_blank" rel="noopener">tongue</a></td><td>both flat as laid, no supports; 0.2, 4 walls</td><td class="r">1 + 1</td><td class="r">57</td><td class="r">1 h 55</td></tr>
     </tbody>
     <tfoot><tr><td>The whole bench (without the coupon)</td><td></td><td>about 175 g of PCTG</td><td></td><td class="r">≈ 173</td><td class="r">≈ 10 h</td></tr>
     <tr><td>To print now (keeping the base, spool and pinions)</td><td></td><td>turret, 2 roller tubes, S1–S3, head frame, cradle</td><td></td><td class="r">≈ 109</td><td class="r">≈ 7 h</td></tr></tfoot>
   </table></div>
   <p class="tag">Release links go live a few minutes after the push (the meshes workflow). Each print's source is <span class="num">parts/scout_v4_probe_*/make.py</span>. Every file above was remade on 14 Nov from the coupon's results (below); the earlier downloads are replaced at the same links.</p>
+  <h3 id="pr-head-coupon">Head coupon: what to report (15 Nov)</h3>
+  <p>The head's fits nobody can look up, three labelled sizes each. Send back one line, e.g. <span class="num">C2 P2 H1 K2</span>; the picks go into <span class="num">parts/scout_v4_head_lib.py</span> and the head frame and cradle are remade from them. Until then the middle size of each is drawn.</p>
+  <ol class="plain">
+    <li><b>C:</b> drop the camera case into C1–C3 (36.6 / 36.9 / 37.2 square). Report the snuggest it slides in and out of without force.</li>
+    <li><b>P:</b> drive one of the SG90's mounting self-tappers fully into each column's hole and back out. Report the smallest it goes all the way into without cracking the column, and grips.</li>
+    <li><b>H:</b> stand the loose tongue on its 10 mm edge and drop it into slots H1–H3. Report the tightest it drops into freely.</li>
+    <li><b>K:</b> slide the SG90's single-arm horn, hub first and arm face down, along channels K1–K3. Report the narrowest it slides along without force.</li>
+  </ol>
   <h3 id="pr-coupon">Coupon: what to report (12 Nov)</h3>
   <p>Spark (12 Nov): "only have me do what is absolutely necessary". Nothing gets measured. The coupon answers whatever no listing could, and each test has three choices labelled on the print. Send back one line, e.g. <span class="num">D2 B1 A3 G2 M1 T2 C2</span>. That line goes into <span class="num">COUPON_PICK</span> in <span class="num">tools/scout_v4_shape.py</span>, and the spool, pinion, roller, bench turret and the flight turret, head frame and cradle are remade from it.</p>
   <ol class="plain">
