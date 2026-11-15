@@ -3879,8 +3879,8 @@
 "tag": "C",
 "owner": "battery latch",
 "version": "v7",
-"source": "parts/latch7/make.py build('scout'), seated",
-"note": "the latch set the funnel seats"
+"source": "parts/latch7/make.py receiver_all_print(build('scout'))",
+"note": "the PROTOTYPE receiver as printed (print/latch7_receiver.stl) and its carrier, cap, strips, plug and pegs, seated"
 },
 {
 "id": "box_latch7_scout_cartridge",
@@ -3959,8 +3959,8 @@
 "tag": "C",
 "owner": "battery latch",
 "version": "v7",
-"source": "parts/latch7/make.py build('overseer'), seated",
-"note": "the latch set the funnel seats"
+"source": "parts/latch7/make.py receiver_all_print(build('overseer'))",
+"note": "the PROTOTYPE receiver as printed (print/latch7_ov_receiver.stl) and its carrier, cap, strips, plug and pegs, seated"
 },
 {
 "id": "box_latch7_overseer_cartridge",
