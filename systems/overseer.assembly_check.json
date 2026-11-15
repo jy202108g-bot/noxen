@@ -253,58 +253,6 @@
    ]
   },
   {
-   "a": "wires",
-   "b": "overseer_top_cover",
-   "mm3": 81.38,
-   "limit_mm3": 85.0,
-   "contact": "the motor leads drawn straight out along the diagonals through the cover's skirt over the arm roots; the cover's cable exits are the 48 x 18 side windows (15 Nov, cover v2.1: its root end walls 1.2 -> 2.52 for the 2 mm floor, the same runs through them 39 -> 81.4 mm3, re-measured and rounded up; no exits at the root ends, Spark 3 Nov). the lead runs are a schematic (E): straight 3-8 mm bundles drawn on the core v2 layout (26-30 Oct, its script gone), never re-routed for the parts drawn after them; the real leads are flexible and routed by hand round the printed parts",
-   "ok": true,
-   "pieces": [
-    {
-     "mm3": 27.58,
-     "at": [
-      50.8,
-      -50.8,
-      50.0
-     ],
-     "extent_mm": [
-      4.7,
-      4.7,
-      4.0
-     ],
-     "depth_mm": 4.02
-    },
-    {
-     "mm3": 27.58,
-     "at": [
-      50.9,
-      50.9,
-      50.0
-     ],
-     "extent_mm": [
-      4.7,
-      4.7,
-      4.0
-     ],
-     "depth_mm": 4.02
-    },
-    {
-     "mm3": 26.22,
-     "at": [
-      -50.9,
-      -50.9,
-      50.0
-     ],
-     "extent_mm": [
-      4.6,
-      4.6,
-      4.0
-     ],
-     "depth_mm": 4.01
-    }
-   ]
-  },
-  {
    "a": "wires_red",
    "b": "hub_deck",
    "mm3": 74.1,
@@ -363,30 +311,6 @@
       2.5
      ],
      "depth_mm": 2.52
-    }
-   ]
-  },
-  {
-   "a": "wires_red",
-   "b": "overseer_top_cover",
-   "mm3": 26.25,
-   "limit_mm3": 28.0,
-   "contact": "the + motor lead of the same run (-51, +51) (15 Nov, cover v2.1 walls 2.52: 26.2 mm3, re-measured and rounded up). the lead runs are a schematic (E): straight 3-8 mm bundles drawn on the core v2 layout (26-30 Oct, its script gone), never re-routed for the parts drawn after them; the real leads are flexible and routed by hand round the printed parts",
-   "ok": true,
-   "pieces": [
-    {
-     "mm3": 26.25,
-     "at": [
-      -50.9,
-      50.9,
-      50.0
-     ],
-     "extent_mm": [
-      4.6,
-      4.6,
-      4.0
-     ],
-     "depth_mm": 4.01
     }
    ]
   },
@@ -559,6 +483,6 @@
  "paths": [],
  "not_print_ready": {},
  "would_block": {},
- "seconds": 3.7,
+ "seconds": 3.0,
  "placed": {}
 }
