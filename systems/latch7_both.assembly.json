@@ -2298,5 +2298,13 @@
    "version": "latch v7 receiver, engine part (13 Nov)",
    "source": "parts/latch7_ov_receiver/part.py"
   }
- ]
+ ],
+ "assembly": {
+  "fit_tol_mm3": 0.5,
+  "note": "15 Nov (engine worker): the latch set's assembly gate (tools/assembly_check.py) on the section view; the generated receivers are drawn twice (whole and cut away), the whole ones are left out. No insertion path yet: the cartridge goes in past the sliders, blades and heel deck only with the latch open (tools/latch7_both_motion.py's states), which a straight path through the closed latch does not model.",
+  "exclude": [
+   "latch7_receiver",
+   "latch7_ov_receiver"
+  ]
+ }
 }

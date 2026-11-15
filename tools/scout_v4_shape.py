@@ -786,6 +786,12 @@ if __name__ == "__main__":
                   f"Gemfan 5125 props on a printed frame, a half cage on the new discs; the battery mechanism (receiver, cartridge, pack, {BATTERY_SET[0]:.0f} g) not drawn: it mounts on 4 M3 bolts. {lo[0]:.0f}..{hi[0]:.0f} x {lo[1]:.0f}..{hi[1]:.0f} x {lo[2]:.0f}..{hi[2]:.0f} mm, "
                   f"~{mass:.0f} g (E). tools/scout_v4_shape.py",
              mass_budget_g=None, parts=rows)
+    keep = {r.get("id"): r for r in old.get("parts", [])}            # the assembly check's keys (tools/assembly_check.py) are not this tool's: kept
+    for r in rows:
+        if keep.get(r["id"], {}).get("fit_mesh"):
+            r["fit_mesh"] = keep[r["id"]]["fit_mesh"]
+    if old.get("assembly") is not None:
+        a["assembly"] = old["assembly"]
     open(F, "w").write(json.dumps(a, indent=0, ensure_ascii=False) + "\n")
     print(f"  extents         {hi[0] - lo[0]:.0f} x {hi[1] - lo[1]:.0f} x {hi[2] - lo[2]:.0f} mm; all-up ~{mass:.0f} g (E): drawn {drawn:.0f} + the battery set {BATTERY_SET[0]:.0f} on its 4 bolts")
     print(f"  balance         CG ({cg[0]:+.2f}, {cg[1]:+.2f}, {cg[2]:.1f}) mm; the thrust centre (0, 0): {math.hypot(cg[0], cg[1]):.2f} off (masses E)")

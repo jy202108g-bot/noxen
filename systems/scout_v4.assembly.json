@@ -536,7 +536,8 @@
 "owner": "scout v4",
 "version": "shape 8 Nov",
 "source": "tools/scout_v4_shape.py",
-"note": "32 rods, 3.48 m, every one 12 from the swept discs and none over or under a disc: ring at z 61 with flats at 155 (310 across), a flat roof (spine on y 0, hoop on x 0, nose / tail triangles), a V at each end and a fan at each side down to the bottom nodes, which hang on rod triangles to the deck's side lugs and tail (NB on the camera's mount)"
+"note": "32 rods, 3.48 m, every one 12 from the swept discs and none over or under a disc: ring at z 61 with flats at 155 (310 across), a flat roof (spine on y 0, hoop on x 0, nose / tail triangles), a V at each end and a fan at each side down to the bottom nodes, which hang on rod triangles to the deck's side lugs and tail (NB on the camera's mount)",
+"fit_mesh": "tools/scout_v4_fit.py:rods"
 },
 {
 "id": "scout_v4_node_r0",
@@ -794,5 +795,212 @@
 "material": "PCTG",
 "opacity": 0.9
 }
+],
+"assembly": {
+"fit_tol_mm3": 0.5,
+"note": "15 Nov (engine worker, Spark's bench print): the assembly gate, tools/assembly_check.py; fits from topo/fit.py (the probe coupon). The order: the frame and everything fixed in it, the turret with its spool, gears, N20, drum, roller and DRV8833 dropped in from above, the rods and nodes, the head frame (order 55) on the blades' tip, the cradle into the head frame, the SG90 onto its pads, the camera into the cradle, then the nod. Mates are running fits (nothing meant to touch); a piece seated on a stop is held to its path's fit gap instead (every step past the seat). The props go on last.",
+"order": {
+"scout_v4_node_*": 50,
+"scout_v4_head_frame": 55,
+"scout_v4_prop_*": 200,
+"scout_v4_blades_*": 200
+},
+"contacts": [
+{
+"a": "scout_v4_frame",
+"b": "scout_v4_receiver_bolts",
+"allow_mm3": 6.0,
+"why": "the M3 x 5.7 heat-set inserts (drawn with the bolts) melted into the yokes' insert holes"
+},
+{
+"a": "scout_v4_probe_spool",
+"b": "scout_v4_probe_pinion",
+"allow_mm3": 8.0,
+"why": "the 40 / 12 gear mesh: the teeth are drawn at an arbitrary phase"
+},
+{
+"a": "scout_v4_probe_spool",
+"b": "scout_v4_probe_drum",
+"allow_mm3": 320.0,
+"why": "the head's cable coil is drawn as a solid ring over the drum's O8 hub (a loose coil, nothing printed in it)"
+},
+{
+"a": "scout_v4_probe_spool",
+"b": "scout_v4_probe_feed",
+"allow_mm3": 15.0,
+"why": "the blades leave the wound coil at its tangent (the feed drawn from the coil's surface)"
+}
+],
+"mates": [
+{
+"a": "scout_v4_cradle",
+"b": "scout_v4_head_frame",
+"fit": "mate",
+"why": "the cradle turns between the head frame's brackets"
+},
+{
+"a": "scout_v4_probe_pinion",
+"b": "scout_v4_probe_motor",
+"fit": "press",
+"why": "the pinion's D bore on the N20's 3.0 / 2.5 D shaft"
+},
+{
+"a": "scout_v4_probe_spool",
+"b": "scout_v4_probe_turret",
+"fit": "mate",
+"why": "the spool turns between the turret's side plates"
+}
+],
+"paths": [
+{
+"name": "turret onto the frame",
+"part": "scout_v4_probe_turret",
+"order": 10,
+"out": [
+0,
+0,
+1
+],
+"length_mm": 90,
+"fit": "mate",
+"with": [
+"scout_v4_probe_spool",
+"scout_v4_probe_pinion",
+"scout_v4_probe_motor",
+"scout_v4_probe_drum",
+"scout_v4_probe_feed",
+"scout_v4_probe_roller"
+],
+"into": [
+"scout_v4_frame"
+],
+"why": "the turret goes on as one unit with its spool, gears, N20 (into the deck's pocket), drum and roller (the DRV8833 is taped under the deck), down from above"
+},
+{
+"name": "blades into the head frame's clip",
+"part": "scout_v4_probe_mast_a",
+"order": 60,
+"out": [
+0,
+0,
+-1
+],
+"length_mm": 16,
+"fit": "slide",
+"body": {
+"box": [
+12.32,
+17.88,
+-9.5,
+9.5,
+73.0,
+87.0
 ]
+},
+"into": [
+"scout_v4_head_frame"
+],
+"ignore": [
+"scout_v4_probe_turret",
+"scout_v4_probe_feed",
+"scout_v4_probe_spool"
+],
+"why": "the two blades' tips (the lens, 2 x 2.78 thick, 19 wide) slide up into the head frame's 14 mm clip"
+},
+{
+"name": "cradle into the head frame",
+"part": "scout_v4_cradle",
+"order": 65,
+"out": [
+0,
+0,
+1
+],
+"length_mm": 70,
+"fit": "mate",
+"into": [
+"scout_v4_head_frame"
+],
+"why": "the cradle drops in between the head frame's brackets (the idler screw and the SG90 go in after it)"
+},
+{
+"name": "SG90 onto the head frame",
+"part": "scout_v4_probe_servo",
+"order": 70,
+"moves": [
+{
+"out": [
+0,
+1,
+0
+],
+"length_mm": 4.5
+},
+{
+"out": [
+0,
+0,
+1
+],
+"length_mm": 50
+}
+],
+"fit": "slide",
+"into": [
+"scout_v4_head_frame"
+],
+"why": "the SG90's spline out of the cradle's horn along its shaft (+y), then up off its pads"
+},
+{
+"name": "camera into the cradle",
+"part": "scout_v4_probe_tilt",
+"order": 80,
+"out": [
+-0.9659,
+0.0,
+-0.2588
+],
+"length_mm": 32,
+"fit": "slide",
+"into": [
+"scout_v4_cradle"
+],
+"why": "the case slides into the sleeve from behind until its front meets the lip (Spark 15 Nov: it could not)"
+},
+{
+"name": "head nods -20..+90 deg",
+"part": "scout_v4_cradle",
+"order": 100,
+"with": [
+"scout_v4_probe_tilt",
+"scout_v4_probe_leds"
+],
+"turn": {
+"axis": [
+0,
+1,
+0
+],
+"at": [
+7.6,
+-3.8,
+118.0
+],
+"deg": [
+-75,
+35
+]
+},
+"fit": "mate",
+"into": [
+"scout_v4_head_frame",
+"scout_v4_probe_servo"
+],
+"why": "the cradle, camera and LED bars about the SG90's axis from 20 down to 90 up (parked 15 up)"
+}
+],
+"generate": [
+"tools/scout_v4_fit.py:generate"
+]
+}
 }
