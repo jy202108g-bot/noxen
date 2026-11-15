@@ -10,8 +10,9 @@
  "settings": "PCTG: Generic PETG profile +10 C, 0.2 mm, 4 walls, 25 % gyroid",
  "time": "0h40",
  "note": "dome hoop plate (PROTOTYPE): turns on the 6 mm tube, 3 mm rod and pin bonded",
- "status": "ready",
+ "status": "cancelled",
  "history": [
-  "2026-11-15 07:36 UTC ready"
+  "2026-11-15 07:36 UTC ready",
+  "2026-11-15 08:46 UTC cancelled"
  ]
 }

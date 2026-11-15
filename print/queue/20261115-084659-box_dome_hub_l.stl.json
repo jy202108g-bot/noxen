@@ -1,0 +1,17 @@
+{
+ "id": "20261115-084659-box_dome_hub_l.stl",
+ "part": "box_dome_hub_l.stl",
+ "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_dome_hub_l.stl",
+ "sha256": "cc8aea878d42713644edd9404fa27d7a7e75c683fae2f754561d413004910517",
+ "qty": 1,
+ "material": "PCTG",
+ "orient": "base down",
+ "supports": "none",
+ "settings": "PCTG: Generic PETG profile +10 C, 0.2 mm, 4 walls, 25 % gyroid",
+ "time": "7h00",
+ "note": "dome hub bracket v4b (PROTOTYPE, hand-calc worst 0.44): 10 thick side walls with buttresses, 9 thick base; bolts on a ring hub segment with 4 x M3 x 12; the motor fit (JGY-370 32 across) is E until the motor is in hand",
+ "status": "ready",
+ "history": [
+  "2026-11-15 08:46 UTC ready"
+ ]
+}

@@ -1,0 +1,17 @@
+{
+ "id": "20261115-084659-box_dome_plate_1_l.stl",
+ "part": "box_dome_plate_1_l.stl",
+ "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_dome_plate_1_l.stl",
+ "sha256": "983680f0e715e49481d23af460e1b3a53cedd091feee8eb53ec3d52d5349ee58",
+ "qty": 1,
+ "material": "PCTG",
+ "orient": "outer face down (as laid)",
+ "supports": "under the arm only (build plate only)",
+ "settings": "PCTG: Generic PETG profile +10 C, 0.2 mm, 4 walls, 25 % gyroid",
+ "time": "0h45",
+ "note": "dome hoop plate v4b (PROTOTYPE, hand-calc worst 0.46): arm 8 x 15.5, even plates' pin at r 15; turns on the 6 mm tube, 3 mm rod and pin bonded",
+ "status": "ready",
+ "history": [
+  "2026-11-15 08:46 UTC ready"
+ ]
+}
