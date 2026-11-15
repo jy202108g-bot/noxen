@@ -221,6 +221,42 @@
   "bytes": 41984,
   "at": "2026-11-14 01:51"
  },
+ "box_stand2p_base_l.stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_stand2p_base_l.stl",
+  "sha256": "03ca4d38b278f99a4bb7b620375d59c8fb1d66f64f61a5c3f2ec458a2d4b04b1",
+  "bytes": 204384,
+  "at": "2026-11-15 02:03"
+ },
+ "box_stand2p_base_r.stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_stand2p_base_r.stl",
+  "sha256": "93396fb8c2fbe43715d9cc09b6e16e707c091519e89efe640efad6db62bf57f8",
+  "bytes": 206784,
+  "at": "2026-11-15 02:03"
+ },
+ "box_stand2p_foot.stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_stand2p_foot.stl",
+  "sha256": "65c0429e785e1fd7c5d7f67e73de80d4bc1bccbab44df61e4f5c7141f4d5cf45",
+  "bytes": 19084,
+  "at": "2026-11-15 02:03"
+ },
+ "box_stand2p_mast.stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_stand2p_mast.stl",
+  "sha256": "9f550230d13338797a578012d83754e8ffdb84ff6ba76e0d94da1620c085679b",
+  "bytes": 195384,
+  "at": "2026-11-15 02:03"
+ },
+ "box_stand2p_rail_l.stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_stand2p_rail_l.stl",
+  "sha256": "a917f16f1542cc4b602acf345482dc28b94bb9e4e230e44d229f39504927bcae",
+  "bytes": 67884,
+  "at": "2026-11-15 02:03"
+ },
+ "box_stand2p_rail_r.stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-box_stand2p_rail_r.stl",
+  "sha256": "90b32ac61cb1a4d53c96076678b3136f5be28ce7bbc3b8ca3c13610b4e5184a2",
+  "bytes": 69684,
+  "at": "2026-11-15 02:03"
+ },
  "latch7_bolt.stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-latch7_bolt.stl",
   "sha256": "20d18515e49d7c45373a0828e3619985d89f8ba036e5b0da3caadc67321d8301",
