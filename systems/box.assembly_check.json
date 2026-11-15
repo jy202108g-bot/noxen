@@ -382,44 +382,30 @@
   {
    "a": "box_scout_v4_scout_v4_frame",
    "b": "box_scout_v4_scout_v4_receiver_bolts",
-   "mm3": 4.66,
+   "mm3": 4.87,
    "limit_mm3": 6.0,
    "contact": "the M3 x 5.7 heat-set inserts (drawn with the bolts) melted into the yokes' insert holes (systems/scout_v4.assembly.json)",
    "ok": true,
    "pieces": [
     {
+     "mm3": 0.32,
+     "at": [
+      26.2,
+      126.0,
+      232.8
+     ],
+     "extent_mm": [
+      1.2,
+      0.3,
+      5.7
+     ],
+     "depth_mm": 0.27
+    },
+    {
      "mm3": 0.3,
      "at": [
-      -28.0,
-      123.0,
-      232.8
-     ],
-     "extent_mm": [
-      0.8,
-      1.0,
-      5.7
-     ],
-     "depth_mm": 0.82
-    },
-    {
-     "mm3": 0.29,
-     "at": [
-      -26.5,
-      122.3,
-      232.8
-     ],
-     "extent_mm": [
-      1.5,
-      0.2,
-      5.7
-     ],
-     "depth_mm": 0.19
-    },
-    {
-     "mm3": 0.24,
-     "at": [
-      -25.4,
-      208.6,
+      27.7,
+      122.7,
       232.8
      ],
      "extent_mm": [
@@ -430,18 +416,32 @@
      "depth_mm": 0.84
     },
     {
-     "mm3": 0.23,
+     "mm3": 0.3,
      "at": [
-      24.9,
-      209.3,
+      -28.4,
+      123.7,
       232.8
      ],
      "extent_mm": [
-      0.6,
+      0.3,
       1.2,
       5.7
      ],
-     "depth_mm": 0.56
+     "depth_mm": 0.32
+    },
+    {
+     "mm3": 0.27,
+     "at": [
+      26.1,
+      211.9,
+      232.8
+     ],
+     "extent_mm": [
+      1.2,
+      0.3,
+      5.7
+     ],
+     "depth_mm": 0.32
     }
    ]
   },
@@ -457,6 +457,14 @@
    "a": "box_swaparm_box_arm8_b_unit_body",
    "b": "box_swaparm_box_arm8_b_pads",
    "mm3": 0.15,
+   "limit_mm3": 0.5,
+   "contact": null,
+   "ok": true
+  },
+  {
+   "a": "box_latch7_scout_receiver",
+   "b": "box_scout_v4_scout_v4_frame",
+   "mm3": 0.08,
    "limit_mm3": 0.5,
    "contact": null,
    "ok": true
@@ -564,14 +572,6 @@
    "limit_mm3": 0.5,
    "contact": null,
    "ok": true
-  },
-  {
-   "a": "box_latch7_scout_receiver",
-   "b": "box_scout_v4_scout_v4_frame",
-   "mm3": 0.0,
-   "limit_mm3": 0.5,
-   "contact": null,
-   "ok": true
   }
  ],
  "mates": [],
@@ -592,6 +592,6 @@
   ]
  },
  "would_block": {},
- "seconds": 1.7,
+ "seconds": 2.1,
  "placed": {}
 }

@@ -2386,5 +2386,15 @@
   "view_faces": 60000,
   "view_sha256": "8955ca479714331ba9e1ff3f40b27826b6531a9c95266e123256c6a49a053fa9",
   "at": "2026-11-15 05:14"
+ },
+ "assembly": {
+  "drone": "scout_v4",
+  "ok": false,
+  "why": [
+   "clashes with scout_v4_fc: 73.8 mm3",
+   "clashes with scout_v4_radxa_zero_3w: 165.0 mm3",
+   "blocks the path 'DRV8833 up onto its land' (249.4 mm3 8.0 mm out)",
+   "blocks the path 'Radxa up onto its posts' (962.1 mm3 15.0 mm out)"
+  ]
  }
 }

@@ -121,7 +121,7 @@
    "ok": false,
    "pieces": [
     {
-     "mm3": 45.27,
+     "mm3": 45.63,
      "at": [
       -70.2,
       11.0,
@@ -135,20 +135,6 @@
      "depth_mm": 4.42
     },
     {
-     "mm3": 41.21,
-     "at": [
-      -12.6,
-      -11.4,
-      14.2
-     ],
-     "extent_mm": [
-      7.3,
-      7.5,
-      1.3
-     ],
-     "depth_mm": 1.26
-    },
-    {
      "mm3": 40.96,
      "at": [
       -70.2,
@@ -158,6 +144,20 @@
      "extent_mm": [
       7.3,
       7.4,
+      1.3
+     ],
+     "depth_mm": 1.26
+    },
+    {
+     "mm3": 40.85,
+     "at": [
+      -12.6,
+      -11.4,
+      14.2
+     ],
+     "extent_mm": [
+      7.3,
+      7.5,
       1.3
      ],
      "depth_mm": 1.26
@@ -181,16 +181,16 @@
   {
    "a": "scout_v4_frame",
    "b": "scout_v4_fc",
-   "mm3": 74.81,
+   "mm3": 73.78,
    "limit_mm3": 0.5,
    "contact": null,
    "ok": false,
    "pieces": [
     {
-     "mm3": 39.6,
+     "mm3": 39.43,
      "at": [
       23.3,
-      -9.7,
+      -9.8,
       17.7
      ],
      "extent_mm": [
@@ -201,23 +201,23 @@
      "depth_mm": 2.2
     },
     {
-     "mm3": 12.7,
+     "mm3": 11.86,
      "at": [
-      25.5,
+      25.4,
       11.0,
       17.0
      ],
      "extent_mm": [
-      6.0,
+      5.7,
       5.0,
       0.8
      ],
      "depth_mm": 0.8
     },
     {
-     "mm3": 11.29,
+     "mm3": 11.3,
      "at": [
-      47.6,
+      47.7,
       11.0,
       17.0
      ],
@@ -229,7 +229,7 @@
      "depth_mm": 0.8
     },
     {
-     "mm3": 11.22,
+     "mm3": 11.19,
      "at": [
       47.7,
       -11.0,
@@ -347,44 +347,30 @@
   {
    "a": "scout_v4_frame",
    "b": "scout_v4_receiver_bolts",
-   "mm3": 4.66,
+   "mm3": 4.87,
    "limit_mm3": 6.0,
    "contact": "the M3 x 5.7 heat-set inserts (drawn with the bolts) melted into the yokes' insert holes",
    "ok": true,
    "pieces": [
     {
+     "mm3": 0.32,
+     "at": [
+      47.7,
+      26.2,
+      12.5
+     ],
+     "extent_mm": [
+      0.3,
+      1.2,
+      5.7
+     ],
+     "depth_mm": 0.27
+    },
+    {
      "mm3": 0.3,
      "at": [
-      50.8,
-      -28.0,
-      12.5
-     ],
-     "extent_mm": [
-      1.0,
-      0.8,
-      5.7
-     ],
-     "depth_mm": 0.82
-    },
-    {
-     "mm3": 0.29,
-     "at": [
-      51.5,
-      -26.5,
-      12.5
-     ],
-     "extent_mm": [
-      0.2,
-      1.5,
-      5.7
-     ],
-     "depth_mm": 0.19
-    },
-    {
-     "mm3": 0.24,
-     "at": [
-      -34.9,
-      -25.4,
+      51.0,
+      27.7,
       12.5
      ],
      "extent_mm": [
@@ -395,25 +381,39 @@
      "depth_mm": 0.84
     },
     {
-     "mm3": 0.23,
+     "mm3": 0.3,
      "at": [
-      -35.5,
-      24.9,
+      50.0,
+      -28.4,
       12.5
      ],
      "extent_mm": [
       1.2,
-      0.6,
+      0.3,
       5.7
      ],
-     "depth_mm": 0.56
+     "depth_mm": 0.32
+    },
+    {
+     "mm3": 0.27,
+     "at": [
+      -38.2,
+      26.1,
+      12.5
+     ],
+     "extent_mm": [
+      0.3,
+      1.2,
+      5.7
+     ],
+     "depth_mm": 0.32
     }
    ]
   },
   {
    "a": "scout_v4_frame",
    "b": "scout_v4_probe_turret",
-   "mm3": 0.07,
+   "mm3": 0.06,
    "limit_mm3": 0.5,
    "contact": null,
    "ok": true
@@ -535,13 +535,13 @@
    "blocked_by": [
     {
      "part": "scout_v4_frame",
-     "mm3": 249.49,
+     "mm3": 249.4,
      "at_step": 16,
      "of_steps": 65,
      "along": "8.0 mm out",
      "pieces": [
       {
-       "mm3": 249.49,
+       "mm3": 249.4,
        "at": [
         13.2,
         -36.5,
@@ -582,13 +582,13 @@
    "blocked_by": [
     {
      "part": "scout_v4_frame",
-     "mm3": 962.62,
+     "mm3": 962.08,
      "at_step": 30,
      "of_steps": 65,
      "along": "15.0 mm out",
      "pieces": [
       {
-       "mm3": 1127.63,
+       "mm3": 1127.09,
        "at": [
         -63.8,
         -0.1,
@@ -2298,13 +2298,13 @@
  ],
  "not_print_ready": {
   "scout_v4_frame": [
-   "clashes with scout_v4_fc: 74.8 mm3",
+   "clashes with scout_v4_fc: 73.8 mm3",
    "clashes with scout_v4_radxa_zero_3w: 165.0 mm3",
-   "blocks the path 'DRV8833 up onto its land' (249.5 mm3 8.0 mm out)",
-   "blocks the path 'Radxa up onto its posts' (962.6 mm3 15.0 mm out)"
+   "blocks the path 'DRV8833 up onto its land' (249.4 mm3 8.0 mm out)",
+   "blocks the path 'Radxa up onto its posts' (962.1 mm3 15.0 mm out)"
   ]
  },
  "would_block": {},
- "seconds": 4.8,
+ "seconds": 5.7,
  "placed": {}
 }
