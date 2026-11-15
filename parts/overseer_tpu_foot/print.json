@@ -7,5 +7,18 @@
   "view_faces": 60000,
   "view_sha256": "e401a7bf3e0c2c1cfc0c37987d1472d3bf00feeb489d07f4f634fa707250727b",
   "at": "2026-11-11 02:15"
+ },
+ "make": {
+  "sha": {
+   "parts/overseer_tpu_foot/make.py": "7ff0303a658c"
+  },
+  "rc": 1,
+  "s": 1.0,
+  "at": "2026-11-15 03:07",
+  "commit": "b71840e1",
+  "solid": {
+   "ok": false,
+   "why": "make.py failed (exit 1): ImportError: cannot import name 'NECK_R' from 'parts.cage_foot_lib' (/home/runner/work/noxen/noxen/parts/cage_foot_lib.py)"
+  }
  }
 }

@@ -7,5 +7,10 @@
   "view_faces": 3236,
   "view_sha256": "97bc3190586e2f5b65780360e00dd95ad9d42a30b8ef91f7d9b2418451da7e26",
   "at": "2026-11-14 01:22"
+ },
+ "assembly": {
+  "drone": "scout_v4_bench",
+  "ok": true,
+  "why": []
  }
 }

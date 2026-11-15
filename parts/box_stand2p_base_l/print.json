@@ -7,5 +7,10 @@
   "view_faces": 4086,
   "view_sha256": "23f1ad0b9f06bb7a1b31252175d0d070a07e0e0971f896140b4ff669d4644344",
   "at": "2026-11-15 02:03"
+ },
+ "assembly": {
+  "drone": "box",
+  "ok": true,
+  "why": []
  }
 }
