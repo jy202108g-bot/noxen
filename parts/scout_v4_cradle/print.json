@@ -1,0 +1,11 @@
+{
+ "print_stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/scout_v4_cradle.stl",
+  "sha256": "baf0a8bacd0b598283844cfa3c768f7e657e4b7030f1f1a6c4acf0c5095f8d3f",
+  "bytes": 38384,
+  "faces": 766,
+  "view_faces": 766,
+  "view_sha256": "baf0a8bacd0b598283844cfa3c768f7e657e4b7030f1f1a6c4acf0c5095f8d3f",
+  "at": "2026-11-15 01:31"
+ }
+}

@@ -1,0 +1,11 @@
+{
+ "print_stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/scout_v4_head_frame.stl",
+  "sha256": "efbdc644450d9fd7c3d53479e89559d8d60b4b1920f3a50f087eaee5b04080d8",
+  "bytes": 47484,
+  "faces": 948,
+  "view_faces": 948,
+  "view_sha256": "efbdc644450d9fd7c3d53479e89559d8d60b4b1920f3a50f087eaee5b04080d8",
+  "at": "2026-11-15 01:31"
+ }
+}
