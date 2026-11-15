@@ -7,7 +7,7 @@
   "specks_plain": 0,
   "bodies_eroded": 1,
   "eroded_volumes_mm3": [
-   25373.3
+   25495.6
   ],
   "sealed_voids": [],
   "inner_shells": [],
@@ -15,13 +15,13 @@
   "drawn_not_in_main": [],
   "thin_walls": [],
   "thin_allowed": [],
-  "acute_edges": 5,
+  "acute_edges": 3,
   "ok": true
  },
  "function_check": {
-  "skin_mm3": 3405.5,
+  "skin_mm3": 3380.3,
   "skin_missing_mm3": 0.0,
-  "in_cuts_mm3": 0.0,
+  "in_cuts_mm3": -0.0,
   "outside_env_mm3": -0.0,
   "ok": true
  },
@@ -30,8 +30,8 @@
    {
     "case": "head-first crash: 260 N down the throat",
     "cls": "crash",
-    "inlayer": 0.261,
-    "across": 0.145,
+    "inlayer": 0.263,
+    "across": 0.146,
     "at": [
      21.0,
      11.4,
@@ -41,8 +41,8 @@
    {
     "case": "the parked head crash 0 (35 g [1.0, 0.0, 0.0])",
     "cls": "crash",
-    "inlayer": 0.033,
-    "across": 0.062,
+    "inlayer": 0.032,
+    "across": 0.061,
     "at": [
      15.0,
      -17.4,
@@ -52,19 +52,19 @@
    {
     "case": "the parked head crash 1 (35 g [-1.0, 0.0, 0.0])",
     "cls": "crash",
-    "inlayer": 0.033,
-    "across": 0.064,
+    "inlayer": 0.032,
+    "across": 0.067,
     "at": [
      -16.2,
-     -16.2,
-     30.0
+     -17.4,
+     28.8
     ]
    },
    {
     "case": "the parked head crash 2 (35 g [0.0, 1.0, 0.0])",
     "cls": "crash",
-    "inlayer": 0.043,
-    "across": 0.1,
+    "inlayer": 0.044,
+    "across": 0.102,
     "at": [
      21.0,
      11.4,
@@ -74,7 +74,7 @@
    {
     "case": "the parked head crash 3 (35 g [0.0, -1.0, 0.0])",
     "cls": "crash",
-    "inlayer": 0.043,
+    "inlayer": 0.044,
     "across": 0.042,
     "at": [
      21.0,
@@ -97,7 +97,7 @@
     "case": "the parked head crash 5 (35 g [0.0, 0.0, -1.0])",
     "cls": "crash",
     "inlayer": 0.028,
-    "across": 0.066,
+    "across": 0.067,
     "at": [
      21.0,
      11.4,
@@ -107,7 +107,7 @@
    {
     "case": "the parked head crash 6 (35 g [0.58, 0.58, 0.58])",
     "cls": "crash",
-    "inlayer": 0.023,
+    "inlayer": 0.024,
     "across": 0.053,
     "at": [
      21.0,
@@ -118,8 +118,8 @@
    {
     "case": "the parked head crash 7 (35 g [0.58, 0.58, -0.58])",
     "cls": "crash",
-    "inlayer": 0.055,
-    "across": 0.129,
+    "inlayer": 0.056,
+    "across": 0.13,
     "at": [
      21.0,
      11.4,
@@ -129,7 +129,7 @@
    {
     "case": "the parked head crash 8 (35 g [0.58, -0.58, 0.58])",
     "cls": "crash",
-    "inlayer": 0.03,
+    "inlayer": 0.029,
     "across": 0.038,
     "at": [
      16.2,
@@ -141,7 +141,7 @@
     "case": "the parked head crash 9 (35 g [0.58, -0.58, -0.58])",
     "cls": "crash",
     "inlayer": 0.034,
-    "across": 0.075,
+    "across": 0.074,
     "at": [
      15.0,
      -17.4,
@@ -152,7 +152,7 @@
     "case": "the parked head crash 10 (35 g [-0.58, 0.58, 0.58])",
     "cls": "crash",
     "inlayer": 0.034,
-    "across": 0.049,
+    "across": 0.048,
     "at": [
      -9.0,
      22.2,
@@ -162,8 +162,8 @@
    {
     "case": "the parked head crash 11 (35 g [-0.58, 0.58, -0.58])",
     "cls": "crash",
-    "inlayer": 0.03,
-    "across": 0.062,
+    "inlayer": 0.029,
+    "across": 0.065,
     "at": [
      21.0,
      11.4,
@@ -173,41 +173,41 @@
    {
     "case": "the parked head crash 12 (35 g [-0.58, -0.58, 0.58])",
     "cls": "crash",
-    "inlayer": 0.055,
-    "across": 0.053,
+    "inlayer": 0.056,
+    "across": 0.059,
     "at": [
-     21.0,
-     11.4,
-     34.8
+     -16.2,
+     -17.4,
+     28.8
     ]
    },
    {
     "case": "the parked head crash 13 (35 g [-0.58, -0.58, -0.58])",
     "cls": "crash",
-    "inlayer": 0.023,
-    "across": 0.045,
+    "inlayer": 0.024,
+    "across": 0.049,
     "at": [
      -16.2,
-     -16.2,
-     30.0
+     -17.4,
+     28.8
     ]
    },
    {
     "case": "the mast's fold moment 0.6 N m at the throat ((1, 0))",
     "cls": "misuse",
-    "inlayer": 0.062,
-    "across": 0.096,
+    "inlayer": 0.065,
+    "across": 0.1,
     "at": [
      -16.2,
-     -16.2,
-     30.0
+     -17.4,
+     28.8
     ]
    },
    {
     "case": "the mast's fold moment 0.6 N m at the throat ((-1, 0))",
     "cls": "misuse",
-    "inlayer": 0.062,
-    "across": 0.1,
+    "inlayer": 0.065,
+    "across": 0.097,
     "at": [
      21.0,
      11.4,
@@ -217,8 +217,8 @@
    {
     "case": "the mast's fold moment 1.2 N m at the throat ((0, 1))",
     "cls": "misuse",
-    "inlayer": 0.135,
-    "across": 0.12,
+    "inlayer": 0.138,
+    "across": 0.116,
     "at": [
      21.0,
      11.4,
@@ -228,8 +228,8 @@
    {
     "case": "the mast's fold moment 1.2 N m at the throat ((0, -1))",
     "cls": "misuse",
-    "inlayer": 0.135,
-    "across": 0.315,
+    "inlayer": 0.138,
+    "across": 0.322,
     "at": [
      21.0,
      11.4,
@@ -239,7 +239,7 @@
    {
     "case": "tape tension at the N20's stall, paying out (44 N)",
     "cls": "flight",
-    "inlayer": 0.034,
+    "inlayer": 0.035,
     "across": 0.032,
     "at": [
      -9.0,
@@ -250,19 +250,19 @@
    {
     "case": "tape tension at the N20's stall, pulling in (44 N)",
     "cls": "flight",
-    "inlayer": 0.034,
-    "across": 0.072,
+    "inlayer": 0.035,
+    "across": 0.073,
     "at": [
      -9.0,
-     18.6,
-     28.8
+     17.4,
+     30.0
     ]
    },
    {
     "case": "the roller's leaf on the full coil (40 N)",
     "cls": "flight",
-    "inlayer": 0.134,
-    "across": 0.204,
+    "inlayer": 0.125,
+    "across": 0.208,
     "at": [
      30.6,
      -0.6,
@@ -284,10 +284,10 @@
     "case": "spool, blades and cable crash 1 (35 g [-1.0, 0.0, 0.0])",
     "cls": "crash",
     "inlayer": 0.012,
-    "across": 0.023,
+    "across": 0.024,
     "at": [
-     -9.0,
-     18.6,
+     -16.2,
+     -17.4,
      28.8
     ]
    },
@@ -295,7 +295,7 @@
     "case": "spool, blades and cable crash 2 (35 g [0.0, 1.0, 0.0])",
     "cls": "crash",
     "inlayer": 0.015,
-    "across": 0.033,
+    "across": 0.034,
     "at": [
      21.0,
      11.4,
@@ -306,7 +306,7 @@
     "case": "spool, blades and cable crash 3 (35 g [0.0, -1.0, 0.0])",
     "cls": "crash",
     "inlayer": 0.015,
-    "across": 0.021,
+    "across": 0.022,
     "at": [
      9.0,
      -22.2,
@@ -328,7 +328,7 @@
     "case": "spool, blades and cable crash 5 (35 g [0.0, 0.0, -1.0])",
     "cls": "crash",
     "inlayer": 0.007,
-    "across": 0.017,
+    "across": 0.018,
     "at": [
      21.0,
      11.4,
@@ -405,11 +405,11 @@
     "case": "spool, blades and cable crash 12 (35 g [-0.58, -0.58, 0.58])",
     "cls": "crash",
     "inlayer": 0.016,
-    "across": 0.018,
+    "across": 0.02,
     "at": [
-     -9.0,
-     -23.4,
-     30.0
+     -16.2,
+     -17.4,
+     28.8
     ]
    },
    {
@@ -426,30 +426,30 @@
    {
     "case": "RF-RM tension 18 N + side 9 N + end moment 572 N mm",
     "cls": "crash",
-    "inlayer": 0.067,
+    "inlayer": 0.056,
     "across": 0.059,
     "at": [
-     24.6,
-     5.4,
-     66.0
+     -9.0,
+     22.2,
+     32.4
     ]
    },
    {
     "case": "RF-RM compression 18 N + side 9 N + end moment 572 N mm",
     "cls": "crash",
-    "inlayer": 0.067,
+    "inlayer": 0.056,
     "across": 0.066,
     "at": [
-     24.6,
-     5.4,
-     66.0
+     22.2,
+     -10.2,
+     39.6
     ]
    },
    {
     "case": "RM-RB tension 67 N + side 21 N + end moment 1469 N mm",
     "cls": "crash",
-    "inlayer": 0.155,
-    "across": 0.144,
+    "inlayer": 0.153,
+    "across": 0.143,
     "at": [
      -17.4,
      6.6,
@@ -459,18 +459,18 @@
    {
     "case": "RM-RB compression 67 N + side 21 N + end moment 1469 N mm",
     "cls": "crash",
-    "inlayer": 0.155,
-    "across": 0.191,
+    "inlayer": 0.153,
+    "across": 0.194,
     "at": [
      -16.2,
-     -16.2,
-     30.0
+     -17.4,
+     28.8
     ]
    },
    {
     "case": "RM-RS0 tension 44 N + side 18 N + end moment 1540 N mm",
     "cls": "crash",
-    "inlayer": 0.15,
+    "inlayer": 0.139,
     "across": 0.095,
     "at": [
      5.4,
@@ -481,7 +481,7 @@
    {
     "case": "RM-RS0 compression 44 N + side 18 N + end moment 1540 N mm",
     "cls": "crash",
-    "inlayer": 0.15,
+    "inlayer": 0.139,
     "across": 0.208,
     "at": [
      -3.0,
@@ -492,8 +492,8 @@
    {
     "case": "RM-RS1 tension 45 N + side 19 N + end moment 1554 N mm",
     "cls": "crash",
-    "inlayer": 0.2,
-    "across": 0.235,
+    "inlayer": 0.197,
+    "across": 0.242,
     "at": [
      21.0,
      11.4,
@@ -503,8 +503,8 @@
    {
     "case": "RM-RS1 compression 45 N + side 19 N + end moment 1554 N mm",
     "cls": "crash",
-    "inlayer": 0.2,
-    "across": 0.23,
+    "inlayer": 0.197,
+    "across": 0.216,
     "at": [
      -0.6,
      -25.8,
@@ -512,7 +512,7 @@
     ]
    }
   ],
-  "worst": 0.315,
+  "worst": 0.322,
   "worst_case": "the mast's fold moment 1.2 N m at the throat ((0, -1))",
   "worst_at": [
    21.0,
@@ -521,36 +521,36 @@
   ],
   "ok": true
  },
- "mass_g": 46.96,
+ "mass_g": 47.1,
  "watertight": true,
  "export": {
-  "faces_in": 276592,
+  "faces_in": 273048,
   "degenerate": 0,
   "folded": 0,
-  "caps_split": 2,
+  "caps_split": 0,
   "pinch_vertices": 0,
   "caps_left": 0,
   "dropped_shells": [],
   "n_dropped_shells": 0,
   "bodies": 1,
   "open_kept": [],
-  "faces": 276592,
+  "faces": 273048,
   "boundary_edges": 0,
   "nonmanifold_edges": 0,
   "watertight": true,
   "simplified": true,
   "first_pass": {
    "degenerate": 108,
-   "folded": 2,
-   "caps_split": 4,
+   "folded": 6,
+   "caps_split": 9,
    "caps_left": 2,
    "watertight": true,
-   "faces": 402414,
+   "faces": 400108,
    "n_dropped_shells": 0,
    "dropped_shells": []
   },
-  "volume_mm3": 38177.9,
-  "exact_mm3": 38178.5
+  "volume_mm3": 38293.2,
+  "exact_mm3": 38293.9
  },
  "bodies": {
   "bodies_raw": 1,
@@ -558,8 +558,8 @@
   "cavities_mm3": [],
   "bodies": 1
  },
- "volume_mm3": 38178.5,
- "drawn_g": 12.51,
+ "volume_mm3": 38293.9,
+ "drawn_g": 12.44,
  "export_cleanup": {
   "pitch": 0.25,
   "erode_mm": 0.9,
@@ -571,34 +571,34 @@
  },
  "memory_build": [
   {
-   "estimate_gb": 4.42,
+   "estimate_gb": 4.43,
    "parts": {
-    "held": 0.98,
+    "held": 1.0,
     "gate": 0.64,
-    "mesh": 2.8
+    "mesh": 2.78
    },
    "limit_gb": 14.0,
-   "gate_cells": 15339576,
+   "gate_cells": 15343146,
    "bounds_mm": [
-    60.5,
-    64.3,
+    60.6,
+    64.0,
     58.4
    ],
-   "faces": 500320,
+   "faces": 497796,
    "when": "before the export cleanup"
   },
   {
-   "estimate_gb": 1.69,
+   "estimate_gb": 1.72,
    "parts": {
-    "held": 1.05,
+    "held": 1.07,
     "gate": 0.64,
     "mesh": 0.0
    },
    "limit_gb": 14.0,
-   "gate_cells": 15339576,
+   "gate_cells": 15343146,
    "bounds_mm": [
-    60.5,
-    64.3,
+    60.6,
+    64.0,
     58.4
    ],
    "faces": 0,
@@ -684,8 +684,8 @@
    "rod_input": 1.2608727148268373,
    "plate_input": 0.8849130530977847
   },
-  "volfrac": 0.33540363685094576,
-  "nd": 48642,
+  "volfrac": 0.33655238387769904,
+  "nd": 48473,
   "sym_axes": [],
   "n_real": 44,
   "n_ties": 156,
@@ -694,33 +694,33 @@
   "stopped": "max_stage",
   "checks": [
    {
-    "it": 24,
+    "it": 23,
     "beta": 4.0,
-    "worst": 0.367,
+    "worst": 0.373,
     "worst_case": "the roller's leaf on the full coil (40 N)"
    },
    {
     "it": 38,
     "beta": 8.0,
-    "worst": 0.317,
-    "worst_case": "the roller's leaf on the full coil (40 N)"
+    "worst": 0.319,
+    "worst_case": "the mast's fold moment 1.2 N m at the throat ((0, -1))"
    },
    {
     "it": 48,
     "beta": 16.0,
-    "worst": 0.311,
+    "worst": 0.318,
     "worst_case": "the mast's fold moment 1.2 N m at the throat ((0, -1))"
    }
   ],
   "hold": {
-   "started_it": 24,
+   "started_it": 23,
    "beta": 4.0,
-   "index": 0.367
+   "index": 0.373
   },
   "cavity": {
-   "last": 2.1062290496036793,
+   "last": 2.270056008510672,
    "ratio": 5.0,
-   "T0": 17.51487368489504,
+   "T0": 17.44654098712721,
    "row": true
   }
  },
@@ -738,8 +738,8 @@
    10.2
   ],
   "cells": 229376,
-  "design": 48531,
-  "drawn": 5753,
+  "design": 48363,
+  "drawn": 5725,
   "cases": [
    "head-first crash: 260 N down the throat",
    "the parked head crash 0 (35 g [1.0, 0.0, 0.0])",
@@ -790,13 +790,13 @@
    "default"
   ]
  },
- "build_s": 88.4,
- "layout_s": 4295,
- "peak_gb": 4.342732,
+ "build_s": 123.3,
+ "layout_s": 5557,
+ "peak_gb": 4.381808,
  "memory": {
-  "estimate_gb": 4.62,
+  "estimate_gb": 4.66,
   "parts": {
-   "held": 0.78,
+   "held": 0.83,
    "factor": 2.03,
    "assembly": 0.53,
    "block": 0.77,
@@ -804,13 +804,13 @@
   },
   "limit_gb": 14.0,
   "cases": 200,
-  "active_dofs": 199905,
+  "active_dofs": 199284,
   "backend": "direct",
   "block": 46,
   "build": {
-   "estimate_gb": 1.63,
+   "estimate_gb": 1.68,
    "parts": {
-    "held": 0.78,
+    "held": 0.83,
     "gate": 0.85,
     "mesh": 0.0
    },
@@ -824,15 +824,15 @@
    "faces": 0,
    "when": "from the envelope"
   },
-  "peak_it1_gb": 3.84
+  "peak_it1_gb": 3.88
  },
  "early": {
   "rows": [
    {
     "case": "head-first crash: 260 N down the throat",
     "cls": "crash",
-    "inlayer": 0.272,
-    "across": 0.159,
+    "inlayer": 0.274,
+    "across": 0.157,
     "at": [
      21.0,
      11.4,
@@ -842,7 +842,7 @@
    {
     "case": "the parked head crash 0 (35 g [1.0, 0.0, 0.0])",
     "cls": "crash",
-    "inlayer": 0.037,
+    "inlayer": 0.033,
     "across": 0.062,
     "at": [
      16.2,
@@ -853,8 +853,8 @@
    {
     "case": "the parked head crash 1 (35 g [-1.0, 0.0, 0.0])",
     "cls": "crash",
-    "inlayer": 0.037,
-    "across": 0.067,
+    "inlayer": 0.033,
+    "across": 0.066,
     "at": [
      -16.2,
      -17.4,
@@ -865,7 +865,7 @@
     "case": "the parked head crash 2 (35 g [0.0, 1.0, 0.0])",
     "cls": "crash",
     "inlayer": 0.047,
-    "across": 0.1,
+    "across": 0.102,
     "at": [
      21.0,
      11.4,
@@ -876,7 +876,7 @@
     "case": "the parked head crash 3 (35 g [0.0, -1.0, 0.0])",
     "cls": "crash",
     "inlayer": 0.047,
-    "across": 0.054,
+    "across": 0.049,
     "at": [
      9.0,
      -22.2,
@@ -898,7 +898,7 @@
     "case": "the parked head crash 5 (35 g [0.0, 0.0, -1.0])",
     "cls": "crash",
     "inlayer": 0.028,
-    "across": 0.061,
+    "across": 0.062,
     "at": [
      21.0,
      11.4,
@@ -919,8 +919,8 @@
    {
     "case": "the parked head crash 7 (35 g [0.58, 0.58, -0.58])",
     "cls": "crash",
-    "inlayer": 0.057,
-    "across": 0.122,
+    "inlayer": 0.058,
+    "across": 0.123,
     "at": [
      21.0,
      11.4,
@@ -931,7 +931,7 @@
     "case": "the parked head crash 8 (35 g [0.58, -0.58, 0.58])",
     "cls": "crash",
     "inlayer": 0.031,
-    "across": 0.043,
+    "across": 0.04,
     "at": [
      9.0,
      -22.2,
@@ -942,7 +942,7 @@
     "case": "the parked head crash 9 (35 g [0.58, -0.58, -0.58])",
     "cls": "crash",
     "inlayer": 0.032,
-    "across": 0.072,
+    "across": 0.071,
     "at": [
      16.2,
      -17.4,
@@ -953,10 +953,10 @@
     "case": "the parked head crash 10 (35 g [-0.58, 0.58, 0.58])",
     "cls": "crash",
     "inlayer": 0.032,
-    "across": 0.045,
+    "across": 0.049,
     "at": [
      -10.2,
-     21.0,
+     22.2,
      28.8
     ]
    },
@@ -964,7 +964,7 @@
     "case": "the parked head crash 11 (35 g [-0.58, 0.58, -0.58])",
     "cls": "crash",
     "inlayer": 0.031,
-    "across": 0.064,
+    "across": 0.066,
     "at": [
      21.0,
      11.4,
@@ -974,7 +974,7 @@
    {
     "case": "the parked head crash 12 (35 g [-0.58, -0.58, 0.58])",
     "cls": "crash",
-    "inlayer": 0.057,
+    "inlayer": 0.058,
     "across": 0.058,
     "at": [
      -16.2,
@@ -988,16 +988,16 @@
     "inlayer": 0.025,
     "across": 0.049,
     "at": [
-     -9.0,
-     -23.4,
+     -16.2,
+     -17.4,
      28.8
     ]
    },
    {
     "case": "the mast's fold moment 0.6 N m at the throat ((1, 0))",
     "cls": "misuse",
-    "inlayer": 0.076,
-    "across": 0.099,
+    "inlayer": 0.066,
+    "across": 0.097,
     "at": [
      -16.2,
      -17.4,
@@ -1007,8 +1007,8 @@
    {
     "case": "the mast's fold moment 0.6 N m at the throat ((-1, 0))",
     "cls": "misuse",
-    "inlayer": 0.076,
-    "across": 0.093,
+    "inlayer": 0.066,
+    "across": 0.091,
     "at": [
      16.2,
      -17.4,
@@ -1018,19 +1018,19 @@
    {
     "case": "the mast's fold moment 1.2 N m at the throat ((0, 1))",
     "cls": "misuse",
-    "inlayer": 0.147,
-    "across": 0.151,
+    "inlayer": 0.149,
+    "across": 0.139,
     "at": [
-     9.0,
-     -22.2,
-     28.8
+     21.0,
+     11.4,
+     34.8
     ]
    },
    {
     "case": "the mast's fold moment 1.2 N m at the throat ((0, -1))",
     "cls": "misuse",
-    "inlayer": 0.147,
-    "across": 0.318,
+    "inlayer": 0.149,
+    "across": 0.323,
     "at": [
      21.0,
      11.4,
@@ -1040,8 +1040,8 @@
    {
     "case": "tape tension at the N20's stall, paying out (44 N)",
     "cls": "flight",
-    "inlayer": 0.038,
-    "across": 0.037,
+    "inlayer": 0.037,
+    "across": 0.035,
     "at": [
      7.8,
      -22.2,
@@ -1051,19 +1051,19 @@
    {
     "case": "tape tension at the N20's stall, pulling in (44 N)",
     "cls": "flight",
-    "inlayer": 0.038,
-    "across": 0.079,
+    "inlayer": 0.037,
+    "across": 0.074,
     "at": [
-     9.0,
-     -22.2,
+     -9.0,
+     18.6,
      28.8
     ]
    },
    {
     "case": "the roller's leaf on the full coil (40 N)",
     "cls": "flight",
-    "inlayer": 0.225,
-    "across": 0.367,
+    "inlayer": 0.226,
+    "across": 0.373,
     "at": [
      25.8,
      -5.4,
@@ -1073,7 +1073,7 @@
    {
     "case": "spool, blades and cable crash 0 (35 g [1.0, 0.0, 0.0])",
     "cls": "crash",
-    "inlayer": 0.013,
+    "inlayer": 0.012,
     "across": 0.025,
     "at": [
      10.2,
@@ -1084,8 +1084,8 @@
    {
     "case": "spool, blades and cable crash 1 (35 g [-1.0, 0.0, 0.0])",
     "cls": "crash",
-    "inlayer": 0.013,
-    "across": 0.025,
+    "inlayer": 0.012,
+    "across": 0.026,
     "at": [
      -10.2,
      21.0,
@@ -1096,7 +1096,7 @@
     "case": "spool, blades and cable crash 2 (35 g [0.0, 1.0, 0.0])",
     "cls": "crash",
     "inlayer": 0.016,
-    "across": 0.033,
+    "across": 0.034,
     "at": [
      21.0,
      11.4,
@@ -1107,7 +1107,7 @@
     "case": "spool, blades and cable crash 3 (35 g [0.0, -1.0, 0.0])",
     "cls": "crash",
     "inlayer": 0.016,
-    "across": 0.028,
+    "across": 0.026,
     "at": [
      9.0,
      -22.2,
@@ -1118,7 +1118,7 @@
     "case": "spool, blades and cable crash 4 (35 g [0.0, 0.0, 1.0])",
     "cls": "crash",
     "inlayer": 0.007,
-    "across": 0.005,
+    "across": 0.004,
     "at": [
      21.0,
      11.4,
@@ -1161,8 +1161,8 @@
    {
     "case": "spool, blades and cable crash 8 (35 g [0.58, -0.58, 0.58])",
     "cls": "crash",
-    "inlayer": 0.014,
-    "across": 0.021,
+    "inlayer": 0.017,
+    "across": 0.02,
     "at": [
      9.0,
      -22.2,
@@ -1172,8 +1172,8 @@
    {
     "case": "spool, blades and cable crash 9 (35 g [0.58, -0.58, -0.58])",
     "cls": "crash",
-    "inlayer": 0.015,
-    "across": 0.033,
+    "inlayer": 0.014,
+    "across": 0.031,
     "at": [
      9.0,
      -22.2,
@@ -1183,8 +1183,8 @@
    {
     "case": "spool, blades and cable crash 10 (35 g [-0.58, 0.58, 0.58])",
     "cls": "crash",
-    "inlayer": 0.015,
-    "across": 0.019,
+    "inlayer": 0.014,
+    "across": 0.025,
     "at": [
      -10.2,
      22.2,
@@ -1194,11 +1194,11 @@
    {
     "case": "spool, blades and cable crash 11 (35 g [-0.58, 0.58, -0.58])",
     "cls": "crash",
-    "inlayer": 0.014,
-    "across": 0.027,
+    "inlayer": 0.017,
+    "across": 0.034,
     "at": [
      -10.2,
-     21.0,
+     22.2,
      28.8
     ]
    },
@@ -1206,10 +1206,10 @@
     "case": "spool, blades and cable crash 12 (35 g [-0.58, -0.58, 0.58])",
     "cls": "crash",
     "inlayer": 0.016,
-    "across": 0.021,
+    "across": 0.019,
     "at": [
-     -9.0,
-     -23.4,
+     -16.2,
+     -17.4,
      28.8
     ]
    },
@@ -1217,40 +1217,40 @@
     "case": "spool, blades and cable crash 13 (35 g [-0.58, -0.58, -0.58])",
     "cls": "crash",
     "inlayer": 0.013,
-    "across": 0.027,
+    "across": 0.024,
     "at": [
      -9.0,
-     -23.4,
+     -22.2,
      28.8
     ]
    },
    {
     "case": "RF-RM tension 18 N + side 9 N + end moment 572 N mm",
     "cls": "crash",
-    "inlayer": 0.06,
-    "across": 0.056,
+    "inlayer": 0.064,
+    "across": 0.057,
     "at": [
      25.8,
      6.6,
-     66.0
+     64.8
     ]
    },
    {
     "case": "RF-RM compression 18 N + side 9 N + end moment 572 N mm",
     "cls": "crash",
-    "inlayer": 0.06,
-    "across": 0.059,
+    "inlayer": 0.064,
+    "across": 0.06,
     "at": [
      25.8,
      6.6,
-     66.0
+     64.8
     ]
    },
    {
     "case": "RM-RB tension 67 N + side 21 N + end moment 1469 N mm",
     "cls": "crash",
     "inlayer": 0.138,
-    "across": 0.164,
+    "across": 0.163,
     "at": [
      10.2,
      21.0,
@@ -1271,8 +1271,8 @@
    {
     "case": "RM-RS0 tension 44 N + side 18 N + end moment 1540 N mm",
     "cls": "crash",
-    "inlayer": 0.158,
-    "across": 0.112,
+    "inlayer": 0.159,
+    "across": 0.103,
     "at": [
      6.6,
      21.0,
@@ -1282,8 +1282,8 @@
    {
     "case": "RM-RS0 compression 44 N + side 18 N + end moment 1540 N mm",
     "cls": "crash",
-    "inlayer": 0.158,
-    "across": 0.199,
+    "inlayer": 0.159,
+    "across": 0.198,
     "at": [
      -1.8,
      22.2,
@@ -1293,8 +1293,8 @@
    {
     "case": "RM-RS1 tension 45 N + side 19 N + end moment 1554 N mm",
     "cls": "crash",
-    "inlayer": 0.203,
-    "across": 0.227,
+    "inlayer": 0.195,
+    "across": 0.231,
     "at": [
      21.0,
      11.4,
@@ -1304,8 +1304,8 @@
    {
     "case": "RM-RS1 compression 45 N + side 19 N + end moment 1554 N mm",
     "cls": "crash",
-    "inlayer": 0.203,
-    "across": 0.227,
+    "inlayer": 0.195,
+    "across": 0.251,
     "at": [
      -1.8,
      -27.0,
@@ -1313,7 +1313,7 @@
     ]
    }
   ],
-  "worst": 0.367,
+  "worst": 0.373,
   "worst_case": "the roller's leaf on the full coil (40 N)",
   "worst_at": [
    25.8,
@@ -1322,17 +1322,17 @@
   ],
   "ok": true,
   "beta": 4.0,
-  "iteration": 24,
+  "iteration": 23,
   "max_worst": 0.3,
   "k": 3.0
  },
  "field": {
-  "worst": 0.283,
-  "worst_case": "RM-RS1 compression 45 N + side 19 N + end moment 1554 N mm",
+  "worst": 0.273,
+  "worst_case": "the mast's fold moment 1.2 N m at the throat ((0, -1))",
   "worst_at": [
-   -0.6,
-   -27.0,
-   54.0
+   21.0,
+   11.4,
+   34.8
   ],
   "beta": 32.0,
   "iteration": 98
@@ -1351,7 +1351,7 @@
     "touches_cut": true,
     "touches_support": false,
     "loaded": true,
-    "room": 0.87,
+    "room": 0.86,
     "room_depth_mm": 37.2,
     "at": [
      -19.6,
@@ -1387,7 +1387,7 @@
    },
    {
     "id": 3,
-    "cells": 714,
+    "cells": 710,
     "inscribed_mm": 3.6,
     "touches_cut": true,
     "touches_support": true,
@@ -1396,11 +1396,11 @@
     "room_depth_mm": 51.6,
     "at": [
      0.0,
-     15.1,
+     15.2,
      22.5
     ],
     "core_mm": 1.2,
-    "free_cells": 714
+    "free_cells": 710
    },
    {
     "id": 4,
@@ -1492,7 +1492,7 @@
     "touches_cut": true,
     "touches_support": false,
     "loaded": true,
-    "room": 0.76,
+    "room": 0.75,
     "room_depth_mm": 63.6,
     "at": [
      0.0,
@@ -1545,20 +1545,20 @@
    },
    {
     "id": 11,
-    "cells": 1484,
+    "cells": 1460,
     "inscribed_mm": 2.2,
     "touches_cut": true,
     "touches_support": false,
     "loaded": true,
-    "room": 0.53,
+    "room": 0.52,
     "room_depth_mm": 51.6,
     "at": [
-     15.7,
+     15.6,
      0.0,
-     60.2
+     60.4
     ],
     "core_mm": 1.2,
-    "free_cells": 1484,
+    "free_cells": 1460,
     "share_of_drawn": 0.26,
     "room_faces": [
      "+x",
@@ -1668,7 +1668,6 @@
    "min_mm2": null
   },
   "parity": [],
-  "paths": [],
   "cases": 44,
   "supports": 1,
   "fails": [],
@@ -1680,32 +1679,27 @@
     22.2,
     28.8
    ],
-   "budget_share": 0.335,
+   "budget_share": 0.337,
    "thinned": 0.4,
    "max_worst": 0.3,
-   "fin_cells": 692,
+   "fin_cells": 726,
    "worst_in_fin": false
   }
  },
  "baseline": null,
- "total_s": 4383,
- "part_sha": "9d896992a52b",
+ "total_s": 5680,
+ "part_sha": "de8b10af8bc6",
  "lib_sha": "265dd11f384f",
- "setup_sha": "5ad2ad0d2decb0ef",
+ "setup_sha": "f762abdd8bc1bd5d",
  "max_worst": 0.3,
  "strength_ok": false,
  "print_stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/scout_v4_probe_turret.stl",
-  "sha256": "f4c4728a5817a37185d0887030532c2db5d2f8c4e133a5e1ec7dc01d95821bff",
-  "bytes": 13829684,
-  "faces": 276592,
+  "sha256": "e8a232ac19c859380523b6aae3ee7797feaf0a202ea3579f31749bb39d478e85",
+  "bytes": 13652484,
+  "faces": 273048,
   "view_faces": 60000,
-  "view_sha256": "93b5803635952d0d06a25a7922ccebfbcc66b0a9bc80843c8c9a2bd3c609a1a4",
-  "at": "2026-11-15 03:27"
- },
- "assembly": {
-  "drone": "scout_v4",
-  "ok": true,
-  "why": []
+  "view_sha256": "2859a2a171ce7af12d1b7d2e76185422e181146cfab93013f7746f9b2f927a17",
+  "at": "2026-11-15 03:12"
  }
 }
