@@ -2982,7 +2982,7 @@
    "mass_g": 80.0,
    "tag": "E",
    "owner": "overseer core session",
-   "version": "core v2",
+   "version": "core v2; 15 Nov: the four motor runs redrawn out through the top cover's side windows (tools/overseer_wires.py)",
    "source": "nox/overseer/core_v1.py",
    "id": "wires",
    "group": "bought",
@@ -2996,7 +2996,7 @@
    "mass_g": 0.0,
    "tag": "E",
    "owner": "overseer core session",
-   "version": "30 Oct: every other lead of the wire runs drawn red (the + of each pair), the rest black; the 80 g stays on wires",
+   "version": "30 Oct: every other lead of the wire runs drawn red (the + of each pair), the rest black; the 80 g stays on wires; 15 Nov: its motor run redrawn out through the top cover's side window (tools/overseer_wires.py)",
    "source": "nox/overseer/core_v1.py",
    "id": "wires_red",
    "group": "bought",
@@ -3643,18 +3643,6 @@
     "b": "hub_deck",
     "allow_mm3": 76,
     "why": "the + leads of the front runs through the deck nose. the lead runs are a schematic (E): straight 3-8 mm bundles drawn on the core v2 layout (26-30 Oct, its script gone), never re-routed for the parts drawn after them; the real leads are flexible and routed by hand round the printed parts"
-   },
-   {
-    "a": "wires",
-    "b": "overseer_top_cover",
-    "allow_mm3": 85,
-    "why": "the motor leads drawn straight out along the diagonals through the cover's skirt over the arm roots; the cover's cable exits are the 48 x 18 side windows (15 Nov, cover v2.1: its root end walls 1.2 -> 2.52 for the 2 mm floor, the same runs through them 39 -> 81.4 mm3, re-measured and rounded up; no exits at the root ends, Spark 3 Nov). the lead runs are a schematic (E): straight 3-8 mm bundles drawn on the core v2 layout (26-30 Oct, its script gone), never re-routed for the parts drawn after them; the real leads are flexible and routed by hand round the printed parts"
-   },
-   {
-    "a": "wires_red",
-    "b": "overseer_top_cover",
-    "allow_mm3": 28,
-    "why": "the + motor lead of the same run (-51, +51) (15 Nov, cover v2.1 walls 2.52: 26.2 mm3, re-measured and rounded up). the lead runs are a schematic (E): straight 3-8 mm bundles drawn on the core v2 layout (26-30 Oct, its script gone), never re-routed for the parts drawn after them; the real leads are flexible and routed by hand round the printed parts"
    },
    {
     "a": "wires",
