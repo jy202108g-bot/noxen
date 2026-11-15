@@ -425,17 +425,17 @@
    ]
   },
   {
-   "a": "overseer_head_mount",
-   "b": "unitree_l2",
+   "a": "overseer_base",
+   "b": "overseer_battery_tray",
    "mm3": 0.03,
    "limit_mm3": 0.5,
    "contact": null,
    "ok": true
   },
   {
-   "a": "overseer_base",
-   "b": "overseer_battery_tray",
-   "mm3": 0.03,
+   "a": "overseer_head_mount",
+   "b": "unitree_l2",
+   "mm3": 0.02,
    "limit_mm3": 0.5,
    "contact": null,
    "ok": true
@@ -489,6 +489,6 @@
   ]
  },
  "would_block": {},
- "seconds": 4.5,
+ "seconds": 2.8,
  "placed": {}
 }

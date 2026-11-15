@@ -1711,5 +1711,10 @@
   "view_faces": 60000,
   "view_sha256": "c61f46b1ad8c2b9eb9df5cc114c646de0b14538fafdee6ed809b83c4e5babe73",
   "at": "2026-11-15 08:23"
+ },
+ "assembly": {
+  "drone": "overseer",
+  "ok": true,
+  "why": []
  }
 }
