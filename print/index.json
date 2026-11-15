@@ -269,6 +269,12 @@
   "bytes": 16384,
   "at": "2026-11-14 00:51"
  },
+ "latch7_ov_receiver.stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-latch7_ov_receiver.stl",
+  "sha256": "f2a8c57a13b98dc91087be435b14ddced48e4e5df6fcab768d24892597fe470f",
+  "bytes": 286084,
+  "at": "2026-11-15 01:57"
+ },
  "latch7_ov_standin_bolt.stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-latch7_ov_standin_bolt.stl",
   "sha256": "60d2aadd04767720b87e44f85aecbd231741de364ac945f8ceaff72ae0d30562",
@@ -298,6 +304,12 @@
   "sha256": "1fb5d7b690af3aa31d1955ddf7fb0065a1a4cbead9638be6e62878820506f463",
   "bytes": 1684,
   "at": "2026-11-14 00:52"
+ },
+ "latch7_receiver.stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-latch7_receiver.stl",
+  "sha256": "a959a0904b0ad5c848d9e4c1a9a68e7e5407b5aadf72557ee2e09c67795e0fa9",
+  "bytes": 227684,
+  "at": "2026-11-15 01:57"
  },
  "latch7_seat_strip.stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-latch7_seat_strip.stl",
