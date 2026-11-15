@@ -437,6 +437,18 @@
   "bytes": 38384,
   "at": "2026-11-15 01:31"
  },
+ "scout_v4_head_coupon.stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-scout_v4_head_coupon.stl",
+  "sha256": "8cb218aee59b1730b356424971aaf7af1f8a91efccf2007d450e2ba56e550910",
+  "bytes": 176784,
+  "at": "2026-11-15 01:56"
+ },
+ "scout_v4_head_coupon_tongue.stl": {
+  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-scout_v4_head_coupon_tongue.stl",
+  "sha256": "8f34585c3c2415b2dd3e3c296e29df309491d8389833e2aa563fa99aceda865f",
+  "bytes": 3084,
+  "at": "2026-11-15 01:56"
+ },
  "scout_v4_head_frame.stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-scout_v4_head_frame.stl",
   "sha256": "f3f9d56a8e7e4c3bd0acbbfec173ccdb59b95efcd10d3a524919fb1ddccccbb9",
