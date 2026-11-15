@@ -102,19 +102,19 @@ pre#out{font:400 .85rem/1.5 var(--mono);background:var(--panel);border:1px solid
       <li><span class="qty">1×</span>tape measure (19 mm blade)</li>
       <li><span class="qty">6</span>PTFE wires, 30 AWG, ~300 mm</li>
       <li><span class="qty">1×</span>ZCZQC leaf battery contact (presses the roller)</li>
-      <li><span class="qty">1×</span>SG90 servo</li>
-      <li><span class="qty">1×</span>camera + its 2 bracket screws</li>
+      <li><span class="qty">1×</span>SG90 servo, with the bag it came in: one arm horn, its centre screw, the small horn screws, the 2 tab screws</li>
+      <li><span class="qty">1×</span>Arducam camera in its metal case (bracket off) + its own 2 side screws</li>
     </ul></div>
     <div class="box"><h3>Hardware</h3><ul class="plain">
       <li><span class="qty">1×</span>M3 × 40 + nyloc (spool axle)</li>
       <li><span class="qty">1×</span>3 mm carbon rod, cut to 23.8 mm (roller axle)</li>
-      <li><span class="qty">4×</span>M3 × 10 (turret to base)</li>
-      <li><span class="qty">1×</span>M3 × 12 (servo idler)</li>
-      <li><span class="qty">4×</span>M3 heat-set inserts (bench base)</li>
+      <li><span class="qty">5×</span>M3 × 10 (4 turret to base, 1 camera idler)</li>
+      <li><span class="qty">5×</span>M3 heat-set inserts, 5.7 long (4 bench base, 1 head frame)</li>
       <li><span class="qty">1×</span>M2 × 4 (blade A)</li>
       <li><span class="qty">1×</span>M2 × 6 + nut (blade B)</li>
       <li><span class="qty">2×</span>M1.6 × 4 (motor face)</li>
       <li><span class="qty">—</span>5-min epoxy, CA, kapton, light oil</li>
+      <li><span class="qty">tool</span>PH1 screwdriver, shaft 75 mm or longer</li>
     </ul></div>
   </div>
 </section>
@@ -139,14 +139,14 @@ pre#out{font:400 .85rem/1.5 var(--mono);background:var(--panel);border:1px solid
       <rect x="230" y="284" width="60" height="16" fill="var(--line)" stroke="var(--ink)" stroke-width="1"/>
       <circle cx="320" cy="140" r="9" fill="var(--panel)" stroke="var(--accent)" stroke-width="2"/>
       <path d="M332 130 l24 -14" stroke="var(--accent)" stroke-width="1.5" fill="none"/>
-      <text x="358" y="114" fill="var(--accent)">roller + springs press the coil</text>
+      <text x="358" y="114" fill="var(--accent)">roller + leaf contact press the coil</text>
       <path d="M304 190 Q312 150 330 60" stroke="var(--tape)" stroke-width="5" fill="none"/>
       <rect x="318" y="40" width="26" height="56" fill="none" stroke="var(--ink)" stroke-width="1.6"/>
       <text x="352" y="72">throat: flat at the bottom,</text>
       <text x="352" y="86">lens at the top</text>
       <line x1="331" y1="40" x2="331" y2="14" stroke="var(--tape)" stroke-width="7"/>
       <text x="352" y="22">mast up to the head frame</text>
-      <text x="420" y="196" fill="var(--muted)">axles: M3 × 40</text>
+      <text x="420" y="196" fill="var(--muted)">spool axle: M3 × 40</text>
       <text x="420" y="210" fill="var(--muted)">through both walls</text>
     </svg>
     <figcaption>Side view, schematic, not to scale. The motor sits under the spool; its pinion drives the spool's gear.</figcaption>
@@ -212,21 +212,37 @@ pre#out{font:400 .85rem/1.5 var(--mono);background:var(--panel);border:1px solid
       <ul><li>Slide the head frame's sleeve over the blade tips. Mark A through the top screw hole and B through the middle of the slot. Take it off.</li>
       <li>Drill or punch a 2.2 mm hole at each mark.</li>
       <li>Refit the sleeve: A on the M2 × 4 through its fixed hole, B on the M2 × 6 and nut through the slot, so B can slide.</li>
-      <li>Leave the ribbon a 4 mm slack loop at the head.</li></ul>
-      <span class="uses">head frame · M2 × 4 · M2 × 6 + nut</span></li>
+      <li>Leave the ribbon a 4 mm slack loop at the head, its end up through the slot in the plate.</li>
+      <li>Heat-set one insert into the hole in the bracket on the frame's idler side (the small upright plate opposite the servo's ring).</li></ul>
+      <span class="uses">head frame · M2 × 4 · M2 × 6 + nut · 1 insert</span></li>
 
     <li class="step"><span class="n"></span>
-      <label><input type="checkbox" id="s9"><h3>Servo and camera</h3></label>
-      <ul><li>Screw the SG90 onto the head frame's two posts by its tabs.</li>
-      <li>Hang the cradle between the servo horn and the idler (M3 × 12).</li>
-      <li>Slide the camera into the cradle's sleeve from behind until its front meets the lip. Clamp it with its own two bracket screws through the side slots.</li></ul>
-      <span class="uses">SG90 · cradle · M3 × 12 · camera + 2 bracket screws</span></li>
+      <label><input type="checkbox" id="s9"><h3>Servo into the head frame</h3></label>
+      <ul><li>Push the arm horn onto the SG90's spline with its centre screw, then turn the output by hand until the arm points straight up.</li>
+      <li>Slide the SG90 into the frame's closed ring from the open side, where the cradle will go, until its tabs stop on the ring's face. The horn ends up facing the bracket.</li>
+      <li>Drive its two tab screws through the tabs into the ring's pilot holes with the long PH1, reaching past the bracket. Stop when snug; PCTG strips if you keep turning.</li></ul>
+      <span class="uses">head frame · SG90 + horn · centre screw · 2 tab screws</span></li>
+
+    <li class="step"><span class="n"></span>
+      <label><input type="checkbox" id="s11"><h3>Camera into the cradle</h3></label>
+      <ul><li>Slide the camera case into the cradle from the open back, lens first, until its front meets the lip. The lip runs along the top and the sides only.</li>
+      <li>Clamp it with its own two side screws through the slots in the side walls. The heads sit in the recesses.</li>
+      <li>If you have the LED bars, stick them on the case's top and bottom fronts through their windows. Skip them on the bench if you don't.</li></ul>
+      <span class="uses">cradle · camera + 2 side screws</span></li>
+
+    <li class="step"><span class="n"></span>
+      <label><input type="checkbox" id="s12"><h3>Cradle onto the frame</h3></label>
+      <ul><li>Hold the cradle level (camera pointing forward) and lower it straight down between the bracket and the horn. The horn's hub, centre screw and arm drop into the channel on the cradle's wall from its open bottom edge.</li>
+      <li>Put two of the small horn screws through the arm's holes into the slot above the axis.</li>
+      <li>Screw an M3 × 10 in from outside the bracket, through its insert, into the cradle's boss. Stop before it clamps: the cradle must nod freely on it.</li>
+      <li>Nod the camera by hand from 20° down to straight up. Nothing should rub.</li></ul>
+      <span class="uses">2 horn screws · M3 × 10</span></li>
 
     <li class="step"><span class="n"></span>
       <label><input type="checkbox" id="s10"><h3>Power for the bench</h3></label>
       <ul><li>5 V from a USB supply straight to the N20's two leads. Swap the leads to reverse.</li>
       <li>Stop by hand before either end of the travel: the motor has no end stop.</li>
-      <li>The driver board is not needed on the bench. Tilt the camera by hand.</li></ul>
+      <li>The driver board is not needed on the bench. Leave the SG90 unplugged and tilt the camera by hand.</li></ul>
       <span class="uses">5 V USB supply · 2 leads</span></li>
   </ol>
   <div class="note warn"><strong>Careful:</strong> cut tape edges are sharp. Wear gloves for steps 2 and 8, and keep fingers clear of the gears when the motor runs.</div>
