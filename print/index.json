@@ -511,9 +511,9 @@
  },
  "scout_v4_probe_bench_turret.stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-scout_v4_probe_bench_turret.stl",
-  "sha256": "6ccd00481f120c89d5ec9b2f66f76097bebf07dd823d24c423c3e66664d3f93a",
-  "bytes": 247684,
-  "at": "2026-11-14 22:04"
+  "sha256": "76e374429e65e9ed0507c72fc3409b1c8ca131595b73faaf890092eef2b40ab4",
+  "bytes": 263684,
+  "at": "2026-11-15 02:05"
  },
  "scout_v4_probe_coupon.stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-scout_v4_probe_coupon.stl",
@@ -565,8 +565,8 @@
  },
  "scout_v4_probe_spool.stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-scout_v4_probe_spool.stl",
-  "sha256": "e8f1471e3e8725dc24cc855fccd856c70b20e651603d203ce181c63f375dce14",
+  "sha256": "8a09fbcab5fe61a17020a9f1d8b61033a4060f7e9997093bebc2d2a9200a84a7",
   "bytes": 492884,
-  "at": "2026-11-14 01:22"
+  "at": "2026-11-15 02:05"
  }
 }
