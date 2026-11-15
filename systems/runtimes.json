@@ -8487,6 +8487,15 @@
    "minutes": 281.1,
    "peak_gb": 7.082588,
    "at": "eb8f58a29883:16864"
+  },
+  {
+   "part": "box_stand2_rear_r",
+   "engine": "assembly-paths",
+   "design": 119854,
+   "cases": 15,
+   "minutes": 277.4,
+   "peak_gb": 8.225972,
+   "at": "e9ea7efd3794:16645"
   }
  ]
 }
