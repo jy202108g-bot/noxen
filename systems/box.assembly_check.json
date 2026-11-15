@@ -85,7 +85,7 @@
   }
  ],
  "grow_mm": 0.1,
- "parts_checked": 180,
+ "parts_checked": 187,
  "printed": [
   "box_dome_hub_l",
   "box_dome_hub_r",
@@ -207,66 +207,66 @@
   {
    "a": "box_scout_v4_scout_v4_frame",
    "b": "box_scout_v4_scout_v4_receiver_bolts",
-   "mm3": 4.87,
+   "mm3": 4.46,
    "limit_mm3": 6.0,
    "contact": "the M3 x 5.7 heat-set inserts (drawn with the bolts) melted into the yokes' insert holes (systems/scout_v4.assembly.json)",
    "ok": true,
    "pieces": [
     {
-     "mm3": 0.32,
+     "mm3": 0.33,
      "at": [
-      26.2,
-      126.0,
+      -24.7,
+      210.5,
       232.8
      ],
      "extent_mm": [
-      1.2,
       0.3,
+      1.2,
       5.7
      ],
-     "depth_mm": 0.27
+     "depth_mm": 0.33
     },
     {
-     "mm3": 0.3,
+     "mm3": 0.29,
+     "at": [
+      -28.0,
+      123.0,
+      232.8
+     ],
+     "extent_mm": [
+      0.8,
+      1.0,
+      5.7
+     ],
+     "depth_mm": 0.85
+    },
+    {
+     "mm3": 0.25,
+     "at": [
+      28.0,
+      123.0,
+      232.8
+     ],
+     "extent_mm": [
+      1.0,
+      1.2,
+      5.7
+     ],
+     "depth_mm": 0.97
+    },
+    {
+     "mm3": 0.24,
      "at": [
       27.7,
-      122.7,
+      125.7,
       232.8
      ],
      "extent_mm": [
-      1.1,
-      0.8,
+      0.9,
+      0.7,
       5.7
      ],
-     "depth_mm": 0.84
-    },
-    {
-     "mm3": 0.3,
-     "at": [
-      -28.4,
-      123.7,
-      232.8
-     ],
-     "extent_mm": [
-      0.3,
-      1.2,
-      5.7
-     ],
-     "depth_mm": 0.32
-    },
-    {
-     "mm3": 0.27,
-     "at": [
-      26.1,
-      211.9,
-      232.8
-     ],
-     "extent_mm": [
-      1.2,
-      0.3,
-      5.7
-     ],
-     "depth_mm": 0.32
+     "depth_mm": 0.7
     }
    ]
   },
@@ -282,6 +282,14 @@
    "a": "box_swaparm_box_arm8_b_unit_body",
    "b": "box_swaparm_box_arm8_b_pads",
    "mm3": 0.15,
+   "limit_mm3": 0.5,
+   "contact": null,
+   "ok": true
+  },
+  {
+   "a": "box_latch7_scout_receiver",
+   "b": "box_scout_v4_scout_v4_frame",
+   "mm3": 0.05,
    "limit_mm3": 0.5,
    "contact": null,
    "ok": true
@@ -345,14 +353,6 @@
   {
    "a": "box_swaparm_box_arm8_bay_120_recv",
    "b": "box_swaparm_box_arm8_bay_120_saddle",
-   "mm3": 0.0,
-   "limit_mm3": 0.5,
-   "contact": null,
-   "ok": true
-  },
-  {
-   "a": "box_latch7_scout_receiver",
-   "b": "box_scout_v4_scout_v4_frame",
    "mm3": 0.0,
    "limit_mm3": 0.5,
    "contact": null,
@@ -574,6 +574,6 @@
  ],
  "not_print_ready": {},
  "would_block": {},
- "seconds": 10.4,
+ "seconds": 10.7,
  "placed": {}
 }

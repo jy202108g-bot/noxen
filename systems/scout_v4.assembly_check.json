@@ -114,133 +114,39 @@
  "pairs": [
   {
    "a": "scout_v4_frame",
-   "b": "scout_v4_radxa_zero_3w",
-   "mm3": 165.01,
+   "b": "scout_v4_probe_pinion",
+   "mm3": 10.72,
    "limit_mm3": 0.5,
    "contact": null,
    "ok": false,
    "pieces": [
     {
-     "mm3": 45.63,
+     "mm3": 10.71,
      "at": [
-      -70.2,
-      11.0,
-      15.8
+      1.2,
+      13.6,
+      16.1
      ],
      "extent_mm": [
-      7.3,
-      6.5,
-      4.4
+      6.0,
+      2.8,
+      3.5
      ],
-     "depth_mm": 4.42
+     "depth_mm": 2.75
     },
     {
-     "mm3": 40.96,
+     "mm3": 0.0,
      "at": [
-      -70.2,
-      -11.4,
-      14.2
+      4.8,
+      14.6,
+      18.3
      ],
      "extent_mm": [
-      7.3,
-      7.4,
-      1.3
+      0.8,
+      0.2,
+      0.1
      ],
-     "depth_mm": 1.26
-    },
-    {
-     "mm3": 40.85,
-     "at": [
-      -12.6,
-      -11.4,
-      14.2
-     ],
-     "extent_mm": [
-      7.3,
-      7.5,
-      1.3
-     ],
-     "depth_mm": 1.26
-    },
-    {
-     "mm3": 37.57,
-     "at": [
-      -12.6,
-      11.0,
-      14.2
-     ],
-     "extent_mm": [
-      7.3,
-      6.5,
-      1.3
-     ],
-     "depth_mm": 1.26
-    }
-   ]
-  },
-  {
-   "a": "scout_v4_frame",
-   "b": "scout_v4_fc",
-   "mm3": 73.78,
-   "limit_mm3": 0.5,
-   "contact": null,
-   "ok": false,
-   "pieces": [
-    {
-     "mm3": 39.43,
-     "at": [
-      23.3,
-      -9.8,
-      17.7
-     ],
-     "extent_mm": [
-      9.0,
-      7.5,
-      2.2
-     ],
-     "depth_mm": 2.2
-    },
-    {
-     "mm3": 11.86,
-     "at": [
-      25.4,
-      11.0,
-      17.0
-     ],
-     "extent_mm": [
-      5.7,
-      5.0,
-      0.8
-     ],
-     "depth_mm": 0.8
-    },
-    {
-     "mm3": 11.3,
-     "at": [
-      47.7,
-      11.0,
-      17.0
-     ],
-     "extent_mm": [
-      5.7,
-      4.9,
-      0.8
-     ],
-     "depth_mm": 0.8
-    },
-    {
-     "mm3": 11.19,
-     "at": [
-      47.7,
-      -11.0,
-      17.0
-     ],
-     "extent_mm": [
-      5.6,
-      4.9,
-      0.8
-     ],
-     "depth_mm": 0.8
+     "depth_mm": 0.11
     }
    ]
   },
@@ -371,81 +277,89 @@
   {
    "a": "scout_v4_frame",
    "b": "scout_v4_receiver_bolts",
-   "mm3": 4.87,
+   "mm3": 4.46,
    "limit_mm3": 6.0,
    "contact": "the M3 x 5.7 heat-set inserts (drawn with the bolts) melted into the yokes' insert holes",
    "ok": true,
    "pieces": [
     {
-     "mm3": 0.32,
+     "mm3": 0.33,
      "at": [
-      47.7,
-      26.2,
+      -36.8,
+      -24.7,
       12.5
      ],
      "extent_mm": [
-      0.3,
       1.2,
+      0.3,
       5.7
      ],
-     "depth_mm": 0.27
+     "depth_mm": 0.33
     },
     {
-     "mm3": 0.3,
+     "mm3": 0.29,
      "at": [
-      51.0,
+      50.7,
+      -28.0,
+      12.5
+     ],
+     "extent_mm": [
+      1.0,
+      0.8,
+      5.7
+     ],
+     "depth_mm": 0.85
+    },
+    {
+     "mm3": 0.25,
+     "at": [
+      50.7,
+      28.0,
+      12.5
+     ],
+     "extent_mm": [
+      1.2,
+      1.0,
+      5.7
+     ],
+     "depth_mm": 0.97
+    },
+    {
+     "mm3": 0.24,
+     "at": [
+      48.1,
       27.7,
       12.5
      ],
      "extent_mm": [
-      0.8,
-      1.1,
+      0.7,
+      0.9,
       5.7
      ],
-     "depth_mm": 0.84
-    },
-    {
-     "mm3": 0.3,
-     "at": [
-      50.0,
-      -28.4,
-      12.5
-     ],
-     "extent_mm": [
-      1.2,
-      0.3,
-      5.7
-     ],
-     "depth_mm": 0.32
-    },
-    {
-     "mm3": 0.27,
-     "at": [
-      -38.2,
-      26.1,
-      12.5
-     ],
-     "extent_mm": [
-      0.3,
-      1.2,
-      5.7
-     ],
-     "depth_mm": 0.32
+     "depth_mm": 0.7
     }
    ]
   },
   {
    "a": "scout_v4_frame",
    "b": "scout_v4_probe_turret",
-   "mm3": 0.06,
+   "mm3": 0.05,
    "limit_mm3": 0.5,
    "contact": null,
    "ok": true
   },
   {
    "a": "scout_v4_frame",
-   "b": "scout_v4_motor_4",
+   "b": "scout_v4_cage_rods",
    "mm3": 0.01,
+   "limit_mm3": 0.5,
+   "contact": null,
+   "ok": true
+  },
+  {
+   "a": "scout_v4_frame",
+   "b": "scout_v4_motor_1",
+   "mm3": 0.0,
    "limit_mm3": 0.5,
    "contact": null,
    "ok": true
@@ -556,33 +470,9 @@
    "into": [
     "scout_v4_frame"
    ],
-   "blocked_by": [
-    {
-     "part": "scout_v4_frame",
-     "mm3": 249.4,
-     "at_step": 16,
-     "of_steps": 65,
-     "along": "8.0 mm out",
-     "pieces": [
-      {
-       "mm3": 249.4,
-       "at": [
-        13.2,
-        -36.5,
-        3.5
-       ],
-       "extent_mm": [
-        18.5,
-        4.5,
-        3.0
-       ],
-       "depth_mm": 3.0
-      }
-     ]
-    }
-   ],
+   "blocked_by": [],
    "tight": [],
-   "ok": false,
+   "ok": true,
    "why": "the DRV8833 taped up from below onto its land beside the FC with the receiver off (the battery mechanism bolts on after: its room is the boards' way in)"
   },
   {
@@ -603,33 +493,9 @@
    "into": [
     "scout_v4_frame"
    ],
-   "blocked_by": [
-    {
-     "part": "scout_v4_frame",
-     "mm3": 962.08,
-     "at_step": 30,
-     "of_steps": 65,
-     "along": "15.0 mm out",
-     "pieces": [
-      {
-       "mm3": 1127.09,
-       "at": [
-        -63.8,
-        -0.1,
-        0.6
-       ],
-       "extent_mm": [
-        20.3,
-        31.2,
-        4.8
-       ],
-       "depth_mm": 4.76
-      }
-     ]
-    }
-   ],
+   "blocked_by": [],
    "tight": [],
-   "ok": false,
+   "ok": true,
    "why": "the Radxa up from below onto its 4 posts (M2.5 into the inserts) with the receiver off (the battery mechanism bolts on after: its room is the boards' way in), the screws' heads from below; its tail third through the tail tray's window, before the UBEC (which hangs under it)"
   },
   {
@@ -2322,12 +2188,10 @@
  ],
  "not_print_ready": {
   "scout_v4_frame": [
-   "clashes with scout_v4_fc: 73.8 mm3",
-   "clashes with scout_v4_radxa_zero_3w: 165.0 mm3",
-   "blocks the path 'DRV8833 up onto its land' (249.4 mm3 8.0 mm out)",
-   "blocks the path 'Radxa up onto its posts' (962.1 mm3 15.0 mm out)"
+   "clashes with scout_v4_probe_pinion: 10.7 mm3"
   ],
   "scout_v4_probe_pinion": [
+   "clashes with scout_v4_frame: 10.7 mm3",
    "clashes with scout_v4_probe_turret: 3.0 mm3"
   ],
   "scout_v4_probe_turret": [
@@ -2335,6 +2199,6 @@
   ]
  },
  "would_block": {},
- "seconds": 5.4,
+ "seconds": 4.9,
  "placed": {}
 }
