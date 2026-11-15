@@ -2187,5 +2187,13 @@
   "view_faces": 60000,
   "view_sha256": "834916a41bc9b2a9f01c0d49f667f93259c20ff5246c1ce2875e86db8f42b782",
   "at": "2026-11-15 01:06"
+ },
+ "assembly": {
+  "drone": "scout_v4",
+  "ok": false,
+  "why": [
+   "clashes with scout_v4_fc: 74.8 mm3",
+   "clashes with scout_v4_radxa_zero_3w: 165.0 mm3"
+  ]
  }
 }
