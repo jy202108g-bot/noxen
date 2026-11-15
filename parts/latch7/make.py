@@ -1351,7 +1351,11 @@ def write_both():
                    f"Scout {rs['swap_g']} g with its cartridge, Overseer {ro['swap_g']} g. Both fit their landing funnel: clear seated, in 65 landing states and on the swap path; "
                    f"the Scout receiver stands on four landing feet. Worst strength index {rs['audit']['strength']['worst_index']} (Scout), {ro['audit']['strength']['worst_index']} (Overseer). Numbers under the viewer.",
            "cg_ref": None, "timeline": "tools/latch7_both_motion.py:timeline", "appendix": "systems/latch7.appendix.html", "parts": parts}
-    json.dump(asm, open(os.path.join(ROOT, "systems", "latch7_both.assembly.json"), "w"), indent=1)
+    fj = os.path.join(ROOT, "systems", "latch7_both.assembly.json")
+    try: asm["assembly"] = json.load(open(fj)).get("assembly")               # the assembly gate's block (tools/assembly_check.py) stays as its owner wrote it
+    except (OSError, ValueError): pass
+    if asm.get("assembly") is None: asm.pop("assembly", None)
+    json.dump(asm, open(fj, "w"), indent=1)
     print("latch7_both:", len(parts), "parts")
 
 # ------------------------------------------------------------------ the print kit (13 Nov, Spark: "i want to start printing soon")
