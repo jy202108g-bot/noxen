@@ -2,7 +2,7 @@
  "part_sha": "31ad7caf0b1e",
  "lib_sha": "",
  "data_sha": "dfd8db6bfad0",
- "setup_sha": "2fbd2d3c3a2d555d",
+ "setup_sha": "115fe1709a62dfdf",
  "reads": [
   "parts/box_arm8/make.py",
   "parts/box_arm8_lib.py",

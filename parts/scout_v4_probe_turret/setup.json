@@ -1,15 +1,13 @@
 {
  "part_sha": "9d896992a52b",
  "lib_sha": "e6f8627b96fd",
- "data_sha": "d22eb9d96893",
- "setup_sha": "5ad2ad0d2decb0ef",
+ "data_sha": "d4bdc8245b25",
+ "setup_sha": "c096ad18a5a23a6a",
  "reads": [
   "parts/cage_node_lib.py",
   "parts/scout_units_lib.py",
-  "parts/scout_v4_probe_turret/part.py",
   "parts/scout_v4_units_lib.py",
   "parts/socket_inject.py",
-  "systems/fit_table.json",
   "systems/overseer.cage.json",
   "systems/scout.cage_loads.json",
   "systems/scout_v4.assembly.json",
