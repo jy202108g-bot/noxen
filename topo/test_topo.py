@@ -1052,6 +1052,29 @@ def t_audit_drawn_thin():
         check("audit drawn_thin", False, str(e))
 
 
+def t_audit_lone_post():
+    """audit: lone_post (15 Nov: the Scout v4 head frame's SG90 tab post, a 7 x 3.4 pad with its only room below it, snapped off the bench
+    print). A loaded pad carrying a screw with room one member deep off only its underside is refused; the same pad inside open room passes."""
+    try:
+        import manifold3d as mf
+        from topo.audit import audit
+        from .part import Part
+        box = lambda x0, x1, y0, y1, z0, z1: mf.Manifold.cube([x1 - x0, y1 - y0, z1 - z0]).translate([x0, y0, z0])
+        screw = mf.Manifold.cylinder(40, 0.8, 0.8, 16).rotate([-90, 0, 0]).translate([15, -5, 23])
+        def lone(alone):
+            pad = box(12, 18, 12, 18, 20, 26)
+            env = (box(0, 30, 0, 30, 0, 3) + box(12, 18, 12, 18, 3, 20)) if alone else box(0, 30, 0, 30, 0, 30)
+            p = Part("postmini", 1.0, box(0, 30, 0, 30, 0, 3) + pad, screw, env, log=lambda s_: None)
+            p.support("default", box(-1, 31, -1, 31, -1, 1)); p.load("push", box(12, 18, 12, 12.6, 20, 26), (0, 10.0, 0))
+            rep = audit(p, 4.0, log=lambda s_: None, hard=False)
+            return bool(rep["lone_posts"]), [f[:40] for f in rep["fails"] if not f.startswith("lone_post")]
+        (a, fa), (b, fb) = lone(True), lone(False)
+        check("audit lone_post: a screw pad with room only under it is refused, the same pad in open room passes", a and not b, f"alone refused {a} {fa}, open refused {b} {fb}")
+    except Exception as e:
+        traceback.print_exc()
+        check("audit lone_post", False, str(e))
+
+
 def t_audit_env_neck():
     """audit: env_neck (5 Nov: the Scout tail unit's node arm met its bay over a 4 mm overlap, the nose unit's camera posts had 1 mm of
     room beside their stubs). A loaded pad whose only room to the support is a 2 mm slab is refused at min member 4; the same pad on a
@@ -1660,7 +1683,7 @@ ARMS_GEN = 14.0
 def main():
     quick = "--quick" in sys.argv
     t0 = time.time()
-    for t in (t_ke, t_voxelise, t_matvec, t_transfer, t_galerkin, t_mg_vs_direct, t_mma, t_calibration, t_gradients, t_masked_neck, t_gate_ties, t_neck, t_skin_core, t_near_symmetry, t_gate_specks, t_export_cleanup, t_organic_drawn_walls, t_audit_drawn_wall_large, t_gate_drawn_body, t_gate_thin_ok, t_export_mesh, t_export_fallback, t_export_pinch, t_setup_sha, t_setup_reads, t_early_check, t_strength_floating, t_floating_load, t_audit_plate, t_audit_block_measure, t_audit_drawn_thin, t_audit_parity, t_audit_env_neck, t_audit_load_room, t_audit_solid_ok, t_design_hash, t_coarse_setup_fails, t_audit_room_full, t_audit_bed, t_memory_gate, t_gate_memory, t_build_memory_gate, t_built_hold, t_no_cavity):
+    for t in (t_ke, t_voxelise, t_matvec, t_transfer, t_galerkin, t_mg_vs_direct, t_mma, t_calibration, t_gradients, t_masked_neck, t_gate_ties, t_neck, t_skin_core, t_near_symmetry, t_gate_specks, t_export_cleanup, t_organic_drawn_walls, t_audit_drawn_wall_large, t_gate_drawn_body, t_gate_thin_ok, t_export_mesh, t_export_fallback, t_export_pinch, t_setup_sha, t_setup_reads, t_early_check, t_strength_floating, t_floating_load, t_audit_plate, t_audit_block_measure, t_audit_drawn_thin, t_audit_parity, t_audit_env_neck, t_audit_lone_post, t_audit_load_room, t_audit_solid_ok, t_design_hash, t_coarse_setup_fails, t_audit_room_full, t_audit_bed, t_memory_gate, t_gate_memory, t_build_memory_gate, t_built_hold, t_no_cavity):
         t()
     if not quick:
         t_end_to_end()

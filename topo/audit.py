@@ -37,6 +37,10 @@ Checks (hard = raises, soft = logged + in the report):
                        engine builds a blob there on a neck the gate refuses. 5 Nov: the Scout tail unit's tail-node arm met its
                        bay over a 4 mm overlap (three necks), the nose unit's lower camera posts had 1.2 mm of room beside their
                        2 mm stubs behind the plug keep-out (two loose blobs). Widen the overlap or the room round the body.
+  lone_post      hard  a loaded drawn body carrying a fastener (it touches a cut) off the support with design room one member deep
+                       off at most one of its six faces: a post on one root that the screw's tightening and any push bend at that
+                       neck. 15 Nov: the Scout v4 head frame's SG90 tab pads (room only under them) snapped on the bench print.
+                       Open the room off a second face or join the posts with a drawn collar round what they hold.
   drawn_wall     hard  a drawn body (after its cuts, thin_ok bodies left out) with a wall under the gate's thin rule (the 0.9 mm
                        opening's residue: under the 2 mm floor) anywhere: the gate fails it wherever the engine leaves it exposed
                        and the export cleanup may not cut drawn material (7 Nov: the Scout node collars at their resin grooves).
@@ -394,6 +398,24 @@ def parity_columns(mesh, xs, ys, chunk=20000):
     return bad
 
 
+def room_faces(cells, des, r, min_cells=2):
+    """the faces (+x, -x, +y, ...) of a body off which a straight run of r design cells leaves from at least min_cells of its face cells"""
+    out = []
+    pad = np.pad(des, r + 1)
+    cp = np.pad(cells, r + 1)
+    for ax in range(3):
+        for sgn in (1, -1):
+            face = cp & ~np.roll(cp, -sgn, axis=ax)
+            ok = face.copy()
+            for k in range(1, r + 1):
+                ok &= np.roll(pad, -sgn * k, axis=ax)
+                if not ok.any():
+                    break
+            if int(ok.sum()) >= min_cells:
+                out.append(("+" if sgn > 0 else "-") + "xyz"[ax])
+    return out
+
+
 def audit(part, min_member_mm, log=print, hard=True, floor_mm=3.2):
     sh, h = part.shape, part.h
     sol = (part.solid & ~part.insert_cells).reshape(sh)
@@ -542,6 +564,24 @@ def audit(part, min_member_mm, log=print, hard=True, floor_mm=3.2):
         rep["room_depth_warn"] = [b["id"] for b in warn]
         log(f"audit: WARNING room behind loaded bodies {[b['id'] for b in warn]} is under {3 * mm:.0f} mm: expect "
             f"thin bars there, not a web. Extend the envelope behind them.")
+
+    # lone_post (15 Nov, the Scout v4 head frame's SG90 tab post snapped off on the bench): a loaded drawn body carrying a fastener (it
+    # touches a cut) away from the support with design room one member deep off only one of its six faces is a post: the engine can
+    # root it on that face alone, so every load on the screw bends one neck, across the layers when the post stands along the build.
+    # Room off two faces lets it be gripped (a gusset behind the screw, a bar to its twin, the collar round the body it holds).
+    rep["lone_posts"] = []
+    for b in bodies:
+        if not b["loaded"] or b["touches_support"] or not b["touches_cut"]:
+            continue
+        cells = lab == b["id"]
+        faces = room_faces(cells, des, r_mm, min_cells=max(2, r_mm * r_mm // 2))
+        b["room_faces"] = faces
+        if len(faces) <= 1:
+            rep["lone_posts"].append(dict(id=b["id"], at=b["at"], faces=faces))
+            fails.append(f"lone_post: loaded drawn body {b['id']} at {b['at']} carries a fastener and has design room one member deep off "
+                         f"only {faces or 'none'} of its faces: a lone post on one root, which the screw's tightening and any push on what it "
+                         f"holds bend at that neck (across the layers when it stands along the build). Open the room off a second face (behind "
+                         f"the screw, along what it holds) or join it to its twin with a drawn collar round the body it holds.")
 
     # envelope waste
     if n_des:
