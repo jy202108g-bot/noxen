@@ -1413,6 +1413,29 @@ def t_audit_fit():
         check("audit fit", False, repr(e)[:200])
 
 
+def t_path_sweep_gap():
+    """paths.sweep grows the piece by at least its fit gap everywhere and by at most gap + BALL_TOL across the pull (15 Nov: the
+    12-segment sphere left 0.23 of a 0.25 slide gap along a box's edges and corners, the Scout v4 frame's ways in): a 10 mm cube pulled
+    20 along -x, grown by the slide gap and by 0.95: points off its faces, edges and the far end's corners at the gap are inside, at
+    gap + BALL_TOL + 0.001 off the faces and edges outside, and the seated end is not grown"""
+    try:
+        import manifold3d as mf
+        from . import paths as P, fit
+        from .part import tm
+        cube = mf.Manifold.cube([10, 10, 10]); res = []
+        for g in (fit.gap("slide"), 0.95):
+            sw = P.sweep({"out": [-1, 0, 0], "length_mm": 20}, cube, grow=g); t = tm(sw)
+            pts = lambda d: np.array([[5, 10 + d, 5], [5, 5, -d], [5, 10 + d / np.sqrt(2), 10 + d / np.sqrt(2)], [5, -d / np.sqrt(2), -d / np.sqrt(2)],
+                                      [-20 - d / np.sqrt(3), 10 + d / np.sqrt(3), 10 + d / np.sqrt(3)]])
+            inn = t.contains(pts(g - 1e-4)); out = t.contains(pts(g + P.BALL_TOL + 1e-3)[:4])
+            res.append((g, inn.tolist(), out.tolist(), float(np.asarray(sw.bounding_box())[3])))
+        ok = all(all(i) and not any(o) and abs(x1 - 10.0) < 1e-6 for _, i, o, x1 in res)
+        check("path sweep: grown by the full gap at faces, edges and corners, at most BALL_TOL more, the seated end not grown", ok, str(res))
+    except Exception as e:
+        traceback.print_exc()
+        check("path sweep gap", False, repr(e)[:200])
+
+
 def t_audit_room_full():
     """room_full (topo/audit.py room_strength): the room filled solid must pass max_worst, else no layout can and the run is refused
     (9 Nov: the Scout v4 frame's 16 x 8 side lugs read 2.55 after 69 min). The 24 x 10 x 10 bar holds 10 N; at 20 kN it cannot."""
@@ -1782,7 +1805,7 @@ ARMS_GEN = 14.0
 def main():
     quick = "--quick" in sys.argv
     t0 = time.time()
-    for t in (t_ke, t_voxelise, t_matvec, t_transfer, t_galerkin, t_mg_vs_direct, t_mma, t_calibration, t_gradients, t_masked_neck, t_gate_ties, t_neck, t_skin_core, t_near_symmetry, t_gate_specks, t_export_cleanup, t_organic_drawn_walls, t_audit_drawn_wall_large, t_gate_drawn_body, t_gate_thin_ok, t_export_mesh, t_export_fallback, t_export_pinch, t_setup_sha, t_setup_reads, t_early_check, t_strength_floating, t_floating_load, t_audit_plate, t_audit_block_measure, t_audit_drawn_thin, t_audit_parity, t_audit_env_neck, t_audit_lone_post, t_audit_load_room, t_audit_solid_ok, t_design_hash, t_coarse_setup_fails, t_audit_room_full, t_audit_bed, t_memory_gate, t_gate_memory, t_build_memory_gate, t_built_hold, t_no_cavity, t_audit_path, t_audit_fit):
+    for t in (t_ke, t_voxelise, t_matvec, t_transfer, t_galerkin, t_mg_vs_direct, t_mma, t_calibration, t_gradients, t_masked_neck, t_gate_ties, t_neck, t_skin_core, t_near_symmetry, t_gate_specks, t_export_cleanup, t_organic_drawn_walls, t_audit_drawn_wall_large, t_gate_drawn_body, t_gate_thin_ok, t_export_mesh, t_export_fallback, t_export_pinch, t_setup_sha, t_setup_reads, t_early_check, t_strength_floating, t_floating_load, t_audit_plate, t_audit_block_measure, t_audit_drawn_thin, t_audit_parity, t_audit_env_neck, t_audit_lone_post, t_audit_load_room, t_audit_solid_ok, t_design_hash, t_coarse_setup_fails, t_audit_room_full, t_audit_bed, t_memory_gate, t_gate_memory, t_build_memory_gate, t_built_hold, t_no_cavity, t_audit_path, t_audit_fit, t_path_sweep_gap):
         t()
     if not quick:
         t_end_to_end()

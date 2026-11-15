@@ -40,7 +40,7 @@ from topo.part import man
 from topo import fit as FIT
 from parts.scout_v4_units_lib import (S, ASM, box, cyl, along, U, unit, socks_of, socket_cases, socket_bodies, disc_cuts, region_top, region_bot,
                                       check_collars, rigid_split, SockDown, SockDown6, BraceSock, TURRET_BOLTS, REC_BOLTS, DZ0, DZ1, DRONE_G, G, HIT_N, M3_INS, M3_CLR,
-                                      M25_INS, BOSS_R, DIRS14, FLIGHT)
+                                      M25_INS, BOSS_R, DIRS14, FLIGHT, ins_hole)
 
 SPEC = dict(h=2.0, gen_cm3=130.0, max_worst=0.3,
             assembly_paths=[f"scout_v4:{n}" for n in ("FC up onto its posts", "XR2 up onto its land", "DRV8833 up onto its land", "Radxa up onto its posts",
@@ -177,7 +177,7 @@ def board_post(x, y, z0, r, r_in, depth, K):
     insert hole open through it: the insert goes in past it), the insert above the foot, or from the deck top when it would leave a cap under 2 over it"""
     full = cyl(x, y, z0, DZ1, r)
     hit = (full ^ K) ^ box(x - r - 1, x + r + 1, y - r - 1, y + r + 1, z0 + GAP + 0.01, DZ1 + 1)   # a face it rests on is its seat, not in its way
-    ins = lambda z1: cyl(x, y, z0 - 0.1, z1 + depth, r_in) if z1 + depth <= DZ1 - 2.0 else cyl(x, y, z0 - 0.1, DZ1 + 1, r_in)   # a cap under 2 over it:
+    ins = lambda z1: ins_hole(x, y, z0 - 0.1, z1 + depth, r_in) if z1 + depth <= DZ1 - 2.0 else ins_hole(x, y, z0 - 0.1, DZ1 + 1, r_in, up=False)   # a cap under 2 over it:
     if hit.volume() < 1e-3:                                                           # through, the insert pressed in flush from the deck top
         return full, ins(z0)
     bb = np.asarray(hit.bounding_box(), float); zk = bb[5]
@@ -257,12 +257,12 @@ def bodies():
         if REC_SUPPORT == "insert":                                                   # and the insert's length: the M3's shear goes in along its 6 mm
             reg = U([reg, cyl(x, y, S.REC_TOP, S.REC_TOP + M3_INS[1], M3_INS[0] + 1.5) - cyl(x, y, S.REC_TOP - 1, S.REC_TOP + M3_INS[1] + 1, M3_INS[0])])
         rec_regs.append(reg)
-        cuts.append(cyl(x, y, S.REC_TOP - 1, S.REC_TOP + M3_INS[1], M3_INS[0]))
+        cuts.append(ins_hole(x, y, S.REC_TOP - 1, S.REC_TOP + M3_INS[1], M3_INS[0]))
     # ---- the turret's bosses: M3 x 5.7 inserts from the top (PROBE's interface)
     tur, tur_regs = [], []
     for x, y in TURRET_BOLTS:
         tur.append(cyl(x, y, DZ0, DZ1, BOSS_R)); tur_regs.append(region_top(x, y, DZ1))
-        cuts.append(cyl(x, y, DZ1 - M3_INS[1], DZ1 + 1, M3_INS[0])); cuts.append(cyl(x, y, DZ0 - 20, DZ1 - M3_INS[1] - 0.6, M3_CLR))
+        cuts.append(ins_hole(x, y, DZ1 - M3_INS[1], DZ1 + 1, M3_INS[0], up=False)); cuts.append(cyl(x, y, DZ0 - 20, DZ1 - M3_INS[1] - 0.6, M3_CLR))
     drawn += tur
     cx, cz = S.SPOOL["c"]; g0 = S.N20_FACE; pz = cz - S.GEAR["c"]
     cuts.append(box(cx - 6.6, cx + 6.6, g0 - 27.6, g0 + 0.6, pz - 5.6, DZ1 + 1))      # the N20's pocket through the deck

@@ -31,15 +31,20 @@ def m(t):
     return man(t)
 
 
-def ins_cut(x, y, z, r_d, up=True, extra=1.0):
-    """an insert hole r_d = (r, depth) from z going up (into material above) or down; its boss gets the standard install and tighten
-    cases (topo/handling.py: the iron's push, the M-screw's torque and its pull-out)"""
+def ins_hole(x, y, z0, z1, r, up=True):
+    """a heat-set insert's hole, vertical, z0..z1, radius r (the fit table's insert hole: M3_INS, M2_INS, M25_INS), the insert pressed in
+    upward (up: from z0) or downward (from z1); its boss gets the standard install and tighten cases (topo/handling.py: the iron's push,
+    the screw's torque and its pull-out) on a ring 1.5 round the hole"""
     from topo import handling
-    r, d = r_d
-    z0, z1 = z - (0 if up else d), z + (d if up else 0)
     thread = {round(v["hole"] / 2, 3): k for k, v in fit._T["inserts"].items()}.get(round(r, 3), "M3")
-    handling.declare("insert", cyl(x, y, z0, z1, r + 1.5) - cyl(x, y, z0 - 1, z1 + 1, r), (x, y, z), (0, 0, 1 if up else -1), thread)
+    handling.declare("insert", cyl(x, y, z0, z1, r + 1.5) - cyl(x, y, z0 - 1, z1 + 1, r), (x, y, z0 if up else z1), (0, 0, 1 if up else -1), thread)
     return cyl(x, y, z0, z1, r)
+
+
+def ins_cut(x, y, z, r_d, up=True, extra=1.0):
+    """an insert hole r_d = (r, depth) from z going up (into material above) or down (ins_hole)"""
+    r, d = r_d
+    return ins_hole(x, y, z - (0 if up else d), z + (d if up else 0), r, up)
 
 
 def socks_of(node, ring_r=None, cls=None):
