@@ -5,10 +5,12 @@ check.json, flat floor and each foot lifted): worst index 0.352 (the gate's 0.5;
   yoke box at W X 45: 0.213 (box handling 3 g down + 2 g side (+X), uneven floor, left front foot off), A 1438 mm2, W 21638 / 27554 mm3
   rail ahead of the yoke (W Y 35): 0.352 (box handling 3 g down + 2 g side (+X), uneven floor, left front foot off), A 1038 mm2, W 12220 / 10779 mm3
   rail behind the yoke (W Y -36): 0.016 (standing: arm v8, 11 bays with packs, the ring at its worst unbalance, uneven floor, left rear foot off), A 2162 mm2, W 111004 / 27952 mm3
-  splice bolt pull through its washer (526 N): 0.178 (box handling 3 g down + 2 g side (+X), uneven floor, left front foot off)
+  splice bolt pull through its washer (462 N): 0.157 (box handling 3 g down + 2 g side (+X), uneven floor, left front foot off)
   splice bolt bearing: 0.074 (standing: arm v8, 11 bays with packs, the ring at its worst unbalance, uneven floor, right rear foot off)
 Print: on its floor face (W Z -211 down: every wall's edge, the yoke's floor plate and the foot pad); the yoke box's deck and the channel's
-top bridge 25 mm cells; no supports; 0.2 layers, 4 walls, 25 % gyroid, PCTG at PETG + 10 C. 604.8 g solid, ~18 h (E)."""
+top bridge 25 mm cells; no supports; 0.2 layers, 4 walls, 25 % gyroid, PCTG at PETG + 10 C. 600.8 g solid, ~18 h (E).
+Installable: python parts/box_stand2p_lib.py install (the declared path, every piece and tool line: PASS).
+"""
 import os, sys
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, os.path.dirname(os.path.dirname(HERE)))
 import numpy as np

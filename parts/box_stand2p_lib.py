@@ -20,10 +20,13 @@ Pieces (each in the A1 mini's 180 bed, flat on it, PCTG):
   box_stand2p_foot      four TPU 95A pads Ø36 x 5, a Ø8 x 2.8 stud pressed into each foot pad's Ø8 x 3 hole.
 Holes (no systems/fit_table.json yet: the repo's values until Spark's coupons): M5 clearance Ø5.5, M5 heat-set insert (D7 x L6) Ø6.4 x 8,
 M5 head counterbore Ø10 / Ø16 under a Ø15 washer, TPU stud hole Ø8 (stud Ø7.8), a 0.25 gap between mating faces.
-Assembly path: (1) feet into the four foot pads; (2) each front rail to its base half: five M5 x 25 with Ø15 washers and nylocs through both
+Assembly path (on the bench: the feet leave 5 mm under the stand, so it is bolted together before it stands on the floor; then the stub,
+before the rear sheet and the PSU, which face the stub's bolts and the mast's nut windows; install_check() below walks it):
+(1) feet into the four foot pads; (2) each front rail to its base half: five M5 x 25 with Ø15 washers and nylocs through both
 splice plates, from under the open channels; (3) the two base halves side by side at X 0 on the floor; (4) the mast onto both decks: up from
-under each deck through the yoke floor's key holes, the front row M5 x 16 into the mast foot's inserts, the rear row M5 x 25 on Ø15 washers
-through the foot to nylocs set through the windows low in the mast's side walls (a heat-set insert there read 0.59); (5) the arm's stub onto the mast's face, three M5 x
+under each deck through the yoke floor's key holes, the front four M5 x 16 into the mast foot's inserts, the rear two M5 x 25 on Ø15 washers
+through the foot to nylocs set through the windows low in the mast's side walls (a heat-set insert there read 0.59); (4b) the stand onto the
+floor at its pose; (5) the arm's stub onto the mast's face, three M5 x
 16 on Ø15 washers from behind through the mast's back-wall holes into inserts in the stub's flange (the arm stream: its flange holes are Ø5.5
 now, its 135 deg hole sits 0.5 into the axle stepper and is not used); (6) the hub on the stub (the arm's own order).
 Loads: every case of parts/box_stand_mast/check.json (the arm v8 with 11 bays and packs, 9.7 kg at W Y 129; the insert at the drone 106.6 /
@@ -35,7 +38,7 @@ import os, sys, json, subprocess
 import numpy as np, trimesh, manifold3d as mf
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(HERE)
 sys.path.insert(0, ROOT)
-from parts.box_stand2_lib import (box, cyl, U, mirror_x, sweep, PSU, MOTOR, STUB_BOLTS, FOOT_BOLTS, FEET, FOOT_X, FOOT_R, STUD_R,
+from parts.box_stand2_lib import (box, cyl, U, mirror_x, sweep, PSU, MOTOR, STUB_BOLTS, FEET, FOOT_X, FOOT_R, STUD_R,
                                   FLOOR, BED, Z_FOOT, arm_cases, floor_cases, wrench)
 
 PCTG = 1.27                                     # g / cm3
@@ -44,7 +47,11 @@ SF = {"flight": 4.0, "misuse": 2.5, "sustained": 10.0}
 T = 5.0                                         # walls
 X_IN, X_MID, X_OUT = 120.0, 149.0, 177.5        # the rail's inner face, its mid wall's centre, its outer face
 Y_SPL = 110.0
-SPLICE = [(130.0, -204.0), (168.0, -204.0), (130.0, -184.0), (168.0, -160.0), (149.0, -172.0)]   # (X, Z)
+SPLICE = [(136.0, -204.0), (136.0, -186.0), (162.0, -204.0), (162.0, -182.0), (162.0, -163.0)]   # (X, Z): inside the channel's two cells, 7.5 clear of
+                                                                                                # their walls for the Ø15 washers and the key (a bolt at X 149 sat in the mid wall)
+PFOOT = [(sx * x, y) for sx in (1, -1) for x, y in ((13.5, -12.0), (31.5, -12.0), (22.0, -50.0))]   # mast foot to the decks (X, Y): the front row
+# into the foot's inserts, the rear row through to nuts in the mast's rear cell; every washer 7.5 clear of the deck's walls (the engine
+# setups' FOOT_BOLTS, X 10 / 34, put the washers into the deck box's walls)
 TOP_IN, TOP_OUT = -172.0, -148.0               # the channel's top: inboard of the mid wall, outboard (the sweep: -169 at X 120, -143 at X 150, Y >= 69)
 YOKE_Y0, YOKE_Y1, DECK_Y1 = -30.0, 28.0, 0.0
 Z_TOPY = Z_FOOT                                 # the yoke's top (the deck under the mast's foot)
@@ -84,9 +91,9 @@ def mast():
              *[cyl("y", x, z, CLR_R, -20.0, 1.0) for x, z in STUB_BOLTS],
              *[cyl("y", x, z, 8.0, -70.0, -10.0) for x, z in STUB_BOLTS],        # Ø16 washer seat at Y -10 and the key's way back out
              *[cyl("y", x, z, 9.0, -70.0, -16.0) for x, z in STUB_BOLTS],        # Ø18 holes in the web and the back wall
-             *[cyl("z", x, y, INS_R, Z_FOOT - 1.0, Z_FOOT + 8.0) for x, y in FOOT_BOLTS if y > -30],      # the front row: inserts
-             *[cyl("z", x, y, CLR_R, Z_FOOT - 1.0, Z_FOOT + 11.0) for x, y in FOOT_BOLTS if y < -30],     # the rear row: through, a nut inside
-             *[box(x0, x1, -56.0, -38.0, Z_FOOT + 13.0, Z_FOOT + 33.0) for x0, x1 in ((-43.0, -36.0), (34.0, 41.0))])   # the nuts' windows in the side walls
+             *[cyl("z", x, y, INS_R, Z_FOOT - 1.0, Z_FOOT + 8.0) for x, y in PFOOT if y > -30],      # the front row: inserts
+             *[cyl("z", x, y, CLR_R, Z_FOOT - 1.0, Z_FOOT + 11.0) for x, y in PFOOT if y < -30],     # the rear row: through, a nut inside
+             *[box(x0, x1, -58.0, -40.0, Z_FOOT + 10.0, Z_FOOT + 32.0) for x0, x1 in ((-43.0, -36.0), (34.0, 41.0))])   # the nuts' windows in the side walls, down to the foot plate's top
     return body - cuts
 
 
@@ -108,18 +115,18 @@ def foot_pad(y):
 
 def base(side=1):
     yoke = U(hollow_box(0.25, X_IN + T, YOKE_Y0, YOKE_Y1, BED, Z_TOPY),
-             hollow_box(0.25, 40.0, -64.0, YOKE_Y1, BED, Z_TOPY),
+             hollow_box(0.25, 40.0, -64.0, YOKE_Y0 + T, BED, Z_TOPY),                    # the deck's rear cell (its +Y wall the yoke box's)
              box(0.25, X_IN, -1.5, 1.5, BED, Z_TOPY),                                # mid web
              box(0.25, 40.0, -64.0, DECK_Y1, Z_TOPY - 6.0, Z_TOPY))                  # the deck under the mast's foot, 6 thick
-    pads = [cyl("z", x, y, 8.0, Z_TOPY - 10.0, Z_TOPY) for x, y in FOOT_BOLTS if x > 0]
+    pads = [cyl("z", x, y, 8.0, Z_TOPY - 10.0, Z_TOPY) for x, y in PFOOT if x > 0]
     rail = channel(-64.0, Y_SPL, end_caps=((-64.0, -64.0 + T),))
     bulk = [box(X_IN, X_OUT, ya, ya + T, BED, TOP_OUT) for ya in (YOKE_Y0, YOKE_Y1 - T)]   # where the yoke's walls meet the channel
     plate = box(X_IN, X_OUT, Y_SPL - 8.0, Y_SPL, BED, TOP_OUT)
     pad, stud = foot_pad(FEET["rear"])
     body = U(yoke, *pads, rail, *bulk, plate, pad)
     cuts = U(keepouts(1), stud,
-             *[cyl("z", x, y, CLR_R, Z_TOPY - 12.0, Z_TOPY + 1.0) for x, y in FOOT_BOLTS],
-             *[cyl("z", x, y, 7.0, FLOOR - 2.0, Z_TOPY - 10.0) for x, y in FOOT_BOLTS],    # the key's way up from under the yoke
+             *[cyl("z", x, y, CLR_R, Z_TOPY - 12.0, Z_TOPY + 1.0) for x, y in PFOOT],
+             *[cyl("z", x, y, 7.0, FLOOR - 2.0, Z_TOPY - 10.0) for x, y in PFOOT],    # the key's way up from under the yoke
              *[cyl("z", x, y, 8.0, FLOOR - 2.0, BED + T + 1.0) for x in (60.0, 100.0) for y in (-16.0, 15.0)],   # the yoke's cells open below (no sealed void)
              *[cyl("z", 20.0, y, 8.0, FLOOR - 2.0, BED + T + 1.0) for y in (-33.0, 15.0)],
              *[cyl("y", x, z, CLR_R, Y_SPL - 9.0, Y_SPL + 1.0) for x, z in SPLICE])
@@ -336,7 +343,7 @@ def mast_joints():
     """the mast's foot on the decks (8 M5 into the foot's inserts) and the stub on its face (the washers' seats in the face)"""
     zf = Z_FOOT
     bear = [(np.array([x, y, zf]), np.array([0, 0, 1.0])) for x in (-40.0, 38.0) for y in (-62.0, -2.0)]
-    bolts = [(np.array([x, y, zf]), np.array([0, 0, 1.0])) for x, y in FOOT_BOLTS]
+    bolts = [(np.array([x, y, zf]), np.array([0, 0, 1.0])) for x, y in PFOOT]
     # the arm's wrench acts on the mast; the decks hold it: the foot's reactions balance the arm's loads (the mast's own 0.46 kg added at its CG)
     cases = []
     for nm, cls, F, M in arm_wrenches():
@@ -345,7 +352,7 @@ def mast_joints():
         cases.append((nm, cls, F + w, M + np.cross(cw, w)))
     ins = lambda cls, p: p / (INSERT_PULL / SF[cls]); thr = lambda cls, p: p / (np.pi * WASHER_D * 6.0 * allow(cls)[2])   # the weaker side of a through bolt: its washer under the 6 deck
     r1 = joint_check("mast foot: front row inserts (1500 N, E), rear row through", bear, bolts, cases, None,
-                     caps=[ins if y > -30 else thr for x, y in FOOT_BOLTS])
+                     caps=[ins if y > -30 else thr for x, y in PFOOT])
     bear2 = [(np.array([39.0 * np.cos(a), 0.0, 39.0 * np.sin(a)]), np.array([0, -1.0, 0])) for a in np.radians(np.arange(0, 360, 30))
              if not (39.0 * np.cos(a) < -24 and 39.0 * np.sin(a) > 14)]
     bolts2 = [(np.array([x, 0.0, z]), np.array([0, -1.0, 0])) for x, z in STUB_BOLTS]
@@ -356,3 +363,58 @@ def mast_joints():
                      lambda cls, p: p / (INSERT_PULL / SF[cls]))
     r3["section"] = "for the arm stream, not this part: " + r3["section"]
     return [r1, r2], r3
+
+
+# ------------------------------------------------------------------ installability: the declared path, in order (Spark 15 Nov: print-ready only when installable)
+def install_check(verbose=True):
+    """the assembly path above, step by step: each piece moved along its approach (100 mm in 5 mm steps) against everything placed
+    before it, and each bolt's tool line (the shank Ø5.2 through its holes, then its head, washer and key Ø15 from the seat 60 mm out
+    along its access) against every stand piece and the arm's stub. Returns [(step, mm3 of collision)]; anything over 1 mm3 fails."""
+    def load(name):
+        t = trimesh.load(os.path.join(ROOT, "parts", name, "part.stl"))
+        return mf.Manifold(mf.Mesh(np.asarray(t.vertices, np.float32), np.asarray(t.faces, np.uint32)))
+    M = {n: load(n) for n in ("box_stand2p_mast", "box_stand2p_base_r", "box_stand2p_base_l", "box_stand2p_rail_r", "box_stand2p_rail_l")}
+    stub = load("box_arm8_stub")
+    allp = U(*M.values())
+    out = []
+
+    def hit(a, b):
+        return (a ^ b).volume()
+
+    def path(label, piece, others, d):
+        worst = max(hit(piece.translate((np.asarray(d) * t).tolist()), others) for t in np.arange(0.0, 100.0, 5.0)) if others is not None else 0.0
+        out.append((label, round(worst, 1)))
+
+    # (1)-(4) on the bench, the stand on its back for the bolts from below; then on the floor
+    path("base_l beside base_r (down)", M["box_stand2p_base_l"], M["box_stand2p_base_r"], [0, 0, 1.0])
+    for sd in ("r", "l"):
+        path(f"rail_{sd} onto its base half's splice (along -Y)", M[f"box_stand2p_rail_{sd}"], U(M["box_stand2p_base_r"], M["box_stand2p_base_l"]), [0, 1.0, 0])
+    path("mast onto both decks (down)", M["box_stand2p_mast"], U(M["box_stand2p_base_r"], M["box_stand2p_base_l"], M["box_stand2p_rail_r"], M["box_stand2p_rail_l"]), [0, 0, 1.0])
+    # tools: splice bolts (head and key inside the front rail's channel, +Y), mast foot bolts (from below, -Z), stub bolts (from behind, -Y),
+    # the rear row's nuts (through the side windows, along X)
+    tools = []
+    for sd in (1, -1):
+        for x, z in SPLICE:
+            X = sd * x
+            tools.append((f"splice bolt ({X:.0f}, {z:.0f})", U(cyl("y", X, z, 2.6, Y_SPL - 8.0, Y_SPL + 8.5), cyl("y", X, z, 7.5, Y_SPL + 8.6, Y_SPL + 68.0),
+                                                               cyl("y", X, z, 7.5, Y_SPL - 13.0, Y_SPL - 8.1))))    # the washer and nyloc behind the base's plate
+    for x, y in PFOOT:
+        tools.append((f"mast foot bolt ({x:.0f}, {y:.0f})", U(cyl("z", x, y, 2.6, Z_TOPY - 9.5, Z_FOOT + 7.0), cyl("z", x, y, 7.5, Z_TOPY - 70.0, Z_TOPY - 10.1))))
+        if y < -30:
+            sx = 1.0 if x > 0 else -1.0
+            tools.append((f"mast foot nut ({x:.0f}, {y:.0f}) through its window",
+                           box(min(x, sx * 45.0), max(x, sx * 45.0), y - 7.0, y + 7.0, Z_FOOT + 10.2, Z_FOOT + 16.0)))
+    for x, z in STUB_BOLTS:
+        tools.append((f"stub bolt ({x:.0f}, {z:.0f})", U(cyl("y", x, z, 2.6, -9.8, 5.9), cyl("y", x, z, 7.5, -64.5, -10.1))))
+    for lab, tl in tools:
+        out.append((lab, round(hit(tl, U(allp, stub)), 1)))
+    bad = [o for o in out if o[1] > 1.0]
+    if verbose:
+        for lab, v in out:
+            print(f"  install: {lab:52s} {v:8.1f} mm3 {'FAIL' if v > 1.0 else 'ok'}")
+        print(f"install check: {'PASS' if not bad else 'FAIL'} ({len(out)} steps)")
+    return out, not bad
+
+
+if __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "install":
+    install_check()

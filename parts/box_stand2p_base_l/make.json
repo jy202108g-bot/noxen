@@ -1,13 +1,13 @@
 {
  "name": "box_stand2p_base_l",
- "cm3": 476.24,
- "g": 604.8,
+ "cm3": 473.05,
+ "g": 600.8,
  "as_printed_mm": [
   177.2,
   174.0,
   76.0
  ],
- "bed_mm2": 10761,
+ "bed_mm2": 10910,
  "solid_check": "PASS",
  "note": "floor face down",
  "hand_check": [
@@ -36,8 +36,8 @@
    "case": "standing: arm v8, 11 bays with packs, the ring at its worst unbalance, uneven floor, right rear foot off"
   },
   {
-   "section": "splice bolt pull through its washer (526 N)",
-   "index": 0.178,
+   "section": "splice bolt pull through its washer (462 N)",
+   "index": 0.157,
    "case": "box handling 3 g down + 2 g side (-X), uneven floor, right front foot off"
   },
   {

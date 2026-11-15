@@ -243,22 +243,24 @@ STAND_PRINT = {"box_stand2p_mast": "on its +X side (W X 40 down), no supports, 0
                "box_stand2p_rail_l": "floor face down, no supports, 0.2 layers, 4 walls, 25 % gyroid, PCTG at PETG + 10 C, ~7 h (E)",
                "box_stand2p_foot": "pad down, four on one plate, TPU 95A, 0.2 layers, 3 walls, 30 % infill, ~1.5 h (E)"}
 STAND_BOUGHT = [("M5 x 16 socket cap, 12.9 (3 stub to mast from behind, 4 mast foot front row from below)", 7, "https://www.amazon.com/dp/B0BLNLH7YY"),
-                ("M5 x 25 socket cap, 12.9 (4 mast foot rear row, 10 rail splices)", 14, "https://www.amazon.com/dp/B0BQJ3DZ34"),
-                ("M5 x 15 x 1.2 washer, 304 (stub bolts, through bolts both sides)", 31, "https://www.amazon.com/dp/B0DX6TD1Q7"),
-                ("M5 nyloc, 304 (mast foot rear row, splices)", 14, "https://www.amazon.com/dp/B078NNFT93"),
+                ("M5 x 25 socket cap, 12.9 (2 mast foot rear row, 10 rail splices)", 12, "https://www.amazon.com/dp/B0BQJ3DZ34"),
+                ("M5 x 15 x 1.2 washer, 304 (3 stub bolts, both sides of every through bolt)", 27, "https://www.amazon.com/dp/B0DX6TD1Q7"),
+                ("M5 nyloc, 304 (mast foot rear row, splices)", 12, "https://www.amazon.com/dp/B078NNFT93"),
                 ("M5 x D7 x L6 heat-set insert (4 in the mast foot's front row, 3 in the stub flange)", 7, "https://www.amazon.com/dp/B0H142Y3BM")]
 STAND_NOTE = ("Stand v2, PROTOTYPE (15 Nov, CLAUDE.md stages; parts/box_stand2p_lib.py): five drawn PCTG pieces and four TPU 95A feet, each in the 180 bed "
               "and flat on it, sized by hand against every case of parts/box_stand_mast/check.json (worst index 0.35, the rail just ahead of the yoke in "
               "box handling on an uneven floor; the gate's 0.5). The mast, an 82 x 64 tube, takes the arm v8 stub's flange on a 12 thick face at W Y 0 "
               "(three M5 x 16 on Ø15 washers from behind, through holes in its back wall, into heat-set inserts in the stub's flange) and stands "
-              "on both base halves at W Z -135 (eight M5: the front row into inserts, the rear row through with nuts, reached through windows "
+              "on both base halves at W Z -135 (six M5: the front four into inserts, the rear two through to nuts set through windows "
               "in the mast's side walls). Each base half is the yoke (a closed box under the mast out to |X| 120) in one piece with the rear "
               "rail (an open channel |X| 120..177.5 under the ring's sweep and the PSU) with the rear foot at (+-149, -44); the front rail bolts "
               "to it at Y 110 (five M5 x 25 through, reached from under the channels) and runs to the front foot at (+-149, 232). Four feet: every "
               "floor reaction is known (flat, and each foot lifted). For the arm stream: the stub's 135 deg M5 hole sits 0.5 mm into the axle "
               "stepper (unused), its holes need M5 heat-set inserts (5.5 to 6.4: nothing fits in front of the flange, 2.0 to the bearings), and "
               "the top insert pulls 532 N in box handling, 0.89 of an insert's 1500 N (E) at SF 2.5. Holes: no systems/fit_table.json yet, the "
-              "repo's values (M5 Ø5.5, insert Ø6.4). The engine setups (parts/box_stand2_*/part.py) stay for OPTIMISE after Spark's test.")
+              "repo's values (M5 Ø5.5, insert Ø6.4). Assembly: bolt the stand together on the bench (the feet leave 5 mm under it), set it "
+              "on the floor, then the arm's stub and the arm, then the rear sheet and the PSU (the stub's bolts and the mast's nut windows face "
+              "them); parts/box_stand2p_lib.py install_check walks that path, every piece and tool line: PASS. The engine setups (parts/box_stand2_*/part.py) stay for OPTIMISE after Spark's test.")
 
 
 def stand_rows():
