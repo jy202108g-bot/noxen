@@ -253,6 +253,58 @@
    ]
   },
   {
+   "a": "wires",
+   "b": "overseer_top_cover",
+   "mm3": 81.38,
+   "limit_mm3": 85.0,
+   "contact": "the motor leads drawn straight out along the diagonals through the cover's skirt over the arm roots; the cover's cable exits are the 48 x 18 side windows (15 Nov, cover v2.1: its root end walls 1.2 -> 2.52 for the 2 mm floor, the same runs through them 39 -> 81.4 mm3, re-measured and rounded up; no exits at the root ends, Spark 3 Nov). the lead runs are a schematic (E): straight 3-8 mm bundles drawn on the core v2 layout (26-30 Oct, its script gone), never re-routed for the parts drawn after them; the real leads are flexible and routed by hand round the printed parts",
+   "ok": true,
+   "pieces": [
+    {
+     "mm3": 27.58,
+     "at": [
+      50.8,
+      -50.8,
+      50.0
+     ],
+     "extent_mm": [
+      4.7,
+      4.7,
+      4.0
+     ],
+     "depth_mm": 4.02
+    },
+    {
+     "mm3": 27.58,
+     "at": [
+      50.9,
+      50.9,
+      50.0
+     ],
+     "extent_mm": [
+      4.7,
+      4.7,
+      4.0
+     ],
+     "depth_mm": 4.02
+    },
+    {
+     "mm3": 26.22,
+     "at": [
+      -50.9,
+      -50.9,
+      50.0
+     ],
+     "extent_mm": [
+      4.6,
+      4.6,
+      4.0
+     ],
+     "depth_mm": 4.01
+    }
+   ]
+  },
+  {
    "a": "wires_red",
    "b": "hub_deck",
    "mm3": 74.1,
@@ -315,54 +367,26 @@
    ]
   },
   {
-   "a": "wires",
+   "a": "wires_red",
    "b": "overseer_top_cover",
-   "mm3": 38.01,
-   "limit_mm3": 39.0,
-   "contact": "the motor leads drawn straight out along the diagonals through the cover's skirt over the arm roots; the cover's cable exits are the 48 x 18 side windows. the lead runs are a schematic (E): straight 3-8 mm bundles drawn on the core v2 layout (26-30 Oct, its script gone), never re-routed for the parts drawn after them; the real leads are flexible and routed by hand round the printed parts",
+   "mm3": 26.25,
+   "limit_mm3": 28.0,
+   "contact": "the + motor lead of the same run (-51, +51) (15 Nov, cover v2.1 walls 2.52: 26.2 mm3, re-measured and rounded up). the lead runs are a schematic (E): straight 3-8 mm bundles drawn on the core v2 layout (26-30 Oct, its script gone), never re-routed for the parts drawn after them; the real leads are flexible and routed by hand round the printed parts",
    "ok": true,
    "pieces": [
     {
-     "mm3": 13.12,
+     "mm3": 26.25,
      "at": [
-      -51.1,
-      -51.1,
+      -50.9,
+      50.9,
       50.0
      ],
      "extent_mm": [
-      3.8,
-      3.8,
+      4.6,
+      4.6,
       4.0
      ],
-     "depth_mm": 3.79
-    },
-    {
-     "mm3": 12.45,
-     "at": [
-      50.4,
-      -50.4,
-      50.0
-     ],
-     "extent_mm": [
-      3.8,
-      3.7,
-      4.0
-     ],
-     "depth_mm": 3.74
-    },
-    {
-     "mm3": 12.45,
-     "at": [
-      50.4,
-      50.5,
-      50.0
-     ],
-     "extent_mm": [
-      3.8,
-      3.7,
-      4.0
-     ],
-     "depth_mm": 3.75
+     "depth_mm": 4.01
     }
    ]
   },
@@ -415,30 +439,6 @@
       0.5
      ],
      "depth_mm": 0.5
-    }
-   ]
-  },
-  {
-   "a": "wires_red",
-   "b": "overseer_top_cover",
-   "mm3": 13.11,
-   "limit_mm3": 14.0,
-   "contact": "the + motor lead of the same run (-51, +51). the lead runs are a schematic (E): straight 3-8 mm bundles drawn on the core v2 layout (26-30 Oct, its script gone), never re-routed for the parts drawn after them; the real leads are flexible and routed by hand round the printed parts",
-   "ok": true,
-   "pieces": [
-    {
-     "mm3": 13.11,
-     "at": [
-      -51.1,
-      51.1,
-      50.0
-     ],
-     "extent_mm": [
-      3.8,
-      3.8,
-      4.0
-     ],
-     "depth_mm": 3.79
     }
    ]
   },
@@ -523,9 +523,33 @@
    "ok": true
   },
   {
+   "a": "overseer_arm_front_root",
+   "b": "overseer_top_cover",
+   "mm3": 0.01,
+   "limit_mm3": 0.5,
+   "contact": null,
+   "ok": true
+  },
+  {
+   "a": "arm_4_root",
+   "b": "overseer_top_cover",
+   "mm3": 0.01,
+   "limit_mm3": 0.5,
+   "contact": null,
+   "ok": true
+  },
+  {
    "a": "buck_12_v",
    "b": "hub_deck",
    "mm3": 0.01,
+   "limit_mm3": 0.5,
+   "contact": null,
+   "ok": true
+  },
+  {
+   "a": "arm_3",
+   "b": "overseer_top_cover",
+   "mm3": 0.0,
    "limit_mm3": 0.5,
    "contact": null,
    "ok": true
@@ -535,6 +559,6 @@
  "paths": [],
  "not_print_ready": {},
  "would_block": {},
- "seconds": 3.6,
+ "seconds": 3.7,
  "placed": {}
 }
