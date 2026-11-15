@@ -8550,6 +8550,15 @@
    "minutes": 92.7,
    "peak_gb": 4.355452,
    "at": "9d896992a52b:5560"
+  },
+  {
+   "part": "scout_v4_frame",
+   "engine": "fit-handling",
+   "design": 45605,
+   "cases": 56,
+   "minutes": 172.8,
+   "peak_gb": 4.523196,
+   "at": "4c7db8a244b4:10371"
   }
  ]
 }
