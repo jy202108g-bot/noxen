@@ -8397,6 +8397,15 @@
    "minutes": 80.7,
    "peak_gb": 3.714636,
    "at": "8e9942732506:4842"
+  },
+  {
+   "part": "scout_v4_frame",
+   "engine": "no-cavity",
+   "design": 45601,
+   "cases": 56,
+   "minutes": 185.1,
+   "peak_gb": 4.551752,
+   "at": "4c7db8a244b4:11106"
   }
  ]
 }
