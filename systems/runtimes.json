@@ -8568,6 +8568,15 @@
    "minutes": 287.7,
    "peak_gb": 9.072096,
    "at": "1c1d9ed897a9:17264"
+  },
+  {
+   "part": "box_stand2_rear_r",
+   "engine": "fit-handling",
+   "design": 119854,
+   "cases": 15,
+   "minutes": 293.7,
+   "peak_gb": 8.185696,
+   "at": "e9ea7efd3794:17620"
   }
  ]
 }
