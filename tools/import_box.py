@@ -144,7 +144,7 @@ def funnel_parts():
             ("box_funnel_wall_tail", f"funnel tail wall (slides {fm.TRAVEL} in for the Scout)", "#3070e0", "PCTG", "structure", "as the nose wall"),
             ("box_funnel_strips", "funnel ledge strips (TPU 95A, landing impact)", "#3a3a3a", "TPU", "structure", "flush in the side ledges; holes for the four probes"),
             ("box_funnel_drive", "funnel wall drive and fasteners (bought)", "#555555", None, "bought",
-             "4 N20 gearmotors with an M4 x 100 screw shaft cut to 62, 4 KW12-3 roller switches (+y), 4 P156 spring probes in R156 sleeves, 16 M4 x 60 lap bolts, 8 M4 x 16 sheet bolts, 4 M4 x 16 and 2 M3 x 16 joint bolts")):
+             "4 N20 gearmotors with an M4 x 100 screw shaft cut to 65, 4 KW12-3 roller switches (+y), 4 P156 spring probes in R156 sleeves, 16 M4 x 60 lap bolts, 8 M4 x 16 sheet bolts, 4 M4 x 16 and 2 M3 x 16 joint bolts")):
         out.append(dict(base, id=pid, name=name, role=role, color=col, material=mat, mesh=f"parts/{pid}/part.stl", pose=SEAT_TO_W, version="v5 drawn 13 Nov", note=note))
     return out
 
@@ -228,7 +228,7 @@ def assembly(parts):
 
 BOUGHT_LIST = [
     ("N20 gearmotor, M4 x 100 screw shaft, 6 V 100 rpm (12 x 10 x 25 body)", 4, "https://www.amazon.com/Thread-Shaft-100mm-Motor-terminals/dp/B0GDTKHL8T",
-     "one per wall tab; pick the 6 V 100 rpm option (alt B07JD2SY8W); each shaft cut to 62: Amazon lists this motor with a 34, 55 or 100 shaft only (searched 13 Nov), and the wall's travel needs 59.3 (front plate 3.5 + half the nut block 6.0 + 48.2 of travel + half the nut 1.6), so the 55 is 4.3 short; 37.2 mm at 0.7 mm a turn = 32 s"),
+     "one per wall tab; pick the 6 V 100 rpm option (alt B07JD2SY8W); each shaft cut to 65: Amazon lists this motor with a 34, 55 or 100 shaft only (searched 13 Nov), and the wall's travel needs 62.3 (front plate 6.5 + half the nut block 6.0 + 48.2 of travel + half the nut 1.6), so the 55 is 7.3 short; 37.2 mm at 0.7 mm a turn = 32 s"),
     ("KW12-3 roller lever micro switch, 10 pack", 2, "https://www.amazon.com/SDTC-Tech-Momentary-Microswitch-Normally/dp/B0CPYNDYPP", "one home switch a wall (outmost), on the +y side; every other position is timed from it"),
     ("P156-E spring probe, 100 pack", 4, "https://www.amazon.com/Spring-Probes-Accuracy-Testing-Contact/dp/B0CC2GQKL1", "seat sense and keep-alive, in the ledges"),
     ("3 x 3 x 16 steel parallel key, round ended, 10 pack", 4, "https://www.amazon.com/Feather-Stainless-Parallel-Fastening-Connection/dp/B0GC54N5FH",
