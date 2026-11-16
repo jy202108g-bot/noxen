@@ -94,7 +94,10 @@ def stale(p):
 
 def affected(changed):
     ch = {c.strip().replace(os.sep, "/") for c in changed if c.strip()}
-    return [p for p in names() if os.path.exists(os.path.join(ROOT, "parts", p, "make.py")) and ch & set(files(p))]
+    # 16 Nov: a make that failed recorded only the reads before it stopped (the roller's: its make.py alone), so a fix in a library it
+    # reads never remade it; a part whose last make failed is remade on every push that touches a part file, tool or library
+    failed = lambda p: (record(p).get("make") or {}).get("rc") not in (0, None)
+    return [p for p in names() if os.path.exists(os.path.join(ROOT, "parts", p, "make.py")) and (ch & set(files(p)) or failed(p))]
 
 
 def print_file(p):
