@@ -6,19 +6,27 @@
   "faces": 5404,
   "view_faces": 5404,
   "view_sha256": "344e8b110d2b49fb8ddefd0ef2e888ae212e7c3885de066edf2650d0f28ba0fb",
-  "at": "2026-11-15 08:19"
+  "at": "2026-11-16 02:02"
  },
  "make": {
   "sha": {
-   "parts/scout_v4_probe_roller/make.py": "36b5d698e153"
+   "parts/scout_v4_probe_mech_lib.py": "f805e5f929a4",
+   "parts/scout_v4_probe_roller/make.py": "36b5d698e153",
+   "tools/scout_v4_shape.py": "c0dafeecc6c9"
   },
-  "rc": 1,
-  "s": 1.6,
-  "at": "2026-11-15 08:18",
-  "commit": "070aea3f",
+  "rc": 0,
+  "s": 4.2,
+  "at": "2026-11-16 02:02",
+  "commit": "d838e653",
   "solid": {
-   "ok": false,
-   "why": "make.py failed (exit 1): ModuleNotFoundError: No module named 'topo'"
+   "ok": true,
+   "file": "print/scout_v4_probe_roller.stl",
+   "sha256": "e1f5307cfd78a33eff840542f2dd049ef74eaaf9b68b88d3193d39dfa0820732",
+   "cm3": 0.188,
+   "bodies_plain": 1,
+   "specks_plain": 0,
+   "bodies_eroded": 1,
+   "acute_edges": 0
   }
  }
 }

@@ -1,8 +1,8 @@
 {
  "id": "20261115-015645-scout_v4_probe_roller",
  "part": "scout_v4_probe_roller",
- "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/scout_v4_probe_roller.stl",
- "sha256": "b22446ffb0c9de261929b11f1eb848e700130eaf79d798f38d6c07985556674d",
+ "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-scout_v4_probe_roller.stl",
+ "sha256": "e1f5307cfd78a33eff840542f2dd049ef74eaaf9b68b88d3193d39dfa0820732",
  "qty": 2,
  "material": "PCTG",
  "orient": "on end, as laid",
@@ -12,6 +12,7 @@
  "note": "two O8 x 4.5 tubes (replace the O8 x 19)",
  "status": "ready",
  "history": [
-  "2026-11-15 01:56 UTC ready"
+  "2026-11-15 01:56 UTC ready",
+  "2026-11-16 02:03 UTC ready: file refreshed"
  ]
 }
