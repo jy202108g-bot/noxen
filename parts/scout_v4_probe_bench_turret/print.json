@@ -13,7 +13,7 @@
    "parts/cage_node_lib.py": "bad3d25f2b60",
    "parts/scout_units_lib.py": "edbb61c2b9c7",
    "parts/scout_v4_probe_bench_turret/make.py": "b6b576823d7e",
-   "parts/scout_v4_probe_mech_lib.py": "c13dbfbfcb4b",
+   "parts/scout_v4_probe_mech_lib.py": "f805e5f929a4",
    "parts/scout_v4_probe_turret/part.py": "9d896992a52b",
    "parts/scout_v4_units_lib.py": "f5b138d4c6b6",
    "parts/socket_inject.py": "6613a0572d9f",
@@ -26,9 +26,9 @@
    "tools/scout_v4_shape.py": "c0dafeecc6c9"
   },
   "rc": 0,
-  "s": 15.7,
-  "at": "2026-11-15 08:17",
-  "commit": "070aea3f",
+  "s": 15.6,
+  "at": "2026-11-16 01:31",
+  "commit": "16cb61cb",
   "solid": {
    "ok": true,
    "file": "print/scout_v4_probe_bench_turret.stl",

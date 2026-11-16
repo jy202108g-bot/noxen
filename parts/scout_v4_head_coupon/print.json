@@ -11,13 +11,13 @@
  "make": {
   "sha": {
    "parts/scout_v4_head_coupon/make.py": "b04cb4a2ba4a",
-   "parts/scout_v4_probe_mech_lib.py": "c13dbfbfcb4b",
+   "parts/scout_v4_probe_mech_lib.py": "f805e5f929a4",
    "tools/scout_v4_shape.py": "c0dafeecc6c9"
   },
   "rc": 0,
   "s": 22.9,
-  "at": "2026-11-15 08:16",
-  "commit": "070aea3f",
+  "at": "2026-11-16 01:29",
+  "commit": "16cb61cb",
   "solid": {
    "ok": true,
    "file": "print/scout_v4_head_coupon.stl",

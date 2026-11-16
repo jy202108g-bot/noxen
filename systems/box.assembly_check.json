@@ -289,7 +289,7 @@
   {
    "a": "box_latch7_scout_receiver",
    "b": "box_scout_v4_scout_v4_frame",
-   "mm3": 0.05,
+   "mm3": 0.01,
    "limit_mm3": 0.5,
    "contact": null,
    "ok": true
@@ -574,6 +574,6 @@
  ],
  "not_print_ready": {},
  "would_block": {},
- "seconds": 10.7,
+ "seconds": 13.3,
  "placed": {}
 }
