@@ -12,6 +12,7 @@ One file per job in print/queue/ (no merge conflicts between sessions). A job mo
     python tools/print_queue.py cancel <id|part> ...
     python tools/print_queue.py list [--all]                 open jobs (--all: also done / failed / cancelled)
     python tools/print_queue.py next                         desktop task: the job to start now as JSON, or "none: <why>"
+    python tools/print_queue.py refresh                     ready/approved jobs to their part's current print file (list marks STALE)
     python tools/print_queue.py set <id> printing|printed|failed [--note ...]   desktop task
 The caller commits print/queue/ and pushes (git pull --rebase first). The file to print is a GitHub release URL (anyone can download it).
 
@@ -54,18 +55,34 @@ def save(j):
 
 
 def resolve(name):
-    """A part folder (its release print mesh) or a hand-made print file (print/index.json) -> (url, sha256)."""
+    """A part -> (url, sha256) of the file to print: the bed-pose print-<name>.stl a make.py wrote (print/index.json) first, else the
+    part's release print mesh (a generated part's result.json; 16 Nov: the make.py parts' queue jobs pointed at <name>.stl, the
+    drone-pose mesh, so 'as laid' and the orientation note did not hold)."""
+    idx = json.load(open(os.path.join(ROOT, "print", "index.json")))
+    for k in (name + ".stl", name):
+        if k in idx:
+            return idx[k]["url"], idx[k].get("sha256")
     for meta in (f"parts/{name}/result.json", f"parts/{name}/print.json"):
         p = os.path.join(ROOT, meta)
         if os.path.exists(p):
             d = json.load(open(p)); d = d.get("print_stl", d)
             if d.get("url"):
                 return d["url"], d.get("sha256")
-    idx = json.load(open(os.path.join(ROOT, "print", "index.json")))
-    for k in (name, name + ".stl"):
-        if k in idx:
-            return idx[k]["url"], idx[k].get("sha256")
-    sys.exit(f"print_queue: no print file for {name!r} (no parts/{name}/result.json or print.json with a url, not in print/index.json)")
+    sys.exit(f"print_queue: no print file for {name!r} (not in print/index.json, no parts/{name}/result.json or print.json with a url)")
+
+
+def current(j):
+    """(url, sha256) the job's part resolves to now, or None when the part's last make failed its solid or assembly check"""
+    pj = os.path.join(ROOT, "parts", j["part"], "print.json")
+    if os.path.exists(pj):
+        d = json.load(open(pj))
+        if not ((d.get("make") or {}).get("solid") or {}).get("ok", True) or not (d.get("assembly") or {}).get("ok", True):
+            return None
+    try:
+        return resolve(j["part"])
+    except SystemExit:
+        return None
+
 
 
 def find(key):
@@ -90,6 +107,7 @@ def main():
     for c in ("approve", "cancel"):
         sp.add_parser(c).add_argument("keys", nargs="+")
     sp.add_parser("list").add_argument("--all", action="store_true")
+    sp.add_parser("refresh")
     sp.add_parser("next")
     s = sp.add_parser("set"); s.add_argument("id"); s.add_argument("status", choices=("printing", "printed", "failed")); s.add_argument("--note")
     o = ap.parse_args()
@@ -114,8 +132,19 @@ def main():
     elif o.cmd == "list":
         js = jobs(o.all)
         for j in js:
-            print(f"{j['status']:9} {j['id']}  x{j['qty']} {j['time']}  {j['orient']}  {j['note']}".rstrip())
+            c = current(j) if j["status"] in ("ready", "approved") else (j["url"], j["sha256"])
+            flag = "" if c == (j["url"], j["sha256"]) else ("  [STALE: its part fails a check now]" if c is None else "  [STALE: file changed, run refresh]")
+            print(f"{j['status']:9} {j['id']}  x{j['qty']} {j['time']}  {j['orient']}  {j['note']}{flag}".rstrip())
         print(f"{len(js)} job(s)")
+    elif o.cmd == "refresh":                                      # ready and approved jobs to their part's current print file
+        for j in jobs(False):
+            if j["status"] not in ("ready", "approved"):
+                continue
+            c = current(j)
+            if c is None:
+                print(f"left: {j['id']} (its part fails its solid or assembly check now)")
+            elif c != (j["url"], j["sha256"]):
+                j["url"], j["sha256"] = c; log(j, j["status"], "file refreshed"); save(j); print(f"refreshed: {j['id']} -> {c[0].rsplit('/', 1)[-1]} {c[1][:8]}")
     elif o.cmd == "next":
         js = jobs(False)
         busy = [j for j in js if j["status"] in ("printing", "printed")]

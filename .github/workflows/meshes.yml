@@ -88,6 +88,13 @@ jobs:
           # record (result.json, or print.json for a drawn part), in the same commit; a part in a failing pair, mate or path is not print-ready
           python3 tools/assembly_check.py --all --write | tee _assembly.txt || true
           grep -E '^  (CLASH|MATE|PATH)' _assembly.txt | head -40 | sed 's/^/::warning::assembly: /' || true; rm -f _assembly.txt
+      - name: print queue
+        if: always()
+        shell: bash
+        run: |
+          # 16 Nov: a remade part changes its print file's sha, and a queued job's sha check then fails on Spark's desktop: ready and
+          # approved jobs follow their part's current bed-pose file; a part that now fails its solid or assembly check is left (list: STALE)
+          python3 tools/print_queue.py refresh || true
       - name: commit and push (retry on race)
         if: always()
         shell: bash

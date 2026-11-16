@@ -1,8 +1,8 @@
 {
  "id": "20261115-015637-scout_v4_cradle",
  "part": "scout_v4_cradle",
- "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/scout_v4_cradle.stl",
- "sha256": "baf0a8bacd0b598283844cfa3c768f7e657e4b7030f1f1a6c4acf0c5095f8d3f",
+ "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-scout_v4_cradle.stl",
+ "sha256": "c190695ab190a86fc8f1b0f88a054a19aaea6d688f127cff034256c2be76c8c3",
  "qty": 1,
  "material": "PCTG",
  "orient": "+y face (the horn's side, flat) down, as laid",
@@ -12,6 +12,7 @@
  "note": "drawn prototype 15 Nov: open behind for the camera, drops onto the horn",
  "status": "ready",
  "history": [
-  "2026-11-15 01:56 UTC ready"
+  "2026-11-15 01:56 UTC ready",
+  "2026-11-16 01:26 UTC ready: file refreshed"
  ]
 }
