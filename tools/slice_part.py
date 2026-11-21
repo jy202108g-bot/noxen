@@ -32,7 +32,13 @@ def flat(d, ix):
         p = flat(ix[d["inherits"]], ix)
         p.update({k: v for k, v in d.items() if k not in ("inherits", "from", "instantiation")})
         d = p
-    return dict(d)
+    d = dict(d)
+    # "include" lists the machine's own start / end / layer-change / time-lapse / filament-change g-code templates. The CLI does
+    # not resolve them for a flattened file, so without this the generic 256 mm machine g-code (purge line to Y200, parking at
+    # Y265) is used and the A1 mini's moves leave its 180 mm bed (jobs 815 and 823).
+    for inc in d.pop("include", []) or []:
+        d.update({k: v for k, v in ix[inc].items() if k not in ("type", "name", "from", "instantiation", "inherits", "setting_id")})
+    return d
 
 
 def slice_mesh(mesh, out, process="0.12", supports=False, support_angle=None):

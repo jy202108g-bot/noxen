@@ -105,8 +105,24 @@ def check_plate(items, res, out, name):
     L = P["layers"]; b = P["bounds"]
     inside = b[0] >= 0 and b[1] >= 0 and b[2] <= pp.BED and b[3] <= pp.BED
     checks.append(("every move inside the 180 mm bed", inside, "x %.1f..%.1f y %.1f..%.1f z max %.1f" % (b[0], b[2], b[1], b[3], P["zmax"])))
+    # every G0/G1/G2/G3 X/Y from the first printed feature on (travel included; the extrusion bounds above miss travels). The
+    # machine's own start/end routine and its per-layer "safe pos" park (X-13, the A1 mini's purge and wipe station) are Bambu's
+    # stock moves and lie off the bed by design: reported, not judged.
+    ax, ay = [], []; started = False; stock = 0
+    for ln in g.splitlines():
+        if ln.startswith(";LAYER_CHANGE") or ln.startswith("; CHANGE_LAYER"): started = True
+        if not started or ln[:2] not in ("G0", "G1", "G2", "G3") or ln[2:3] != " ": continue
+        code = ln.split(";")[0]
+        mx = re.search(r" X(-?[\d.]+)", code); my = re.search(r" Y(-?[\d.]+)", code)
+        if "safe pos" in ln or (mx and float(mx.group(1)) < -5) or (my and float(my.group(1)) > 183):
+            stock += 1; continue
+        if mx: ax.append(float(mx.group(1)))
+        if my: ay.append(float(my.group(1)))
+    allin = bool(ax and ay) and min(ax) >= -1.0 and min(ay) >= -1.0 and max(ax) <= pp.BED + 1.0 and max(ay) <= pp.BED + 1.0
+    checks.append(("every printing/travel move inside the A1 mini's 180 mm bed", allin,
+                   "x %.1f..%.1f y %.1f..%.1f (+%d stock park moves left of the bed)" % (min(ax), max(ax), min(ay), max(ay), stock)))
     zs = sorted(L)
-    gaps = [round(zs[i + 1] - zs[i], 3) for i in range(len(zs) - 1) if zs[i + 1] - zs[i] > 0.45]
+    gaps =[round(zs[i + 1] - zs[i], 3) for i in range(len(zs) - 1) if zs[i + 1] - zs[i] > 0.45]
     checks.append(("no empty layers", not gaps, "%d layers" % len(zs) if not gaps else "gaps %s" % gaps[:5]))
     # which settings did the slicer really use per object: layer heights seen in the g-code, per-object walls/infill from the 3mf
     heights = sorted(set(round(zs[i + 1] - zs[i], 3) for i in range(len(zs) - 1)))

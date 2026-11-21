@@ -12,6 +12,11 @@
    "x 0.2..135.8 y 6.2..128.0 z max 31.9"
   ],
   [
+   "every printing/travel move inside the A1 mini's 180 mm bed",
+   true,
+   "x 0.0..181.0 y 6.2..128.0 (+402 stock park moves left of the bed)"
+  ],
+  [
    "no empty layers",
    true,
    "199 layers"
@@ -40,11 +45,11 @@
    0.0,
    -0.01
   ],
-  "time": "2h 52m 51s",
-  "grams": 64.65
+  "time": "3h 2m 8s",
+  "grams": 64.63
  },
  "ready": true,
- "gcode_3mf": "C:\\Users\\\u58fd\\nox\\data\\slicer\\plates\\p1\\probe_plate1.gcode.3mf",
+ "gcode_3mf": "C:\\Users\\\u58fd\\nox\\repos\\noxen\\print\\plates\\sliced\\probe_plate1.gcode.3mf",
  "objects": [
   {
    "label": "scout_v4_probe_bench_base",
