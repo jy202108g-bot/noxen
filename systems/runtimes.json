@@ -8640,6 +8640,15 @@
    "minutes": 214.8,
    "peak_gb": 4.779268,
    "at": "49927784e32a:12885"
+  },
+  {
+   "part": "scout_v4_probe_turret",
+   "engine": "strength-hold",
+   "design": 48531,
+   "cases": 44,
+   "minutes": 83.5,
+   "peak_gb": 4.104252,
+   "at": "9d896992a52b:5013"
   }
  ]
 }
