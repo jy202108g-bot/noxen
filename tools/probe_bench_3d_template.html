@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scout v4 probe bench, 3D</title>
+<style>
+:root{--bg:#f3f4f6;--fg:#1b2130;--muted:#667085;--panel:#fff;--line:#d9dde3;--accent:#2f6fde;--printed:#2c9a93;--bought:#e08a1e;--hardware:#7d8794;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;--sans:system-ui,-apple-system,"Segoe UI",sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#13161c;--fg:#e7e9ee;--muted:#98a2b3;--panel:#1b1f27;--line:#2d333d;--accent:#6ea0ff}}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font:14px/1.4 var(--sans)}
+.app{height:100%;display:grid;gap:10px;padding:12px 16px;grid-template-columns:1fr 320px;grid-template-rows:auto 1fr auto;grid-template-areas:"head head" "stage side" "bar side"}
+header{grid-area:head;display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+h1{margin:0;font-size:17px;font-weight:600}h1 small{font-weight:400;color:var(--muted);margin-left:8px;font-size:13px}
+.chip{font:500 12px/1 var(--mono);padding:5px 8px;border-radius:4px;border:1px solid var(--line);color:var(--muted)}
+.stage{grid-area:stage;position:relative;min-height:320px;background:var(--panel);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+canvas{display:block;width:100%;height:100%}
+.tip{position:absolute;pointer-events:none;padding:6px 8px;font-size:12px;background:var(--panel);border:1px solid var(--accent);border-radius:5px;display:none;white-space:nowrap;z-index:5}
+.tip b{font-size:13px}.tip span{font-family:var(--mono);color:var(--muted)}
+.lab{position:absolute;pointer-events:none;width:20px;height:20px;margin:-10px 0 0 -10px;border-radius:50%;background:var(--panel);border:1.5px solid var(--fg);font:600 11px/17px var(--mono);text-align:center}
+.lab.printed{border-color:var(--printed)}.lab.bought{border-color:var(--bought)}.lab.hardware{border-color:var(--hardware)}.lab.sel{background:var(--accent);color:#fff;border-color:var(--accent)}
+.bar{grid-area:bar;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:8px 12px}
+.bar label{display:flex;align-items:center;gap:6px;font-size:12.5px}.bar input[type=range]{width:130px}
+button{font:600 12.5px var(--sans);background:var(--panel);color:var(--accent);border:1px solid var(--accent);border-radius:5px;padding:5px 10px;cursor:pointer}
+button.on{background:var(--accent);color:#fff}
+.side{grid-area:side;display:flex;flex-direction:column;gap:10px;min-height:0}
+.list{flex:1;min-height:120px;overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:4px}
+.row{display:flex;align-items:center;gap:7px;padding:4px 6px;border-radius:4px;cursor:pointer;font-size:12.5px}
+.row:hover{background:color-mix(in srgb,var(--accent) 10%,transparent)}.row.sel{background:color-mix(in srgb,var(--accent) 20%,transparent)}
+.row .n{font:600 11px var(--mono);min-width:1.6em;color:var(--muted)}.sw{width:10px;height:10px;border-radius:2px;flex:none}
+.row input{margin:0}.row .q{margin-left:auto;font:11px var(--mono);color:var(--muted)}
+.info{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:10px 12px;font-size:12.5px;max-height:44%;overflow:auto}
+.info h2{margin:0 0 4px;font-size:14px}.info .k{font:12px var(--mono);color:var(--muted)}.info p{margin:6px 0 0}
+.leg{display:flex;gap:10px;font-size:12px;color:var(--muted)}.leg i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px}
+@media (max-width:820px){.app{grid-template-columns:1fr;grid-template-rows:auto 60vh auto auto;grid-template-areas:"head" "stage" "bar" "side";height:auto}}
+</style>
+</head>
+<body>
+<div class="app">
+<header><h1>Scout v4 probe bench<small>drawn bench parts, assembled (no generated parts)</small></h1>
+<div class="leg"><span><i style="background:var(--printed)"></i>printed PCTG</span><span><i style="background:var(--bought)"></i>bought</span><span><i style="background:var(--hardware)"></i>hardware</span></div></header>
+<div class="stage" id="stage"><div class="tip" id="tip"></div></div>
+<div class="bar">
+ <label>Explode <input type="range" id="ex" min="0" max="100" value="0"></label>
+ <label>Mast out <input type="range" id="mast" min="0" max="150" value="0"><span id="mv" class="chip">0 mm</span></label>
+ <label>Build step <input type="range" id="step" min="1" max="11" value="11"><span id="sv" class="chip">all</span></label>
+ <button id="lab" class="on">Numbers</button><button id="bb">Size box</button><button id="iso">Isolate</button><button id="spin">Spin</button><button id="reset">Reset view</button>
+</div>
+<div class="side"><div class="list" id="list"></div>
+<div class="info" id="info"><h2>Hover or click a part</h2><p>Drag to rotate, wheel to zoom, right-drag to pan. Sizes are x (front), y (side), z (up) in the drone frame, mm.</p></div></div>
+</div>
+<script type="application/json" id="data">__DATA__</script>
+<script>/*__THREE__*/</script>
+<script>/*__ORBIT__*/</script>
+<script>
+(function(){
+const D=JSON.parse(document.getElementById('data').textContent),parts=D.parts,meta=D.meta;
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const COL={printed:0x2c9a93,bought:0xe08a1e,hardware:0x8d97a5};
+const b64=s=>{const b=atob(s),a=new Uint8Array(b.length);for(let i=0;i<b.length;i++)a[i]=b.charCodeAt(i);return a.buffer};
+const stage=document.getElementById('stage'),tip=document.getElementById('tip');
+const R=new THREE.WebGLRenderer({antialias:true,alpha:true,preserveDrawingBuffer:true});R.setPixelRatio(Math.min(devicePixelRatio,2));stage.insertBefore(R.domElement,tip);
+const scene=new THREE.Scene();const cam=new THREE.PerspectiveCamera(32,1,1,3000);cam.up.set(0,0,1);
+scene.add(new THREE.HemisphereLight(0xffffff,0x667088,0.85));
+const dl=new THREE.DirectionalLight(0xffffff,0.8);dl.position.set(120,-200,300);scene.add(dl);
+const dl2=new THREE.DirectionalLight(0xffffff,0.3);dl2.position.set(-200,150,-80);scene.add(dl2);
+const ctl=new THREE.OrbitControls(cam,R.domElement);ctl.enableDamping=true;
+const grid=new THREE.GridHelper(200,20,0x8892a0,0xc5ccd6);grid.rotation.x=Math.PI/2;grid.position.z=11.9;grid.material.transparent=true;grid.material.opacity=.35;scene.add(grid);
+const axes=new THREE.AxesHelper(18);axes.position.set(-62,-32,12);scene.add(axes);
+const items=[];let sel=null,hov=null,isolate=false,bbOn=false,labOn=true;
+parts.forEach((p,i)=>{
+  const m=p.mesh,V=new Uint16Array(b64(m.v)),F=m.w==='H'?new Uint16Array(b64(m.f)):new Uint32Array(b64(m.f));
+  const pos=new Float32Array(V.length);for(let k=0;k<V.length;k++)pos[k]=m.lo[k%3]+V[k]/65535*m.span[k%3];
+  const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.BufferAttribute(pos,3));g.setIndex(new THREE.BufferAttribute(F,1));g.computeBoundingBox();g.computeVertexNormals();
+  const mat=new THREE.MeshStandardMaterial({color:COL[p.kind],roughness:.55,metalness:p.kind==='hardware'?.6:.05,flatShading:true,side:THREE.DoubleSide,transparent:true});
+  if(p.id==='rod')mat.color.set(0x23272e);
+  const mesh=new THREE.Mesh(g,mat);mesh.userData.i=i;
+  const o=new THREE.Group();o.add(mesh);scene.add(o);
+  const c=new THREE.Vector3();g.boundingBox.getCenter(c);
+  const lab=document.createElement('div');lab.className='lab '+p.kind;lab.textContent=i+1;stage.appendChild(lab);
+  const it={p,mesh,o,mat,c,lab,vis:true,base:mat.color.getHex()};items.push(it);
+  if(p.id==='blade_a'||p.id==='blade_b'){g.computeBoundingBox();it.z0=g.boundingBox.min.z;it.zh=g.boundingBox.max.z-g.boundingBox.min.z}
+});
+const bbox=new THREE.Box3Helper(new THREE.Box3(),0x2f6fde);bbox.visible=false;scene.add(bbox);
+// list
+const list=document.getElementById('list');
+items.forEach((it,i)=>{const r=document.createElement('div');r.className='row';
+  r.innerHTML=`<input type="checkbox" checked><span class="n">${i+1}</span><span class="sw" style="background:#${COL[it.p.kind].toString(16).padStart(6,'0')}"></span><span>${it.p.name}</span><span class="q">${it.p.qty>1?'x'+it.p.qty:''}</span>`;
+  r.querySelector('input').onchange=e=>{it.vis=e.target.checked;e.stopPropagation()};r.querySelector('input').onclick=e=>e.stopPropagation();
+  r.onclick=()=>select(i);r.onmouseenter=()=>{hov=i};r.onmouseleave=()=>{hov=null};it.row=r;list.appendChild(r)});
+function info(i){const p=items[i].p,b=p.bbox;const kind={printed:'printed, PCTG',bought:'bought',hardware:'hardware'}[p.kind];
+  return `<h2>${i+1}. ${p.name}</h2><div class="k">${kind}${p.qty>1?', qty '+p.qty:''} &middot; bounding box ${b[0]} x ${b[1]} x ${b[2]} mm${p.mass!=null?' &middot; solid mass '+p.mass+' g':''}</div><p>${p.dims}</p><p class="k">${p.src} &middot; build step ${p.step}</p>`}
+function select(i){sel=sel===i?null:i;items.forEach((it,k)=>{it.row.classList.toggle('sel',k===sel);it.lab.classList.toggle('sel',k===sel)});
+  document.getElementById('info').innerHTML=sel==null?'<h2>Hover or click a part</h2><p>Drag to rotate, wheel to zoom, right-drag to pan.</p>':info(sel)}
+// controls
+const $=id=>document.getElementById(id);
+$('lab').onclick=e=>{labOn=!labOn;e.target.classList.toggle('on',labOn)};
+$('bb').onclick=e=>{bbOn=!bbOn;e.target.classList.toggle('on',bbOn)};
+$('iso').onclick=e=>{isolate=!isolate;e.target.classList.toggle('on',isolate)};
+let spin=false;$('spin').onclick=e=>{spin=!spin;e.target.classList.toggle('on',spin)};
+$('reset').onclick=()=>home();
+$('step').oninput=()=>{$('sv').textContent=+$('step').value>=11?'all':'1..'+$('step').value};
+$('mast').oninput=()=>{$('mv').textContent=$('mast').value+' mm'};
+function home(){cam.position.set(210,-260,200);ctl.target.set(0,-2,65);ctl.update()}
+home();
+const ray=new THREE.Raycaster(),mouse=new THREE.Vector2();let mx=0,my=0,inside=false;
+R.domElement.addEventListener('pointermove',e=>{const r=R.domElement.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top;mouse.set(mx/r.width*2-1,-(my/r.height)*2+1);inside=true});
+R.domElement.addEventListener('pointerleave',()=>{inside=false;hov=null});
+let down=null;R.domElement.addEventListener('pointerdown',e=>{down=[e.clientX,e.clientY]});
+R.domElement.addEventListener('pointerup',e=>{if(!down||Math.hypot(e.clientX-down[0],e.clientY-down[1])>4)return;
+  ray.setFromCamera(mouse,cam);const h=ray.intersectObjects(items.filter(t=>t.o.visible).map(t=>t.mesh))[0];if(h)select(h.object.userData.i);else if(sel!=null)select(sel)});
+function size(){const w=stage.clientWidth,h=stage.clientHeight;R.setSize(w,h,false);R.domElement.style.width=w+'px';R.domElement.style.height=h+'px';cam.aspect=w/h;cam.updateProjectionMatrix()}
+addEventListener('resize',size);size();
+const tmp=new THREE.Vector3();
+function frame(){requestAnimationFrame(frame);
+  const f=$('ex').value/100,L=+$('mast').value,st=+$('step').value;
+  if(spin){const a=.004,x=cam.position.x-ctl.target.x,y=cam.position.y-ctl.target.y;cam.position.x=ctl.target.x+x*Math.cos(a)-y*Math.sin(a);cam.position.y=ctl.target.y+x*Math.sin(a)+y*Math.cos(a)}
+  if(inside&&!down){ray.setFromCamera(mouse,cam);const h=ray.intersectObjects(items.filter(t=>t.o.visible).map(t=>t.mesh))[0];hov=h?h.object.userData.i:null}
+  const active=hov!=null?hov:sel;
+  items.forEach((it,i)=>{const p=it.p,isHead=meta.head.includes(p.id);
+    it.o.visible=it.vis&&p.step<=st;
+    let dz=isHead?L:0;
+    it.o.position.set(p.ex[0]*f,p.ex[1]*f,p.ex[2]*f+dz);
+    if(it.zh!=null){it.mesh.scale.z=(1+L/it.zh);it.mesh.position.z=it.z0*(1-it.mesh.scale.z)}
+    const dim=(isolate&&sel!=null&&sel!==i);it.mat.opacity=dim?.12:1;it.mat.depthWrite=!dim;
+    it.mat.emissive.setHex(active===i?0x2a4f9f:0);
+    it.lab.style.display=(labOn&&it.o.visible)?'block':'none';
+    if(labOn&&it.o.visible){tmp.copy(it.c).add(it.o.position).project(cam);const w=stage.clientWidth,h=stage.clientHeight;it.lab.style.left=((tmp.x+1)/2*w)+'px';it.lab.style.top=((1-tmp.y)/2*h)+'px';it.lab.style.zIndex=tmp.z<1?3:0;if(tmp.z>=1)it.lab.style.display='none'}
+  });
+  if(bbOn&&active!=null&&items[active].o.visible){const t=items[active];t.mesh.geometry.computeBoundingBox();const b=t.mesh.geometry.boundingBox.clone();b.translate(t.o.position);if(t.zh!=null){b.min.z=t.o.position.z+t.z0;b.max.z=b.min.z+t.zh*t.mesh.scale.z}bbox.box.copy(b);bbox.visible=true}else bbox.visible=false;
+  if(active!=null&&inside&&hov!=null){const p=items[hov].p,b=p.bbox;tip.style.display='block';tip.innerHTML=`<b>${hov+1}. ${p.name}</b><br><span>${b[0]} x ${b[1]} x ${b[2]} mm &middot; ${p.kind}${p.qty>1?' x'+p.qty:''}</span>`;
+    tip.style.left=Math.min(mx+14,stage.clientWidth-tip.offsetWidth-6)+'px';tip.style.top=Math.max(4,my-8-tip.offsetHeight)+'px'}else tip.style.display='none';
+  ctl.update();R.render(scene,cam)}
+frame();
+window.__probe={items,select};
+})();
+</script>
+</body>
+</html>
