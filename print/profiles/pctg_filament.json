@@ -11,9 +11,9 @@
  "nozzle_temperature_initial_layer": ["270"],
  "nozzle_temperature_range_low": ["255"],
  "nozzle_temperature_range_high": ["280"],
- "hot_plate_temp": ["75"],
+ "hot_plate_temp": ["80"],
  "hot_plate_temp_initial_layer": ["80"],
- "textured_plate_temp": ["75"],
+ "textured_plate_temp": ["80"],
  "textured_plate_temp_initial_layer": ["80"],
  "cool_plate_temp": ["70"],
  "cool_plate_temp_initial_layer": ["75"],
@@ -25,8 +25,8 @@
  "filament_retraction_speed": ["30"],
  "filament_deretraction_speed": ["30"],
  "filament_z_hop": ["0.4"],
- "fan_min_speed": ["40"],
- "fan_max_speed": ["60"],
+ "fan_min_speed": ["5"],
+ "fan_max_speed": ["35"],
  "overhang_fan_speed": ["100"],
  "overhang_fan_threshold": ["25%"],
  "close_fan_the_first_x_layers": ["3"],
@@ -37,5 +37,5 @@
  "filament_density": ["1.27"],
  "filament_cost": ["25"],
  "filament_soluble": ["0"],
- "filament_notes": "3D-Fuel Pro PCTG, 1.75 mm. Maker range nozzle 260-280, bed 70-80, dry 60-70 C 4-8 h. Spark's tested material: PCTG; impact tough, sticky to PEI: use glue stick on smooth plate."
+ "filament_notes": "3D-Fuel Pro PCTG 1.75 mm (Amazon ASIN B0CGK4C8F5, order 112-3821238-6497025). Sources 21 Nov 2026: 3D-Fuel support 'Baseline Pro PCTG Settings for Printers Without a Profile' and 'Pro PCTG Print Profiles' (via search, pages themselves 403): nozzle 250-280 (mid 265), bed 80 on textured PEI, fan 5% min and 30-40% max (35 used), no feature over 150 mm/s, outer wall and top surface 100 mm/s or less, max volumetric 10-15 mm3/s (12 used), calibrate Flow Dynamics K per spool. Product page: dry 60-70 C 4-8 h. Avoid bare smooth PEI (use glue stick)."
 }
