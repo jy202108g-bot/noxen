@@ -10,10 +10,11 @@
  "settings": "PCTG 0.12 mm, 100 %",
  "time": "11m 6s",
  "note": "leaf saddle S3",
- "status": "ready",
+ "status": "printing",
  "history": [
   "2026-11-15 01:56 UTC ready",
-  "2026-11-21 prepared: sliced and checked, print/ready/scout_v4_probe_roller_saddle_S3/scout_v4_probe_roller_saddle_S3.gcode.3mf"
+  "2026-11-21 prepared: sliced and checked, print/ready/scout_v4_probe_roller_saddle_S3/scout_v4_probe_roller_saddle_S3.gcode.3mf",
+  "2026-11-21 09:22 UTC printing: Jarvis, plate 2 (probe_plate2), started 21 Nov 01:22 Pacific"
  ],
  "prepared": {
   "for_sha256": "23c87b67fc920c6c3ca3a8299f5184b9f66f3c4e79a3199e802deec5124af46d",

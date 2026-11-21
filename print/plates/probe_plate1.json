@@ -1,0 +1,5 @@
+{"name": "probe_plate1", "printer": "Gideon", "parts": [
+ {"part": "scout_v4_probe_bench_base", "qty": 1, "layer": 0.16, "walls": 4, "infill": 100},
+ {"part": "scout_v4_probe_pinion", "qty": 2, "layer": 0.16, "walls": 4, "infill": 100},
+ {"part": "scout_v4_probe_spool", "qty": 1, "layer": 0.16, "walls": 4, "infill": 100}
+]}

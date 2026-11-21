@@ -10,11 +10,12 @@
  "settings": "PCTG 3D-Fuel Pro, 0.12 mm (print/profiles), supports on; the sliced file is final",
  "time": "1h10",
  "note": "drawn prototype 15 Nov: open behind for the camera, drops onto the horn",
- "status": "ready",
+ "status": "printing",
  "history": [
   "2026-11-15 01:56 UTC ready",
   "2026-11-16 01:26 UTC ready: file refreshed",
-  "2026-11-21 04:01 UTC ready: prepared: sliced and checked, print/ready/scout_v4_cradle/scout_v4_cradle.gcode.3mf"
+  "2026-11-21 04:01 UTC ready: prepared: sliced and checked, print/ready/scout_v4_cradle/scout_v4_cradle.gcode.3mf",
+  "2026-11-21 09:22 UTC printing: Jarvis, plate 2 (probe_plate2), started 21 Nov 01:22 Pacific"
  ],
  "prepared": {
   "for_sha256": "c190695ab190a86fc8f1b0f88a054a19aaea6d688f127cff034256c2be76c8c3",

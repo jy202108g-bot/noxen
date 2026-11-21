@@ -1,0 +1,122 @@
+{
+ "part": "probe_plate1",
+ "checks": [
+  [
+   "slice ran without error",
+   true,
+   ""
+  ],
+  [
+   "every move inside the 180 mm bed",
+   true,
+   "x 0.2..135.8 y 6.2..128.0 z max 31.9"
+  ],
+  [
+   "no empty layers",
+   true,
+   "199 layers"
+  ],
+  [
+   "objects stayed where laid out",
+   true,
+   "offset [0.0, -0.01]"
+  ],
+  [
+   "scout_v4_probe_spool: overhang has material under it",
+   true,
+   "0 of 215 mm2 unsupported"
+  ],
+  [
+   "supports are in the g-code",
+   true,
+   "16292 support moves"
+  ]
+ ],
+ "stats": {
+  "layer_steps": [
+   0.16
+  ],
+  "offset_xy": [
+   0.0,
+   -0.01
+  ],
+  "time": "2h 52m 51s",
+  "grams": 64.65
+ },
+ "ready": true,
+ "gcode_3mf": "C:\\Users\\\u58fd\\nox\\data\\slicer\\plates\\p1\\probe_plate1.gcode.3mf",
+ "objects": [
+  {
+   "label": "scout_v4_probe_bench_base",
+   "opts": {
+    "layer_height": 0.16,
+    "wall_loops": 4,
+    "sparse_infill_density": "100%",
+    "enable_support": 0
+   },
+   "xy": [
+    6.0,
+    6.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "label": "scout_v4_probe_pinion_1",
+   "opts": {
+    "layer_height": 0.16,
+    "wall_loops": 4,
+    "sparse_infill_density": "100%",
+    "enable_support": 0
+   },
+   "xy": [
+    50.978233337402344,
+    86.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "label": "scout_v4_probe_pinion_2",
+   "opts": {
+    "layer_height": 0.16,
+    "wall_loops": 4,
+    "sparse_infill_density": "100%",
+    "enable_support": 0
+   },
+   "xy": [
+    74.39785957336426,
+    86.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "label": "scout_v4_probe_spool",
+   "opts": {
+    "layer_height": 0.16,
+    "wall_loops": 4,
+    "sparse_infill_density": "100%",
+    "enable_support": 1
+   },
+   "xy": [
+    6.0,
+    86.0
+   ],
+   "normal": [
+    0.0,
+    1.0,
+    0.0
+   ]
+  }
+ ]
+}

@@ -1,0 +1,52 @@
+{
+ "name": "probe_plate2",
+ "printer": "Jarvis",
+ "parts": [
+  {
+   "part": "scout_v4_probe_bench_turret",
+   "qty": 1,
+   "layer": 0.2,
+   "walls": 4,
+   "infill": 40
+  },
+  {
+   "part": "scout_v4_cradle",
+   "qty": 1,
+   "layer": 0.12,
+   "walls": 3,
+   "infill": 100
+  },
+  {
+   "part": "scout_v4_probe_roller",
+   "qty": 2,
+   "layer": 0.12,
+   "walls": 3,
+   "infill": 100,
+   "mesh": "print/scout_v4_probe_roller.stl"
+  },
+  {
+   "part": "scout_v4_probe_roller_saddle_S1",
+   "qty": 1,
+   "layer": 0.12,
+   "walls": 3,
+   "infill": 100,
+   "mesh": "print/scout_v4_probe_roller_saddle_S1.stl"
+  },
+  {
+   "part": "scout_v4_probe_roller_saddle_S2",
+   "qty": 1,
+   "layer": 0.12,
+   "walls": 3,
+   "infill": 100,
+   "mesh": "print/scout_v4_probe_roller_saddle_S2.stl"
+  },
+  {
+   "part": "scout_v4_probe_roller_saddle_S3",
+   "qty": 1,
+   "layer": 0.12,
+   "walls": 3,
+   "infill": 100,
+   "mesh": "print/scout_v4_probe_roller_saddle_S3.stl"
+  }
+ ]
+}

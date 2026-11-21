@@ -10,11 +10,12 @@
  "settings": "PCTG 0.2 mm, 4 walls, 40 %",
  "time": "3h15",
  "note": "reprint (15 Nov build: roller slots to length, clears the base's posts and the pinion's hub)",
- "status": "ready",
+ "status": "printing",
  "history": [
   "2026-11-15 02:05 UTC ready",
   "2026-11-16 01:26 UTC ready: file refreshed",
-  "2026-11-21 06:27 UTC ready: prepared: sliced and checked, print/ready/scout_v4_probe_bench_turret/scout_v4_probe_bench_turret.gcode.3mf"
+  "2026-11-21 06:27 UTC ready: prepared: sliced and checked, print/ready/scout_v4_probe_bench_turret/scout_v4_probe_bench_turret.gcode.3mf",
+  "2026-11-21 09:22 UTC printing: Jarvis, plate 2 (probe_plate2), started 21 Nov 01:22 Pacific"
  ],
  "prepared": {
   "for_sha256": "69d9e1340619cd30278dfc029dbe1080a0b73c3db0ab951a2d21438da4be9108",

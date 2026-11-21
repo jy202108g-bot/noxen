@@ -10,11 +10,12 @@
  "settings": "PCTG 0.16 mm, 4 walls, 100 %",
  "time": "tbd",
  "note": "bench pinion",
- "status": "ready",
+ "status": "printing",
  "history": [
   "2026-11-21 06:40 UTC ready",
   "2026-11-21 06:40 UTC ready: prepared: sliced and checked, print/ready/scout_v4_probe_pinion/scout_v4_probe_pinion.gcode.3mf",
-  "2026-11-21 06:55 UTC ready: prepared: sliced and checked, print/ready/scout_v4_probe_pinion/scout_v4_probe_pinion.gcode.3mf"
+  "2026-11-21 06:55 UTC ready: prepared: sliced and checked, print/ready/scout_v4_probe_pinion/scout_v4_probe_pinion.gcode.3mf",
+  "2026-11-21 09:22 UTC printing: Gideon, plate 1 (probe_plate1), started 21 Nov 01:22 Pacific"
  ],
  "prepared": {
   "for_sha256": "54675528bf62e6797b9fc0cd40136d2b4dd59614796b17104799c332398e29bb",

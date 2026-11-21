@@ -10,11 +10,12 @@
  "settings": "PCTG 0.12 mm, 100 %",
  "time": "0h12",
  "note": "two O8 x 4.5 tubes (replace the O8 x 19)",
- "status": "ready",
+ "status": "printing",
  "history": [
   "2026-11-15 01:56 UTC ready",
   "2026-11-16 02:03 UTC ready: file refreshed",
-  "2026-11-21 06:27 UTC ready: prepared: sliced and checked, print/ready/scout_v4_probe_roller/scout_v4_probe_roller.gcode.3mf"
+  "2026-11-21 06:27 UTC ready: prepared: sliced and checked, print/ready/scout_v4_probe_roller/scout_v4_probe_roller.gcode.3mf",
+  "2026-11-21 09:22 UTC printing: Jarvis, plate 2 (probe_plate2), started 21 Nov 01:22 Pacific"
  ],
  "prepared": {
   "for_sha256": "e1f5307cfd78a33eff840542f2dd049ef74eaaf9b68b88d3193d39dfa0820732",
