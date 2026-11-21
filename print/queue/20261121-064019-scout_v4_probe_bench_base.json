@@ -2,7 +2,7 @@
  "id": "20261121-064019-scout_v4_probe_bench_base",
  "part": "scout_v4_probe_bench_base",
  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-scout_v4_probe_bench_base.stl",
- "sha256": "67b9505a8df2707ea57592ce617bfef11586e7ff4e905a55f6e7cb904b67714d",
+ "sha256": "7d8dc04d6968876dc7b12581660ea9c42d5df6c582cca5c17f0d42662057a022",
  "qty": 1,
  "material": "PCTG",
  "orient": "posed for you in the sliced file (flat face 7855 mm2 down, 130x68x12 mm): do not re-orient",
@@ -15,7 +15,8 @@
   "2026-11-21 06:40 UTC ready",
   "2026-11-21 06:40 UTC ready: prepare FAILED: supports are in the g-code; every overhang has material under it",
   "2026-11-21 06:43 UTC ready: prepare FAILED: supports are in the g-code; every overhang has material under it",
-  "2026-11-21 prepared: sliced and checked, print/ready/scout_v4_probe_bench_base/scout_v4_probe_bench_base.gcode.3mf"
+  "2026-11-21 prepared: sliced and checked, print/ready/scout_v4_probe_bench_base/scout_v4_probe_bench_base.gcode.3mf",
+  "2026-11-21 06:47 UTC ready: file refreshed"
  ],
  "prepared": {
   "for_sha256": "67b9505a8df2707ea57592ce617bfef11586e7ff4e905a55f6e7cb904b67714d",
