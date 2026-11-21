@@ -7,14 +7,19 @@
    ""
   ],
   [
-   "every move inside the 180 mm bed",
+   "extrusions (supports, brim, skirt included) inside the 5 mm safe area",
    true,
-   "x 0.2..135.8 y 6.2..128.0 z max 31.9"
+   "x 23.6..154.8 y 27.7..155.6 z max 31.9"
   ],
   [
-   "every printing/travel move inside the A1 mini's 180 mm bed",
+   "every printing/travel move inside the safe area (plate_safe)",
    true,
-   "x 0.0..181.0 y 6.2..128.0 (+402 stock park moves left of the bed)"
+   "inside the safe area: x 23.6..154.8, y 27.7..155.6 mm (5 mm margin)"
+  ],
+  [
+   "plate centred on the bed",
+   true,
+   "toolpath centre 89.2, 91.6 (bed 90)"
   ],
   [
    "no empty layers",
@@ -24,7 +29,7 @@
   [
    "objects stayed where laid out",
    true,
-   "offset [0.0, -0.01]"
+   "offset [0.0, -0.0]"
   ],
   [
    "scout_v4_probe_spool: overhang has material under it",
@@ -34,7 +39,7 @@
   [
    "supports are in the g-code",
    true,
-   "16292 support moves"
+   "16267 support moves"
   ]
  ],
  "stats": {
@@ -43,10 +48,10 @@
   ],
   "offset_xy": [
    0.0,
-   -0.01
+   -0.0
   ],
-  "time": "3h 3m 6s",
-  "grams": 64.63
+  "time": "3h 3m 17s",
+  "grams": 64.58
  },
  "ready": true,
  "gcode_3mf": "C:\\Users\\\u58fd\\nox\\repos\\noxen\\print\\plates\\sliced\\probe_plate1.gcode.3mf",
@@ -60,8 +65,8 @@
     "enable_support": 0
    },
    "xy": [
-    6.0,
-    6.0
+    25.0,
+    27.510883331298828
    ],
    "normal": [
     0.0,
@@ -78,8 +83,8 @@
     "enable_support": 0
    },
    "xy": [
-    50.978233337402344,
-    86.0
+    81.97823333740234,
+    107.51088333129883
    ],
    "normal": [
     0.0,
@@ -96,8 +101,8 @@
     "enable_support": 0
    },
    "xy": [
-    74.39785957336426,
-    86.0
+    105.39785957336426,
+    107.51088333129883
    ],
    "normal": [
     0.0,
@@ -114,8 +119,8 @@
     "enable_support": 1
    },
    "xy": [
-    6.0,
-    86.0
+    31.0,
+    113.51088333129883
    ],
    "normal": [
     0.0,

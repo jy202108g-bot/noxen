@@ -25,6 +25,34 @@ def connect(name):
     return pr
 
 
+BED = 180.0
+
+
+def fits(path):
+    """(ok, why): a print is sent only when it was sliced for the A1 mini and every move lies on its 180 mm bed (Spark, 21 Nov
+    12:24, inbox 613: plates "too big or oriented wrong" started printing outside the plate). The machine's own stock moves
+    (the "safe pos" park at X-13 left of the bed, its wipe station) are allowed; a move past Y 180 never is."""
+    import re, zipfile
+    try:
+        z = zipfile.ZipFile(path)
+        names = [n for n in z.namelist() if n.endswith(".gcode")]
+        g = z.read(names[0]).decode("utf8", "replace") if names else ""
+    except Exception as e:
+        return False, "not a sliced .gcode.3mf (%s)" % e
+    if not g:
+        return False, "no g-code inside: slice it first"
+    head = dict(re.findall(r"^; (printer_model|printable_area|printable_height) = (.*)$", g, re.M))
+    if "A1 mini" not in head.get("printer_model", ""):
+        return False, "sliced for %r, not the A1 mini: slice with the A1 mini profile" % head.get("printer_model", "an unknown printer")
+    area = re.findall(r"(-?[\d.]+)x(-?[\d.]+)", head.get("printable_area", ""))
+    if area and max(max(float(a), float(b)) for a, b in area) > BED + 0.5:
+        return False, "sliced with a %s bed, not 180 mm" % head.get("printable_area")
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import plate_safe                    # the one safe-area gate (5 mm from every plate edge, supports and brim included), shared with plate.py
+    ok, why, _ = plate_safe.safe_check(g)
+    return ok, why
+
+
 def status(pr):
     d = pr.mqtt_dump() or {}
     pj = d.get("print", {}) if isinstance(d, dict) else {}
@@ -38,6 +66,11 @@ def main():
     ap = argparse.ArgumentParser(); ap.add_argument("cmd", choices=["check", "send", "watch"]); ap.add_argument("printer")
     ap.add_argument("file", nargs="?"); ap.add_argument("--start", action="store_true"); ap.add_argument("--shot")
     a = ap.parse_args()
+    if a.cmd == "send":                 # checked before the printer is even touched; never overridden
+        ok, why = fits(a.file)
+        print("plate check:", why, flush=True)
+        if not ok:
+            sys.exit("NOT SENT: " + why)
     pr = connect(a.printer)
     try:
         if a.cmd in ("check", "watch"):

@@ -4,7 +4,7 @@
     python tools/plate.py <plate.json> --out DIR
 
 plate.json: {"name": "probe_plate1", "parts": [{"part": "scout_v4_probe_bench_base", "qty": 1, "layer": 0.16, "walls": 4, "infill": 100}, ...]}
-Each part is posed like tools/prepare_part.py (least overhang), laid out on the bed with gaps for brim and supports, sliced with
+Each part is posed like tools/prepare_part.py (least overhang), laid out with a per-side pad for brim and support spread, the block centred on the bed, sliced with
 print/profiles plus its own per-object layer height, walls, infill and supports (on only where it has overhang), and every part's
 overhangs are checked against the g-code. Writes <out>/<name>.gcode.3mf and <out>/<name>.report.json.
 """
@@ -15,8 +15,8 @@ import trimesh
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import prepare_part as pp
 import slice_part
+import plate_safe
 
-GAP = 12.0       # mm between footprints: 5 brim + support skirt + margin
 
 
 def pose(spec, angle=40.0):
@@ -29,21 +29,37 @@ def pose(spec, angle=40.0):
     return m, oh, best
 
 
+PAD = 6.0        # per side around a part with no supports: brim 5 + 1
+PAD_SUP = 12.0   # per side around a part with supports: they spread 6-10 mm past the part (probe plates, 21 Nov) + brim
+SAFE = 5.0       # toolpaths stay this far from every plate edge (tools/plate_safe.py, the same gate bambu_send applies)
+
+
 def layout(items):
-    """Shelf-pack footprints on the 180 bed (tallest footprint first). Moves each item's mesh to its place."""
+    """Shelf-pack each footprint grown by its pad (brim + support spread) inside the safe area, then CENTRE the whole block on the
+    180 bed. Moves each item's mesh to its place; x, y of every item is its model corner."""
+    for it in items:
+        it["pad"] = PAD_SUP if it["opts"].get("enable_support") else PAD
     order = sorted(range(len(items)), key=lambda i: -items[i]["mesh"].extents[1])
-    x = y = row_h = 0.0
-    M = 6.0
-    x = y = M
+    lim = pp.BED - 2 * SAFE
+    x = y = row_h = used_w = 0.0
+    pos = {}
     for i in order:
-        m = items[i]["mesh"]; w, d = m.extents[0], m.extents[1]
-        if x + w > pp.BED - M:
-            x = M; y += row_h + GAP; row_h = 0.0
-        if y + d > pp.BED - M:
-            sys.exit("plate does not fit the bed")
-        m.vertices += [x, y, 0]
-        items[i]["xy"] = (x, y)
-        x += w + GAP; row_h = max(row_h, d)
+        m = items[i]["mesh"]; pd = items[i]["pad"]
+        w, d = m.extents[0] + 2 * pd, m.extents[1] + 2 * pd
+        if w > lim or d > lim:
+            sys.exit("%s (with its %.0f mm pad per side) is larger than the %.0f mm safe area" % (items[i]["label"], pd, lim))
+        if x + w > lim:
+            x = 0.0; y += row_h; row_h = 0.0
+        if y + d > lim:
+            sys.exit("plate does not fit the safe area: split the parts over two plates")
+        pos[i] = (x + pd, y + pd)
+        x += w; row_h = max(row_h, d); used_w = max(used_w, x)
+    used_h = y + row_h
+    ox = (pp.BED - used_w) / 2; oy = (pp.BED - used_h) / 2          # centre the block (pads included)
+    for i, (px, py) in pos.items():
+        m = items[i]["mesh"]
+        m.vertices += [ox + px, oy + py, 0]
+        items[i]["xy"] = (ox + px, oy + py)
 
 
 def write_3mf(items, path, name):
@@ -103,24 +119,13 @@ def check_plate(items, res, out, name):
     g = pp.read_gcode(res["path"])
     P = pp.parse_gcode(g)
     L = P["layers"]; b = P["bounds"]
-    inside = b[0] >= 0 and b[1] >= 0 and b[2] <= pp.BED and b[3] <= pp.BED
-    checks.append(("every move inside the 180 mm bed", inside, "x %.1f..%.1f y %.1f..%.1f z max %.1f" % (b[0], b[2], b[1], b[3], P["zmax"])))
-    # every G0/G1/G2/G3 X/Y from the first printed feature on (travel included; the extrusion bounds above miss travels). The
-    # machine's own start/end routine and its per-layer "safe pos" park (X-13, the A1 mini's purge and wipe station) are Bambu's
-    # stock moves and lie off the bed by design: reported, not judged.
-    ax, ay = [], []; started = False; stock = 0
-    for ln in g.splitlines():
-        if ln.startswith(";LAYER_CHANGE") or ln.startswith("; CHANGE_LAYER"): started = True
-        if not started or ln[:2] not in ("G0", "G1", "G2", "G3") or ln[2:3] != " ": continue
-        code = ln.split(";")[0]
-        mx = re.search(r" X(-?[\d.]+)", code); my = re.search(r" Y(-?[\d.]+)", code)
-        if "safe pos" in ln or (mx and float(mx.group(1)) < -5) or (my and float(my.group(1)) > 183):
-            stock += 1; continue
-        if mx: ax.append(float(mx.group(1)))
-        if my: ay.append(float(my.group(1)))
-    allin = bool(ax and ay) and min(ax) >= -1.0 and min(ay) >= -1.0 and max(ax) <= pp.BED + 1.0 and max(ay) <= pp.BED + 1.0
-    checks.append(("every printing/travel move inside the A1 mini's 180 mm bed", allin,
-                   "x %.1f..%.1f y %.1f..%.1f (+%d stock park moves left of the bed)" % (min(ax), max(ax), min(ay), max(ay), stock)))
+    inside = b[0] >= SAFE and b[1] >= SAFE and b[2] <= pp.BED - SAFE and b[3] <= pp.BED - SAFE
+    checks.append(("extrusions (supports, brim, skirt included) inside the %.0f mm safe area" % SAFE, inside, "x %.1f..%.1f y %.1f..%.1f z max %.1f" % (b[0], b[2], b[1], b[3], P["zmax"])))
+    ok, why, box = plate_safe.safe_check(g, SAFE)
+    checks.append(("every printing/travel move inside the safe area (plate_safe)", ok, why))
+    if box:
+        cx, cy = (box[0] + box[1]) / 2, (box[2] + box[3]) / 2
+        checks.append(("plate centred on the bed", abs(cx - pp.BED / 2) <= 6 and abs(cy - pp.BED / 2) <= 6, "toolpath centre %.1f, %.1f (bed %.0f)" % (cx, cy, pp.BED / 2)))
     zs = sorted(L)
     gaps =[round(zs[i + 1] - zs[i], 3) for i in range(len(zs) - 1) if zs[i + 1] - zs[i] > 0.45]
     checks.append(("no empty layers", not gaps, "%d layers" % len(zs) if not gaps else "gaps %s" % gaps[:5]))
