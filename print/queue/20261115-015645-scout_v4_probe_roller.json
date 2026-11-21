@@ -5,14 +5,23 @@
  "sha256": "e1f5307cfd78a33eff840542f2dd049ef74eaaf9b68b88d3193d39dfa0820732",
  "qty": 2,
  "material": "PCTG",
- "orient": "on end, as laid",
- "supports": "none",
+ "orient": "posed for you in the sliced file (flat face 56 mm2 down, 11x24x13 mm): do not re-orient",
+ "supports": "tree supports (auto) under 133 mm2 of overhang",
  "settings": "PCTG 0.12 mm, 100 %",
  "time": "0h12",
  "note": "two O8 x 4.5 tubes (replace the O8 x 19)",
  "status": "ready",
  "history": [
   "2026-11-15 01:56 UTC ready",
-  "2026-11-16 02:03 UTC ready: file refreshed"
- ]
+  "2026-11-16 02:03 UTC ready: file refreshed",
+  "2026-11-21 06:27 UTC ready: prepared: sliced and checked, print/ready/scout_v4_probe_roller/scout_v4_probe_roller.gcode.3mf"
+ ],
+ "prepared": {
+  "for_sha256": "e1f5307cfd78a33eff840542f2dd049ef74eaaf9b68b88d3193d39dfa0820732",
+  "gcode_3mf": "print/ready/scout_v4_probe_roller/scout_v4_probe_roller.gcode.3mf",
+  "supports": "tree supports (auto) under 133 mm2 of overhang",
+  "orient": "posed for you in the sliced file (flat face 56 mm2 down, 11x24x13 mm): do not re-orient",
+  "time": "19m 37s",
+  "grams": 2.06
+ }
 }

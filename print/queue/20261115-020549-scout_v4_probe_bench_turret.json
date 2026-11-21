@@ -5,14 +5,23 @@
  "sha256": "69d9e1340619cd30278dfc029dbe1080a0b73c3db0ab951a2d21438da4be9108",
  "qty": 1,
  "material": "PCTG",
- "orient": "on its -y wall (flat), as laid",
- "supports": "tree, under the throat's seat and the N20 block",
+ "orient": "posed for you in the sliced file (flat face 548 mm2 down, 58x50x72 mm): do not re-orient",
+ "supports": "tree supports (auto) under 2812 mm2 of overhang",
  "settings": "PCTG 0.2 mm, 4 walls, 40 %",
  "time": "3h15",
  "note": "reprint (15 Nov build: roller slots to length, clears the base's posts and the pinion's hub)",
  "status": "ready",
  "history": [
   "2026-11-15 02:05 UTC ready",
-  "2026-11-16 01:26 UTC ready: file refreshed"
- ]
+  "2026-11-16 01:26 UTC ready: file refreshed",
+  "2026-11-21 06:27 UTC ready: prepared: sliced and checked, print/ready/scout_v4_probe_bench_turret/scout_v4_probe_bench_turret.gcode.3mf"
+ ],
+ "prepared": {
+  "for_sha256": "69d9e1340619cd30278dfc029dbe1080a0b73c3db0ab951a2d21438da4be9108",
+  "gcode_3mf": "print/ready/scout_v4_probe_bench_turret/scout_v4_probe_bench_turret.gcode.3mf",
+  "supports": "tree supports (auto) under 2812 mm2 of overhang",
+  "orient": "posed for you in the sliced file (flat face 548 mm2 down, 58x50x72 mm): do not re-orient",
+  "time": "6h 43m 10s",
+  "grams": 76.33
+ }
 }

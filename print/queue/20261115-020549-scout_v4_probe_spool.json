@@ -5,14 +5,23 @@
  "sha256": "8a09fbcab5fe61a17020a9f1d8b61033a4060f7e9997093bebc2d2a9200a84a7",
  "qty": 1,
  "material": "PCTG",
- "orient": "gear face down, as laid",
- "supports": "none",
+ "orient": "posed for you in the sliced file (flat face 754 mm2 down, 33x33x32 mm): do not re-orient",
+ "supports": "tree supports (auto) under 215 mm2 of overhang",
  "settings": "PCTG 0.16 mm, 4 walls, 100 %",
  "time": "1h10",
  "note": "reprint (15 Nov: flange 0.2 off the N20's can)",
  "status": "ready",
  "history": [
   "2026-11-15 02:05 UTC ready",
-  "2026-11-16 02:03 UTC ready: file refreshed"
- ]
+  "2026-11-16 02:03 UTC ready: file refreshed",
+  "2026-11-21 06:27 UTC ready: prepared: sliced and checked, print/ready/scout_v4_probe_spool/scout_v4_probe_spool.gcode.3mf"
+ ],
+ "prepared": {
+  "for_sha256": "8a09fbcab5fe61a17020a9f1d8b61033a4060f7e9997093bebc2d2a9200a84a7",
+  "gcode_3mf": "print/ready/scout_v4_probe_spool/scout_v4_probe_spool.gcode.3mf",
+  "supports": "tree supports (auto) under 215 mm2 of overhang",
+  "orient": "posed for you in the sliced file (flat face 754 mm2 down, 33x33x32 mm): do not re-orient",
+  "time": "1h 48m 30s",
+  "grams": 23.23
+ }
 }

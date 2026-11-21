@@ -1,0 +1,187 @@
+{
+ "part": "scout_v4_probe_spool",
+ "source": "C:\\Users\\\u58fd\\nox\\repos\\noxen\\parts\\scout_v4_probe_spool\\print.stl",
+ "checks": [
+  [
+   "slice ran without error",
+   true,
+   ""
+  ],
+  [
+   "every move inside the 180 mm bed and height",
+   true,
+   "x 100.2..150.5 y 64.4..114.1 z max 31.9"
+  ],
+  [
+   "no empty layers",
+   true,
+   "265 layers"
+  ],
+  [
+   "supports are in the g-code",
+   true,
+   "23194 support moves on 202 layers"
+  ],
+  [
+   "every overhang has material under it",
+   true,
+   "0 of 215 mm2 overhang unsupported"
+  ]
+ ],
+ "orientation": {
+  "down_normal": [
+   0.0,
+   1.0,
+   0.0
+  ],
+  "contact_mm2": 754.1,
+  "overhang_mm2": 215.0,
+  "size": [
+   33.0,
+   33.0,
+   31.9
+  ],
+  "tried": [
+   {
+    "normal": [
+     0.0,
+     0.0,
+     -1.0
+    ],
+    "contact": 0.0,
+    "overhang": 739.7,
+    "height": 33.0,
+    "fits": true
+   },
+   {
+    "normal": [
+     0.0,
+     1.0,
+     0.0
+    ],
+    "contact": 754.1,
+    "overhang": 215.0,
+    "height": 31.9,
+    "fits": true
+   },
+   {
+    "normal": [
+     0.0,
+     -1.0,
+     0.0
+    ],
+    "contact": 41.7,
+    "overhang": 927.4,
+    "height": 31.9,
+    "fits": true
+   },
+   {
+    "normal": [
+     -0.7071,
+     -0.0,
+     -0.7071
+    ],
+    "contact": 0.0,
+    "overhang": 761.7,
+    "height": 33.0,
+    "fits": true
+   },
+   {
+    "normal": [
+     0.8774,
+     0.0,
+     -0.4798
+    ],
+    "contact": 0.0,
+    "overhang": 921.1,
+    "height": 33.0,
+    "fits": true
+   },
+   {
+    "normal": [
+     0.4798,
+     0.0,
+     0.8774
+    ],
+    "contact": 0.0,
+    "overhang": 765.8,
+    "height": 33.0,
+    "fits": true
+   },
+   {
+    "normal": [
+     -0.4798,
+     -0.0,
+     -0.8774
+    ],
+    "contact": 0.0,
+    "overhang": 762.1,
+    "height": 33.0,
+    "fits": true
+   },
+   {
+    "normal": [
+     -0.8774,
+     0.0,
+     0.4798
+    ],
+    "contact": 0.0,
+    "overhang": 923.5,
+    "height": 33.0,
+    "fits": true
+   },
+   {
+    "normal": [
+     0.7071,
+     0.0,
+     0.7071
+    ],
+    "contact": 0.0,
+    "overhang": 765.4,
+    "height": 33.0,
+    "fits": true
+   },
+   {
+    "normal": [
+     0.7071,
+     0.0,
+     -0.7071
+    ],
+    "contact": 0.0,
+    "overhang": 929.2,
+    "height": 33.0,
+    "fits": true
+   },
+   {
+    "normal": [
+     -0.7071,
+     0.0016,
+     0.7071
+    ],
+    "contact": 0.0,
+    "overhang": 923.1,
+    "height": 33.0,
+    "fits": true
+   }
+  ]
+ },
+ "supports": "tree supports (auto) under 215 mm2 of overhang",
+ "orient": "posed for you in the sliced file (flat face 754 mm2 down, 33x33x32 mm): do not re-orient",
+ "stats": {
+  "layers": 265,
+  "support_layers": 202,
+  "support_moves": 23194,
+  "offset_xy": [
+   35.6,
+   0.0
+  ],
+  "overhang_area": 215.0,
+  "unsupported_area": 0.0,
+  "narrow_ledges_mm2": 0.0,
+  "time": "1h 48m 30s",
+  "grams": 23.23
+ },
+ "ready": true,
+ "gcode_3mf": "C:\\Users\\\u58fd\\nox\\repos\\noxen\\print\\ready\\scout_v4_probe_spool\\scout_v4_probe_spool.gcode.3mf",
+ "pose_note": "the 3mf holds the part already posed: do not re-orient or re-arrange it"
+}
