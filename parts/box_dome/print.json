@@ -4,19 +4,59 @@
    "parts/box_dome/make.py": "acde555a9cfc",
    "systems/fit_table.json": "8d560ff6f55b",
    "systems/overseer.assembly.json": "773493ee080b",
-   "systems/scout_v4.assembly.json": "0bb71507e343",
+   "systems/scout_v4.assembly.json": "f4a0ecc5d98a",
    "tools/build_site.py": "84afdaadc851",
    "tools/seat_check.py": "5acab205ab60",
    "tools/seat_envelope.py": "fe96ec54e18a",
    "tools/solid_check.py": "2d0fb6510768"
   },
   "rc": 0,
-  "s": 99.2,
-  "at": "2026-11-15 08:45",
-  "commit": "cd9e6506",
+  "s": 171.9,
+  "at": "2026-11-21 07:03",
+  "commit": "fd1c1464",
   "solid": {
    "ok": true,
    "files": [
+    {
+     "file": "print/box_dome_hub_l.stl",
+     "ok": true
+    },
+    {
+     "file": "print/box_dome_hub_r.stl",
+     "ok": true
+    },
+    {
+     "file": "print/box_dome_plate_1_l.stl",
+     "ok": true
+    },
+    {
+     "file": "print/box_dome_plate_1_r.stl",
+     "ok": true
+    },
+    {
+     "file": "print/box_dome_plate_2_l.stl",
+     "ok": true
+    },
+    {
+     "file": "print/box_dome_plate_2_r.stl",
+     "ok": true
+    },
+    {
+     "file": "print/box_dome_plate_3_l.stl",
+     "ok": true
+    },
+    {
+     "file": "print/box_dome_plate_3_r.stl",
+     "ok": true
+    },
+    {
+     "file": "print/box_dome_plate_4_l.stl",
+     "ok": true
+    },
+    {
+     "file": "print/box_dome_plate_4_r.stl",
+     "ok": true
+    },
     {
      "file": "print/box_dome_ring_hub.stl",
      "ok": true
