@@ -21,9 +21,9 @@ task in tools/print_queue.py"), each run:
  1. `git pull -q --rebase`. For a job marked printing, look at the printer (Bambu Studio, Device tab): finished -> `set <id> printed`,
     failed or cancelled on the printer -> `set <id> failed --note <what the screen says>`; still running -> stop here.
  2. `python tools/print_queue.py next`. "none: ..." -> commit and push any status change, then stop (a run with nothing to do ends here).
- 3. Download the job's url, check its sha256, open it in Bambu Studio on the A1 mini's plate: orientation per `orient` (else the
-    largest flat face down), supports per `supports`, the filament per `material` (PCTG: the PETG profile +10 C), `settings` on top,
-    `qty` copies; slice. If the slice fails, warns of floating regions, or will not fit the 180 cube -> `set <id> failed --note ...`.
+ 3. `next` returns only a PREPARED job (python tools/print_queue.py prepare <part>: best flat pose, overhang found, supports on, sliced with print/profiles,
+    the g-code checked: bed, supports under every overhang, no error; tools/prepare_part.py). Print its `prepared.gcode_3mf` as it is (already posed,
+    never re-orient or re-arrange); the url/sha256 is only the source mesh. If a slice or check fails, the job is not returned: `set <id> failed --note ...`.
  4. Print to the A1 mini; once the printer shows it running, `set <id> printing`, commit "print: <part>", push. One job per run.
 Never start a job while the printer is busy or a printed part is still on the plate; never print anything not returned by `next`.
 """
@@ -109,6 +109,7 @@ def main():
     sp.add_parser("list").add_argument("--all", action="store_true")
     sp.add_parser("refresh")
     sp.add_parser("next")
+    sp.add_parser("prepare").add_argument("keys", nargs="+")
     s = sp.add_parser("set"); s.add_argument("id"); s.add_argument("status", choices=("printing", "printed", "failed")); s.add_argument("--note")
     o = ap.parse_args()
 
@@ -145,6 +146,21 @@ def main():
                 print(f"left: {j['id']} (its part fails its solid or assembly check now)")
             elif c != (j["url"], j["sha256"]):
                 j["url"], j["sha256"] = c; log(j, j["status"], "file refreshed"); save(j); print(f"refreshed: {j['id']} -> {c[0].rsplit('/', 1)[-1]} {c[1][:8]}")
+    elif o.cmd == "prepare":                                      # orient, support, slice and check: a job is sent only once prepared
+        import prepare_part
+        for k in o.keys:
+            for j in find(k):
+                mesh, name = prepare_part.find_mesh(j["part"])
+                r = prepare_part.prepare(mesh, name)
+                if r["ready"]:
+                    rel = os.path.relpath(r["gcode_3mf"], os.path.dirname(os.path.dirname(os.path.abspath(__file__)))).replace(os.sep, "/")
+                    j["prepared"] = {"for_sha256": j["sha256"], "gcode_3mf": rel, "supports": r["supports"], "orient": r["orient"],
+                                     "time": r["stats"].get("time"), "grams": r["stats"].get("grams")}
+                    j["orient"], j["supports"] = r["orient"], r["supports"]
+                    log(j, j["status"], "prepared: sliced and checked, " + rel); save(j); print(f"prepared: {j['id']}")
+                else:
+                    j.pop("prepared", None); log(j, j["status"], "prepare FAILED: " + "; ".join(c[0] for c in r["checks"] if not c[1])); save(j)
+                    print(f"NOT READY: {j['id']}")
     elif o.cmd == "next":
         js = jobs(False)
         busy = [j for j in js if j["status"] in ("printing", "printed")]
@@ -153,6 +169,8 @@ def main():
             print(f"none: {busy[0]['id']} is {busy[0]['status']} (a printed part stays on the plate until Spark approves the next job)")
         elif not ready:
             print("none: no approved job")
+        elif not (ready[0].get("prepared") or {}).get("for_sha256") == ready[0]["sha256"] or not os.path.exists(os.path.join(ROOT, ready[0]["prepared"]["gcode_3mf"])):
+            print(f"none: {ready[0]['id']} is approved but not print-ready; run: python tools/print_queue.py prepare {ready[0]['part']}")
         else:
             j = dict(ready[0]); j.pop("_file", None); print(json.dumps(j, indent=1))
     elif o.cmd == "set":

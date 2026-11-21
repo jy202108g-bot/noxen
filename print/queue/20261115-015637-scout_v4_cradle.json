@@ -5,14 +5,23 @@
  "sha256": "c190695ab190a86fc8f1b0f88a054a19aaea6d688f127cff034256c2be76c8c3",
  "qty": 1,
  "material": "PCTG",
- "orient": "+y face (the horn's side, flat) down, as laid",
- "supports": "none",
- "settings": "PCTG 0.2 mm, 4 walls, 40 %",
- "time": "1h00",
+ "orient": "posed for you in the sliced file (flat face 537 mm2 down, 41x45x31 mm): do not re-orient",
+ "supports": "tree supports (auto) under 303 mm2 of overhang",
+ "settings": "PCTG 3D-Fuel Pro, 0.12 mm (print/profiles), supports on; the sliced file is final",
+ "time": "1h10",
  "note": "drawn prototype 15 Nov: open behind for the camera, drops onto the horn",
  "status": "ready",
  "history": [
   "2026-11-15 01:56 UTC ready",
-  "2026-11-16 01:26 UTC ready: file refreshed"
- ]
+  "2026-11-16 01:26 UTC ready: file refreshed",
+  "2026-11-21 04:01 UTC ready: prepared: sliced and checked, print/ready/scout_v4_cradle/scout_v4_cradle.gcode.3mf"
+ ],
+ "prepared": {
+  "for_sha256": "c190695ab190a86fc8f1b0f88a054a19aaea6d688f127cff034256c2be76c8c3",
+  "gcode_3mf": "print/ready/scout_v4_cradle/scout_v4_cradle.gcode.3mf",
+  "supports": "tree supports (auto) under 303 mm2 of overhang",
+  "orient": "posed for you in the sliced file (flat face 537 mm2 down, 41x45x31 mm): do not re-orient",
+  "time": "1h 10m 22s",
+  "grams": 12.13
+ }
 }

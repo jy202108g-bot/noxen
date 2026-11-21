@@ -1,0 +1,7 @@
+{
+ "type": "machine",
+ "name": "Bambu Lab A1 mini 0.4 nozzle user",
+ "from": "User",
+ "inherits": "Bambu Lab A1 mini 0.4 nozzle",
+ "printer_settings_id": "Bambu Lab A1 mini 0.4 nozzle user"
+}

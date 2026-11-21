@@ -1,0 +1,143 @@
+{
+ "part": "scout_v4_cradle",
+ "source": "C:\\Users\\\u58fd\\nox\\repos\\noxen\\parts\\scout_v4_cradle\\print.stl",
+ "checks": [
+  [
+   "slice ran without error",
+   true,
+   ""
+  ],
+  [
+   "every move inside the 180 mm bed and height",
+   true,
+   "x 100.7..152.0 y 59.3..121.6 z max 30.6"
+  ],
+  [
+   "no empty layers",
+   true,
+   "254 layers"
+  ],
+  [
+   "supports are in the g-code",
+   true,
+   "20205 support moves on 198 layers"
+  ],
+  [
+   "every overhang has material under it",
+   true,
+   "0 of 303 mm2 overhang unsupported"
+  ]
+ ],
+ "orientation": {
+  "down_normal": [
+   0.9659,
+   0.0,
+   0.2588
+  ],
+  "contact_mm2": 537.2,
+  "overhang_mm2": 303.4,
+  "size": [
+   41.3,
+   44.8,
+   30.5
+  ],
+  "tried": [
+   {
+    "normal": [
+     0.0,
+     0.0,
+     -1.0
+    ],
+    "contact": 0.0,
+    "overhang": 542.5,
+    "height": 43.5,
+    "fits": true
+   },
+   {
+    "normal": [
+     -0.0,
+     -1.0,
+     0.0
+    ],
+    "contact": 69.8,
+    "overhang": 1945.0,
+    "height": 44.8,
+    "fits": true
+   },
+   {
+    "normal": [
+     -0.9659,
+     0.0,
+     -0.2588
+    ],
+    "contact": 214.4,
+    "overhang": 626.3,
+    "height": 30.5,
+    "fits": true
+   },
+   {
+    "normal": [
+     0.2588,
+     0.0,
+     -0.9659
+    ],
+    "contact": 299.6,
+    "overhang": 504.7,
+    "height": 41.3,
+    "fits": true
+   },
+   {
+    "normal": [
+     0.9659,
+     0.0,
+     0.2588
+    ],
+    "contact": 537.2,
+    "overhang": 303.4,
+    "height": 30.5,
+    "fits": true
+   },
+   {
+    "normal": [
+     -0.2588,
+     0.0,
+     0.9659
+    ],
+    "contact": 334.8,
+    "overhang": 473.7,
+    "height": 41.3,
+    "fits": true
+   },
+   {
+    "normal": [
+     0.0,
+     1.0,
+     0.0
+    ],
+    "contact": 769.5,
+    "overhang": 1245.3,
+    "height": 44.8,
+    "fits": true
+   }
+  ]
+ },
+ "supports": "tree supports (auto) under 303 mm2 of overhang",
+ "orient": "posed for you in the sliced file (flat face 537 mm2 down, 41x45x31 mm): do not re-orient",
+ "stats": {
+  "layers": 254,
+  "support_layers": 198,
+  "support_moves": 20205,
+  "offset_xy": [
+   35.6,
+   0.0
+  ],
+  "overhang_area": 303.4,
+  "unsupported_area": 0.0,
+  "narrow_ledges_mm2": 15.3,
+  "time": "1h 10m 22s",
+  "grams": 12.13
+ },
+ "ready": true,
+ "gcode_3mf": "C:\\Users\\\u58fd\\nox\\repos\\noxen\\print\\ready\\scout_v4_cradle\\scout_v4_cradle.gcode.3mf",
+ "pose_note": "the 3mf holds the part already posed: do not re-orient or re-arrange it"
+}
