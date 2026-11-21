@@ -45,7 +45,8 @@ button.on{background:var(--accent);color:#fff}
  <label>Explode <input type="range" id="ex" min="0" max="100" value="0"></label>
  <label>Mast out <input type="range" id="mast" min="0" max="150" value="0"><span id="mv" class="chip">0 mm</span></label>
  <label>Build step <input type="range" id="step" min="1" max="11" value="11"><span id="sv" class="chip">all</span></label>
- <button id="lab" class="on">Numbers</button><button id="bb">Size box</button><button id="iso">Isolate</button><button id="spin">Spin</button><button id="reset">Reset view</button>
+ <label>Nod <input type="range" id="nod" min="-20" max="90" value="15"><span id="nv" class="chip">15&deg;</span></label>
+ <button id="play" class="on">Pause</button><button id="lab" class="on">Numbers</button><button id="bb">Size box</button><button id="iso">Isolate</button><button id="spin">Spin</button><button id="reset">Reset view</button>
 </div>
 <div class="side"><div class="list" id="list"></div>
 <div class="info" id="info"><h2>Hover or click a part</h2><p>Drag to rotate, wheel to zoom, right-drag to pan. Sizes are x (front), y (side), z (up) in the drone frame, mm.</p></div></div>
@@ -99,9 +100,22 @@ $('lab').onclick=e=>{labOn=!labOn;e.target.classList.toggle('on',labOn)};
 $('bb').onclick=e=>{bbOn=!bbOn;e.target.classList.toggle('on',bbOn)};
 $('iso').onclick=e=>{isolate=!isolate;e.target.classList.toggle('on',isolate)};
 let spin=false;$('spin').onclick=e=>{spin=!spin;e.target.classList.toggle('on',spin)};
+$('spin').title='Slow auto-spin of the view';
 $('reset').onclick=()=>home();
 $('step').oninput=()=>{$('sv').textContent=+$('step').value>=11?'all':'1..'+$('step').value};
-$('mast').oninput=()=>{$('mv').textContent=$('mast').value+' mm'};
+$('mast').oninput=()=>{$('mv').textContent=$('mast').value+' mm';stopPlay()};
+$('nod').oninput=()=>{$('nv').textContent=$('nod').value+'°';stopPlay()};
+// the real motion, looped: mast out to REACH, the SG90 nods its full travel, mast back. Pinion 12 T drives the 40 T spool (3.33 : 1).
+let playing=true,t0=performance.now(),tpos=0,last=t0;
+const se=x=>x*x*(3-2*x),seg=(t,a,b)=>se(Math.min(1,Math.max(0,(t-a)/(b-a))));
+const N=meta.nod,REACH=meta.reach,CYC=22;
+function pose(t){ // [mast mm, nod deg]
+  const m=REACH*(seg(t,0,4.5)-seg(t,16.5,21)),
+        n=N.park+(N.hi-N.park)*seg(t,5.5,8.5)-(N.hi-N.lo)*seg(t,8.5,12.5)+(N.park-N.lo)*seg(t,12.5,15);
+  return [m,n]}
+function setPlay(on){playing=on;$('play').textContent=on?'Pause':'Play';$('play').classList.toggle('on',on);last=performance.now()}
+function stopPlay(){if(playing)setPlay(false)}
+$('play').onclick=()=>{if(!playing){const L=+$('mast').value;if(L>REACH*.98&&tpos<4.5)tpos=4.5}setPlay(!playing)};
 function home(){cam.position.set(210,-260,200);ctl.target.set(0,-2,65);ctl.update()}
 home();
 const ray=new THREE.Raycaster(),mouse=new THREE.Vector2();let mx=0,my=0,inside=false;
@@ -114,19 +128,29 @@ function size(){const w=stage.clientWidth,h=stage.clientHeight;R.setSize(w,h,fal
 addEventListener('resize',size);size();
 const tmp=new THREE.Vector3();
 function frame(){requestAnimationFrame(frame);
-  const f=$('ex').value/100,L=+$('mast').value,st=+$('step').value;
-  if(spin){const a=.004,x=cam.position.x-ctl.target.x,y=cam.position.y-ctl.target.y;cam.position.x=ctl.target.x+x*Math.cos(a)-y*Math.sin(a);cam.position.y=ctl.target.y+x*Math.sin(a)+y*Math.cos(a)}
+  const now=performance.now();
+  if(playing){tpos=(tpos+(now-last)/1000)%CYC;const q=pose(tpos);$('mast').value=q[0];$('nod').value=q[1];$('mv').textContent=Math.round(q[0])+' mm';$('nv').textContent=Math.round(q[1])+'°'}
+  last=now;
+  const f=$('ex').value/100,L=+$('mast').value,nodD=+$('nod').value,st=+$('step').value;
+  if(spin){const a=.0022,x=cam.position.x-ctl.target.x,y=cam.position.y-ctl.target.y;cam.position.x=ctl.target.x+x*Math.cos(a)-y*Math.sin(a);cam.position.y=ctl.target.y+x*Math.sin(a)+y*Math.cos(a)}
   if(inside&&!down){ray.setFromCamera(mouse,cam);const h=ray.intersectObjects(items.filter(t=>t.o.visible).map(t=>t.mesh))[0];hov=h?h.object.userData.i:null}
   const active=hov!=null?hov:sel;
   items.forEach((it,i)=>{const p=it.p,isHead=meta.head.includes(p.id);
     it.o.visible=it.vis&&p.step<=st;
     let dz=isHead?L:0;
     it.o.position.set(p.ex[0]*f,p.ex[1]*f,p.ex[2]*f+dz);
+    const spinA=p.id==='spool'?-L/meta.spool.r:p.id==='pinion'?L/meta.spool.r*meta.pinion.ratio:null;
+    let rx=null;
+    if(isHead&&p.id==='cradle')rx=[-(nodD-N.park)*Math.PI/180,N.axis[0],N.axis[2]];
+    else if(spinA!=null)rx=[spinA,p.id==='spool'?meta.spool.x:meta.pinion.x,p.id==='spool'?meta.spool.z:meta.pinion.z];
+    it.mesh.rotation.y=rx?rx[0]:0;
+    if(rx){const c=Math.cos(rx[0]),s=Math.sin(rx[0]);it.mesh.position.x=rx[1]-(rx[1]*c+rx[2]*s);it.mesh.position.z=rx[2]-(-rx[1]*s+rx[2]*c)}
+    it.mesh.updateMatrix();it.rotated=!!rx;
     if(it.zh!=null){it.mesh.scale.z=(1+L/it.zh);it.mesh.position.z=it.z0*(1-it.mesh.scale.z)}
     const dim=(isolate&&sel!=null&&sel!==i);it.mat.opacity=dim?.12:1;it.mat.depthWrite=!dim;
     it.mat.emissive.setHex(active===i?0x2a4f9f:0);
     it.lab.style.display=(labOn&&it.o.visible)?'block':'none';
-    if(labOn&&it.o.visible){tmp.copy(it.c).add(it.o.position).project(cam);const w=stage.clientWidth,h=stage.clientHeight;it.lab.style.left=((tmp.x+1)/2*w)+'px';it.lab.style.top=((1-tmp.y)/2*h)+'px';it.lab.style.zIndex=tmp.z<1?3:0;if(tmp.z>=1)it.lab.style.display='none'}
+    if(labOn&&it.o.visible){tmp.copy(it.c);if(it.rotated)tmp.applyMatrix4(it.mesh.matrix);tmp.add(it.o.position).project(cam);const w=stage.clientWidth,h=stage.clientHeight;it.lab.style.left=((tmp.x+1)/2*w)+'px';it.lab.style.top=((1-tmp.y)/2*h)+'px';it.lab.style.zIndex=tmp.z<1?3:0;if(tmp.z>=1)it.lab.style.display='none'}
   });
   if(bbOn&&active!=null&&items[active].o.visible){const t=items[active];t.mesh.geometry.computeBoundingBox();const b=t.mesh.geometry.boundingBox.clone();b.translate(t.o.position);if(t.zh!=null){b.min.z=t.o.position.z+t.z0;b.max.z=b.min.z+t.zh*t.mesh.scale.z}bbox.box.copy(b);bbox.visible=true}else bbox.visible=false;
   if(active!=null&&inside&&hov!=null){const p=items[hov].p,b=p.bbox;tip.style.display='block';tip.innerHTML=`<b>${hov+1}. ${p.name}</b><br><span>${b[0]} x ${b[1]} x ${b[2]} mm &middot; ${p.kind}${p.qty>1?' x'+p.qty:''}</span>`;

@@ -101,7 +101,11 @@ for p in P:
 tmpl = open(os.path.join(ROOT, "tools", "probe_bench_3d_template.html"), encoding="utf-8").read()
 three = open(os.path.join(ROOT, "tools", "vendor", "three.min.js"), encoding="utf-8").read()
 orbit = open(os.path.join(ROOT, "tools", "vendor", "OrbitControls.js"), encoding="utf-8").read()
-meta = dict(reach=S.REACH, head=list(HEAD_IDS), mastz=S.THROAT["z1"])
+pin = [p for p in P if p["id"] == "pinion"][0]["mesh"].bounds
+meta = dict(reach=S.REACH, head=list(HEAD_IDS), mastz=S.THROAT["z1"],
+            nod=dict(axis=[float(v) for v in S.AXIS], lo=S.HEAD["range"][0], hi=S.HEAD["range"][1], park=float(np.degrees(S.TILT))),   # the SG90's axis parked, its travel and the parked nod (deg)
+            spool=dict(x=0.0, z=float(cz), r=float(S.SPOOL["hub"] + 0.7)),     # the drum's axis; r = hub radius + about half the coil's build
+            pinion=dict(x=float((pin[0][0] + pin[1][0]) / 2), z=float((pin[0][2] + pin[1][2]) / 2), ratio=40 / 12))
 page = (tmpl.replace("__DATA__", json.dumps(dict(parts=out, meta=meta), separators=(",", ":")))
         .replace("/*__THREE__*/", three.replace("</script", "<\\/script")).replace("/*__ORBIT__*/", orbit.replace("</script", "<\\/script")))
 dst = os.path.join(ROOT, "artifacts", "probe_bench_3d.html")
