@@ -3157,5 +3157,12 @@
   "view_faces": 60000,
   "view_sha256": "a05760c7410929343df896a0a39eaa670d44e3f748ffaaac2e688e2edb511a0a",
   "at": "2026-11-21 11:06"
+ },
+ "assembly": {
+  "drone": "scout_v4",
+  "ok": false,
+  "why": [
+   "clashes with scout_v4_probe_pinion: 7.4 mm3"
+  ]
  }
 }

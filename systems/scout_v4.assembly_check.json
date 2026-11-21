@@ -115,62 +115,38 @@
   {
    "a": "scout_v4_frame",
    "b": "scout_v4_probe_pinion",
-   "mm3": 10.72,
+   "mm3": 7.43,
    "limit_mm3": 0.5,
    "contact": null,
    "ok": false,
    "pieces": [
     {
-     "mm3": 10.71,
+     "mm3": 7.35,
      "at": [
-      1.2,
-      13.6,
-      16.1
+      2.0,
+      13.5,
+      16.0
      ],
      "extent_mm": [
-      6.0,
-      2.8,
-      3.5
+      4.6,
+      2.3,
+      3.3
      ],
-     "depth_mm": 2.75
+     "depth_mm": 2.34
     },
     {
-     "mm3": 0.0,
+     "mm3": 0.08,
      "at": [
-      4.8,
-      14.6,
-      18.3
+      -0.9,
+      14.5,
+      15.2
      ],
      "extent_mm": [
-      0.8,
-      0.2,
-      0.1
+      1.2,
+      0.4,
+      1.6
      ],
-     "depth_mm": 0.11
-    }
-   ]
-  },
-  {
-   "a": "scout_v4_probe_turret",
-   "b": "scout_v4_probe_pinion",
-   "mm3": 3.0,
-   "limit_mm3": 0.5,
-   "contact": null,
-   "ok": false,
-   "pieces": [
-    {
-     "mm3": 3.0,
-     "at": [
-      0.0,
-      15.3,
-      21.8
-     ],
-     "extent_mm": [
-      7.0,
-      0.2,
-      3.5
-     ],
-     "depth_mm": 0.2
+     "depth_mm": 0.36
     }
    ]
   },
@@ -277,25 +253,11 @@
   {
    "a": "scout_v4_frame",
    "b": "scout_v4_receiver_bolts",
-   "mm3": 4.46,
+   "mm3": 4.25,
    "limit_mm3": 6.0,
    "contact": "the M3 x 5.7 heat-set inserts (drawn with the bolts) melted into the yokes' insert holes",
    "ok": true,
    "pieces": [
-    {
-     "mm3": 0.33,
-     "at": [
-      -36.8,
-      -24.7,
-      12.5
-     ],
-     "extent_mm": [
-      1.2,
-      0.3,
-      5.7
-     ],
-     "depth_mm": 0.33
-    },
     {
      "mm3": 0.29,
      "at": [
@@ -313,16 +275,16 @@
     {
      "mm3": 0.25,
      "at": [
-      50.7,
-      28.0,
+      -38.0,
+      27.5,
       12.5
      ],
      "extent_mm": [
-      1.2,
+      0.6,
       1.0,
       5.7
      ],
-     "depth_mm": 0.97
+     "depth_mm": 0.55
     },
     {
      "mm3": 0.24,
@@ -337,6 +299,20 @@
       5.7
      ],
      "depth_mm": 0.7
+    },
+    {
+     "mm3": 0.24,
+     "at": [
+      47.7,
+      26.4,
+      12.5
+     ],
+     "extent_mm": [
+      0.3,
+      1.5,
+      5.7
+     ],
+     "depth_mm": 0.26
     }
    ]
   },
@@ -350,7 +326,7 @@
   },
   {
    "a": "scout_v4_frame",
-   "b": "scout_v4_cage_rods",
+   "b": "scout_v4_flow_mtf_02p",
    "mm3": 0.01,
    "limit_mm3": 0.5,
    "contact": null,
@@ -358,7 +334,7 @@
   },
   {
    "a": "scout_v4_frame",
-   "b": "scout_v4_motor_1",
+   "b": "scout_v4_cage_rods",
    "mm3": 0.0,
    "limit_mm3": 0.5,
    "contact": null,
@@ -2188,17 +2164,13 @@
  ],
  "not_print_ready": {
   "scout_v4_frame": [
-   "clashes with scout_v4_probe_pinion: 10.7 mm3"
+   "clashes with scout_v4_probe_pinion: 7.4 mm3"
   ],
   "scout_v4_probe_pinion": [
-   "clashes with scout_v4_frame: 10.7 mm3",
-   "clashes with scout_v4_probe_turret: 3.0 mm3"
-  ],
-  "scout_v4_probe_turret": [
-   "clashes with scout_v4_probe_pinion: 3.0 mm3"
+   "clashes with scout_v4_frame: 7.4 mm3"
   ]
  },
  "would_block": {},
- "seconds": 4.9,
+ "seconds": 4.6,
  "placed": {}
 }
