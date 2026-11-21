@@ -1,0 +1,91 @@
+{
+ "part": "scout_v4_probe_pinion",
+ "source": "C:\\Users\\\u58fd\\nox\\repos\\noxen\\parts\\scout_v4_probe_pinion\\print.stl",
+ "checks": [
+  [
+   "slice ran without error",
+   true,
+   ""
+  ],
+  [
+   "every move inside the 180 mm bed and height",
+   true,
+   "x 120.1..131.1 y 84.5..95.5 z max 3.7"
+  ],
+  [
+   "no empty layers",
+   true,
+   "30 layers"
+  ],
+  [
+   "no overhang, none needed",
+   true,
+   ""
+  ]
+ ],
+ "orientation": {
+  "down_normal": [
+   0.0,
+   -1.0,
+   0.0
+  ],
+  "contact_mm2": 68.6,
+  "overhang_mm2": 0.0,
+  "size": [
+   11.4,
+   11.4,
+   3.7
+  ],
+  "tried": [
+   {
+    "normal": [
+     0.0,
+     0.0,
+     -1.0
+    ],
+    "contact": 0.0,
+    "overhang": 48.0,
+    "height": 11.4,
+    "fits": true
+   },
+   {
+    "normal": [
+     0.0,
+     -1.0,
+     0.0
+    ],
+    "contact": 68.6,
+    "overhang": 0.0,
+    "height": 3.7,
+    "fits": true
+   },
+   {
+    "normal": [
+     -0.0,
+     1.0,
+     0.0
+    ],
+    "contact": 30.7,
+    "overhang": 37.8,
+    "height": 3.7,
+    "fits": true
+   }
+  ]
+ },
+ "supports": "none (no overhang)",
+ "orient": "posed for you in the sliced file (flat face 69 mm2 down, 11x11x4 mm): do not re-orient",
+ "stats": {
+  "layers": 30,
+  "support_layers": 0,
+  "support_moves": 0,
+  "offset_xy": [
+   35.6,
+   0.0
+  ],
+  "time": "5m 2s",
+  "grams": 0.36
+ },
+ "ready": true,
+ "gcode_3mf": "C:\\Users\\\u58fd\\nox\\repos\\noxen\\print\\ready\\scout_v4_probe_pinion\\scout_v4_probe_pinion.gcode.3mf",
+ "pose_note": "the 3mf holds the part already posed: do not re-orient or re-arrange it"
+}

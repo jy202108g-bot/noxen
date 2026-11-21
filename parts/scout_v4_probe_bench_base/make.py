@@ -18,6 +18,7 @@ posts = [cyl(5.0, Z0 + T - 0.01, DZ1, x, y) for x, y in TURRET_BOLTS]
 cuts = [cyl(2.0, DZ1 - 6.0, DZ1 + 1, x, y, n=48) for x, y in TURRET_BOLTS]
 cuts.append(extrude(sbox(cx - 8.5, g0 - 30.0, cx + 8.5, g0 + 11.0), Z0 - 1, Z0 + T + 1))    # open under the N20 (can, gearbox, leads) and the bench turret's block round its pinion
 cuts += [extrude(sbox(x - 3.0, -12.0, x + 3.0, 12.0), Z0 - 1, Z0 + T + 1) for x in (cx - 50, cx + 50)]   # the clamps' slots in the tabs
+cuts.append(extrude(sbox(cx - 8.5, g0 - 30.0, cx + 8.5, g0 + 11.0), Z0 - 1, DZ1 + 1))    # the posts' 0.5 flats where they meet that window, so no post foot hangs over it
 base = minus(union([plate] + posts), cuts)
 pr = base.copy(); pr.apply_translation([0, 0, -Z0])
 save("scout_v4_probe_bench_base", pr, base, "plate down, ~1 h 40")
