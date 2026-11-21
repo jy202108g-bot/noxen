@@ -8649,6 +8649,15 @@
    "minutes": 83.5,
    "peak_gb": 4.104252,
    "at": "9d896992a52b:5013"
+  },
+  {
+   "part": "scout_v4_frame",
+   "engine": "strength-hold",
+   "design": 43716,
+   "cases": 80,
+   "minutes": 229.8,
+   "peak_gb": 4.558268,
+   "at": "49927784e32a:13787"
   }
  ]
 }
