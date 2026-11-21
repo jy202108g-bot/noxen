@@ -1,6 +1,6 @@
 {
  "part": "scout_v4_probe_bench_base",
- "source": "C:\\Users\\\u58fd\\nox\\repos\\noxen\\print\\scout_v4_probe_bench_base.stl",
+ "source": "C:\\Users\\\u58fd\\nox\\repos\\noxen\\parts\\scout_v4_probe_bench_base\\print.stl",
  "checks": [
   [
    "slice ran without error",
@@ -51,7 +51,7 @@
    {
     "normal": [
      0.0,
-     -0.0,
+     0.0,
      1.0
     ],
     "contact": 260.0,
