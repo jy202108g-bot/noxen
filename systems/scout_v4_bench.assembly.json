@@ -57,7 +57,7 @@
 },
 {
 "id": "scout_v4_probe_roller",
-"name": "the coil's pressure roller (drawn: parts/scout_v4_probe_roller/make.py): two printed O8 x 4.50 tubes turning on a O3 carbon rod 23.6 long (bore 3.3, no bearings), between them a printed saddle on the rod carrying a Keystone-209-type leaf contact (ZCZQC B0C5D3XLBK) against the pocket's fixed end wall",
+"name": "the coil's pressure roller (drawn: parts/scout_v4_probe_roller/make.py): two printed O8 x 4.50 tubes turning on a O3 carbon rod 23.8 long (bore 3.3, no bearings), between them a printed saddle on the rod carrying a Keystone-209-type leaf contact (ZCZQC B0C5D3XLBK) against the pocket's fixed end wall",
 "role": "bought",
 "group": "camera",
 "mesh": "parts/scout_v4_probe_roller/part.stl"

@@ -178,3 +178,23 @@ Dimension gaps (sizes, holes, threads) are the open questions Q1..Q20 at the end
 - Overseer: S500 variant, ESC model, RC receiver model.
 - Scout: motor KV, number of spare packs, carbon rod stock, grommet size.
 - Box: 5 V buck model (spare or logic); INA226 on hand; electronics v1 hardware marked CHECK on hand.
+
+## Scout probe bench (non-generated test build, `artifacts/probe_bench_assembly.html`; 21 Nov)
+Printed parts are in the print queue, not here. Amazon pages were not opened (refused to workers): ASINs below come from the search results or the design files; check the page before buying.
+| Part | Qty | Role | Status | Listing |
+|---|---|---|---|---|
+| N20 gearmotor 6 V 100 rpm | 1 | spool drive | bought (design file) | [B07MZH851L](https://www.amazon.com/dp/B07MZH851L) |
+| Topzone 16 ft tape measure, 19 mm blade | 1 | two 200 mm blades A and B | bought (design file) | [B00ZMHXV4I](https://www.amazon.com/dp/B00ZMHXV4I) |
+| ZCZQC leaf battery contact (Keystone 209 type) | 1 | presses the roller | on hand (Spark has 50) | [B0C5D3XLBK](https://www.amazon.com/dp/B0C5D3XLBK) |
+| Arducam 12MP autofocus USB, metal case | 1 | probe camera | bought (design file) | [B0FLX58WKZ](https://www.amazon.com/dp/B0FLX58WKZ) |
+| SG90 9 g servo (with horns and screws in its bag) | 1 | head | CHECK on hand; to buy | [Miuzei 3 pack B0FGQ432JP](https://www.amazon.com/dp/B0FGQ432JP) |
+| PTFE wire 30 AWG, stranded, silver plated | 6 x ~300 mm | ribbon on blade A | to buy | [Remington 30 AWG PTFE jumper wire B0CHK6H5HJ](https://www.amazon.com/dp/B0CHK6H5HJ) |
+| Kapton tape 10 mm | 1 roll | tapes the wires to the blade | to buy | [10 mm x 33 m B07S227ZLH](https://www.amazon.com/dp/B07S227ZLH) |
+| Carbon rod Ø3 x 500, cut to 23.8 | 1 | roller axle | on hand (rod Ø3.0 row above); else to buy | [B09N91J1FC](https://www.amazon.com/dp/B09N91J1FC) |
+| M3 heat-set inserts, 5.7 long | 5 | 4 bench base, 1 head frame | CHECK on hand | [M3 insert kit](https://www.amazon.com/Threaded-Inserts-Insert-Tip-Digital-Soldering/dp/B0GYSWFVG7) |
+| M3 x 40 + nyloc; 5 x M3 x 10 | 1; 5 | spool axle; turret to base, camera idler | CHECK on hand | in the same M3 kit (screws, nuts); x 40 not in it: [search](https://www.amazon.com/s?k=M3+x+40+screw+nyloc+nut) |
+| M2 x 4, M2 x 6 + nut; M1.6 x 4 | 1; 1; 2 | blades A, B; motor face | CHECK on hand | [M1.4-M6 screw and insert kit](https://www.amazon.com/clp/B0F941H94R) (inserts); [M1.6 / M2 screw search](https://www.amazon.com/s?k=M1.6+M2+screw+assortment+kit) |
+| 5-minute epoxy | 1 | blades into the spool slot | CHECK on hand | [search](https://www.amazon.com/s?k=5+minute+epoxy+syringe) |
+| CA glue | 1 | pinion on the N20 shaft | CHECK on hand | [search](https://www.amazon.com/s?k=cyanoacrylate+super+glue) |
+| Light machine oil | 1 drop | the rod | CHECK on hand | [search](https://www.amazon.com/s?k=sewing+machine+oil) |
+| PH1 screwdriver, shaft 75 mm or longer | 1 tool | reaches the M3 x 10 and M1.6 screws | CHECK on hand | [search](https://www.amazon.com/s?k=PH1+screwdriver+75mm) |

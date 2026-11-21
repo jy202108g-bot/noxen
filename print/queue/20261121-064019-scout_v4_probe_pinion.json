@@ -3,7 +3,7 @@
  "part": "scout_v4_probe_pinion",
  "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/print-scout_v4_probe_pinion.stl",
  "sha256": "54675528bf62e6797b9fc0cd40136d2b4dd59614796b17104799c332398e29bb",
- "qty": 1,
+ "qty": 2,
  "material": "PCTG",
  "orient": "posed for you in the sliced file (flat face 69 mm2 down, 11x11x4 mm): do not re-orient",
  "supports": "none (no overhang)",
@@ -13,7 +13,8 @@
  "status": "ready",
  "history": [
   "2026-11-21 06:40 UTC ready",
-  "2026-11-21 06:40 UTC ready: prepared: sliced and checked, print/ready/scout_v4_probe_pinion/scout_v4_probe_pinion.gcode.3mf"
+  "2026-11-21 06:40 UTC ready: prepared: sliced and checked, print/ready/scout_v4_probe_pinion/scout_v4_probe_pinion.gcode.3mf",
+  "2026-11-21 06:55 UTC ready: prepared: sliced and checked, print/ready/scout_v4_probe_pinion/scout_v4_probe_pinion.gcode.3mf"
  ],
  "prepared": {
   "for_sha256": "54675528bf62e6797b9fc0cd40136d2b4dd59614796b17104799c332398e29bb",

@@ -16,14 +16,8 @@
   "2026-11-21 06:40 UTC ready: prepare FAILED: supports are in the g-code; every overhang has material under it",
   "2026-11-21 06:43 UTC ready: prepare FAILED: supports are in the g-code; every overhang has material under it",
   "2026-11-21 prepared: sliced and checked, print/ready/scout_v4_probe_bench_base/scout_v4_probe_bench_base.gcode.3mf",
-  "2026-11-21 06:47 UTC ready: file refreshed"
- ],
- "prepared": {
-  "for_sha256": "67b9505a8df2707ea57592ce617bfef11586e7ff4e905a55f6e7cb904b67714d",
-  "gcode_3mf": "print/ready/scout_v4_probe_bench_base/scout_v4_probe_bench_base.gcode.3mf",
-  "supports": "none (no overhang)",
-  "orient": "posed for you in the sliced file (flat face 7855 mm2 down, 130x68x12 mm): do not re-orient",
-  "time": "1h 41m 37s",
-  "grams": 41.24
- }
+  "2026-11-21 06:47 UTC ready: file refreshed",
+  "2026-11-21 06:55 UTC ready: prepare FAILED: supports are in the g-code; every overhang has material under it",
+  "2026-11-21 06:55 UTC ready: prepare FAILED: supports are in the g-code; every overhang has material under it"
+ ]
 }
