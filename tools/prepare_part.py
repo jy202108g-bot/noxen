@@ -165,8 +165,9 @@ def check_gcode(g, oriented, oh_faces, slice_ok, log_text, used_supports):
     if not L:
         checks.append(("g-code has printed layers", False, "0 layers parsed"))
         return checks, {}
-    inside = b[0] >= 0 and b[1] >= 0 and b[2] <= BED and b[3] <= BED and P["zmax"] <= Z_MAX
-    checks.append(("every move inside the 180 mm bed and height", inside, "x %.1f..%.1f y %.1f..%.1f z max %.1f" % (b[0], b[2], b[1], b[3], P["zmax"])))
+    import plate_safe                       # one gate for every sliced file: 5 mm from each plate edge, supports and brim included
+    inside = b[0] >= plate_safe.SAFE and b[1] >= plate_safe.SAFE and b[2] <= BED - plate_safe.SAFE and b[3] <= BED - plate_safe.SAFE and P["zmax"] <= Z_MAX
+    checks.append(("every move inside the 5 mm safe area of the 180 mm bed and height", inside, "x %.1f..%.1f y %.1f..%.1f z max %.1f" % (b[0], b[2], b[1], b[3], P["zmax"])))
     zs = sorted(L)
     gaps = [round(zs[i + 1] - zs[i], 3) for i in range(len(zs) - 1) if zs[i + 1] - zs[i] > 0.45]
     checks.append(("no empty layers", not gaps, "gaps %s" % gaps[:5] if gaps else "%d layers" % len(zs)))
