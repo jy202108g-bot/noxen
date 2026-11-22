@@ -1,0 +1,3 @@
+{"name": "probe_turret", "printer": "Jarvis", "parts": [
+ {"part": "scout_v4_probe_bench_turret", "qty": 1, "layer": 0.2, "walls": 4, "infill": 40, "brim": 6}
+]}
