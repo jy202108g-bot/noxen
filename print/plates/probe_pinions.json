@@ -1,0 +1,3 @@
+{"name": "probe_pinions", "printer": "Gideon", "parts": [
+ {"part": "scout_v4_probe_pinion", "qty": 2, "layer": 0.12, "walls": 4, "infill": 100, "brim": 6}
+]}

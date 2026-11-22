@@ -185,6 +185,8 @@ def main():
             label = p["part"] + ("_%d" % (q + 1) if p.get("qty", 1) > 1 else "")
             opts = {"layer_height": p.get("layer", 0.12), "wall_loops": p.get("walls", 3), "sparse_infill_density": "%d%%" % p.get("infill", 100),
                     "enable_support": 1 if oh > 1.0 else 0}
+            if p.get("brim"):   # forced outer brim (auto_brim printed none under a 69 mm2 gear, 21 Nov): width in mm
+                opts["brim_type"] = "outer_only"; opts["brim_width"] = p["brim"]
             items.append(dict(part=p["part"], label=label, mesh=m0.copy(), oh=oh, opts=opts, normal=best["normal"]))
     layout(items)
     f3 = os.path.join(out, spec["name"] + ".in.3mf")
