@@ -1,0 +1,1 @@
+{"name": "np_cradle", "note": "non-planar test, not sent. Asked for conform+wave; conform found no shallow curved top on this part, so the sliced file is the wave only, and only 12 % of the part's inside bends (thin walls)", "parts": [{"part": "scout_v4_cradle", "qty": 1, "layer": 0.2, "walls": 3, "infill": 100, "nonplanar": {"mode": "conform+wave"}}]}

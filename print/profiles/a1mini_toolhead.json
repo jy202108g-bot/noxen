@@ -1,0 +1,26 @@
+{
+ "name": "Bambu Lab A1 mini, stock 0.4 mm hotend: what hangs around the nozzle tip",
+ "frame": "+x right, +y rear, h = height above the nozzle tip, all mm. Material higher than tip + h at that offset is hit.",
+ "tags": "M measured on a real hotend by others, C CAD / official profile, E estimate. Nothing here is Spark's own measurement yet.",
+ "source": "fich-l/orcaslicer-nonplanar NonplanarClearanceModel (developed and test-printed on an A1 mini, Oct 2026: 12 deg and a 5 mm span print, 15 deg rubs); Bambu Studio 'Bambu Lab A1 mini 0.4 nozzle' machine profile (nozzle_height 4.76, rod 25 mm up). Read 22 Nov 2026.",
+ "nozzle": {
+  "flat_d": 1.10,
+  "cone": [[0.55, 0.0], [0.613, 0.15], [1.598, 2.5]],
+  "note": "M: tip flat 1.10 across; the bare nozzle widens to 3.2 across at 2.5 mm up, where the heater block starts (the official 4.76 mm is not used: 2.5 is the safer number)"
+ },
+ "block": {"x": [-7.04, 7.04], "y": [-9.42, 9.42], "h": 2.5, "note": "M: heater block and sock underside"},
+ "flank": {"deg": 12.0, "top": 7.5, "note": "M-derived: everything outside the block clears a 12 deg rise from the block edge, up to 7.5 mm; fan ducts, cover and cutter sit above that surface"},
+ "ceiling": {"h": 7.5, "radius": 73.0, "note": "C: nothing printed in the same layer may stand more than 7.5 mm over the tip anywhere under the head (radius 73); the X arm is 25 mm up"},
+ "limits": {
+  "slope_deg": 10.0,
+  "slope_hard_deg": 12.0,
+  "relief_mm": 5.0,
+  "margin_mm": 0.3,
+  "layer_min_mm": 0.08,
+  "layer_max_mm": 0.28,
+  "speed_mm_s": 50.0,
+  "z_speed_mm_s": 12.0,
+  "hop_mm": 0.6,
+  "note": "design slope 10 deg, never over 12 (15 rubbed on a real A1 mini); curved relief in one layer at most 5 mm (printed by others); layer thickness kept inside the 0.4 nozzle's 0.08-0.28; bent moves at most 50 mm/s and 12 mm/s in Z (machine: 30 mm/s, 1500 mm/s2, jerk 5)"
+ }
+}

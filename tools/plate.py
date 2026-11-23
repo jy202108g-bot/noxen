@@ -72,7 +72,7 @@ def write_3mf(items, path, name):
             '<Relationship Target="/3D/3dmodel.model" Id="rel-1" Type="http://schemas.microsoft.com/3dmanufacturing/2013/01/3dmodel"/></Relationships>')
     res, build, cfg = [], [], ['<?xml version="1.0" encoding="UTF-8"?>', "<config>"]
     for k, it in enumerate(items, 1):
-        m = it["mesh"]
+        m = it.get("slice_mesh", it["mesh"])          # a non-planar part is sliced un-bent (tools/nonplanar.py)
         v = "".join('<vertex x="%.5f" y="%.5f" z="%.5f"/>' % tuple(p) for p in m.vertices)
         t = "".join('<triangle v1="%d" v2="%d" v3="%d"/>' % tuple(f) for f in m.faces)
         res.append('<object id="%d" type="model"><mesh><vertices>%s</vertices><triangles>%s</triangles></mesh></object>' % (k, v, t))
@@ -91,13 +91,16 @@ def write_3mf(items, path, name):
         z.writestr("3D/3dmodel.model", model); z.writestr("Metadata/model_settings.config", "\n".join(cfg))
 
 
-def slice_3mf(f3, out, name):
+def slice_3mf(f3, out, name, overrides=None):
+    """overrides: {"m" | "p" | "f": {key: value}} laid over the machine / process / filament profile (the non-planar slice needs
+    straight moves and a plain lift: tools/nonplanar.py)."""
     ix = slice_part.index()
-    tmp = os.path.join(out, "_profiles"); os.makedirs(tmp, exist_ok=True)
+    tmp = os.path.join(out, "_profiles_" + name); os.makedirs(tmp, exist_ok=True)
     paths = {}
     for key, f in (("m", "a1mini_machine.json"), ("p", "pctg_process_0.12.json"), ("f", "pctg_filament.json")):
         d = slice_part.flat(json.load(open(os.path.join(slice_part.PROF, f), encoding="utf8")), ix)
         d["from"] = "User"
+        d.update((overrides or {}).get(key, {}))
         if key == "m": d["name"] = d["printer_settings_id"] = "Bambu Lab A1 mini 0.4 nozzle"
         paths[key] = os.path.join(tmp, f); json.dump(d, open(paths[key], "w", encoding="utf8"), indent=1)
     gname = name + ".gcode.3mf"
@@ -187,8 +190,25 @@ def main():
                     "enable_support": 1 if oh > 1.0 else 0}
             if p.get("brim"):   # forced outer brim (auto_brim printed none under a 69 mm2 gear, 21 Nov): width in mm
                 opts["brim_type"] = "outer_only"; opts["brim_width"] = p["brim"]
-            items.append(dict(part=p["part"], label=label, mesh=m0.copy(), oh=oh, opts=opts, normal=best["normal"]))
+            items.append(dict(part=p["part"], label=label, mesh=m0.copy(), oh=oh, opts=opts, normal=best["normal"], np=p.get("nonplanar")))
     layout(items)
+    fields, over, th = [], None, None
+    if any(it["np"] for it in items):                   # non-planar parts: bend field per part, the mesh un-bent for the flat slice
+        import nonplanar
+        th = nonplanar.toolhead()
+        for it in items:
+            if not it["np"]:
+                continue
+            over = over or nonplanar.slice_overrides(it["np"], th)
+            if "zaa" in nonplanar.modes(it["np"]):
+                over["p"].update(nonplanar.slice_overrides(it["np"], th)["p"])
+            fld = nonplanar.build_field(it["mesh"], it["np"], th, float(it["opts"]["layer_height"]))
+            if fld is not None:
+                it["slice_mesh"], moved = nonplanar.unbend_mesh(it["mesh"], nonplanar.Fields([fld]))
+                fields.append(fld)
+                print("  non-planar %s: %s (mesh moved %.2f mm for the flat slice)" % (it["label"], fld.info, moved))
+            else:
+                print("  non-planar %s: nothing to bend, sliced planar" % it["label"])
     f3 = os.path.join(out, spec["name"] + ".in.3mf")
     write_3mf(items, f3, spec["name"])
     print("laid out %d objects:" % len(items))
@@ -196,9 +216,16 @@ def main():
         print("  %-42s at %5.1f,%5.1f size %s oh %.0f %s" % (it["label"], it["xy"][0], it["xy"][1], [round(float(e), 1) for e in it["mesh"].extents], it["oh"], it["opts"]))
     if a.build_only:
         return
-    res = slice_3mf(f3, out, spec["name"])
+    res = slice_3mf(f3, out, spec["name"], over)
     print("slice:", "ok" if res["ok"] else "FAILED", res["log"][-400:] if not res["ok"] else "")
+    npr = None
+    if res["ok"] and th is not None:                    # bend the g-code back, replay it against the hotend, draw the preview
+        npr = nonplanar.bend_file(res["path"], fields, th, os.path.join(out, spec["name"] + ".preview.png"),
+                                  "%s: non-planar (%s)" % (spec["name"], ", ".join(sorted(set(str(it["np"].get("mode", "wave")) for it in items if it["np"])))))
     report = check_plate(items, res, out, spec["name"])
+    if npr is not None:
+        report["checks"] += npr["checks"]; report["nonplanar"] = {k: v for k, v in npr.items() if k != "checks"}
+        report["ready"] = all(c[1] for c in report["checks"])
     json.dump(report, open(os.path.join(out, spec["name"] + ".report.json"), "w", encoding="utf8"), indent=1, default=str)
     for n, o, note in report["checks"]:
         print("  [%s] %s %s" % ("ok" if o else "FAIL", n, note))

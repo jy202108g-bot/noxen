@@ -55,6 +55,10 @@ def fits(path):
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     import plate_safe                    # the one safe-area gate (5 mm from every plate edge, supports and brim included), shared with plate.py
     ok, why, _ = plate_safe.safe_check(g)
+    if ok and "; NONPLANAR" in g:        # a bent file is sent only when its replay against the hotend passes (tools/nonplanar.py)
+        import nonplanar
+        ok2, why2 = nonplanar.gate_file(path)
+        return ok2, why + "; " + why2
     return ok, why
 
 

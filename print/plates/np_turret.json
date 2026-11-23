@@ -1,0 +1,1 @@
+{"name": "np_turret", "note": "non-planar test (wave: interlocking layers), not sent", "parts": [{"part": "scout_v4_probe_bench_turret", "qty": 1, "layer": 0.2, "walls": 3, "infill": 100, "nonplanar": {"mode": "wave"}}]}

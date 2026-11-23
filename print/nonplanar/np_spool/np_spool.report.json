@@ -1,0 +1,140 @@
+{
+ "part": "np_spool",
+ "checks": [
+  [
+   "slice ran without error",
+   true,
+   ""
+  ],
+  [
+   "extrusions (supports, brim, skirt included) inside the 5 mm safe area",
+   true,
+   "x 64.2..116.0 y 67.0..115.1 z max 31.8"
+  ],
+  [
+   "every printing/travel move inside the safe area (plate_safe)",
+   true,
+   "inside the safe area: x 64.2..116.0, y 67.0..115.1 mm (5 mm margin)"
+  ],
+  [
+   "plate centred on the bed",
+   true,
+   "toolpath centre 90.1, 91.1 (bed 90)"
+  ],
+  [
+   "no empty layers",
+   true,
+   "159 layers"
+  ],
+  [
+   "objects stayed where laid out",
+   true,
+   "offset [0.0, 0.0]"
+  ],
+  [
+   "scout_v4_probe_spool: overhang has material under it",
+   true,
+   "0 of 215 mm2 unsupported"
+  ],
+  [
+   "supports are in the g-code",
+   true,
+   "75342 support moves"
+  ],
+  [
+   "non-planar: the hotend clears the print everywhere (replayed against the A1 mini hotend)",
+   true,
+   "closest 0.082 mm, block and ducts None mm, tip rides 0.15 mm into the slope (0.27 allowed), steepest move 9.0 deg"
+  ],
+  [
+   "non-planar: every layer inside the nozzle's 0.08-0.28 mm",
+   "True",
+   "0.142 to 0.258 mm"
+  ]
+ ],
+ "stats": {
+  "layer_steps": [
+   0.2
+  ],
+  "offset_xy": [
+   0.0,
+   0.0
+  ],
+  "time": "1h 18m 33s",
+  "grams": 23.01
+ },
+ "ready": true,
+ "gcode_3mf": "C:\\Users\\\u58fd\\nox\\repos\\noxen\\print\\nonplanar\\np_spool\\np_spool.gcode.3mf",
+ "objects": [
+  {
+   "label": "scout_v4_probe_spool",
+   "opts": {
+    "layer_height": 0.2,
+    "wall_loops": 3,
+    "sparse_infill_density": "100%",
+    "enable_support": 1
+   },
+   "xy": [
+    73.51088333129883,
+    73.51088333129883
+   ],
+   "normal": [
+    0.0,
+    1.0,
+    0.0
+   ]
+  }
+ ],
+ "nonplanar": {
+  "ok": true,
+  "bend": {
+   "pieces": 554971,
+   "bent": 389990,
+   "t_min": 0.142,
+   "t_max": 0.258,
+   "vz": 7.9,
+   "zmax": 31.8,
+   "slope_deg": 8.96
+  },
+  "gate": {
+   "layers": 159,
+   "bent_layers": 115,
+   "plough_mm": 0.154,
+   "clear_mm": 0.082,
+   "far_clear_mm": null,
+   "worst": [
+    85.11,
+    89.7,
+    4.458,
+    22
+   ],
+   "slope_deg": 9.02,
+   "plough_allowed_mm": 0.271,
+   "ok": true,
+   "why": ""
+  },
+  "fields": [
+   {
+    "mode": "wave",
+    "slope_deg": 10.0,
+    "amp_mm": 0.4,
+    "cell_mm": 0.5,
+    "layer_mm": 0.2,
+    "wavelength_mm": 15.84,
+    "skin_mm": 1.0,
+    "max_slope_deg": 8.96,
+    "tau": [
+     0.706,
+     1.294
+    ],
+    "bend_mm": [
+     -0.4,
+     0.4
+    ],
+    "bent_share": 0.355,
+    "piece_mm": 0.49
+   }
+  ],
+  "preview": "C:\\Users\\\u58fd\\nox\\repos\\noxen\\print\\nonplanar\\np_spool\\np_spool.preview.png"
+ }
+}
