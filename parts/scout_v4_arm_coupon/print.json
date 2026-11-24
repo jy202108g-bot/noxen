@@ -1,12 +1,12 @@
 {
  "print_stl": {
   "url": "https://github.com/sparkiscool/noxen/releases/download/meshes/scout_v4_arm_coupon.stl",
-  "sha256": "95e3873ae7611d10b801cf1d963657388f4c86dde662870127e2b293b1977674",
-  "bytes": 4256984,
-  "faces": 85138,
+  "sha256": "060037b14e106ddc4be9ffd62e80548e90745fc2bee866bae293395ce33347d8",
+  "bytes": 4203884,
+  "faces": 84076,
   "view_faces": 60000,
-  "view_sha256": "7f87aebcca3c68ea837f146d1f12a4d5f06f97ff4cf6fe8171fdf5a8b493f6ca",
-  "at": "2026-11-21 07:10"
+  "view_sha256": "cca3998e284f4d771295cddfc8f90b275d562106e711cfb91a4405ef25b629e9",
+  "at": "2026-11-24 00:44"
  },
  "make": {
   "sha": {
@@ -18,17 +18,17 @@
    "systems/fit_table.json": "8d560ff6f55b",
    "systems/overseer.cage.json": "298700a6d756",
    "systems/scout.cage_loads.json": "f4f45404daae",
-   "tools/scout_v4_shape.py": "ff64dc5ef7e7"
+   "tools/scout_v4_shape.py": "38a1679e0e6c"
   },
   "rc": 0,
-  "s": 41.3,
-  "at": "2026-11-21 07:05",
-  "commit": "fd1c1464",
+  "s": 30.3,
+  "at": "2026-11-24 00:41",
+  "commit": "cc487a22",
   "solid": {
    "ok": true,
    "file": "print/scout_v4_arm_coupon.stl",
-   "sha256": "86c6d35f05fd7ef050daab625cf7f04818a09f7c13b63b3006202ba9bb3d67a9",
-   "cm3": 49.36,
+   "sha256": "d45f668ddeb5e5e26267dd58879d93c04fdfbcf53c9f5c509a1d5350af44c520",
+   "cm3": 49.387,
    "bodies_plain": 1,
    "specks_plain": 2,
    "bodies_eroded": 1,

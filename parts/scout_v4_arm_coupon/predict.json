@@ -15,9 +15,9 @@
  "predicted": {
   "h1": {
    "up": {
-    "break_N": 356.1,
-    "inlayer": 0.714,
-    "across": 0.826,
+    "break_N": 364.5,
+    "inlayer": 0.698,
+    "across": 0.807,
     "mode": "across the layers",
     "at_mm_from_motor": 28.5,
     "at": [
@@ -27,9 +27,9 @@
     ]
    },
    "side": {
-    "break_N": 551.8,
-    "inlayer": 0.504,
-    "across": 0.533,
+    "break_N": 538.7,
+    "inlayer": 0.499,
+    "across": 0.546,
     "mode": "across the layers",
     "at_mm_from_motor": 47.5,
     "at": [
@@ -41,21 +41,21 @@
   },
   "h2": {
    "up": {
-    "break_N": 491.8,
-    "inlayer": 0.598,
-    "across": 0.535,
+    "break_N": 484.5,
+    "inlayer": 0.607,
+    "across": 0.596,
     "mode": "in-layer",
-    "at_mm_from_motor": 28.0,
+    "at_mm_from_motor": 48.0,
     "at": [
-     77.1,
-     -1.0,
-     10.5
+     57.1,
+     9.0,
+     8.5
     ]
    },
    "side": {
-    "break_N": 740.9,
-    "inlayer": 0.369,
-    "across": 0.397,
+    "break_N": 754.1,
+    "inlayer": 0.361,
+    "across": 0.39,
     "mode": "across the layers",
     "at_mm_from_motor": 48.0,
     "at": [
