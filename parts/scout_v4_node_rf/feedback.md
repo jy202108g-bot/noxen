@@ -1,0 +1,1 @@
+- 24 Nov (Spark): "the nodes are way too thick": redesign them a lot more lightweight, still PCTG-printable and strong enough.
