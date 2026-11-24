@@ -23,6 +23,7 @@ sc.BRIDGES = []; sc.GROUPS = sc._groups(); sc.GROUP_OF = {k: g for g in sc.GROUP
 sc.group_id = lambda g: "scout_v4_node_" + "_".join(k.lower() for k in ((g,) if isinstance(g, str) else g))
 
 import parts.scout_node_lib as L                          # noqa: E402  (reads the patched cage at import: members, socket starts)
+from parts.cage_node_lib import GROOVE_D                  # noqa: E402
 
 L.LOADS = json.load(open(os.path.join(ROOT, "systems", "scout_v4.cage_loads.json")))["node_loads"]
 L.P = {**sc.NODES}
@@ -87,34 +88,115 @@ def _raw_members(k, bridges=False):
 L._raw_members = _raw_members
 L.DEPTH = DEPTH_MIN                                       # a socket with no frame-model load (none here: check_members refuses it)
 
-# The drawn collar: the audit's wall. 2.55 round the 3.2 bore, 2.05 at the 0.5 grooves and annulus (the audit's drawn_wall floor 2.0;
-# the 0.05 is the 40-gon's flats, 1.99 between a flat and a vertex). The Ys' two fork collars keep 3.0 (9 Nov run 4: the whole root
-# of the fork, worst at their floors). The room round every collar stays the 3.0-wall strut + STRUT_M, so the engine grows the root
-# wherever bending needs it. v4-only: the v3 Scout and Overseer nodes keep WALL.
-FORK_S0 = 20.0                                           # a bore pushed out past this by a near-parallel neighbour is one of a Y's two fork sockets
-HUB_WALL = 3.0                                           # 14 Nov: 2.55 -> 3.0 (= WALL). With the rods' end moments in the cases the
-# worst of every failing node (P1 / P2 / P5 / P6 / R0 / R7 / RS0 / RS1, 0.29-0.53, weak in volume: P2 0.67 -> 0.53 at 2.4x) sat on a
-# moment-loaded collar's drawn skin, 4.1-4.7 off its axis, where it meets its side-by-side neighbour: the drawn 2.55 the engine cannot thicken
-L.DRAWN_WALL = lambda m: L.WALL if m["s0"] > FORK_S0 else HUB_WALL
+# The drawn collar (24 Nov, Spark: "the nodes are way too thick"): each socket's wall from its own rod's end moment by a hand calculation,
+# never over the 3.0 it was (14 Nov: 3.0 where two side-by-side collars meet at their roots) and never under the audit's wall.
+# Where the mass was (14 Nov runs, 70.8 g): 37.7 g collars, every one 3.0 thick mouth to floor whatever its moment, and 33.1 g generated,
+# 12.3 g of it at P2 / P5 round one socket each (the staggered starts below).
+#   The collar carries its rod's end moment M (frame model, N mm) with the side force V at mid-bore, Me = M + V d / 2, the way the setup
+#   applies it: a couple Fc = Me / (2 L3) across the lining's thirds (L3 = (d + LINING_BACK) / 3). Two modes, both read in the 14 Nov runs:
+#   Shear, mouth third to floor third: the tube round the 4.2 annulus carries Fc across the layers, peak 2 Fc / A (a thin tube). The
+#   pushed-out sockets' worst sat there (mid-bore, on the collar's skin, across layers: P1's RS0-P1 0.214 where this reads 0.194 on the
+#   3.0 tube, so x SHEAR_K 1.1): A >= 1.1 x 2 Fc / (COLLAR_INDEX x the across-layer crash strength 23 x 0.85 / 1.1).
+#   Bending, at the root: Me on the tube, pi (D^4 - 4.2^4) / (32 D) >= Me / (COLLAR_INDEX x the crash strength along the socket, the
+#   in-layer 46 for a socket lying in the layers, toward the across-layer 23 with the square of its rise). The hub sockets' worst sat
+#   there (RF's RF-RM, a bare 3.0 collar: 0.25 by this, 0.233 in its run).
+#   COLLAR_INDEX 0.27 under the 0.3 limit. A 3 mm rod's 1.0-1.5 N m needs more than the 3.0 wall in both modes (D 11-12), so those
+#   collars stay 3.0 mouth to floor with the engine's material round them; only the sockets under ~650 N mm thin: the wall the shear
+#   needs from the mouth to d / 6 above the floor (the floor third's centre, where the couple closes), straight from there to the root
+#   wall the bending needs, the root wall back through the floor.
+# The room round every collar stays the 3.0-wall strut + STRUT_M, so the engine still grows a root wherever more than the tube bears.
+# Not sized by a load case (the design chat's: a missing case, not a collar): a socket the setup holds as a support never sees its own
+# rod's moment (a force on a fixed region is nothing). Its collar is sized here by the same hand calculation, but the generated root
+# behind it is not: by the bending line above (root_index, logged by check_members as NO CASE) the bare 3.0 roots read 0.68 / 0.69
+# (BT0-TB / BT1-TB, 1.4 N m), 0.51 / 0.52 (SB0-S0 / SB1-S1), 0.44 (RB-P3 / RB-P4 at RB), 0.43 (RM-RS0 / RM-RS1), 0.42 (S0-P1 / S1-P6
+# at P1 / P6), 0.40 (RB-P3 / TB-P3 at P3, P4 the same), 0.30-0.32 (P2-P3 / S0-P2 at P2, P5 the same); a loaded socket's bare root reads
+# as much (TB-P3 0.67) where its run, with the generated root, read 0.18.
+ROOT_MAX = 3.0
+MIN_WALL, COLLAR_INDEX, TAPER_FROM, SHEAR_K = 2.55, 0.27, 1.0 / 6.0, 1.1   # MIN_WALL: 2.05 at the 0.5 annulus (the audit's drawn_wall floor 2.0, the 0.05 the 40-gon's flats)
+XT_MPA, ZT_MPA = 46.0 * 0.85 / 1.1, 23.0 * 0.85 / 1.1    # topo/material.py PCTG Xt / Zt, KNOCKDOWN, SAFETY["crash"]
 
-# The collar's outside is round with only the wall over the bore's crown (the crown's apex r sqrt 2 + HUB_WALL), not the bore's
+
+def collar_walls(moment, side, depth, bore_r, rise=0.0):
+    """(root wall, mouth wall) of a socket's collar for its rod's end moment (the hand calculation above), each MIN_WALL to ROOT_MAX,
+    up to the next 0.05; rise = the socket axis's component along the build direction"""
+    di = 2.0 * (bore_r + GROOVE_D); me = abs(moment) + abs(side) * depth / 2.0
+    up = lambda D: min(ROOT_MAX, max(MIN_WALL, float(np.ceil((D / 2.0 - bore_r) * 20.0 - 1e-9) / 20.0)))
+    fc = me / (2.0 * (depth + L.LINING_BACK) / 3.0)
+    mouth = up(np.sqrt(4.0 * SHEAR_K * 2.0 * fc / (COLLAR_INDEX * ZT_MPA) / np.pi + di ** 2))
+    z = me / (COLLAR_INDEX * (XT_MPA + (ZT_MPA - XT_MPA) * rise ** 2)); lo, hi = di, 40.0
+    for _ in range(60):
+        D = 0.5 * (lo + hi)
+        lo, hi = (D, hi) if np.pi * (D ** 4 - di ** 4) / (32.0 * D) < z else (lo, D)
+    return max(up(hi), mouth), mouth
+
+
+class Wall(float):
+    """a tapered collar's wall: its value the root wall, .mouth the wall at the mouth, the taper from .ta to .tb along the socket axis.
+    + keeps the taper (the mouth cuts spare every other collar grown by 0.5)"""
+    def __new__(cls, root, mouth, ta, tb):
+        w = float.__new__(cls, root); w.mouth, w.ta, w.tb = float(mouth), float(ta), float(tb)
+        return w
+
+    def __add__(self, g):
+        return Wall(float(self) + g, self.mouth + g, self.ta, self.tb)
+
+
+def drawn_wall(m):
+    root, mouth = collar_walls(m.get("moment") or 0.0, m.get("side") or 0.0, m["depth"], m["bore_r"], float(m["u"][2]))
+    return Wall(root, mouth, m["s0"] + TAPER_FROM * m["depth"], m["s0"] + m["depth"])
+
+
+L.DRAWN_WALL = drawn_wall
+
+# The collar's outside is round with only the wall over the bore's crown (the crown's apex r sqrt 2 + wall), not the bore's
 # teardrop scaled to the outside (apex (r + wall) sqrt 2): that put a sharp 1.7 mm ridge along the top of every collar, ending in
 # a tick at each mouth (Spark's fins, 9 Nov). The top of a collar is an up-facing surface, it needs no teardrop to print.
 _collar0 = L.collar_shape
 
 
-def collar_shape(c, u, s0, s1, r, wall, build=(0.0, 0.0, 1.0)):
-    from parts.cage_node_lib import crown_dir, _prism
-    d = crown_dir(u, build)
-    if d is None:
-        return _collar0(c, u, s0, s1, r, wall, build)
-    u = np.asarray(u, float) / np.linalg.norm(u); e1 = d; e2 = np.cross(u, e1); ro, apex = r + wall, r * np.sqrt(2.0) + wall
+def _section(r, wall, crowned):
+    ro, apex = r + wall, r * np.sqrt(2.0) + wall
+    if not crowned:
+        return [(ro * np.cos(t), ro * np.sin(t)) for t in np.linspace(0.0, 2 * np.pi, 48, endpoint=False)]
     t0 = np.arccos(ro / apex)                             # where the apex's tangents touch the circle
-    a = np.linspace(t0, 2 * np.pi - t0, 48)
-    return _prism([(ro * np.cos(t), ro * np.sin(t)) for t in a] + [(apex, 0.0)], c, u, s0, s1, e1, e2)
+    return [(ro * np.cos(t), ro * np.sin(t)) for t in np.linspace(t0, 2 * np.pi - t0, 48)] + [(apex, 0.0)]
+
+
+def collar_shape(c, u, s0, s1, r, wall, build=(0.0, 0.0, 1.0)):
+    import manifold3d as mf
+    from parts.cage_node_lib import crown_dir, _prism
+    u = np.asarray(u, float) / np.linalg.norm(u); d = crown_dir(u, build)
+    e1 = d if d is not None else np.cross(u, [0, 0, 1.0] if abs(u[2]) < 0.9 else [1.0, 0, 0]); e1 = e1 / np.linalg.norm(e1); e2 = np.cross(u, e1)
+    sec = lambda w, a, b: _prism(_section(r, w, d is not None), c, u, a, b, e1, e2)
+    if not isinstance(wall, Wall) or wall.mouth >= float(wall) - 1e-9:
+        return sec(float(wall), s0, s1)
+    ta, tb = max(wall.ta, s0), min(wall.tb, s1)
+    # one convex body (both sections convex, the root's the larger): the root wall from the floor to ta, straight to the mouth wall at
+    # tb, the mouth wall on past it (the mouth cut's spare). Not prisms stacked on a loft: their shared faces left the drawn mesh with
+    # odd-parity columns (the audit's parity check, 24 Nov)
+    return mf.Manifold.batch_hull([sec(float(wall), s0, ta), sec(wall.mouth, tb - 0.02, max(s1, tb))])
 
 
 L.collar_shape = collar_shape
+
+_port_dir0 = L.port_dir
+
+
+def port_dir(u, prefer, others=(), blockers=(), origin=None, clear_r=0.0, **kw):
+    """a port's channel stays clear of every other collar (the lib's blockers, at the 3.0-wall radius). A collar this socket rides on
+    (staggered starts: the port's origin already inside that collar's radius) cannot be cleared: there the channel keeps PORT_WALL of
+    print between itself and that socket's bore and feed ring instead (the collar's floor is solid)"""
+    out = []
+    for p0, p1, r in blockers:
+        ax = (p1 - p0) / np.linalg.norm(p1 - p0)
+        if origin is not None and _sd(np.asarray(origin, float), np.asarray(origin, float), p0, p1) < r + clear_r:
+            p0, r = p0 + ax * (L.FLOOR - 0.5), L.BORE_R + GROOVE_D + PORT_WALL - 0.5
+        out.append((p0, p1, r))
+    return _port_dir0(u, prefer, others, out, origin=origin, clear_r=clear_r, **kw)
+
+
+PORT_WALL = 2.0
+L.port_dir = port_dir
 
 # The mouth plane: the collar's end face, the strut's room and the keep-out round the rod all ended on it, and the export left
 # sliver sheets where the generated surface met those coplanar faces (the fins in the mouths of P5, P1, R0: P1's S0-P1 lead-in held
@@ -135,32 +217,139 @@ L.MOUTH_R = L.BORE_R + L.WALL + L.STRUT_M + 0.5
 # The Ys' forks (9 Nov): their bores side by side need only the audit's wall between the grooves (2.1). A hub's pair of near-parallel
 # bores (P1's RS0-P1 / S0-P1 13 mm out) at 2.1 put each groove 0.05 off its neighbour's 2.55 collar face: near-coincident faces,
 # the ticks in P1's bores. A hub pair gets 2.4 (0.35 off); a fork pair keeps 2.1 (its 3.0 collars 0.4 into the groove).
+FORK_S0 = 20.0                                           # a bore pushed out past this by a near-parallel neighbour would be a fork socket (none in v4: the paired hub bores start at 12.4)
 L.MAX_START = 36.0
 L.BETWEEN_WALL = 2.1
 BETWEEN_HUB = 2.4
+
+
+# Staggered starts (24 Nov): a hub's near-parallel pair both started 12.4 out (two 7.4 necks, generated), and the pair's larger end moment
+# crossed its neck to reach the hub: P2 / P5 took 5.0 cm3 (6.1 g each) to bring RS0-P2 / RS1-P5's 1.2 N m in at 0.225, the worst across
+# the layers at mid-bore of the pushed-out collar, where RS0 holds the same rod's 1.43 N m at 0.279 on 1.1 cm3 from a hub start.
+# Now only one of the pair moves out: the socket with the larger end moment starts as near the hub as its mouth allows (its lead-in
+# cone clear of the other's collar, STAGGER_GAP), the other where its bore clears that one's by the same BETWEEN_HUB wall; its collar
+# rides on the first's. A pair within STAGGER_TIE of each other's moment (the Ys' mirrored forks BN / BT, NB-R, TB-P) stays symmetric.
+# The exact geometry (clear below), not the symmetric formula; check_pairs refuses any pair of a node part that fails it.
+STAGGER_TIE, STAGGER_GAP, STAGGER_OUT = 0.9, 0.3, 1.5     # STAGGER_OUT: the moved socket at most this far past its symmetric start
+
+
+def _sd(p1, q1, p2, q2):
+    """the least distance between two segments (closed form; a point is a segment of no length)"""
+    d1, d2, r = q1 - p1, q2 - p2, p1 - p2; a, e, f = d1 @ d1, d2 @ d2, d2 @ r
+    if a < 1e-12 and e < 1e-12:
+        return float(np.linalg.norm(r))
+    if a < 1e-12:
+        s_, t = 0.0, np.clip(f / e, 0.0, 1.0)
+    else:
+        c = d1 @ r
+        if e < 1e-12:
+            s_, t = np.clip(-c / a, 0.0, 1.0), 0.0
+        else:
+            b = d1 @ d2; den = a * e - b * b
+            s_ = np.clip((b * f - c * e) / den, 0.0, 1.0) if den > 1e-12 else 0.0
+            t = (b * s_ + f) / e
+            if t < 0.0:
+                s_, t = np.clip(-c / a, 0.0, 1.0), 0.0
+            elif t > 1.0:
+                s_, t = np.clip((b - c) / a, 0.0, 1.0), 1.0
+    return float(np.linalg.norm(p1 + d1 * s_ - p2 - d2 * t))
+
+
+def clear(a, sa, b, sb, why=None):
+    """two sockets of one node, their bore floors sa / sb from its centre: the bores BETWEEN_HUB apart at their grooves, each collar
+    (the 3.0 wall, floor to mouth) clear of the other's lead-in cone by STAGGER_GAP and of its rod by ROD_GAP"""
+    seg = lambda m, s, t0, t1: (m["u"] * (s + t0), m["u"] * (s + t1))
+    bad = []
+    if _sd(*seg(a, sa, 0.0, a["depth"]), *seg(b, sb, 0.0, b["depth"])) < a["bore_r"] + b["bore_r"] + 2 * L.GROOVE_D + BETWEEN_HUB - 1e-6:
+        bad.append("bores")
+    for x, sx, y, sy in ((a, sa, b, sb), (b, sb, a, sa)):
+        col = seg(y, sy, -L.FLOOR, y["depth"]); ro = y["bore_r"] + L.WALL
+        for t in np.linspace(0.0, 2.0, 9):                # x's lead-in: bore_r at 1.0 inside the mouth to bore_r + 2.0 at 1.0 past it
+            q = x["u"] * (sx + x["depth"] - 1.0 + t)
+            if _sd(q, q, *col) < ro + x["bore_r"] + t + STAGGER_GAP - 1e-6:
+                bad.append(f"{x['name']}'s lead-in in {y['name']}'s collar"); break
+        if _sd(*seg(x, sx, x["depth"] + 1.0, x["depth"] + 60.0), *col) < ro + L.ROD_R + L.ROD_GAP - 1e-6:
+            bad.append(f"{x['name']}'s rod at {y['name']}'s collar")
+    if why is not None:
+        why.extend(bad)
+    return not bad
 
 
 def _socket_starts():
     st = {}
     for k in L.sc.NODES:
         ms = L._raw_members(k, bridges=True)
+        pair = lambda m, o, bw: (m["bore_r"] + o["bore_r"] + 2 * L.GROOVE_D + bw) / (2.0 * np.sin(np.arccos(np.clip(m["u"] @ o["u"], -1.0, 1.0)) / 2.0))
+
+        def start(m, skip=None):
+            def one(bw):
+                return max([L.NODE_R] + [pair(m, o, bw) for o in ms if o is not m and o is not skip and m["u"] @ o["u"] < 1.0 - 1e-12])
+            s0 = one(L.BETWEEN_WALL)
+            return float(np.ceil((one(BETWEEN_HUB) if L.NODE_R + 1e-6 < s0 <= FORK_S0 else s0) * 10.0 - 1e-9) / 10.0)
+        s = {m["name"]: start(m) for m in ms}
+        if k in L.KEYS:                                   # the node parts; the frame's printed sockets keep the symmetric rule
+            mom = {m["name"]: abs((L.LOADS.get(k, {}).get(m["name"]) or {}).get("moment", 0.0)) for m in ms}
+            for i, a in enumerate(ms):
+                for b in ms[i + 1:]:
+                    hi, lo = (a, b) if mom[a["name"]] >= mom[b["name"]] else (b, a)
+                    both = pair(a, b, BETWEEN_HUB)
+                    if both <= L.NODE_R + 1e-6 or min(s[a["name"]], s[b["name"]]) < both - 0.1 or mom[lo["name"]] > STAGGER_TIE * mom[hi["name"]]:
+                        continue                          # not a pair that pushed each other out, or a mirrored fork
+                    others = [o for o in ms if o is not hi and o is not lo]
+                    ok = lambda sh, sl: clear(hi, sh, lo, sl) and all(clear(x, sx, o, s[o["name"]]) for x, sx in ((hi, sh), (lo, sl)) for o in others)
+                    grid = lambda m, skip, top: np.round(np.arange(start(m, skip=skip), top + 1e-9, 0.1), 1)
+
+                    def first(xs, good):                  # the first of xs that is good (good from there on: the rays part)
+                        i, j = 0, len(xs) - 1
+                        if len(xs) == 0 or not good(xs[j]):
+                            return None
+                        while i < j:
+                            h = (i + j) // 2
+                            i, j = (i, h) if good(xs[h]) else (h + 1, j)
+                        return float(xs[i])
+                    lows = grid(lo, hi, s[lo["name"]] + STAGGER_OUT)
+                    sh = first(grid(hi, lo, s[hi["name"]] - 1.0), lambda x: first(lows, lambda y: ok(x, y)) is not None)
+                    found = None if sh is None else (sh, first(lows, lambda y: ok(sh, y)))
+                    if found:
+                        s[hi["name"]], s[lo["name"]] = found
         for m in ms:
-            def start(bw):
-                s0 = L.NODE_R
-                for o in ms:
-                    if o is m:
-                        continue
-                    t = float(np.arccos(np.clip(m["u"] @ o["u"], -1.0, 1.0)))
-                    if t > 1e-6:
-                        s0 = max(s0, (m["bore_r"] + o["bore_r"] + 2 * L.GROOVE_D + bw) / (2.0 * np.sin(t / 2.0)))
-                return s0
-            s0 = start(L.BETWEEN_WALL)
-            if L.NODE_R + 1e-6 < s0 <= FORK_S0:
-                s0 = start(BETWEEN_HUB)
-            st[(k, m["name"])] = float(np.ceil(s0 * 10.0) / 10.0)
+            st[(k, m["name"])] = s[m["name"]]
     return st
 
 
+def check_pairs(k):
+    """every pair of sockets of node part k by the exact geometry (clear); the symmetric formula in check_members no longer says it"""
+    ms = L.members(k); bad = []
+    for i, a in enumerate(ms):
+        for b in ms[i + 1:]:
+            why = []
+            if not clear(a, a["s0"], b, b["s0"], why):
+                bad.append(f"{a['name']} ({a['s0']:.1f}) / {b['name']} ({b['s0']:.1f}): {', '.join(why)}")
+    if bad:
+        raise ValueError(f"node {k}: sockets too close: " + "; ".join(bad))
+
+
+_check0 = L.check_members
+
+
+def root_index(m, wall=ROOT_MAX):
+    """the bending line of the hand calculation at a collar's root, as an index: the rod's end moment on the bare tube of that wall"""
+    di, D = 2.0 * (m["bore_r"] + GROOVE_D), 2.0 * (m["bore_r"] + wall); me = abs(m.get("moment") or 0.0) + abs(m.get("side") or 0.0) * m["depth"] / 2.0
+    return me * 32.0 * D / (np.pi * (D ** 4 - di ** 4)) / (XT_MPA + (ZT_MPA - XT_MPA) * float(m["u"][2]) ** 2)
+
+
+def _check_members(k, log=print):
+    ms = _check0(k, log); check_pairs(k)
+    # the missing case, said in every log until the setup has it: the two sockets held as the support (the stiffest by axial load,
+    # L.build) get no case of their own, so nothing sizes the generated root behind them for their own rod's end moment
+    held = [m for m in sorted(ms, key=lambda m: -m["axial"])[:2] if root_index(m) > COLLAR_INDEX]
+    if held:
+        log("  NO CASE (held as the support, its own rod's end moment in no case; the bare 3.0 collar's root by hand calculation): "
+            + ", ".join(f"{m['name']} {abs(m['moment']):.0f} N mm reads {root_index(m):.2f}" for m in held))
+    return ms
+
+
+L.check_members = _check_members
 L.SOCKET_START = _socket_starts()
 
 # Budgets (10 Nov): the light nodes read 6-40 x under the 0.3 limit at 1.1 x skeleton (P / R 0.017-0.054 at 1.7 cm3, RF / RB / RS
@@ -178,8 +367,12 @@ L.SOCKET_START = _socket_starts()
 # (4.9 off the axis, the generated root): 2.4 -> 3.6 (~0.24 by V^-1.25).
 # Then 0.34 at 3.6 (6.5 g). A 13.0 bore on their pushed-out RS0-P2 / RS1-P5 collars (s0 12.4, 1.19 N m) read 0.41 at 3.0: the longer
 # collar's lever grew faster than the couple across it fell; dropped. Room filled solid 0.115: index ~ V^-1.14 from 3.6 to the room, 5.0 (~0.24).
-BUDGET_CM3 = {"P3": 1.4, "P4": 1.4, "P1": 0.9, "P2": 5.0, "P5": 5.0, "P6": 0.9, "R0": 0.85, "R7": 0.85,
-              "RF": 0.3, "RB": 0.8, "RS0": 1.1, "RS1": 1.1, "S0": 1.6, "S1": 1.8, "NB": 1.8, "TB": 2.4}   # 14 Nov, the bolt forks: their runs read NB / TB 0.051 / 0.052 at 4.0, S0 / S1 0.032 at 3.1; on the fold's loads (core_of) TB-P3 154 N (was 99), S0-P2 109 (was 78): toward ~0.15 by index ~ V^-1.25.   # 13 Nov: NB 5.7 -> 6.9, 0.314 at 5.7 (index ~ V^-1.25 toward 0.25). 12 Nov: NB 4.3 -> 5.7, 0.354 at 4.3 once BS moved to the nose block (NB-R7 pull-out 126 N; index ~ V^-1.25 toward 0.25)   # 12 Nov: TB 4.8 -> 5.6, 0.301 at 4.8 under the heavier frame's TB-P3 108 N (index ~ V^-1.25 toward 0.25)
+# 24 Nov (Spark: "way too thick"), each toward ~0.25 built by index ~ V^-1.25 from its 14 Nov run (built worst at the old budget):
+# P2 / P5 5.0 -> 1.2 (the staggered starts: RS0-P2 / RS1-P5 now start 6.5 from the hub, as RS0 holds the same rod's 1.43 N m at 0.28 on
+# 1.1; the pushed-out S0-P2 0.69 N m is P1's RS0-P1, 0.21 on 0.9), NB 1.8 -> 1.0 (0.093), TB 2.4 -> 2.2 (0.216), S0 1.6 -> 1.3 (0.184),
+# S1 1.8 -> 1.55 (0.203), R0 / R7 0.85 -> 0.7 (0.175). The rest read 0.21-0.28 and keep theirs. 27.2 -> 17.75 cm3 (33.5 -> 21.8 g).
+BUDGET_CM3 = {"P3": 1.4, "P4": 1.4, "P1": 0.9, "P2": 1.2, "P5": 1.2, "P6": 0.9, "R0": 0.7, "R7": 0.7,
+              "RF": 0.3, "RB": 0.8, "RS0": 1.1, "RS1": 1.1, "S0": 1.3, "S1": 1.55, "NB": 1.0, "TB": 2.2}   # 14 Nov, the bolt forks: their runs read NB / TB 0.051 / 0.052 at 4.0, S0 / S1 0.032 at 3.1; on the fold's loads (core_of) TB-P3 154 N (was 99), S0-P2 109 (was 78): toward ~0.15 by index ~ V^-1.25.   # 13 Nov: NB 5.7 -> 6.9, 0.314 at 5.7 (index ~ V^-1.25 toward 0.25). 12 Nov: NB 4.3 -> 5.7, 0.354 at 4.3 once BS moved to the nose block (NB-R7 pull-out 126 N; index ~ V^-1.25 toward 0.25)   # 12 Nov: TB 4.8 -> 5.6, 0.301 at 4.8 under the heavier frame's TB-P3 108 N (index ~ V^-1.25 toward 0.25)
 
 
 def spec_for(group):
