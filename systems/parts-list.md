@@ -192,7 +192,7 @@ Printed parts are in the print queue, not here. Amazon pages were not opened (re
 | Kapton tape 10 mm | 1 roll | tapes the wires to the blade | to buy | [10 mm x 33 m B07S227ZLH](https://www.amazon.com/dp/B07S227ZLH) |
 | Carbon rod Ø3 x 500, cut to 23.8 | 1 | roller axle | on hand (rod Ø3.0 row above); else to buy | [B09N91J1FC](https://www.amazon.com/dp/B09N91J1FC) |
 | M3 heat-set inserts, 5.7 long | 5 | 4 bench base, 1 head frame | CHECK on hand | [M3 insert kit](https://www.amazon.com/Threaded-Inserts-Insert-Tip-Digital-Soldering/dp/B0GYSWFVG7) |
-| M3 x 40 + nyloc; 5 x M3 x 10 | 1; 5 | spool axle; turret to base, camera idler | CHECK on hand | in the same M3 kit (screws, nuts); x 40 not in it: [search](https://www.amazon.com/s?k=M3+x+40+screw+nyloc+nut) |
+| M3 x 50 + nyloc; 4 x M3 x 8; 1 x M3 x 10 | 1; 4; 1 | spool axle; turret to base; camera idler | CHECK on hand | M3 kit (screws, nuts) lacks x 50: [search](https://www.amazon.com/s?k=M3+x+50+screw+nyloc+nut) |
 | M2 x 4, M2 x 6 + nut; M1.6 x 4 | 1; 1; 2 | blades A, B; motor face | CHECK on hand | [M1.4-M6 screw and insert kit](https://www.amazon.com/clp/B0F941H94R) (inserts); [M1.6 / M2 screw search](https://www.amazon.com/s?k=M1.6+M2+screw+assortment+kit) |
 | 5-minute epoxy | 1 | blades into the spool slot | CHECK on hand | [search](https://www.amazon.com/s?k=5+minute+epoxy+syringe) |
 | CA glue | 1 | pinion on the N20 shaft | CHECK on hand | [search](https://www.amazon.com/s?k=cyanoacrylate+super+glue) |

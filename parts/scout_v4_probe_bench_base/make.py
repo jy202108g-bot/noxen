@@ -1,7 +1,7 @@
 """Scout v4 probe bench base (10 Nov, Spark: "start printing the parts needed for the bench test"): stands the printed turret as the
 deck does, for the mechanism test on a table. Drawn: python parts/scout_v4_probe_bench_base/make.py writes print/scout_v4_probe_bench_base.stl.
   four O10 posts at the turret's floor bolts (parts/scout_v4_units_lib.TURRET_BOLTS), their tops on the deck's top (z 24.5), each with
-  an M3 x 5.7 heat-set insert (hole 4.0 x 6.0): the turret bolts down into them with 4 x M3 x 10 from above, as on the deck
+  an M3 x 5.7 heat-set insert (hole 4.0 x 6.0): the turret bolts down into them with 4 x M3 x 8 from above, as on the deck
   the N20 hangs below the turret's floor (z 14.2 up): the plate is open under it; the 40 T gear clears the plate by 7.7
   a 4 mm plate 130 x 70 with two clamp tabs at its ends (C-clamps to the bench, or double-sided tape as the saw guide)
 Print: plate down, no supports, 0.2 layers, 4 walls, 30 % infill, ~1 h 40 E."""

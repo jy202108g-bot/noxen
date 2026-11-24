@@ -5,7 +5,7 @@ bosses), joined by flat plates instead of the generated structure, less every on
 runs the flight interfaces while the flight turret's strength run goes on; not a flight part (crash and fold cases not designed for).
 Drawn: python parts/scout_v4_probe_bench_turret/make.py writes print/scout_v4_probe_bench_turret.stl (part.stl in the drone frame).
   plates 3 thick: the two side walls outside the axle bosses (+y beyond the gear, -y beyond the drum), a floor on the deck's top,
-  and a back wall behind the throat; bolts to parts/scout_v4_probe_bench_base with 4 x M3 x 10 into its inserts
+  and a back wall behind the throat; bolts to parts/scout_v4_probe_bench_base with 4 x M3 x 8 into its inserts
 Print: on its -y wall (the drum's end) down: the axle bores and the roller's slots print round and true; tree supports under the throat's seat and the N20 block; 0.2 layers, 4 walls, 40 % infill, ~3 h E."""
 import os, sys
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(os.path.dirname(HERE))
