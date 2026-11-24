@@ -3,7 +3,8 @@ the turntable while the ceiling probe rolls its two-blade mast out, nods the cam
 parked, the front camera nods.
 
     poses(t) -> {part name: 4x4}. Every part spins about z (360 deg over the loop). The spool turns as the blades pay out (and the
-    pinion with it, 40 / 15 faster, the other way); the head rises by the length out; the camera cradle and its LED bars nod about
+    pinion with it, 40 / 15 faster, the other way; the drum's cable coil, its inner end through the spool's hub, turns whole with the
+    spool: its mesh is the coil and the hub it sits on, inside the drum's O18); the head rises by the length out; the camera cradle and its LED bars nod about
     the SG90's axis; each blade's 1 mm mesh above the throat (tools/scout_v4_shape.py mast()) stretches to the length out.
 """
 import math, os, sys
@@ -64,7 +65,7 @@ def timeline(a):
         turn = e / R_WOUND                                                       # the spool's turn for the length paid out
         P = {n: R for n in names}
         for nm, M in (("head_frame", lift), ("probe_servo", lift), ("cradle", nod @ lift), ("probe_tilt", nod @ lift), ("probe_leds", nod @ lift), ("probe_mast_a", S), ("probe_mast_b", S),
-                      ("probe_spool", rot_y(-turn, (SPOOL[0], 0, SPOOL[1]))), ("probe_pinion", rot_y(turn * RATIO, (PINION[0], 0, PINION[1])))):
+                      ("probe_spool", rot_y(-turn, (SPOOL[0], 0, SPOOL[1]))), ("probe_drum", rot_y(-turn, (SPOOL[0], 0, SPOOL[1]))), ("probe_pinion", rot_y(turn * RATIO, (PINION[0], 0, PINION[1])))):
             if get(nm):
                 P[get(nm)] = R @ M
         return P
