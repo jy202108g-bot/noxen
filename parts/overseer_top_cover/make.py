@@ -1,4 +1,14 @@
-"""Overseer top cover v2 (Spark 3 Nov): a canopy over the FC for looks, not airtight. Spark's asks:
+"""Overseer top cover v2.2 (23 Nov): v2.1 made dust-tight round the wiring. v2.1 was Spark's canopy (3 Nov), not airtight:
+* v2.2 windows only where wires cross the cover's sides (parts/wires, parts/wires_red, measured 23 Nov): +x and -x the full
+  48 (the motor leads at y +-12 and the runs that drop past the plate edge at y -9..-2 fill them), -y 24 wide round the lead
+  at x 0, +y none (nothing crosses it). Each window runs from 16 over the plate down through the lip, as v2.1's did, so the
+  leads that go down past the plate edge pass; every wire crossing is >= 5 inside its window's side edges.
+* v2.2 a TPU 95A grommet fills each window (3; grommets.stl, drawn from the window itself on the dome's height field): a
+  membrane flush with the shell (2.52), a 3.0 thick flange 2.5 past the window edge inside and out (2.0 came out 1.6 on the skirt's bend, 2.4 left specks at the top corners), down the lip zone to the
+  plate bottom; cut a slit or a cross with a knife where each lead passes, the rest stays shut.
+* v2.2 clearance (23 Nov): >= 5 from the cover and grommets to every bought part and wire, but where a lead passes through
+  its grommet (checked by the make: the closest bought part and wire printed).
+Spark's asks (3 Nov):
 * lots of room for the cables and around the FC;
 * a super smooth, aerodynamic dome, kept low under the rear props; it need not be symmetric;
 * the Noxen N mark raised on top (thicker, not holes; noxensys.com/assets/icon.svg);
@@ -29,8 +39,7 @@ Shape: one continuous height field H(x, y), soft-blended, the 3D field blurred 0
   the seat is 0.4 thicker than v2's 1.6, so 0.4 less thread past the nut, E).
 * Fits (systems/fit_table.json, topo/fit.py): bolt holes fit.bore(3, screw) 3.4; driver wells fit.bore(5.5, clear) 7.5 round the M3
   socket head; the lip and the root ends fit.gap(slide) 0.25 a side round the bought top plate's edge.
-* Cable exits:
-  - one 48 x 18 on each side face.
+* Cable exits (v2.2): windows only where wires cross, 16 over the plate, through the lip (WINDOWS), each filled by a grommet.
 * Print (Bambu A1 mini, translucent PCTG, dried 65 C 8 h):
   - upright: the lip on the smooth PEI plate with glue stick;
   - variable layer height (adaptive, 0.08..0.2, smooth 5) for a stair-free dome; line width 0.42, 6 wall loops;
@@ -56,7 +65,10 @@ LOGO_W, LOGO_C, LOGO_T = 56.0, (20.0, 0.0), 2.0             # the largest that f
 BOLT_U, BOLT_V, SEAT_H = 63.17, 15.0, 2.0
 HOLE_R, DRIVE_R = fit.bore(3.0, "screw") / 2, fit.bore(5.5, "clear") / 2   # M3 shank 3.4; the M3 socket head (O5.5) down its well 7.5
 SEAT_R = DRIVE_R + T                                        # the seat ring under the whole tube
-SIDE_EXIT = (48.0, 18.0, 38.0)                              # width, height over the plate, start r (no exits at the root ends: Spark 3 Nov)
+WIN_H, WIN_S0 = 16.0, 38.0                                  # window height over the plate (16: the highest wire crossing is 55.5, 7 under it; 18 pinched the -x grommet's inner flange under the lower rear dome), start r (no exits at the root ends: Spark 3 Nov)
+WINDOWS = {0.0: [(-24.0, 24.0)], 180.0: [(-24.0, 24.0)], 270.0: [(-12.0, 12.0)]}   # per side face (deg), t spans: only where wires cross (23 Nov)
+GROM_PLUG, GROM_FW, GROM_FT, GROM_G, GROM_LAP = 0.0, 2.5, 3.0, 0.05, 2.0   # grommet: membrane past the shell each side, flange reach past the window edge, flange thickness, off the shell, flange lap in over the membrane (joins them: 23 Nov, the solid check)
+TPU = 1.21e-3
 RES, XY = 0.45, 92.0
 SKIRT = 3.0                                                 # skirt rise per mm in from the edge (72 deg; prints upright)
 LOGO = [[(0, 0), (78, 0), (286, 257), (210, 257), (56, 66.7), (56, 257), (0, 257)],
@@ -157,13 +169,13 @@ rb = np.min([np.hypot(X - bx, Y - by) for bx, by in USED], axis=0)
 
 
 def exit_field(Z):
-    """> 0 inside a cable exit"""
+    """> 0 inside a window (no lower bound: through the lip, as v2.1)"""
     E = np.full(X.shape + (Z.shape[-1],), -1e3, np.float32)
-    w, h, s0 = SIDE_EXIT
-    for th in (0.0, 90.0, 180.0, 270.0):
+    for th, spans in WINDOWS.items():
         c, sn = np.cos(np.radians(th)), np.sin(np.radians(th))
         sr, tr = X * c + Y * sn, -X * sn + Y * c
-        E = np.maximum(E, np.minimum(np.minimum(w / 2 - np.abs(tr), sr - s0)[..., None], PT + h - Z))
+        for t0, t1 in spans:
+            E = np.maximum(E, np.minimum(np.minimum(np.minimum(tr - t0, t1 - tr), sr - WIN_S0)[..., None], PT + WIN_H - Z))
     return E
 
 
@@ -178,7 +190,9 @@ F = np.maximum(F, np.minimum(np.minimum(SEAT_R - rb[..., None], Z - PT), PT + SE
 F = np.maximum(F, np.minimum(np.minimum(np.minimum(DRIVE_R + T - rb[..., None], Hz - Z), Z - PT), sd_o[..., None]))  # tubes
 F = np.minimum(F, -np.minimum(DRIVE_R - rb[..., None], Z - (PT + SEAT_H)))                                      # driver wells
 F = np.minimum(F, -(HOLE_R - rb[..., None]) + 0 * Z)                                                          # M3 holes
-F = np.minimum(F, -exit_field(Z))
+Wf = exit_field(Z)
+F = np.minimum(F, -Wf)
+F0 = F
 F = np.pad(ndimage.gaussian_filter(F, 0.6), 1, constant_values=-1.0)    # smooth field: smooth surface
 v, f, _, _ = measure.marching_cubes(F, 0.0, spacing=(RES, RES, RES))
 v += np.array([xs[0], xs[0], zs[0]]) - RES
@@ -192,6 +206,37 @@ for n_f in (150000, 250000):                                         # decimate 
     if d.is_watertight and abs(d.volume - t.volume) < 0.01 * abs(t.volume):
         t = d; break
 t.export(os.path.join(HERE, "part.stl"))
+
+# ---------------- grommets (v2.2), drawn on the dome's own height field (smooth): in each window a membrane flush with the
+# shell, a flange GROM_FT thick GROM_FW past the window edge on both faces (GROM_G off them); in the lip zone (under the plate
+# top, outside the plate edge) the membrane fills the lip's place with the outer flange only; never inside the plate.
+k3 = (Tn / T)[..., None]
+plug = np.minimum(Wf, np.minimum(Z - (Hz - Tz - GROM_PLUG * k3), Hz + GROM_PLUG * k3 - Z))
+f_in = np.minimum(Z - (Hz - Tz - GROM_FT * k3), Hz - Tz - GROM_G * k3 - Z)
+f_out = np.minimum(Z - (Hz + GROM_G * k3), Hz + GROM_FT * k3 - Z)
+up = np.minimum(np.maximum(plug, np.minimum(np.minimum(Wf + GROM_FW, GROM_LAP - Wf), np.maximum(f_in, f_out))), Z - PT)   # flanges in the ring round the window, GROM_LAP in over the membrane
+lip_plug = np.minimum(np.minimum(Wf, np.minimum(sd_o, -sd_i)[..., None]), np.minimum(Z - PB, PT + 0.5 - Z))
+lip_out = np.minimum(np.minimum(np.minimum(Wf + GROM_FW, GROM_LAP - Wf), np.minimum(-sd_o - GROM_G, sd_o + GROM_G + GROM_FT)[..., None]), np.minimum(Z - PB, PT + 0.5 - Z))
+G = np.maximum(np.maximum(up, lip_plug), lip_out)
+G = np.minimum(G, np.where(Z < PT + 0.3, -sd_i[..., None], 1e3))                  # never inside the plate (or the root tops)
+G = np.minimum(G, sd_o[..., None] + GROM_FT + 1.0).astype(np.float32)
+del plug, f_in, f_out, up, lip_plug, lip_out
+Gb = ndimage.binary_opening(G > 0, structure=(np.sum(np.mgrid[-2:3, -2:3, -2:3] ** 2, axis=0) <= 4))   # opened by a 0.9 ball: nothing under the 2 mm floor (23 Nov)
+G = np.minimum(G, ((ndimage.distance_transform_edt(Gb) - ndimage.distance_transform_edt(~Gb)) * RES).astype(np.float32))
+del Gb
+lab, n = ndimage.label(G > 0)
+sizes = ndimage.sum(G > 0, lab, range(1, n + 1))
+groms = []
+for k in [i + 1 for i, sz in enumerate(sizes) if sz * RES ** 3 > 50.0]:
+    gk = np.pad(ndimage.gaussian_filter(np.where(ndimage.binary_dilation(lab == k, iterations=3), G, -1.0).astype(np.float32), 0.6), 1, constant_values=-1.0)
+    vg, fg, _, _ = measure.marching_cubes(gk, 0.0, spacing=(RES, RES, RES)); vg += np.array([xs[0], xs[0], zs[0]]) - RES
+    g = trimesh.Trimesh(vg, fg, process=True)
+    if g.volume < 0: g.invert()
+    if not g.is_watertight:
+        g.merge_vertices(); g.update_faces(g.nondegenerate_faces()); g.remove_unreferenced_vertices(); trimesh.repair.fill_holes(g); trimesh.repair.fix_normals(g)
+    parts_ = g.split(only_watertight=False)
+    groms.append(max(parts_, key=lambda m: abs(m.volume)) if len(parts_) > 1 else g)
+trimesh.util.concatenate(groms).export(os.path.join(HERE, "grommets.stl"))
 from topo.build import render                              # noqa: E402
 render(t, os.path.join(HERE, "preview.png"), title="overseer_top_cover (drawn prototype)",
        info=f"{abs(t.volume) * 1.23e-3:.1f} g PCTG | shell {T} (6 lines) | as printed: lip down")
@@ -210,5 +255,6 @@ for nm, A, B in segs:
         if 0 <= i < len(xs) and 0 <= j < len(xs) and sd_o[i, j] > -4.0 and PB - 4.0 < q[2] < H[i, j] + 4.0:
             hits.append(nm); break
 print(f"{abs(t.volume) / 1000:.1f} cm3 = {abs(t.volume) * 1.23e-3:.1f} g PCTG, {len(t.faces)} faces, watertight {t.is_watertight}")
+print(f"grommets {len(groms)}: {', '.join(f'{abs(g.volume) * TPU:.2f}' for g in groms)} g TPU, watertight {all(g.is_watertight for g in groms)}")
 print(f"box x {b[0][0]:.1f}..{b[1][0]:.1f} y {b[0][1]:.1f}..{b[1][1]:.1f} z {b[0][2]:.1f}..{b[1][2]:.1f}; peak {H.max():.1f}")
 print(f"ceiling over the stack >= {ceil:.1f} over the plate (stack {STACK}); top under the prop disks <= {top_in_disk:.1f} (blades {PROP_Z}); cage members near: {hits or 'none'}")

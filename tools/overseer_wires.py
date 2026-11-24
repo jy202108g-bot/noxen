@@ -18,7 +18,7 @@ R = 2.0                                     # the runs' bundle radius (the old m
 Z_IN, Z_OUT, Z_RUN = 49.6, 50.6, 53.0       # the stack joint, the arm joint (old mesh, E), the route through the window
 JOINT_IN, JOINT_OUT = 31.82, 77.78          # |x| = |y| of the old joints on each diagonal
 WIN_X0, WIN_Y = 40.0, 12.0                  # inside the window's start (r 38) and the lead's offset in the 48 window
-CLEAR = 4.5                                 # centreline off the cover's outside (the radius 2.0 + 2.5)
+CLEAR = 7.0                                 # centreline off the cover's outside: the radius 2.0 + 5.0 (23 Nov: 5 mm clear of the cover, was 2.5)
 # the arm roots' flat tops (u .. u1, v0 .. v1 in each diagonal's frame), as parts/overseer_top_cover/make.py ROOT_RECT
 ROOT_RECT = {45.0: (72.8, -23.6, 22.7), 135.0: (74.1, -23.6, 21.9), 225.0: (74.1, -21.9, 23.6), 315.0: (72.8, -22.7, 23.6)}
 RED = {135.0}                               # the -x +y run is the red (+) lead's, the rest black, as the old meshes drew them
